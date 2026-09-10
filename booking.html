@@ -201,6 +201,69 @@
             transform: translateY(-2px);
         }
 
+        /* Custom Modal Popup (Replaces Browser Alert) */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            animation: popIn 0.3s ease-out;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-content h3 {
+            color: var(--text-light);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .modal-content p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-modal-close {
+            background-color: var(--gold);
+            color: var(--bg-black);
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-modal-close:hover {
+            background-color: var(--gold-hover);
+        }
+
         /* Footer */
         .footer {
             background-color: #050507;
@@ -251,7 +314,6 @@
         <!-- Booking Form with Formspree Endpoint -->
         <form id="bookingForm" action="https://formspree.io/f/xnpqwqlb" method="POST" class="booking-form">
             
-            <!-- Redirect Setting for Formspree -->
             <input type="hidden" name="_next" value="payment.html">
 
             <!-- Full Name -->
@@ -302,6 +364,15 @@
         </form>
     </main>
 
+    <!-- Custom Modal Overlay (Replaces Default Browser Alerts) -->
+    <div class="custom-modal" id="errorModal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Notice</h3>
+            <p id="modalMessage">There was an issue processing your request.</p>
+            <button class="btn-modal-close" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
@@ -311,9 +382,20 @@
     <script>
         const form = document.getElementById('bookingForm');
         const submitBtn = document.getElementById('submitBtn');
+        const errorModal = document.getElementById('errorModal');
+        const modalMessage = document.getElementById('modalMessage');
+
+        function showErrorModal(message) {
+            modalMessage.innerText = message;
+            errorModal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            errorModal.style.display = 'none';
+        }
 
         form.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Stop normal form submission
+            event.preventDefault(); // Stop normal browser submission
             
             submitBtn.disabled = true;
             submitBtn.innerText = "Sending Booking Request...";
@@ -330,15 +412,15 @@
                 });
 
                 if (response.ok) {
-                    // Smoothly redirect to payment page on success
+                    // Smoothly redirect directly to payment page without browser alerts
                     window.location.href = "payment.html";
                 } else {
-                    alert("There was an issue sending your request. Please try again or contact us directly.");
+                    showErrorModal("There was an issue sending your request. Please try again.");
                     submitBtn.disabled = false;
                     submitBtn.innerText = "Submit & Proceed to Deposit ($20)";
                 }
             } catch (error) {
-                alert("Network error. Please check your connection and try again.");
+                showErrorModal("Network error. Please check your connection and try again.");
                 submitBtn.disabled = false;
                 submitBtn.innerText = "Submit & Proceed to Deposit ($20)";
             }
