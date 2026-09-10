@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pay $20 Deposit | TIMZ VISUALS</title>
+    
+    <!-- Meta Descriptions & SEO -->
+    <meta name="description" content="Secure your photo session date and time slot with TIMZ VISUALS by paying your booking deposit.">
+    
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Modern Color Palette */
+        /* Modern Color Palette & Variables */
         :root {
             --bg-black: #0b0c10;
             --bg-card: #1f2833;
@@ -17,8 +23,10 @@
             --text-light: #f4f4f4;
             --text-gray: #c5c6c7;
             --font-main: 'Montserrat', sans-serif;
+            --transition-speed: 0.3s;
         }
 
+        /* Reset & Base Setup */
         * {
             margin: 0;
             padding: 0;
@@ -34,6 +42,11 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
         /* Navigation Bar */
@@ -69,7 +82,6 @@
             font-weight: 900;
             letter-spacing: 2px;
             color: var(--text-light);
-            text-decoration: none;
         }
 
         .brand-name span {
@@ -79,7 +91,8 @@
         /* Payment Container */
         .payment-container {
             max-width: 600px;
-            margin: 130px auto 60px auto;
+            width: 90%;
+            margin: 120px auto 60px auto;
             padding: 40px 30px;
             background-color: var(--bg-card);
             border-radius: 12px;
@@ -135,7 +148,9 @@
             padding: 20px 15px;
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.3s;
+            transition: border-color var(--transition-speed), transform var(--transition-speed);
+            cursor: pointer;
+            position: relative;
         }
 
         .method-card:hover {
@@ -143,7 +158,7 @@
             transform: translateY(-3px);
         }
 
-        .method-card h3 {
+        .method-card h2 {
             font-size: 1.1rem;
             margin-bottom: 8px;
             color: var(--gold);
@@ -154,6 +169,14 @@
             font-weight: 600;
             color: var(--text-light);
             word-break: break-all;
+        }
+
+        .copy-hint {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Note Section */
@@ -184,13 +207,13 @@
             font-weight: 800;
             text-transform: uppercase;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
             letter-spacing: 1px;
             display: block;
-            box-sizing: border-box;
         }
 
-        .btn-confirm:hover {
+        .btn-confirm:hover,
+        .btn-confirm:focus {
             background-color: var(--gold-hover);
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
             transform: translateY(-2px);
@@ -257,11 +280,33 @@
             font-weight: 800;
             text-transform: uppercase;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background-color var(--transition-speed);
         }
 
-        .btn-modal-close:hover {
+        .btn-modal-close:hover,
+        .btn-modal-close:focus {
             background-color: var(--gold-hover);
+        }
+
+        /* Toast Alert for Clipboard */
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--gold);
+            color: var(--bg-black);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease-in-out;
+            z-index: 3000;
+        }
+
+        .toast-notification.active {
+            transform: translateX(-50%) translateY(0);
         }
 
         /* Footer */
@@ -281,84 +326,98 @@
             .navbar {
                 padding: 15px 20px;
             }
+            .payment-container {
+                padding: 25px 20px;
+            }
         }
     </style>
 </head>
 <body>
 
     <!-- Header / Navigation -->
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="timz.jpeg" alt="TIMZ VISUALS Logo" class="brand-logo">
-            <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+            <div class="logo-container">
+                <img src="timz.jpeg" alt="TIMZ VISUALS Logo" class="brand-logo">
+                <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
+            </div>
+        </nav>
+    </header>
 
     <!-- Main Payment Container -->
-    <div class="payment-container">
-        <div class="payment-header">
-            <h1>Lock In Your Shoot</h1>
-            <p>Send your deposit below to secure your date and time slot.</p>
-        </div>
-
-        <!-- Deposit Amount Display -->
-        <div class="amount-box">
-            <div class="deposit-title">Required Booking Deposit</div>
-            <div class="price">$20.00</div>
-        </div>
-
-        <!-- Payment Methods Grid -->
-        <div class="methods-grid">
-            <!-- Cash App -->
-            <div class="method-card">
-                <h3>Cash App</h3>
-                <p>$YourCashAppTag</p>
+    <main>
+        <div class="payment-container">
+            <div class="payment-header">
+                <h1>Lock In Your Shoot</h1>
+                <p>Send your deposit below to secure your date and time slot.</p>
             </div>
 
-            <!-- Zelle -->
-            <div class="method-card">
-                <h3>Zelle</h3>
-                <p>your-email@example.com</p>
+            <!-- Deposit Amount Display -->
+            <div class="amount-box">
+                <div class="deposit-title">Required Booking Deposit</div>
+                <div class="price">$20.00</div>
             </div>
 
-            <!-- Venmo -->
-            <div class="method-card">
-                <h3>Venmo</h3>
-                <p>@YourVenmoTag</p>
+            <!-- Payment Methods Grid -->
+            <div class="methods-grid">
+                <!-- Cash App -->
+                <div class="method-card" onclick="copyHandle('$YourCashAppTag')">
+                    <h2>Cash App</h2>
+                    <p id="handle-cashapp">$YourCashAppTag</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Zelle -->
+                <div class="method-card" onclick="copyHandle('your-email@example.com')">
+                    <h2>Zelle</h2>
+                    <p id="handle-zelle">your-email@example.com</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- Venmo -->
+                <div class="method-card" onclick="copyHandle('@YourVenmoTag')">
+                    <h2>Venmo</h2>
+                    <p id="handle-venmo">@YourVenmoTag</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
+
+                <!-- PayPal -->
+                <div class="method-card" onclick="copyHandle('paypal.me/YourPayPalUsername')">
+                    <h2>PayPal</h2>
+                    <p id="handle-paypal">paypal.me/YourPayPalUsername</p>
+                    <div class="copy-hint">Tap to copy</div>
+                </div>
             </div>
 
-            <!-- PayPal -->
-            <div class="method-card">
-                <h3>PayPal</h3>
-                <p>paypal.me/YourPayPalUsername</p>
+            <!-- Instructions Note -->
+            <div class="payment-note">
+                📌 <strong>Important:</strong> Please add <strong>"Deposit - [Your Name]"</strong> in the note/memo when sending your payment so Timothy knows who sent it!
             </div>
+
+            <!-- Confirmation Button -->
+            <button class="btn-confirm" onclick="showNotification()">I Have Sent My Deposit</button>
         </div>
-
-        <!-- Instructions Note -->
-        <div class="payment-note">
-            📌 <strong>Important:</strong> Please add <strong>"Deposit - [Your Name]"</strong> in the note/memo when sending your payment so Timothy knows who sent it!
-        </div>
-
-        <!-- Confirmation Button -->
-        <button class="btn-confirm" onclick="showNotification()">I Have Sent My Deposit</button>
-    </div>
+    </main>
 
     <!-- Custom Notification Popup Window -->
-    <div class="modal-overlay" id="notificationModal">
+    <div class="modal-overlay" id="notificationModal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
         <div class="modal-box">
-            <div class="modal-icon">📸</div>
-            <h2>Deposit Submitted!</h2>
+            <div class="modal-icon" aria-hidden="true">📸</div>
+            <h2 id="modalTitle">Deposit Submitted!</h2>
             <p>Thank you! Once Timothy verifies your deposit, you will receive a confirmation message to confirm your date & time.</p>
             <button class="btn-modal-close" onclick="closeNotification()">Back to Home</button>
         </div>
     </div>
+
+    <!-- Toast Banner for Copy Action -->
+    <div class="toast-notification" id="toast">Copied to clipboard!</div>
 
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
     </footer>
 
-    <!-- Notification Script -->
+    <!-- Logic Script -->
     <script>
         function showNotification() {
             document.getElementById('notificationModal').style.display = 'flex';
@@ -366,6 +425,18 @@
 
         function closeNotification() {
             window.location.href = 'index.html';
+        }
+
+        function copyHandle(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('active');
+                setTimeout(() => {
+                    toast.classList.remove('active');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
         }
     </script>
 
