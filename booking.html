@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book a Session | TIMZ VISUALS</title>
+    <title>Book a Shoot | TIMZ VISUALS</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Modern Color Palette */
+        /* Color Palette & Variables */
         :root {
             --bg-black: #0b0c10;
             --bg-card: #1f2833;
@@ -78,28 +78,27 @@
 
         .nav-links {
             display: flex;
+            gap: 25px;
             list-style: none;
-            gap: 30px;
-            align-items: center;
         }
 
         .nav-links a {
-            color: var(--text-gray);
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 600;
             font-size: 0.9rem;
-            transition: 0.3s;
-            text-transform: uppercase;
+            font-weight: 600;
             letter-spacing: 1px;
+            transition: 0.3s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--gold);
         }
 
         /* Booking Container */
         .booking-container {
-            max-width: 700px;
+            max-width: 650px;
             margin: 130px auto 60px auto;
             padding: 40px 30px;
             background-color: var(--bg-card);
@@ -117,91 +116,83 @@
             font-size: 2.2rem;
             font-weight: 900;
             text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 10px;
         }
 
         .booking-header p {
-            color: var(--gold);
+            color: var(--text-gray);
             font-size: 0.95rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 600;
         }
 
-        /* Form Controls */
+        /* Form Styling */
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         .form-group {
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
         .form-group label {
-            display: block;
             font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-weight: 700;
             text-transform: uppercase;
-            color: var(--text-gray);
+            letter-spacing: 1px;
+            color: var(--gold);
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 16px;
             background-color: var(--bg-black);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             color: var(--text-light);
             font-family: var(--font-main);
             font-size: 0.95rem;
+            outline: none;
             transition: 0.3s;
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
-            outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
 
-        .form-row {
-            display: flex;
-            gap: 20px;
+        .form-group select option {
+            background-color: var(--bg-black);
+            color: var(--text-light);
         }
 
-        .form-row .form-group {
-            flex: 1;
-        }
-
-        /* Notice Box */
-        .deposit-notice {
-            background-color: rgba(212, 175, 55, 0.1);
-            border-left: 4px solid var(--gold);
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            font-size: 0.85rem;
-            color: var(--text-gray);
-        }
-
-        .deposit-notice strong {
-            color: var(--gold);
-        }
-
-        /* Submit Button */
         .btn-submit {
             width: 100%;
             background-color: var(--gold);
             color: var(--bg-black);
-            padding: 15px;
+            padding: 16px;
             border: none;
             border-radius: 30px;
             font-size: 1rem;
             font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: 0.3s;
-            letter-spacing: 1px;
+            margin-top: 10px;
         }
 
         .btn-submit:hover {
@@ -221,12 +212,15 @@
         }
 
         @media (max-width: 600px) {
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
             .navbar {
                 padding: 15px 20px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .booking-container {
+                margin: 110px 15px 40px 15px;
+                padding: 30px 20px;
             }
         }
     </style>
@@ -240,84 +234,116 @@
             <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html#home">Home</a></li>
-            <li><a href="index.html#portfolio">Work</a></li>
-            <li><a href="index.html#services">Pricing</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="booking.html" class="active">Book Now</a></li>
+            <li><a href="payment.html">Pay Deposit</a></li>
         </ul>
     </nav>
 
-    <!-- Booking Form Section -->
-    <div class="booking-container">
+    <!-- Main Form Container -->
+    <main class="booking-container">
         <div class="booking-header">
-            <h1>Book Your Session</h1>
-            <p>Let's create something visual together</p>
+            <h1>Book Your Shoot</h1>
+            <p>Fill out your details below. Once submitted, you'll be redirected to pay your deposit.</p>
         </div>
 
-        <!-- Submit directly redirects to payment.html -->
-        <form action="payment.html" method="GET">
+        <!-- Booking Form with Formspree Endpoint -->
+        <form id="bookingForm" action="https://formspree.io/f/xnpqwqlb" method="POST" class="booking-form">
             
+            <!-- Redirect Setting for Formspree -->
+            <input type="hidden" name="_next" value="payment.html">
+
             <!-- Full Name -->
             <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="Full Name" placeholder="e.g. Marcus Vance" required>
             </div>
 
             <!-- Email & Phone Row -->
             <div class="form-row">
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="Email" placeholder="your@email.com" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="Phone Number" placeholder="613-xxx-xxxx" required>
                 </div>
             </div>
 
-            <!-- Package Selection -->
-            <div class="form-group">
-                <label for="package">Select Photo Package</label>
-                <select id="package" name="package" required>
-                    <option value="" disabled selected>Choose a package...</option>
-                    <option value="mini">Mini Session - $50 (20-30 mins)</option>
-                    <option value="standard">Standard Session - $100 (1 Hour - Most Popular)</option>
-                    <option value="sports">Sports / Event Coverage - $120 (Full Game/Event)</option>
-                    <option value="group">Group / Team Shoot - $20 per person</option>
-                </select>
-            </div>
-
-            <!-- Preferred Date & Time -->
+            <!-- Package Selection & Preferred Date Row -->
             <div class="form-row">
                 <div class="form-group">
-                    <label for="date">Preferred Date</label>
-                    <input type="date" id="date" name="date" required>
+                    <label for="package">Select Package *</label>
+                    <select id="package" name="Package Option" required>
+                        <option value="" disabled selected>Select an Option</option>
+                        <option value="Mini Package ($50)">Mini Package ($50)</option>
+                        <option value="Standard Package ($100)">Standard Package ($100)</option>
+                        <option value="Sports & Events ($120)">Sports & Events ($120)</option>
+                        <option value="Group Shoot ($20/person)">Group Shoot ($20/person)</option>
+                        <option value="Other / Custom Project">Other / Custom Project</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="time">Preferred Time</label>
-                    <input type="time" id="time" name="time" required>
+                    <label for="date">Preferred Date *</label>
+                    <input type="date" id="date" name="Preferred Date" required>
                 </div>
             </div>
 
-            <!-- Shoot Notes / Details -->
+            <!-- Shoot Details -->
             <div class="form-group">
-                <label for="notes">Shoot Location / Vision / Special Requests</label>
-                <textarea id="notes" name="notes" rows="4" placeholder="Tell Timothy what type of photos you want, location ideas, or outfits..."></textarea>
-            </div>
-
-            <!-- Deposit Notice -->
-            <div class="deposit-notice">
-                📌 <strong>Next Step:</strong> Submitting this form will take you to the payment page to complete your <strong>$20 booking deposit</strong>.
+                <label for="details">Shoot Details / Concept</label>
+                <textarea id="details" name="Shoot Details" rows="4" placeholder="Tell us about your location ideas, outfit count, music video concept, or vision..."></textarea>
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn-submit">Proceed to $20 Deposit</button>
+            <button type="submit" id="submitBtn" class="btn-submit">Submit & Proceed to Deposit ($20)</button>
         </form>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
     </footer>
+
+    <!-- Form Submission Handling Script -->
+    <script>
+        const form = document.getElementById('bookingForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Stop normal form submission
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending Booking Request...";
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Smoothly redirect to payment page on success
+                    window.location.href = "payment.html";
+                } else {
+                    alert("There was an issue sending your request. Please try again or contact us directly.");
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Submit & Proceed to Deposit ($20)";
+                }
+            } catch (error) {
+                alert("Network error. Please check your connection and try again.");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit & Proceed to Deposit ($20)";
+            }
+        });
+    </script>
 
 </body>
 </html>
