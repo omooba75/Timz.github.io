@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay $20 Deposit | TIMZ VISUALS</title>
+    <title>Selected Work | TIMZ VISUALS</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Modern Color Palette */
+        /* Color Palette & Variables */
         :root {
             --bg-black: #0b0c10;
             --bg-card: #1f2833;
@@ -76,203 +76,226 @@
             color: var(--gold);
         }
 
-        /* Payment Container */
-        .payment-container {
-            max-width: 600px;
-            margin: 130px auto 60px auto;
-            padding: 40px 30px;
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-            text-align: center;
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
         }
 
-        .payment-header h1 {
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        /* Header Section */
+        .portfolio-header {
+            margin-top: 130px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .portfolio-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-header p {
+            color: var(--text-gray);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Category Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 35px 0 25px 0;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--text-light);
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--gold);
+            color: var(--bg-black);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Portfolio Gallery Grid (CSS Columns Masonry) */
+        .gallery-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+            column-count: 3;
+            column-gap: 20px;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Overlay Effect on Hover */
+        .item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 60%);
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .item-overlay {
+            opacity: 1;
+        }
+
+        .item-overlay h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .item-overlay p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Call To Action Banner */
+        .cta-banner {
+            background-color: var(--bg-card);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 20px;
+        }
+
+        .cta-banner h2 {
             font-size: 2rem;
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 10px;
         }
 
-        .payment-header p {
+        .cta-banner p {
             color: var(--text-gray);
-            font-size: 0.95rem;
             margin-bottom: 25px;
         }
 
-        .amount-box {
-            background-color: var(--bg-black);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid var(--gold);
-            margin-bottom: 30px;
-        }
-
-        .amount-box .deposit-title {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-gray);
-        }
-
-        .amount-box .price {
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: var(--gold);
-        }
-
-        /* Payment Methods Grid */
-        .methods-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .method-card {
-            background-color: var(--bg-black);
-            padding: 20px 15px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.3s;
-        }
-
-        .method-card.featured {
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
-        }
-
-        .method-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
-        }
-
-        .method-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--gold);
-        }
-
-        .method-card p {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-light);
-            word-break: break-all;
-        }
-
-        .method-card .sub-text {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            margin-top: 4px;
-        }
-
-        /* Note Section */
-        .payment-note {
-            background-color: rgba(212, 175, 55, 0.1);
-            border-left: 4px solid var(--gold);
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            text-align: left;
-        }
-
-        .payment-note strong {
-            color: var(--gold);
-        }
-
-        /* Action Buttons */
-        .btn-confirm {
-            width: 100%;
+        .btn-cta {
             background-color: var(--gold);
             color: var(--bg-black);
-            padding: 15px;
-            border: none;
+            padding: 14px 35px;
+            text-decoration: none;
             border-radius: 30px;
-            font-size: 1rem;
             font-weight: 800;
             text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
             letter-spacing: 1px;
-            display: block;
-            box-sizing: border-box;
+            transition: 0.3s;
+            display: inline-block;
         }
 
-        .btn-confirm:hover {
+        .btn-cta:hover {
             background-color: var(--gold-hover);
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
             transform: translateY(-2px);
         }
 
-        /* Custom Notification Modal Overlay */
-        .modal-overlay {
+        /* Fullscreen Lightbox Modal */
+        .lightbox-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
+            background-color: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            z-index: 3000;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
 
-        .modal-box {
-            background-color: var(--bg-card);
-            border: 2px solid var(--gold);
-            border-radius: 12px;
-            padding: 35px 25px;
-            max-width: 450px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-            animation: popIn 0.3s ease-out;
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
-        @keyframes popIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .modal-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .modal-box h2 {
-            font-size: 1.6rem;
-            font-weight: 900;
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
             color: var(--text-light);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .modal-box p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-        }
-
-        .btn-modal-close {
-            background-color: var(--gold);
-            color: var(--bg-black);
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            font-weight: 800;
-            text-transform: uppercase;
+            font-size: 2.5rem;
+            font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .btn-modal-close:hover {
-            background-color: var(--gold-hover);
+        .lightbox-close:hover {
+            color: var(--gold);
         }
 
         /* Footer */
@@ -285,12 +308,25 @@
             color: #555;
         }
 
-        @media (max-width: 600px) {
-            .methods-grid {
-                grid-template-columns: 1fr;
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .gallery-container {
+                column-count: 2;
             }
+        }
+
+        @media (max-width: 600px) {
             .navbar {
                 padding: 15px 20px;
+            }
+            .nav-links {
+                display: none; /* Can be paired with a mobile menu toggle */
+            }
+            .gallery-container {
+                column-count: 1;
+            }
+            .portfolio-header h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -303,55 +339,116 @@
             <img src="timz.jpeg" alt="TIMZ VISUALS Logo" class="brand-logo">
             <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
         </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html" class="active">Work</a></li>
+            <li><a href="payment.html">Book / Pay Deposit</a></li>
+        </ul>
     </nav>
 
-    <!-- Main Payment Container -->
-    <div class="payment-container">
-        <div class="payment-header">
-            <h1>Lock In Your Shoot</h1>
-            <p>Send your deposit via Interac e-Transfer to secure your date and time slot.</p>
-        </div>
+    <!-- Header Section -->
+    <header class="portfolio-header">
+        <h1>Selected Works</h1>
+        <p>Explore recent photography and videography projects by Timothy.</p>
+    </header>
 
-        <!-- Deposit Amount Display -->
-        <div class="amount-box">
-            <div class="deposit-title">Required Booking Deposit</div>
-            <div class="price">$20.00 CAD</div>
-        </div>
-
-        <!-- Payment Methods Grid -->
-        <div class="methods-grid">
-            <!-- Interac e-Transfer (Phone) -->
-            <div class="method-card featured">
-                <h3>Interac e-Transfer</h3>
-                <p>1 613-229-3013</p>
-                <div class="sub-text">(Send via phone number)</div>
-            </div>
-
-            <!-- Interac e-Transfer (Email) -->
-            <div class="method-card featured">
-                <h3>Interac e-Transfer</h3>
-                <p>your-email@example.com</p>
-                <div class="sub-text">(Send via email address)</div>
-            </div>
-        </div>
-
-        <!-- Instructions Note -->
-        <div class="payment-note">
-            📌 <strong>Important:</strong> Please include <strong>your full name and email address</strong> in the message or memo field when sending your e-Transfer so Timothy knows who sent it!
-        </div>
-
-        <!-- Confirmation Button -->
-        <button class="btn-confirm" onclick="showNotification()">I Have Sent My Deposit</button>
+    <!-- Category Filter Buttons -->
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterGallery('all')">All Work</button>
+        <button class="filter-btn" onclick="filterGallery('portraits')">Portraits</button>
+        <button class="filter-btn" onclick="filterGallery('music-videos')">Music Videos</button>
+        <button class="filter-btn" onclick="filterGallery('events')">Events</button>
+        <button class="filter-btn" onclick="filterGallery('automotive')">Automotive</button>
     </div>
 
-    <!-- Custom Notification Popup Window -->
-    <div class="modal-overlay" id="notificationModal">
-        <div class="modal-box">
-            <div class="modal-icon">📸</div>
-            <h2>Deposit Submitted!</h2>
-            <p>Thank you! Once Timothy verifies your e-Transfer deposit, you will receive a confirmation message to lock in your date & time.</p>
-            <button class="btn-modal-close" onclick="closeNotification()">Back to Home</button>
+    <!-- Gallery Container -->
+    <main class="gallery-container" id="gallery">
+
+        <!-- Image Item 1 -->
+        <div class="gallery-item portraits">
+            <img src="https://picsum.photos/600/800?random=1" alt="Studio Portrait" onclick="openLightbox(this.src)">
+            <div class="item-overlay">
+                <h3>Studio Portrait</h3>
+                <p>Lighting & Concept Shoot</p>
+            </div>
         </div>
+
+        <!-- Image Item 2 -->
+        <div class="gallery-item music-videos">
+            <img src="https://picsum.photos/600/400?random=2" alt="Music Video Shoot" onclick="openLightbox(this.src)">
+            <div class="item-overlay">
+                <h3>Night Visuals</h3>
+                <p>Music Video Stills</p>
+            </div>
+        </div>
+
+        <!-- Image Item 3 -->
+        <div class="gallery-item automotive">
+            <img src="https://picsum.photos/600/750?random=3" alt="Automotive Shoot" onclick="openLightbox(this.src)">
+            <div class="item-overlay">
+                <h3>BMW M3 Feature</h3>
+                <p>Automotive Photography</p>
+            </div>
+        </div>
+
+        <!-- Image Item 4 -->
+        <div class="gallery-item events">
+            <img src="https://picsum.photos/600/500?random=4" alt="Live Event" onclick="openLightbox(this.src)">
+            <div class="item-overlay">
+                <h3>Concert Coverage</h3>
+                <p>Live Event Photography</p>
+            </div>
+        </div>
+
+        <!-- Image Item 5 -->
+        <div class="gallery-item portraits">
+            <img src="https://picsum.photos/600/900?random=5" alt="Outdoor Fashion" onclick="openLightbox(this.src)">
+            <div class="item-overlay">
+                <h3>Urban Editorial</h3>
+                <p>Outdoor Portraits</p>
+            </div>
+        </div>
+
+        <!-- Image Item 6 -->
+        <div class="gallery-item music-videos">
+            <img src="https://picsum.photos/600/450?random=6" alt="Behind the Scenes" onclick="openLightbox(this.src)">
+            <div class="item-overlay">
+                <h3>Set Production</h3>
+                <p>Behind The Scenes</p>
+            </div>
+        </div>
+
+        <!-- Image Item 7 -->
+        <div class="gallery-item automotive">
+            <img src="https://picsum.photos/600/600?random=7" alt="Car Detail Shoot" onclick="openLightbox(this.src)">
+            <div class="item-overlay">
+                <h3>Supercar Detail</h3>
+                <p>Automotive Close-ups</p>
+            </div>
+        </div>
+
+        <!-- Image Item 8 -->
+        <div class="gallery-item events">
+            <img src="https://picsum.photos/600/850?random=8" alt="Party Visuals" onclick="openLightbox(this.src)">
+            <div class="item-overlay">
+                <h3>Club Night</h3>
+                <p>Event Coverage</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Call To Action -->
+    <section class="cta-banner">
+        <h2>Ready To Bring Your Vision To Life?</h2>
+        <p>Book your photoshoot or video production slot today.</p>
+        <a href="payment.html" class="btn-cta">Lock In Your Date ($20 Deposit)</a>
+    </section>
+
+    <!-- Fullscreen Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
     </div>
 
     <!-- Footer -->
@@ -359,15 +456,44 @@
         <p>&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
     </footer>
 
-    <!-- Notification Script -->
+    <!-- Interactive Scripts -->
     <script>
-        function showNotification() {
-            document.getElementById('notificationModal').style.display = 'flex';
+        // Category Filter Logic
+        function filterGallery(category) {
+            // Update active button state
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Show/Hide items
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
 
-        function closeNotification() {
-            window.location.href = 'index.html';
+        // Lightbox Functions
+        function openLightbox(src) {
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImg');
+            img.src = src;
+            modal.style.display = 'flex';
         }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+        }
+
+        // Close Lightbox when clicking outside image
+        document.getElementById('lightboxModal').addEventListener('click', function(e) {
+            if (e.target !== document.getElementById('lightboxImg')) {
+                closeLightbox();
+            }
+        });
     </script>
 
 </body>
