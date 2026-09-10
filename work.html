@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay $20 Deposit | TIMZ VISUALS</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Color Palette */
+        :root {
+            --bg-black: #0b0c10;
+            --bg-card: #1f2833;
+            --gold: #d4af37;
+            --gold-hover: #f3ca40;
+            --text-light: #f4f4f4;
+            --text-gray: #c5c6c7;
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-black);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-logo {
+            height: 45px;
+            width: auto;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .brand-name span {
+            color: var(--gold);
+        }
+
+        /* Payment Container */
+        .payment-container {
+            max-width: 600px;
+            margin: 130px auto 60px auto;
+            padding: 40px 30px;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            text-align: center;
+        }
+
+        .payment-header h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .payment-header p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .amount-box {
+            background-color: var(--bg-black);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+            margin-bottom: 30px;
+        }
+
+        .amount-box .deposit-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-gray);
+        }
+
+        .amount-box .price {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        /* Payment Methods Grid */
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .method-card {
+            background-color: var(--bg-black);
+            padding: 20px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.3s;
+        }
+
+        .method-card.featured {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+        }
+
+        .method-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .method-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--gold);
+        }
+
+        .method-card p {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-light);
+            word-break: break-all;
+        }
+
+        .method-card .sub-text {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-top: 4px;
+        }
+
+        /* Note Section */
+        .payment-note {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            text-align: left;
+        }
+
+        .payment-note strong {
+            color: var(--gold);
+        }
+
+        /* Action Buttons */
+        .btn-confirm {
+            width: 100%;
+            background-color: var(--gold);
+            color: var(--bg-black);
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 1px;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .btn-confirm:hover {
+            background-color: var(--gold-hover);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Notification Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background-color: var(--bg-card);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 35px 25px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            animation: popIn 0.3s ease-out;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-box h2 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .modal-box p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-modal-close {
+            background-color: var(--gold);
+            color: var(--bg-black);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-modal-close:hover {
+            background-color: var(--gold-hover);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #050507;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .methods-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="timz.jpeg" alt="TIMZ VISUALS Logo" class="brand-logo">
+            <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
+        </div>
+    </nav>
+
+    <!-- Main Payment Container -->
+    <div class="payment-container">
+        <div class="payment-header">
+            <h1>Lock In Your Shoot</h1>
+            <p>Send your deposit via Interac e-Transfer to secure your date and time slot.</p>
+        </div>
+
+        <!-- Deposit Amount Display -->
+        <div class="amount-box">
+            <div class="deposit-title">Required Booking Deposit</div>
+            <div class="price">$20.00 CAD</div>
+        </div>
+
+        <!-- Payment Methods Grid -->
+        <div class="methods-grid">
+            <!-- Interac e-Transfer (Phone) -->
+            <div class="method-card featured">
+                <h3>Interac e-Transfer</h3>
+                <p>1 613-229-3013</p>
+                <div class="sub-text">(Send via phone number)</div>
+            </div>
+
+            <!-- Interac e-Transfer (Email) -->
+            <div class="method-card featured">
+                <h3>Interac e-Transfer</h3>
+                <p>your-email@example.com</p>
+                <div class="sub-text">(Send via email address)</div>
+            </div>
+        </div>
+
+        <!-- Instructions Note -->
+        <div class="payment-note">
+            📌 <strong>Important:</strong> Please include <strong>your full name and email address</strong> in the message or memo field when sending your e-Transfer so Timothy knows who sent it!
+        </div>
+
+        <!-- Confirmation Button -->
+        <button class="btn-confirm" onclick="showNotification()">I Have Sent My Deposit</button>
+    </div>
+
+    <!-- Custom Notification Popup Window -->
+    <div class="modal-overlay" id="notificationModal">
+        <div class="modal-box">
+            <div class="modal-icon">📸</div>
+            <h2>Deposit Submitted!</h2>
+            <p>Thank you! Once Timothy verifies your e-Transfer deposit, you will receive a confirmation message to lock in your date & time.</p>
+            <button class="btn-modal-close" onclick="closeNotification()">Back to Home</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
+    </footer>
+
+    <!-- Notification Script -->
+    <script>
+        function showNotification() {
+            document.getElementById('notificationModal').style.display = 'flex';
+        }
+
+        function closeNotification() {
+            window.location.href = 'index.html';
+        }
+    </script>
+
+</body>
+</html>
