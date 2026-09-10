@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selected Work | TIMZ VISUALS</title>
+    
+    <!-- Meta Descriptions & SEO -->
+    <meta name="description" content="Explore the photography and videography portfolio of TIMZ VISUALS, featuring portraits, music videos, events, and automotive work.">
+    
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     
     <style>
@@ -17,6 +23,7 @@
             --text-light: #f4f4f4;
             --text-gray: #c5c6c7;
             --font-main: 'Montserrat', sans-serif;
+            --transition-speed: 0.3s;
         }
 
         * {
@@ -88,7 +95,7 @@
             font-size: 0.9rem;
             font-weight: 600;
             letter-spacing: 1px;
-            transition: 0.3s;
+            transition: color var(--transition-speed);
         }
 
         .nav-links a:hover,
@@ -139,7 +146,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
         }
 
         .filter-btn:hover,
@@ -167,7 +174,7 @@
             background-color: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.05);
             cursor: pointer;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
         .gallery-item:hover {
@@ -199,14 +206,14 @@
             flex-direction: column;
             justify-content: flex-end;
             padding: 20px;
-            transition: opacity 0.3s ease;
+            transition: opacity var(--transition-speed) ease;
         }
 
         .gallery-item:hover .item-overlay {
             opacity: 1;
         }
 
-        .item-overlay h3 {
+        .item-overlay h2 {
             font-size: 1.1rem;
             font-weight: 800;
             color: var(--gold);
@@ -249,7 +256,7 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: 0.3s;
+            transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
             display: inline-block;
         }
 
@@ -291,7 +298,7 @@
             font-size: 2.5rem;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
+            transition: color var(--transition-speed);
         }
 
         .lightbox-close:hover {
@@ -320,7 +327,7 @@
                 padding: 15px 20px;
             }
             .nav-links {
-                display: none; /* Can be paired with a mobile menu toggle */
+                display: none;
             }
             .gallery-container {
                 column-count: 1;
@@ -334,31 +341,33 @@
 <body>
 
     <!-- Header / Navigation -->
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="timz.jpeg" alt="TIMZ VISUALS Logo" class="brand-logo">
-            <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="work.html" class="active">Work</a></li>
-            <li><a href="payment.html">Book / Pay Deposit</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav class="navbar" aria-label="Main Navigation">
+            <div class="logo-container">
+                <img src="timz.jpeg" alt="TIMZ VISUALS Logo" class="brand-logo">
+                <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="work.html" class="active">Work</a></li>
+                <li><a href="payment.html">Book / Pay Deposit</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- Header Section -->
-    <header class="portfolio-header">
+    <section class="portfolio-header">
         <h1>Selected Works</h1>
         <p>Explore recent photography and videography projects by Timothy.</p>
-    </header>
+    </section>
 
     <!-- Category Filter Buttons -->
     <div class="filter-container">
-        <button class="filter-btn active" onclick="filterGallery('all')">All Work</button>
-        <button class="filter-btn" onclick="filterGallery('portraits')">Portraits</button>
-        <button class="filter-btn" onclick="filterGallery('music-videos')">Music Videos</button>
-        <button class="filter-btn" onclick="filterGallery('events')">Events</button>
-        <button class="filter-btn" onclick="filterGallery('automotive')">Automotive</button>
+        <button type="button" class="filter-btn active" onclick="filterGallery('all', this)">All Work</button>
+        <button type="button" class="filter-btn" onclick="filterGallery('portraits', this)">Portraits</button>
+        <button type="button" class="filter-btn" onclick="filterGallery('music-videos', this)">Music Videos</button>
+        <button type="button" class="filter-btn" onclick="filterGallery('events', this)">Events</button>
+        <button type="button" class="filter-btn" onclick="filterGallery('automotive', this)">Automotive</button>
     </div>
 
     <!-- Gallery Container -->
@@ -368,7 +377,7 @@
         <div class="gallery-item portraits">
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85" alt="Studio Portrait" onclick="openLightbox(this.src)">
             <div class="item-overlay">
-                <h3>Studio Portrait</h3>
+                <h2>Studio Portrait</h2>
                 <p>Lighting & Concept Shoot</p>
             </div>
         </div>
@@ -377,7 +386,7 @@
         <div class="gallery-item music-videos">
             <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=85" alt="Music Video Shoot" onclick="openLightbox(this.src)">
             <div class="item-overlay">
-                <h3>Night Visuals</h3>
+                <h2>Night Visuals</h2>
                 <p>Music Video Stills</p>
             </div>
         </div>
@@ -386,7 +395,7 @@
         <div class="gallery-item automotive">
             <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=85" alt="Automotive Shoot" onclick="openLightbox(this.src)">
             <div class="item-overlay">
-                <h3>BMW M3 Feature</h3>
+                <h2>BMW M3 Feature</h2>
                 <p>Automotive Photography</p>
             </div>
         </div>
@@ -395,7 +404,7 @@
         <div class="gallery-item events">
             <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=85" alt="Live Event" onclick="openLightbox(this.src)">
             <div class="item-overlay">
-                <h3>Concert Coverage</h3>
+                <h2>Concert Coverage</h2>
                 <p>Live Event Photography</p>
             </div>
         </div>
@@ -404,7 +413,7 @@
         <div class="gallery-item portraits">
             <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85" alt="Outdoor Fashion" onclick="openLightbox(this.src)">
             <div class="item-overlay">
-                <h3>Urban Editorial</h3>
+                <h2>Urban Editorial</h2>
                 <p>Outdoor Portraits</p>
             </div>
         </div>
@@ -413,7 +422,7 @@
         <div class="gallery-item music-videos">
             <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85" alt="Behind the Scenes" onclick="openLightbox(this.src)">
             <div class="item-overlay">
-                <h3>Set Production</h3>
+                <h2>Set Production</h2>
                 <p>Behind The Scenes</p>
             </div>
         </div>
@@ -422,7 +431,7 @@
         <div class="gallery-item automotive">
             <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=85" alt="Car Detail Shoot" onclick="openLightbox(this.src)">
             <div class="item-overlay">
-                <h3>Supercar Detail</h3>
+                <h2>Supercar Detail</h2>
                 <p>Automotive Close-ups</p>
             </div>
         </div>
@@ -431,7 +440,7 @@
         <div class="gallery-item events">
             <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=85" alt="Party Visuals" onclick="openLightbox(this.src)">
             <div class="item-overlay">
-                <h3>Club Night</h3>
+                <h2>Club Night</h2>
                 <p>Event Coverage</p>
             </div>
         </div>
@@ -446,9 +455,9 @@
     </section>
 
     <!-- Fullscreen Lightbox Modal -->
-    <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image view">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img class="lightbox-content" id="lightboxImg">
+        <img class="lightbox-content" id="lightboxImg" alt="Enlarged view">
     </div>
 
     <!-- Footer -->
@@ -459,13 +468,11 @@
     <!-- Interactive Scripts -->
     <script>
         // Category Filter Logic
-        function filterGallery(category) {
-            // Update active button state
+        function filterGallery(category, btnElement) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            btnElement.classList.add('active');
 
-            // Show/Hide items
             const items = document.querySelectorAll('.gallery-item');
             items.forEach(item => {
                 if (category === 'all' || item.classList.contains(category)) {
@@ -491,6 +498,13 @@
         // Close Lightbox when clicking outside image
         document.getElementById('lightboxModal').addEventListener('click', function(e) {
             if (e.target !== document.getElementById('lightboxImg')) {
+                closeLightbox();
+            }
+        });
+
+        // Close Lightbox on 'Escape' key press
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
                 closeLightbox();
             }
         });
