@@ -6,7 +6,7 @@
     <title>Pay $20 Deposit | TIMZ VISUALS</title>
     
     <!-- Meta Descriptions & SEO -->
-    <meta name="description" content="Secure your photo session date and time slot with TIMZ VISUALS by paying your booking deposit.">
+    <meta name="description" content="Secure your photo session date and time slot with TIMZ VISUALS by paying your booking deposit via PayPal.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,7 +90,7 @@
 
         /* Payment Container */
         .payment-container {
-            max-width: 600px;
+            max-width: 500px;
             width: 90%;
             margin: 120px auto 60px auto;
             padding: 40px 30px;
@@ -135,19 +135,19 @@
             color: var(--gold);
         }
 
-        /* Payment Methods Grid */
+        /* Single Payment Method Container */
         .methods-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: 15px;
             margin-bottom: 30px;
         }
 
         .method-card {
             background-color: var(--bg-black);
-            padding: 20px 15px;
+            padding: 25px 20px;
             border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             transition: border-color var(--transition-speed), transform var(--transition-speed);
             cursor: pointer;
             position: relative;
@@ -159,22 +159,22 @@
         }
 
         .method-card h2 {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             margin-bottom: 8px;
             color: var(--gold);
         }
 
         .method-card p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-light);
             word-break: break-all;
         }
 
         .copy-hint {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--text-gray);
-            margin-top: 5px;
+            margin-top: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -320,9 +320,6 @@
         }
 
         @media (max-width: 600px) {
-            .methods-grid {
-                grid-template-columns: 1fr;
-            }
             .navbar {
                 padding: 15px 20px;
             }
@@ -349,7 +346,7 @@
         <div class="payment-container">
             <div class="payment-header">
                 <h1>Lock In Your Shoot</h1>
-                <p>Send your deposit below to secure your date and time slot.</p>
+                <p>Send your deposit via PayPal to secure your date and time slot.</p>
             </div>
 
             <!-- Deposit Amount Display -->
@@ -358,40 +355,18 @@
                 <div class="price">$20.00</div>
             </div>
 
-            <!-- Payment Methods Grid -->
+            <!-- PayPal Payment Section -->
             <div class="methods-grid">
-                <!-- Cash App -->
-                <div class="method-card" onclick="copyHandle('$YourCashAppTag')">
-                    <h2>Cash App</h2>
-                    <p id="handle-cashapp">$YourCashAppTag</p>
-                    <div class="copy-hint">Tap to copy</div>
-                </div>
-
-                <!-- Zelle -->
-                <div class="method-card" onclick="copyHandle('your-email@example.com')">
-                    <h2>Zelle</h2>
-                    <p id="handle-zelle">your-email@example.com</p>
-                    <div class="copy-hint">Tap to copy</div>
-                </div>
-
-                <!-- Venmo -->
-                <div class="method-card" onclick="copyHandle('@YourVenmoTag')">
-                    <h2>Venmo</h2>
-                    <p id="handle-venmo">@YourVenmoTag</p>
-                    <div class="copy-hint">Tap to copy</div>
-                </div>
-
-                <!-- PayPal -->
                 <div class="method-card" onclick="copyHandle('paypal.me/YourPayPalUsername')">
                     <h2>PayPal</h2>
                     <p id="handle-paypal">paypal.me/YourPayPalUsername</p>
-                    <div class="copy-hint">Tap to copy</div>
+                    <div class="copy-hint">Tap to copy link</div>
                 </div>
             </div>
 
             <!-- Instructions Note -->
             <div class="payment-note">
-                📌 <strong>Important:</strong> Please add <strong>"Deposit - [Your Name]"</strong> in the note/memo when sending your payment so Timothy knows who sent it!
+                📌 <strong>Important:</strong> Please add <strong>"Deposit - [Your Name]"</strong> in the note/memo when sending your payment via PayPal so Timothy knows who sent it!
             </div>
 
             <!-- Confirmation Button -->
@@ -404,7 +379,7 @@
         <div class="modal-box">
             <div class="modal-icon" aria-hidden="true">📸</div>
             <h2 id="modalTitle">Deposit Submitted!</h2>
-            <p>Thank you! Once Timothy verifies your deposit, you will receive a confirmation message to confirm your date & time.</p>
+            <p>Thank you! Once Timothy verifies your PayPal deposit, you will receive a confirmation message to finalize your date & time.</p>
             <button class="btn-modal-close" onclick="closeNotification()">Back to Home</button>
         </div>
     </div>
