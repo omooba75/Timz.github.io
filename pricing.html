@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing & Packages | TIMZ VISUALS</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Color Palette */
+        :root {
+            --bg-black: #0b0c10;
+            --bg-card: #1f2833;
+            --gold: #d4af37;
+            --gold-hover: #f3ca40;
+            --text-light: #f4f4f4;
+            --text-gray: #c5c6c7;
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-black);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-logo {
+            height: 45px;
+            width: auto;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .brand-name span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .btn-nav {
+            background-color: var(--gold);
+            color: var(--bg-black) !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 800 !important;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--gold-hover);
+            transform: scale(1.05);
+        }
+
+        /* Main Pricing Header */
+        .pricing-container {
+            max-width: 1200px;
+            margin: 130px auto 60px auto;
+            padding: 0 30px;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .pricing-header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .pricing-header p {
+            color: var(--gold);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Packages Grid */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .package-card {
+            background-color: var(--bg-card);
+            padding: 35px 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            position: relative;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .package-card.featured {
+            border-color: var(--gold);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--gold);
+            color: var(--bg-black);
+            padding: 4px 15px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+        }
+
+        .package-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .package-card .price {
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .package-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .package-card ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .package-card ul li::before {
+            content: "✓";
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .btn-card {
+            background: var(--gold);
+            color: var(--bg-black);
+            padding: 12px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .btn-card:hover {
+            background-color: var(--gold-hover);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Add-ons Section */
+        .addons-section {
+            background-color: var(--bg-card);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .addons-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .addons-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .addon-item {
+            background-color: var(--bg-black);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .addon-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .addon-item p {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        /* Deposit Note */
+        .deposit-info {
+            text-align: center;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 15px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .deposit-info strong {
+            color: var(--gold);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #050507;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="timz.jpeg" alt="TIMZ VISUALS Logo" class="brand-logo">
+            <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#portfolio">Work</a></li>
+            <li><a href="booking.html" class="btn-nav">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Pricing Section -->
+    <div class="pricing-container">
+        <div class="pricing-header">
+            <h1>Photography Rates</h1>
+            <p>Affordable, High-Quality Photo Packages</p>
+        </div>
+
+        <!-- Packages Grid -->
+        <div class="packages-grid">
+            
+            <!-- Mini Session -->
+            <div class="package-card">
+                <div>
+                    <h2>Mini Session</h2>
+                    <div class="price">$50</div>
+                    <ul>
+                        <li>20–30 Minutes</li>
+                        <li>5 Edited Digital Photos</li>
+                        <li>High-Resolution Gallery</li>
+                        <li>Fast Turnaround</li>
+                        <li>Great for Headshots / Quick Shoots</li>
+                    </ul>
+                </div>
+                <a href="booking.html" class="btn-card">Select Package</a>
+            </div>
+
+            <!-- Standard Session -->
+            <div class="package-card featured">
+                <div class="badge-popular">Most Popular</div>
+                <div>
+                    <h2>Standard Session</h2>
+                    <div class="price">$100</div>
+                    <ul>
+                        <li>1 Full Hour Session</li>
+                        <li>15 Edited Digital Photos</li>
+                        <li>1 Outfit Change</li>
+                        <li>Full Online Gallery</li>
+                        <li>Best Value for Individuals</li>
+                    </ul>
+                </div>
+                <a href="booking.html" class="btn-card">Select Package</a>
+            </div>
+
+            <!-- Sports & Events -->
+            <div class="package-card">
+                <div>
+                    <h2>Sports / Events</h2>
+                    <div class="price">$120</div>
+                    <ul>
+                        <li>Full Game or 1.5 Hour Event</li>
+                        <li>25 Action Shots</li>
+                        <li>High-Speed Capture</li>
+                        <li>Express Delivery</li>
+                        <li>Great for Athletes & Parties</li>
+                    </ul>
+                </div>
+                <a href="booking.html" class="btn-card">Select Package</a>
+            </div>
+
+            <!-- Group / Team -->
+            <div class="package-card">
+                <div>
+                    <h2>Group / Team</h2>
+                    <div class="price">$20 <span style="font-size: 0.9rem; color: #fff;">/ person</span></div>
+                    <ul>
+                        <li>Minimum 5 People</li>
+                        <li>2 Individual Shots Per Person</li>
+                        <li>2 Group / Team Photos</li>
+                        <li>Shared Online Gallery</li>
+                        <li>Perfect for Squads & Teams</li>
+                    </ul>
+                </div>
+                <a href="booking.html" class="btn-card">Select Package</a>
+            </div>
+
+        </div>
+
+        <!-- Add-ons Section -->
+        <div class="addons-section">
+            <h2 class="addons-title">Extra Add-Ons</h2>
+            <div class="addons-list">
+                <div class="addon-item">
+                    <h3>Extra Edited Photo</h3>
+                    <p>$5 / Photo</p>
+                </div>
+                <div class="addon-item">
+                    <h3>24-Hour Rush Delivery</h3>
+                    <p>+$25</p>
+                </div>
+                <div class="addon-item">
+                    <h3>Extra Outfit Change</h3>
+                    <p>+$15</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deposit Info Note -->
+        <div class="deposit-info">
+            📌 <strong>Booking Requirement:</strong> A <strong>$20 non-refundable deposit</strong> is required for all bookings to lock in your date and time slot.
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

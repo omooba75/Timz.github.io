@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMZ VISUALS | Visualizing Your Moments</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Color Palette */
+        :root {
+            --bg-black: #0b0c10;
+            --bg-card: #1f2833;
+            --gold: #d4af37;
+            --gold-hover: #f3ca40;
+            --text-light: #f4f4f4;
+            --text-gray: #c5c6c7;
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        /* Base Setup */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-black);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-logo {
+            height: 45px;
+            width: auto;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-light);
+        }
+
+        .brand-name span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .btn-nav {
+            background-color: var(--gold);
+            color: var(--bg-black) !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 800 !important;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--gold-hover);
+            transform: scale(1.05);
+        }
+
+        /* Hero Banner */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.95)), 
+                        url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=80') center/cover;
+            padding: 0 20px;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.8);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--bg-black);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 30px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-hover);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--gold);
+            color: var(--text-light);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 30px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--bg-black);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section Layouts */
+        .section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gold);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(11, 12, 16, 0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* Services & Pricing Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            padding: 35px 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .service-card.popular {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--gold);
+            color: var(--bg-black);
+            padding: 4px 15px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card .price {
+            font-size: 2.2rem;
+            color: var(--gold);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 25px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .service-card ul li {
+            margin-bottom: 8px;
+        }
+
+        .note-text {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #050507;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .footer-text {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            color: #555;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="timz.jpeg" alt="TIMZ VISUALS Logo" class="brand-logo">
+            <div class="brand-name">TIMZ <span>VISUALS</span></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <!-- Pricing linked to pricing.html below -->
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="booking.html" class="btn-nav">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <img src="timz.jpeg" alt="TIMZ VISUALS" class="hero-logo">
+        <h1>TIMZ VISUALS</h1>
+        <p>Visualizing Your Moments</p>
+        <div class="hero-btns">
+            <a href="#portfolio" class="btn-primary">View Work</a>
+            <a href="pricing.html" class="btn-secondary">Check Rates</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title fade-in">Featured Work</h2>
+        <p class="section-subtitle fade-in">Portraits • Action Sports • Urban Content</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Portrait Photography">
+                <div class="portfolio-overlay">
+                    <h3>Portrait Sessions</h3>
+                    <p>Clean, professional portraits & headshots.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=800&q=80" alt="Sports Photography">
+                <div class="portfolio-overlay">
+                    <h3>Action & Sports</h3>
+                    <p>High-speed game coverage.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Creative Photography">
+                <div class="portfolio-overlay">
+                    <h3>Lifestyle & Media</h3>
+                    <p>Creative social content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section Preview -->
+    <section id="services" class="section">
+        <h2 class="section-title fade-in">Affordable Rates</h2>
+        <p class="section-subtitle fade-in">Quality photos that fit your budget</p>
+        
+        <div class="services-grid">
+            <!-- Mini Session -->
+            <div class="service-card fade-in">
+                <h3>Mini Session</h3>
+                <div class="price">$50</div>
+                <ul>
+                    <li>20–30 Minutes</li>
+                    <li>5 Edited Digital Photos</li>
+                    <li>Fast Online Delivery</li>
+                    <li>Great for quick headshots</li>
+                </ul>
+                <a href="booking.html" class="btn-primary">Book Mini</a>
+            </div>
+
+            <!-- Standard Session -->
+            <div class="service-card popular fade-in">
+                <div class="badge-popular">Most Popular</div>
+                <h3>Standard Session</h3>
+                <div class="price">$100</div>
+                <ul>
+                    <li>1 Full Hour Session</li>
+                    <li>15 Edited Digital Photos</li>
+                    <li>1 Outfit Change</li>
+                    <li>Full Online Gallery</li>
+                </ul>
+                <a href="booking.html" class="btn-primary">Book Session</a>
+            </div>
+
+            <!-- Sports & Events -->
+            <div class="service-card fade-in">
+                <h3>Sports / Events</h3>
+                <div class="price">$120</div>
+                <ul>
+                    <li>Full Game / 1.5 Hour Event</li>
+                    <li>25 Action Shots</li>
+                    <li>High-Speed Capture</li>
+                    <li>Express Turnaround</li>
+                </ul>
+                <a href="booking.html" class="btn-primary">Book Event</a>
+            </div>
+
+            <!-- Team Rates -->
+            <div class="service-card fade-in">
+                <h3>Group / Team</h3>
+                <div class="price">$20 <span style="font-size: 1rem; color: #fff;">/ person</span></div>
+                <ul>
+                    <li>Minimum 5 People</li>
+                    <li>2 Individual Shots/Person</li>
+                    <li>2 Group Photos</li>
+                    <li>Perfect for squad shoots</li>
+                </ul>
+                <a href="booking.html" class="btn-primary">Book Group</a>
+            </div>
+        </div>
+        
+        <p class="note-text fade-in">* A $20 non-refundable deposit is required to lock in your date and time.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <img src="timz.jpeg" alt="TIMZ VISUALS" class="footer-logo">
+        <h2>TIMZ VISUALS</h2>
+        <p class="footer-text">Visualizing Your Moments • Founded by Timothy (Timz)</p>
+        <p class="copyright">&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
