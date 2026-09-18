@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMZ VISUALS - Payment & Deposit Confirmation</title>
 
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -33,6 +40,7 @@
             --notice-bg: rgba(234, 179, 8, 0.1);
             --notice-border: rgba(234, 179, 8, 0.3);
             --notice-text: #fef08a;
+            --amber-accent: #fbbf24;
         }
 
         /* Light Mode Variables Override */
@@ -58,6 +66,7 @@
             --notice-bg: rgba(234, 179, 8, 0.12);
             --notice-border: rgba(202, 138, 4, 0.4);
             --notice-text: #854d0e;
+            --amber-accent: #d97706;
         }
 
         * {
@@ -106,13 +115,17 @@
         .btn-paypal:hover {
             background-color: var(--paypal-hover);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 112, 186, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 112, 186, 0.35);
         }
 
         .notice-box {
             background-color: var(--notice-bg);
             border: 1px solid var(--notice-border);
             color: var(--notice-text);
+        }
+
+        .theme-fab {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
         }
 
         /* Custom Scrollbar */
@@ -128,8 +141,9 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between relative">
 
+    <!-- Navigation Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
@@ -148,82 +162,112 @@
                 <a href="payment.html" class="text-custom-light transition-colors font-semibold border-b-2 border-custom-glow pb-1">Payment</a>
             </nav>
 
-            <!-- Actions -->
+            <!-- Action Button & Mobile Trigger -->
             <div class="flex items-center gap-4">
-                <!-- Theme Switcher Button -->
-                <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-full border border-custom-glow hover:bg-neutral-800/20 text-custom-light transition-all flex items-center justify-center w-10 h-10">
-                    <i id="themeIcon" class="fa-solid fa-sun text-sm"></i>
-                </button>
+                <a href="booking.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider btn-primary transition-all">
+                    <span>Book Session</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
 
-                <!-- Mobile Menu Toggle Button -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Mobile Menu" aria-expanded="false">
-                    <i class="fa-solid fa-bars text-xl"></i>
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Navigation Menu" aria-expanded="false">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Drawer Navigation -->
-        <div id="mobileMenu" class="hidden md:hidden bg-custom-card border-b border-custom-glow px-6 py-6 space-y-4">
+        <div id="mobileMenu" class="hidden md:hidden bg-nav-custom border-b border-custom-glow px-6 py-6 space-y-4">
             <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
             <a href="work.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Work</a>
             <a href="pricing.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Pricing</a>
             <a href="booking.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Booking</a>
-            <a href="payment.html" class="block text-base font-medium text-custom-light font-bold">Payment</a>
+            <a href="payment.html" class="block text-base font-bold text-custom-light">Payment</a>
+            <a href="booking.html" class="inline-block w-full text-center py-3 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider mt-2">
+                Book Session Now
+            </a>
         </div>
     </header>
 
+    <!-- Main Content Container -->
     <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-grow flex flex-col justify-center">
         
+        <!-- Header Title Section -->
         <div class="text-center max-w-2xl mx-auto mb-10">
-            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray">
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card">
                 Step 2 of 2: Secure Session
             </span>
-            <h1 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight mb-3">
-                DEPOSIT PAYMENT
+            <h1 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight mb-3 uppercase">
+                DEPOSIT <span class="font-light text-custom-gray">PAYMENT</span>
             </h1>
-            <p class="text-custom-gray text-sm sm:text-base">
+            <p class="text-custom-gray text-sm sm:text-base leading-relaxed">
                 To finalize your session reservation, please submit your required retainer deposit via PayPal below.
             </p>
         </div>
 
         <!-- Main Payment Glass Container -->
-        <div class="glass-card rounded-2xl p-6 sm:p-10 space-y-8 shadow-2xl relative overflow-hidden">
+        <div class="glass-card rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl relative overflow-hidden">
             
             <!-- Deposit Highlight Header -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 rounded-xl bg-neutral-500/10 border border-custom-glow">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-neutral-500/10 border border-custom-glow">
                 <div class="text-center sm:text-left">
                     <span class="text-xs font-bold uppercase tracking-wider text-custom-gray block">Required Retainer</span>
-                    <h2 class="text-xl sm:text-2xl font-black text-custom-light mt-0.5">Reservation Deposit</h2>
+                    <h2 class="text-xl sm:text-2xl font-black text-custom-light mt-0.5 uppercase">Reservation Deposit</h2>
                     <p class="text-xs text-custom-gray mt-1">Locks in your date & credits directly toward your final balance.</p>
                 </div>
-                <div class="text-center sm:text-right bg-emerald-500/10 border border-emerald-500/30 px-6 py-3 rounded-xl">
+                <div class="text-center sm:text-right bg-emerald-500/10 border border-emerald-500/30 px-6 py-3 rounded-2xl w-full sm:w-auto">
                     <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 block">Amount Due Now</span>
                     <span class="text-3xl sm:text-4xl font-black text-emerald-500">$20.00</span>
                 </div>
             </div>
 
-            <!-- Important Note Section -->
-            <div class="notice-box p-5 rounded-xl space-y-2 text-xs sm:text-sm">
-                <p class="font-bold flex items-center gap-2">
-                    <i class="fa-solid fa-circle-exclamation text-base"></i> Important Payment Instruction:
-                </p>
+            <!-- Important Note Section with Memo Helper -->
+            <div class="notice-box p-6 rounded-2xl space-y-4 text-xs sm:text-sm">
+                <div class="flex items-center gap-2 font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-circle-exclamation text-base"></i>
+                    <span>Important Payment Instruction:</span>
+                </div>
                 <p class="leading-relaxed opacity-95">
                     📌 Please include <strong>"Deposit - [Your Full Name]"</strong> in the note/memo section when sending your PayPal payment so Timothy knows who sent it!
                 </p>
+                
+                <!-- Dynamic Memo Generator Preview -->
+                <div class="pt-2 border-t border-amber-500/20 space-y-2">
+                    <label for="clientNameInput" class="block text-[11px] font-bold uppercase tracking-wider text-custom-gray">
+                        Type your name below to preview your payment memo:
+                    </label>
+                    <input type="text" id="clientNameInput" placeholder="e.g., Alex Johnson" class="w-full p-3 rounded-xl border border-custom-glow bg-neutral-900/40 text-custom-light text-xs focus:outline-none focus:border-amber-400">
+                    
+                    <div class="p-3 rounded-xl bg-black/30 border border-custom-glow flex items-center justify-between gap-2 text-xs">
+                        <span class="text-custom-gray truncate">Note Memo Preview: <strong id="memoPreviewText" class="text-amber-400 font-mono">Deposit - [Your Name]</strong></span>
+                        <button id="copyMemoBtn" class="px-3 py-1.5 rounded-lg bg-neutral-500/20 hover:bg-neutral-500/30 text-custom-light text-[11px] font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shrink-0">
+                            <i class="fa-regular fa-copy"></i>
+                            <span id="copyMemoLabel">Copy Memo</span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- PayPal Payment Action Box -->
-            <div class="p-6 rounded-xl border border-custom-glow bg-custom-card text-center space-y-4">
+            <div class="p-6 rounded-2xl border border-custom-glow bg-neutral-900/30 text-center space-y-5">
                 <div class="flex items-center justify-center gap-2 text-custom-light text-sm font-semibold">
-                    <i class="fa-brands fa-paypal text-xl text-blue-500"></i>
-                    <span>Send Payment via PayPal Direct</span>
+                    <i class="fa-brands fa-paypal text-2xl text-blue-500"></i>
+                    <span class="uppercase tracking-wider font-bold">Send Payment via PayPal Direct</span>
                 </div>
 
-                <a href="https://paypal.me/Timz34" target="_blank" rel="noopener noreferrer" class="btn-paypal w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-sm uppercase tracking-wider shadow-lg transition-all">
-                    <i class="fa-brands fa-paypal text-lg"></i>
-                    <span>Pay $20.00 with PayPal.me/Timz34</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
-                </a>
+                <!-- PayPal Button & Copy Handle Row -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a href="https://paypal.me/Timz34" target="_blank" rel="noopener noreferrer" class="btn-paypal w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all">
+                        <i class="fa-brands fa-paypal text-lg"></i>
+                        <span>Pay $20.00 via PayPal.me/Timz34</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
+                    </a>
+                    
+                    <button id="copyLinkBtn" class="w-full sm:w-auto px-5 py-4 rounded-xl border border-custom-glow hover:bg-neutral-500/10 text-custom-light text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-link"></i>
+                        <span id="copyLinkLabel">Copy Link</span>
+                    </button>
+                </div>
 
                 <p class="text-xs text-custom-gray">
                     Redirects to PayPal securely in a new browser tab.
@@ -232,7 +276,7 @@
 
             <!-- Confirmation Action -->
             <div class="pt-4 border-t border-custom-glow space-y-3">
-                <button type="button" id="confirmDepositBtn" class="w-full py-4 rounded-xl btn-primary uppercase tracking-wider text-sm transition-all shadow-xl flex items-center justify-center gap-2">
+                <button type="button" id="confirmDepositBtn" class="w-full py-4 rounded-xl btn-primary uppercase tracking-wider text-xs sm:text-sm font-bold transition-all shadow-xl flex items-center justify-center gap-2">
                     <span>I Have Sent My Deposit</span>
                     <i class="fa-solid fa-circle-check text-base"></i>
                 </button>
@@ -244,31 +288,49 @@
 
     </main>
 
-    <div id="paymentModalOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-card max-w-md w-full rounded-2xl p-6 sm:p-8 text-center space-y-5 animate-in fade-in zoom-in duration-300">
-            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-3xl">
+    <!-- Modal Overlay -->
+    <div id="paymentModalOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="glass-card max-w-md w-full rounded-3xl p-6 sm:p-8 text-center space-y-6 shadow-2xl relative overflow-hidden border border-custom-glow">
+            
+            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-3xl border border-emerald-500/30">
                 <i class="fa-solid fa-circle-check"></i>
             </div>
             
-            <h3 class="text-2xl font-black text-custom-light uppercase tracking-tight">Notification Sent!</h3>
+            <div class="space-y-2">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Notice Registered</span>
+                <h3 class="text-2xl font-black text-custom-light uppercase tracking-tight">Notification Sent!</h3>
+            </div>
             
             <p class="text-xs sm:text-sm text-custom-gray leading-relaxed">
                 Thank you! We've registered your deposit submission notice. Timothy will verify the payment against PayPal and reach out via email shortly with your booking confirmation and details.
             </p>
 
-            <div class="p-4 rounded-xl bg-neutral-500/10 text-left text-xs space-y-2 border border-custom-glow text-custom-gray">
+            <!-- Dynamic Receipt Summary Box -->
+            <div class="p-4 rounded-2xl bg-neutral-900/60 text-left text-xs space-y-2 border border-custom-glow text-custom-gray">
+                <div class="flex justify-between items-center border-b border-custom-glow pb-2 mb-2">
+                    <span class="font-bold text-custom-light uppercase tracking-wider">Receipt Details</span>
+                    <span id="modalRefCode" class="font-mono text-[10px] text-amber-400">#REF-0000</span>
+                </div>
                 <div><strong class="text-custom-light">Recipient:</strong> Timothy / TIMZ VISUALS</div>
                 <div><strong class="text-custom-light">Deposit Amount:</strong> $20.00 USD</div>
-                <div><strong class="text-custom-light">Status:</strong> Pending Verification</div>
+                <div><strong class="text-custom-light">Client Note:</strong> <span id="modalMemoVal" class="font-mono text-amber-400">Deposit - Guest</span></div>
+                <div><strong class="text-custom-light">Status:</strong> <span class="text-amber-400 font-bold">Pending Verification</span></div>
             </div>
 
-            <button id="closePaymentModalBtn" class="w-full py-3.5 rounded-xl btn-primary uppercase text-xs tracking-wider transition-all">
-                Return to Home Page
+            <button id="closePaymentModalBtn" class="w-full py-4 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider transition-all shadow-lg flex items-center justify-center gap-2">
+                <span>Return to Home Page</span>
+                <i class="fa-solid fa-house text-xs"></i>
             </button>
         </div>
     </div>
 
-    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom">
+    <!-- Floating Theme Switcher FAB -->
+    <button id="themeToggleFab" aria-label="Toggle Light/Dark Theme" class="theme-fab fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full glass-card flex items-center justify-center text-custom-light border border-custom-glow hover:scale-110 active:scale-95 transition-all duration-300">
+        <i id="themeIcon" class="fa-solid fa-sun text-lg"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
             <div class="flex items-center gap-3">
                 <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
@@ -284,56 +346,124 @@
     </footer>
 
     <script>
-        // --- 1. Seamless Theme Switcher with localStorage ---
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        // --- 1. Persistent Theme Management ---
+        const themeToggleFab = document.getElementById('themeToggleFab');
         const themeIcon = document.getElementById('themeIcon');
         
-        // Fetch saved preference or default to dark
         const savedTheme = localStorage.getItem('timz_theme') || 
             (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
 
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             if (theme === 'light') {
-                themeIcon.className = 'fa-solid fa-moon text-sm';
+                themeIcon.className = 'fa-solid fa-moon text-lg text-neutral-800';
             } else {
-                themeIcon.className = 'fa-solid fa-sun text-sm';
+                themeIcon.className = 'fa-solid fa-sun text-lg text-amber-400';
             }
             localStorage.setItem('timz_theme', theme);
         }
 
         applyTheme(savedTheme);
 
-        themeToggleBtn.addEventListener('click', () => {
+        themeToggleFab.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             applyTheme(newTheme);
         });
 
-        // --- 2. Responsive Navigation Drawer ---
+        // --- 2. Mobile Drawer Navigation Toggle ---
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
 
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
-                const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-                mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+                const isOpen = !mobileMenu.classList.contains('hidden');
                 mobileMenu.classList.toggle('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+                mobileMenuIcon.className = isOpen ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
             });
         }
 
-        // --- 3. Deposit Confirmation & Glassmorphism Modal ---
+        // --- 3. Interactive Memo & Copy Utilities ---
+        const clientNameInput = document.getElementById('clientNameInput');
+        const memoPreviewText = document.getElementById('memoPreviewText');
+        const copyMemoBtn = document.getElementById('copyMemoBtn');
+        const copyMemoLabel = document.getElementById('copyMemoLabel');
+
+        function getMemoString() {
+            const name = clientNameInput.value.trim();
+            return name ? `Deposit - ${name}` : 'Deposit - [Your Name]';
+        }
+
+        clientNameInput.addEventListener('input', () => {
+            memoPreviewText.textContent = getMemoString();
+        });
+
+        copyMemoBtn.addEventListener('click', () => {
+            const memoToCopy = clientNameInput.value.trim() ? `Deposit - ${clientNameInput.value.trim()}` : 'Deposit - ';
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = memoToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            copyMemoLabel.textContent = 'Copied!';
+            setTimeout(() => {
+                copyMemoLabel.textContent = 'Copy Memo';
+            }, 2000);
+        });
+
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        const copyLinkLabel = document.getElementById('copyLinkLabel');
+
+        copyLinkBtn.addEventListener('click', () => {
+            const paypalUrl = 'https://paypal.me/Timz34';
+            const textarea = document.createElement('textarea');
+            textarea.value = paypalUrl;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            copyLinkLabel.textContent = 'Link Copied!';
+            setTimeout(() => {
+                copyLinkLabel.textContent = 'Copy Link';
+            }, 2000);
+        });
+
+        // --- 4. Deposit Confirmation & Glassmorphism Modal ---
         const confirmDepositBtn = document.getElementById('confirmDepositBtn');
         const paymentModalOverlay = document.getElementById('paymentModalOverlay');
         const closePaymentModalBtn = document.getElementById('closePaymentModalBtn');
+        const modalRefCode = document.getElementById('modalRefCode');
+        const modalMemoVal = document.getElementById('modalMemoVal');
 
         confirmDepositBtn.addEventListener('click', () => {
+            // Generate pseudo random reference code
+            const randomRef = 'REF-' + Math.floor(100000 + Math.random() * 900000);
+            modalRefCode.textContent = `#${randomRef}`;
+            
+            const currentMemo = clientNameInput.value.trim() ? `Deposit - ${clientNameInput.value.trim()}` : 'Deposit - [Not Specified]';
+            modalMemoVal.textContent = currentMemo;
+
             paymentModalOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         });
 
         closePaymentModalBtn.addEventListener('click', () => {
             paymentModalOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
             window.location.href = 'index.html';
+        });
+
+        paymentModalOverlay.addEventListener('click', (e) => {
+            if (e.target === paymentModalOverlay) {
+                paymentModalOverlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
         });
     </script>
 </body>
