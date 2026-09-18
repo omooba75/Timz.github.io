@@ -6,7 +6,7 @@
     <title>Pricing & Packages | TIMZ VISUALS</title>
     
     <!-- Meta Descriptions & SEO -->
-    <meta name="description" content="Affordable and high-quality photography and videography packages by TIMZ VISUALS. Lock in your session with a $20 deposit.">
+    <meta name="description" content="Affordable and high-quality photography and videography packages by TIMZ VISUALS in Ottawa. Lock in your session with a $20 deposit.">
     <meta name="author" content="Timothy (Timz)">
 
     <!-- Google Fonts -->
@@ -15,11 +15,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Modern Black & White Palette & Variables */
+        /* CSS Theme Variables (Dark Mode Default) */
         :root {
             --bg-black: #08080a;
             --bg-card: rgba(18, 19, 24, 0.75);
             --bg-card-hover: rgba(28, 30, 38, 0.85);
+            --bg-nav: rgba(8, 8, 10, 0.85);
+            --bg-item: rgba(255, 255, 255, 0.03);
             --accent-white: #ffffff;
             --accent-hover: #e0e0e0;
             --text-light: #ffffff;
@@ -27,6 +29,22 @@
             --border-glow: rgba(255, 255, 255, 0.15);
             --font-main: 'Montserrat', sans-serif;
             --transition-speed: 0.3s;
+            --logo-filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+        }
+
+        /* Light Mode Overrides */
+        [data-theme="light"] {
+            --bg-black: #f4f5f8;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card-hover: rgba(255, 255, 255, 0.98);
+            --bg-nav: rgba(255, 255, 255, 0.9);
+            --bg-item: rgba(0, 0, 0, 0.04);
+            --accent-white: #0f1015;
+            --accent-hover: #2b2d38;
+            --text-light: #0f1015;
+            --text-gray: #555765;
+            --border-glow: rgba(0, 0, 0, 0.12);
+            --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
         }
 
         * {
@@ -46,6 +64,7 @@
             flex-direction: column;
             justify-content: space-between;
             overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         a {
@@ -62,26 +81,27 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 50px;
-            background: rgba(8, 8, 10, 0.85);
+            background: var(--bg-nav);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-glow);
+            transition: background var(--transition-speed), border-color var(--transition-speed);
         }
 
         .logo-container {
             display: flex;
             align-items: center;
             gap: 15px;
+            z-index: 1001;
         }
 
-        /* Scaled SVG logo with glowing effect */
         .brand-logo {
             height: 52px;
             width: auto;
-            filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+            filter: var(--logo-filter);
             object-fit: contain;
-            transition: transform var(--transition-speed);
+            transition: transform var(--transition-speed), filter var(--transition-speed);
         }
 
         .brand-logo:hover {
@@ -96,7 +116,7 @@
         }
 
         .brand-name span {
-            color: var(--accent-white);
+            color: var(--text-light);
         }
 
         .nav-links {
@@ -115,8 +135,9 @@
             letter-spacing: 1px;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-hover);
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-gray);
         }
 
         .btn-nav {
@@ -125,14 +146,59 @@
             padding: 9px 22px;
             border-radius: 20px;
             font-weight: 800 !important;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             transition: all var(--transition-speed) !important;
         }
 
         .btn-nav:hover {
             background-color: var(--accent-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-light);
+            border-radius: 10px;
+            transition: all var(--transition-speed) ease-in-out;
+        }
+
+        /* Theme Switcher Floating Button */
+        .theme-toggle-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-white);
+            color: var(--bg-black);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform var(--transition-speed), background-color var(--transition-speed);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.1);
         }
 
         /* Main Pricing Container */
@@ -153,7 +219,7 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-bottom: 10px;
-            color: var(--accent-white);
+            color: var(--text-light);
         }
 
         .pricing-header p {
@@ -189,7 +255,7 @@
 
         .package-card.featured {
             border-color: var(--accent-white);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.05);
         }
 
         .badge-popular {
@@ -205,14 +271,13 @@
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .package-card:hover {
             transform: translateY(-8px);
             border-color: var(--accent-white);
             background-color: var(--bg-card-hover);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 15px rgba(255, 255, 255, 0.1);
         }
 
         .package-card h2 {
@@ -225,7 +290,7 @@
 
         .package-card .price {
             font-size: 2.8rem;
-            color: var(--accent-white);
+            color: var(--text-light);
             font-weight: 900;
             margin-bottom: 25px;
         }
@@ -247,7 +312,7 @@
 
         .package-card ul li::before {
             content: "✓";
-            color: var(--accent-white);
+            color: var(--text-light);
             font-weight: bold;
         }
 
@@ -262,12 +327,11 @@
             letter-spacing: 1px;
             transition: all var(--transition-speed);
             display: block;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
         .btn-card:hover {
             background-color: var(--accent-hover);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.35);
             transform: translateY(-2px);
         }
 
@@ -287,7 +351,7 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--accent-white);
+            color: var(--text-light);
             margin-bottom: 25px;
             text-align: center;
         }
@@ -299,7 +363,7 @@
         }
 
         .addon-item {
-            background-color: rgba(255, 255, 255, 0.03);
+            background-color: var(--bg-item);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
@@ -319,7 +383,7 @@
         }
 
         .addon-item p {
-            color: var(--accent-white);
+            color: var(--text-light);
             font-weight: 800;
             font-size: 1.2rem;
         }
@@ -327,8 +391,8 @@
         /* Deposit Note */
         .deposit-info {
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.04);
-            border-left: 4px solid var(--accent-white);
+            background-color: var(--bg-item);
+            border-left: 4px solid var(--text-light);
             padding: 18px 22px;
             border-radius: 8px;
             font-size: 0.9rem;
@@ -339,16 +403,16 @@
         }
 
         .deposit-info strong {
-            color: var(--accent-white);
+            color: var(--text-light);
         }
 
         /* Footer */
         .footer {
-            background-color: rgba(4, 4, 5, 0.9);
+            background-color: var(--bg-nav);
             backdrop-filter: blur(10px);
             padding: 40px 20px;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border-glow);
             font-size: 0.85rem;
             color: var(--text-gray);
             margin-top: auto;
@@ -358,9 +422,10 @@
             height: 60px;
             width: auto;
             margin: 0 auto 15px;
-            filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+            filter: var(--logo-filter);
         }
 
+        /* Mobile Adaptations */
         @media (max-width: 768px) {
             .navbar {
                 padding: 15px 20px;
@@ -370,37 +435,89 @@
                 height: 44px;
             }
 
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
+
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--bg-black);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 35px;
+                transition: right var(--transition-speed) ease-in-out;
+            }
+
+            .nav-links.active {
+                right: 0;
             }
 
             .pricing-container {
                 margin-top: 110px;
-                padding: 0 15px;
+                padding: 0 18px;
             }
 
             .pricing-header h1 {
                 font-size: 2rem;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .addons-list {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navigation -->
+    <!-- Header / Navigation Bar -->
     <header>
         <nav class="navbar" aria-label="Main Navigation">
             <div class="logo-container">
                 <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="brand-logo">
                 <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
             </div>
-            <ul class="nav-links">
+
+            <button class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="work.html">Work</a></li>
-                <li><a href="payment.html" class="btn-nav">Book Now</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
+                <li><a href="booking.html" class="btn-nav">Book Now</a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- Theme Switcher Button -->
+    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Light/Dark Theme">
+        <span id="themeIcon">☀️</span>
+    </button>
 
     <!-- Main Pricing Section -->
     <main class="pricing-container">
@@ -425,7 +542,7 @@
                         <li>Great for Headshots / Quick Shoots</li>
                     </ul>
                 </div>
-                <a href="payment.html" class="btn-card">Select Package</a>
+                <a href="booking.html?pkg=mini" class="btn-card">Select Package</a>
             </div>
 
             <!-- Standard Session -->
@@ -442,7 +559,7 @@
                         <li>Best Value for Individuals</li>
                     </ul>
                 </div>
-                <a href="payment.html" class="btn-card">Select Package</a>
+                <a href="booking.html?pkg=standard" class="btn-card">Select Package</a>
             </div>
 
             <!-- Sports & Events -->
@@ -458,7 +575,7 @@
                         <li>Great for Athletes & Parties</li>
                     </ul>
                 </div>
-                <a href="payment.html" class="btn-card">Select Package</a>
+                <a href="booking.html?pkg=sports" class="btn-card">Select Package</a>
             </div>
 
             <!-- Group / Team -->
@@ -474,7 +591,7 @@
                         <li>Perfect for Squads & Teams</li>
                     </ul>
                 </div>
-                <a href="payment.html" class="btn-card">Select Package</a>
+                <a href="booking.html?pkg=group" class="btn-card">Select Package</a>
             </div>
 
         </div>
@@ -511,5 +628,49 @@
         <p style="margin-top: 10px; opacity: 0.6;">&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
     </footer>
 
+    <!-- Interactive Logic Script -->
+    <script>
+        // Light & Dark Mode Toggle Switcher logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        
+        const savedTheme = localStorage.getItem('timz_theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.textContent = '🌙';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('timz_theme', 'dark');
+                themeIcon.textContent = '☀️';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('timz_theme', 'light');
+                themeIcon.textContent = '🌙';
+            }
+        });
+
+        // Mobile Nav Drawer Toggle Logic
+        const menuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            const isActive = menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isActive);
+        });
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
 </body>
 </html>
