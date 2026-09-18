@@ -1,722 +1,498 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Selected Work | TIMZ VISUALS</title>
-    
-    <!-- Meta Descriptions & SEO -->
-    <meta name="description" content="Explore the photography and videography portfolio of TIMZ VISUALS, featuring portraits, music videos, events, and automotive work in Ottawa.">
-    <meta name="author" content="Timothy (Timz)">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMZ VISUALS - Selected Works & Portfolio</title>
 
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* CSS Theme Variables (Dark Mode Default) */
         :root {
-            --bg-black: #08080a;
-            --bg-card: rgba(18, 19, 24, 0.75);
-            --bg-card-hover: rgba(30, 32, 40, 0.85);
-            --bg-nav: rgba(8, 8, 10, 0.85);
-            --accent-white: #ffffff;
-            --accent-hover: #e0e0e0;
-            --text-light: #ffffff;
-            --text-gray: #a0a0a0;
-            --border-glow: rgba(255, 255, 255, 0.15);
-            --font-main: 'Montserrat', sans-serif;
-            --transition-speed: 0.3s;
+            /* Dark Mode Variables (Default) */
+            --bg-color: #08080a;
+            --card-bg: rgba(18, 19, 24, 0.75);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text-color: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.15);
+            --nav-bg: rgba(8, 8, 10, 0.85);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --btn-primary-bg: #ffffff;
+            --btn-primary-text: #08080a;
             --logo-filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+            --badge-bg: rgba(255, 255, 255, 0.1);
+            --glow-color: rgba(255, 255, 255, 0.08);
+            --pill-active-bg: #ffffff;
+            --pill-active-text: #08080a;
+            --pill-inactive-bg: rgba(255, 255, 255, 0.06);
+            --modal-bg: rgba(8, 8, 10, 0.92);
         }
 
         /* Light Mode Overrides */
         [data-theme="light"] {
-            --bg-black: #f4f5f8;
-            --bg-card: rgba(255, 255, 255, 0.85);
-            --bg-card-hover: rgba(255, 255, 255, 0.98);
-            --bg-nav: rgba(255, 255, 255, 0.9);
-            --accent-white: #0f1015;
-            --accent-hover: #2b2d38;
-            --text-light: #0f1015;
-            --text-gray: #555765;
-            --border-glow: rgba(0, 0, 0, 0.12);
+            --bg-color: #f4f5f8;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(0, 0, 0, 0.1);
+            --text-color: #0d0d11;
+            --text-muted: #555560;
+            --border-color: rgba(0, 0, 0, 0.12);
+            --nav-bg: rgba(244, 245, 248, 0.85);
+            --input-bg: rgba(0, 0, 0, 0.03);
+            --btn-primary-bg: #0d0d11;
+            --btn-primary-text: #ffffff;
             --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+            --badge-bg: rgba(0, 0, 0, 0.06);
+            --glow-color: rgba(0, 0, 0, 0.04);
+            --pill-active-bg: #0d0d11;
+            --pill-active-text: #ffffff;
+            --pill-inactive-bg: rgba(0, 0, 0, 0.05);
+            --modal-bg: rgba(244, 245, 248, 0.94);
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
         }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--bg-black);
-            color: var(--text-light);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             overflow-x: hidden;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+        .bg-nav-custom { background-color: var(--nav-bg); }
+        .border-custom-glow { border-color: var(--border-color); }
+        .text-custom-light { color: var(--text-color); }
+        .text-custom-gray { color: var(--text-muted); }
 
-        /* Navigation Bar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            background: var(--bg-nav);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-glow);
-            transition: background var(--transition-speed), border-color var(--transition-speed);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 1001;
-        }
-
-        .brand-logo {
-            height: 52px;
-            width: auto;
+        .brand-logo-img {
             filter: var(--logo-filter);
-            object-fit: contain;
-            transition: transform var(--transition-speed), filter var(--transition-speed);
         }
 
-        .brand-logo:hover {
-            transform: scale(1.05);
+        .glass-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
         }
 
-        .brand-name {
-            font-size: 1.6rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--text-light);
+        .filter-pill {
+            background-color: var(--pill-inactive-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--card-border);
         }
 
-        .brand-name span {
-            color: var(--text-light);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: color var(--transition-speed);
-            text-transform: uppercase;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--text-gray);
-        }
-
-        .btn-nav {
-            background-color: var(--accent-white);
-            color: var(--bg-black) !important;
-            padding: 9px 22px;
-            border-radius: 20px;
-            font-weight: 800 !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            transition: all var(--transition-speed) !important;
-        }
-
-        .btn-nav:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        /* Mobile Hamburger Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .menu-toggle span {
-            height: 3px;
-            width: 100%;
-            background-color: var(--text-light);
-            border-radius: 10px;
-            transition: all var(--transition-speed) ease-in-out;
-        }
-
-        /* Floating Theme Switcher */
-        .theme-toggle-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--accent-white);
-            color: var(--bg-black);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            transition: transform var(--transition-speed), background-color var(--transition-speed);
-        }
-
-        .theme-toggle-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Header Section */
-        .portfolio-header {
-            margin-top: 140px;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .portfolio-header h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-
-        .portfolio-header p {
-            color: var(--text-gray);
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Filter Category Buttons */
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 35px 0 25px 0;
-            padding: 0 20px;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 1px solid var(--border-glow);
-            color: var(--text-light);
-            padding: 10px 22px;
-            border-radius: 25px;
-            font-size: 0.85rem;
+        .filter-pill.active {
+            background-color: var(--pill-active-bg);
+            color: var(--pill-active-text);
+            border-color: var(--pill-active-bg);
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all var(--transition-speed);
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background-color: var(--accent-white);
-            color: var(--bg-black);
-            border-color: var(--accent-white);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+        .btn-primary {
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            font-weight: 700;
         }
-
-        /* Portfolio Gallery Grid */
-        .gallery-container {
-            max-width: 1250px;
-            margin: 0 auto;
-            padding: 0 20px 60px 20px;
-            column-count: 3;
-            column-gap: 20px;
-        }
-
-        .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            cursor: pointer;
-            transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-white);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Overlay Effect on Hover */
-        .item-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%);
-            opacity: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            transition: opacity var(--transition-speed) ease;
-        }
-
-        .gallery-item:hover .item-overlay {
-            opacity: 1;
-        }
-
-        .item-overlay h2 {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .item-overlay p {
-            font-size: 0.85rem;
-            color: #e0e0e0;
-        }
-
-        /* Call To Action Banner */
-        .cta-banner {
-            background-color: var(--bg-card);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid var(--border-glow);
-            border-bottom: 1px solid var(--border-glow);
-            text-align: center;
-            padding: 50px 20px;
-            margin-top: 20px;
-        }
-
-        .cta-banner h2 {
-            font-size: 2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-
-        .cta-banner p {
-            color: var(--text-gray);
-            margin-bottom: 25px;
-        }
-
-        .btn-cta {
-            background-color: var(--accent-white);
-            color: var(--bg-black);
-            padding: 14px 35px;
-            border-radius: 30px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all var(--transition-speed);
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn-cta:hover {
-            background-color: var(--accent-hover);
+        .btn-primary:hover {
+            opacity: 0.92;
             transform: translateY(-2px);
         }
 
-        /* Lightbox Modal */
-        .lightbox-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            z-index: 3000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+        /* Portfolio Cards Animation */
+        .portfolio-item {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
         }
 
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 85vh;
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
-            border: 1px solid var(--border-glow);
+        .portfolio-item:hover .gallery-img {
+            transform: scale(1.08);
         }
 
-        .lightbox-close {
-            position: absolute;
-            top: 25px;
-            right: 35px;
-            color: #ffffff;
-            font-size: 2.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color var(--transition-speed);
+        .portfolio-item:hover .overlay-card {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .lightbox-close:hover {
-            color: var(--accent-hover);
+        /* Custom Floating Theme Switcher Button */
+        .theme-fab {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
         }
 
-        /* Footer */
-        .footer {
-            background-color: var(--bg-nav);
-            backdrop-filter: blur(10px);
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid var(--border-glow);
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            margin-top: auto;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .footer-logo {
-            height: 60px;
-            width: auto;
-            margin: 0 auto 15px;
-            filter: var(--logo-filter);
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
         }
-
-        /* Mobile Adaptations */
-        @media (max-width: 900px) {
-            .gallery-container {
-                column-count: 2;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 20px;
-            }
-
-            .brand-logo {
-                height: 44px;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 6px);
-            }
-
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -6px);
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background-color: var(--bg-black);
-                backdrop-filter: blur(15px);
-                flex-direction: column;
-                justify-content: center;
-                gap: 35px;
-                transition: right var(--transition-speed) ease-in-out;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .gallery-container {
-                column-count: 1;
-            }
-
-            .portfolio-header {
-                margin-top: 110px;
-            }
-
-            .portfolio-header h1 {
-                font-size: 2rem;
-            }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between relative">
 
-    <!-- Header / Navigation -->
-    <header>
-        <nav class="navbar" aria-label="Main Navigation">
-            <div class="logo-container">
-                <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="brand-logo">
-                <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
+    <!-- Header / Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand / Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-8 w-auto brand-logo-img transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/150x50/000000/ffffff?text=TIMZ+VISUALS';">
+                <span class="text-xl font-black tracking-widest text-custom-light uppercase">TIMZ <span class="font-light text-custom-gray">VISUALS</span></span>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html" class="text-custom-gray hover:text-custom-light transition-colors">Home</a>
+                <a href="work.html" class="text-custom-light transition-colors font-semibold border-b-2 border-custom-glow pb-1">Work</a>
+                <a href="pricing.html" class="text-custom-gray hover:text-custom-light transition-colors">Pricing</a>
+                <a href="booking.html" class="text-custom-gray hover:text-custom-light transition-colors">Booking</a>
+                <a href="payment.html" class="text-custom-gray hover:text-custom-light transition-colors">Payment</a>
+            </nav>
+
+            <!-- Action Button & Mobile Trigger -->
+            <div class="flex items-center gap-4">
+                <a href="booking.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider btn-primary transition-all">
+                    <span>Book Session</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Navigation Menu" aria-expanded="false">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+                </button>
             </div>
+        </div>
 
-            <button class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navLinks">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="work.html" class="active">Work</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="booking.html" class="btn-nav">Book Now</a></li>
-            </ul>
-        </nav>
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-nav-custom border-b border-custom-glow px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
+            <a href="work.html" class="block text-base font-bold text-custom-light">Work</a>
+            <a href="pricing.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Pricing</a>
+            <a href="booking.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Booking</a>
+            <a href="payment.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Payment</a>
+            <a href="booking.html" class="inline-block w-full text-center py-3 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider mt-2">
+                Book Session Now
+            </a>
+        </div>
     </header>
 
-    <!-- Theme Switcher Floating Button -->
-    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Light/Dark Theme">
-        <span id="themeIcon">☀️</span>
-    </button>
-
-    <!-- Header Section -->
-    <section class="portfolio-header">
-        <h1>Selected Works</h1>
-        <p>Explore recent photography and videography projects by Timothy.</p>
-    </section>
-
-    <!-- Category Filter Buttons -->
-    <div class="filter-container">
-        <button type="button" class="filter-btn active" onclick="filterGallery('all', this)">All Work</button>
-        <button type="button" class="filter-btn" onclick="filterGallery('portraits', this)">Portraits</button>
-        <button type="button" class="filter-btn" onclick="filterGallery('music-videos', this)">Music Videos</button>
-        <button type="button" class="filter-btn" onclick="filterGallery('events', this)">Events</button>
-        <button type="button" class="filter-btn" onclick="filterGallery('automotive', this)">Automotive</button>
-    </div>
-
-    <!-- Gallery Container -->
-    <main class="gallery-container" id="gallery">
-
-        <!-- Image Item 1 -->
-        <div class="gallery-item portraits">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85" alt="Studio Portrait" onclick="openLightbox(this.src)">
-            <div class="item-overlay">
-                <h2>Studio Portrait</h2>
-                <p>Lighting & Concept Shoot</p>
-            </div>
+    <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-grow">
+        
+        <!-- Hero Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card">
+                Visual Showcase
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-black text-custom-light tracking-tight uppercase mb-4">
+                SELECTED <span class="font-light text-custom-gray">WORKS</span>
+            </h1>
+            <p class="text-custom-gray text-sm sm:text-base leading-relaxed">
+                Explore a curated gallery of visual storytelling, creative portraits, music video productions, and event highlights captured through the lens of TIMZ VISUALS.
+            </p>
         </div>
 
-        <!-- Image Item 2 -->
-        <div class="gallery-item music-videos">
-            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=85" alt="Music Video Shoot" onclick="openLightbox(this.src)">
-            <div class="item-overlay">
-                <h2>Night Visuals</h2>
-                <p>Music Video Stills</p>
-            </div>
+        <!-- Filter Category Pills -->
+        <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-12" id="filterContainer">
+            <button data-filter="all" class="filter-pill active px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
+                All Work
+            </button>
+            <button data-filter="portraits" class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
+                Portraits
+            </button>
+            <button data-filter="music-videos" class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
+                Music Videos
+            </button>
+            <button data-filter="events" class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
+                Events
+            </button>
+            <button data-filter="automotive" class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
+                Automotive
+            </button>
         </div>
 
-        <!-- Image Item 3 -->
-        <div class="gallery-item automotive">
-            <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=85" alt="Automotive Shoot" onclick="openLightbox(this.src)">
-            <div class="item-overlay">
-                <h2>BMW M3 Feature</h2>
-                <p>Automotive Photography</p>
+        <!-- Portfolio Grid Layout -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="portfolioGrid">
+            
+            <!-- Item 1: Portraits -->
+            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="portraits" data-title="Neon Shadows Portrait" data-sub="Studio Portraiture • 2026" data-img="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Neon Shadows Portrait" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
+                </div>
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Portraits</span>
+                    <h3 class="text-xl font-bold text-white mb-1">Neon Shadows</h3>
+                    <p class="text-xs text-neutral-300 mb-4">High-contrast studio session with dynamic gel lighting.</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
+                        <span>View Full Screen</span>
+                        <i class="fa-solid fa-expand text-xs"></i>
+                    </div>
+                </div>
             </div>
+
+            <!-- Item 2: Music Videos -->
+            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="music-videos" data-title="Midnight Motion Cut" data-sub="Music Video Shoot • 2026" data-img="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Music Video Production" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
+                </div>
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Music Videos</span>
+                    <h3 class="text-xl font-bold text-white mb-1">Midnight Motion</h3>
+                    <p class="text-xs text-neutral-300 mb-4">4K visual treatment with cinematic color grading.</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
+                        <span>View Full Screen</span>
+                        <i class="fa-solid fa-expand text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3: Events -->
+            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="events" data-title="Aura Underground Fest" data-sub="Live Event Coverage • 2025" data-img="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Event Coverage" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
+                </div>
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Events</span>
+                    <h3 class="text-xl font-bold text-white mb-1">Aura Underground</h3>
+                    <p class="text-xs text-neutral-300 mb-4">Full festival recap, crowd highlights, and artist sets.</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
+                        <span>View Full Screen</span>
+                        <i class="fa-solid fa-expand text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4: Automotive -->
+            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="automotive" data-title="Apex Supercar Showcase" data-sub="Automotive Media • 2026" data-img="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Automotive Shoot" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
+                </div>
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Automotive</span>
+                    <h3 class="text-xl font-bold text-white mb-1">Apex Stealth Series</h3>
+                    <p class="text-xs text-neutral-300 mb-4">Rollers and static shots for luxury custom automotive build.</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
+                        <span>View Full Screen</span>
+                        <i class="fa-solid fa-expand text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5: Portraits -->
+            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="portraits" data-title="Urban Silhouette" data-sub="Outdoor Creative • 2026" data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Urban Silhouette Portrait" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
+                </div>
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Portraits</span>
+                    <h3 class="text-xl font-bold text-white mb-1">Urban Silhouette</h3>
+                    <p class="text-xs text-neutral-300 mb-4">Golden hour natural light portraits with moody grading.</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
+                        <span>View Full Screen</span>
+                        <i class="fa-solid fa-expand text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6: Music Videos -->
+            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="music-videos" data-title="Echoes in Crimson" data-sub="Official Music Video • 2025" data-img="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Echoes in Crimson Music Video" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
+                </div>
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Music Videos</span>
+                    <h3 class="text-xl font-bold text-white mb-1">Echoes in Crimson</h3>
+                    <p class="text-xs text-neutral-300 mb-4">High-energy narrative performance piece with FX.</p>
+                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
+                        <span>View Full Screen</span>
+                        <i class="fa-solid fa-expand text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Image Item 4 -->
-        <div class="gallery-item events">
-            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=85" alt="Live Event" onclick="openLightbox(this.src)">
-            <div class="item-overlay">
-                <h2>Concert Coverage</h2>
-                <p>Live Event Photography</p>
-            </div>
-        </div>
-
-        <!-- Image Item 5 -->
-        <div class="gallery-item portraits">
-            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85" alt="Outdoor Fashion" onclick="openLightbox(this.src)">
-            <div class="item-overlay">
-                <h2>Urban Editorial</h2>
-                <p>Outdoor Portraits</p>
-            </div>
-        </div>
-
-        <!-- Image Item 6 -->
-        <div class="gallery-item music-videos">
-            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=85" alt="Behind the Scenes" onclick="openLightbox(this.src)">
-            <div class="item-overlay">
-                <h2>Set Production</h2>
-                <p>Behind The Scenes</p>
-            </div>
-        </div>
-
-        <!-- Image Item 7 -->
-        <div class="gallery-item automotive">
-            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=85" alt="Car Detail Shoot" onclick="openLightbox(this.src)">
-            <div class="item-overlay">
-                <h2>Supercar Detail</h2>
-                <p>Automotive Close-ups</p>
-            </div>
-        </div>
-
-        <!-- Image Item 8 -->
-        <div class="gallery-item events">
-            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=85" alt="Party Visuals" onclick="openLightbox(this.src)">
-            <div class="item-overlay">
-                <h2>Club Night</h2>
-                <p>Event Coverage</p>
+        <!-- Booking CTA Section -->
+        <div class="mt-20 p-8 sm:p-12 rounded-3xl glass-card text-center space-y-6 relative overflow-hidden shadow-2xl">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-400 block">Ready to Create?</span>
+            <h2 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight uppercase">
+                Let's Bring Your Vision To Life
+            </h2>
+            <p class="text-custom-gray text-sm sm:text-base max-w-xl mx-auto">
+                Secure your session date online with a refundable $20 retainer deposit and collaborate on your custom shoot.
+            </p>
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="booking.html" class="w-full sm:w-auto px-8 py-4 rounded-xl btn-primary uppercase text-xs tracking-wider transition-all shadow-xl flex items-center justify-center gap-2">
+                    <span>Reserve Session ($20 Deposit)</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="pricing.html" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-custom-glow hover:bg-neutral-500/10 text-custom-light uppercase text-xs tracking-wider font-bold transition-all">
+                    View Package Pricing
+                </a>
             </div>
         </div>
 
     </main>
 
-    <!-- Call To Action -->
-    <section class="cta-banner">
-        <h2>Ready To Bring Your Vision To Life?</h2>
-        <p>Book your photoshoot or video production slot today.</p>
-        <a href="booking.html" class="btn-cta">Lock In Your Date ($20 Deposit)</a>
-    </section>
-
     <!-- Fullscreen Lightbox Modal -->
-    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image view">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img class="lightbox-content" id="lightboxImg" alt="Enlarged view">
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-md transition-opacity duration-300">
+        <!-- Close Button -->
+        <button id="closeLightboxBtn" class="absolute top-6 right-6 z-50 text-white hover:text-amber-400 text-2xl p-3 focus:outline-none transition-colors" aria-label="Close Lightbox">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center p-2 relative">
+            <img id="lightboxImg" src="" alt="Expanded View" class="max-h-[75vh] w-auto max-w-full rounded-xl object-contain shadow-2xl">
+            <div class="text-center mt-4 space-y-1">
+                <h3 id="lightboxTitle" class="text-2xl font-black text-white uppercase tracking-wider"></h3>
+                <p id="lightboxSub" class="text-sm text-neutral-400 font-medium"></p>
+            </div>
+        </div>
     </div>
 
+    <!-- Floating Persistent Theme Switcher FAB -->
+    <button id="themeToggleFab" aria-label="Toggle Light/Dark Theme" class="theme-fab fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full glass-card flex items-center justify-center text-custom-light border border-custom-glow hover:scale-110 active:scale-95 transition-all duration-300">
+        <i id="themeIcon" class="fa-solid fa-sun text-lg"></i>
+    </button>
+
     <!-- Footer -->
-    <footer class="footer">
-        <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="footer-logo" loading="lazy">
-        <p>Visualizing Your Moments • Founded by Timothy (Timz)</p>
-        <p style="margin-top: 10px; opacity: 0.6;">&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
+    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
+            <div class="flex items-center gap-3">
+                <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
+                <span class="font-bold text-custom-light uppercase tracking-wider">TIMZ VISUALS</span>
+            </div>
+            <p>© 2026 TIMZ VISUALS. All rights reserved.</p>
+            <div class="flex space-x-4 text-sm">
+                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Interactive Scripts -->
     <script>
-        // Theme Switching Logic
-        const themeToggleBtn = document.getElementById('themeToggle');
+        // --- 1. Theme Management with Persistence ---
+        const themeToggleFab = document.getElementById('themeToggleFab');
         const themeIcon = document.getElementById('themeIcon');
         
-        const savedTheme = localStorage.getItem('timz_theme') || 'dark';
-        if (savedTheme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeIcon.textContent = '🌙';
+        const savedTheme = localStorage.getItem('timz_theme') || 
+            (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'light') {
+                themeIcon.className = 'fa-solid fa-moon text-lg text-neutral-800';
+            } else {
+                themeIcon.className = 'fa-solid fa-sun text-lg text-amber-400';
+            }
+            localStorage.setItem('timz_theme', theme);
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'light') {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('timz_theme', 'dark');
-                themeIcon.textContent = '☀️';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('timz_theme', 'light');
-                themeIcon.textContent = '🌙';
-            }
+        applyTheme(savedTheme);
+
+        themeToggleFab.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
         });
 
-        // Mobile Menu Drawer Logic
-        const menuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
+        // --- 2. Mobile Drawer Navigation Toggle ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
 
-        menuToggle.addEventListener('click', () => {
-            const isActive = menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            menuToggle.setAttribute('aria-expanded', isActive);
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        // Category Filter Logic
-        function filterGallery(category, btnElement) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
-
-            const items = document.querySelectorAll('.gallery-item');
-            items.forEach(item => {
-                if (category === 'all' || item.classList.contains(category)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+                mobileMenuIcon.className = isOpen ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
             });
         }
 
-        // Lightbox Modal Logic
-        function openLightbox(src) {
-            const modal = document.getElementById('lightboxModal');
-            const img = document.getElementById('lightboxImg');
-            img.src = src;
-            modal.style.display = 'flex';
-        }
+        // --- 3. Dynamic Interactive Grid Category Filtering ---
+        const filterPills = document.querySelectorAll('#filterContainer .filter-pill');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Active State Update
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+
+                const filterValue = pill.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // --- 4. Lightbox Modal Preview Functionality ---
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxSub = document.getElementById('lightboxSub');
+        const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.getAttribute('data-img');
+                const title = item.getAttribute('data-title');
+                const sub = item.getAttribute('data-sub');
+
+                lightboxImg.src = imgSrc;
+                lightboxTitle.textContent = title;
+                lightboxSub.textContent = sub;
+
+                lightboxModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
 
         function closeLightbox() {
-            document.getElementById('lightboxModal').style.display = 'none';
+            lightboxModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
 
-        document.getElementById('lightboxModal').addEventListener('click', function(e) {
-            if (e.target !== document.getElementById('lightboxImg')) {
+        closeLightboxBtn.addEventListener('click', closeLightbox);
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
                 closeLightbox();
             }
         });
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
                 closeLightbox();
             }
         });
     </script>
-
 </body>
 </html>
