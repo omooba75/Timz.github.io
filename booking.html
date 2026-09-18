@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMZ VISUALS - Book a Session</title>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -139,7 +147,8 @@
                 <a href="index.html" class="text-custom-gray hover:text-custom-light transition-colors">Home</a>
                 <a href="work.html" class="text-custom-gray hover:text-custom-light transition-colors">Work</a>
                 <a href="pricing.html" class="text-custom-gray hover:text-custom-light transition-colors">Pricing</a>
-                <a href="booking.html" class="text-custom-light transition-colors font-semibold">Booking</a>
+                <a href="booking.html" class="text-custom-light transition-colors font-semibold border-b-2 border-custom-glow pb-1">Booking</a>
+                <a href="payment.html" class="text-custom-gray hover:text-custom-light transition-colors">Payment</a>
             </nav>
 
             <!-- Actions -->
@@ -151,7 +160,7 @@
 
                 <!-- Mobile Menu Button -->
                 <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Mobile Menu">
-                    <i class="fa-solid fa-bars text-xl"></i>
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
@@ -161,13 +170,14 @@
             <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
             <a href="work.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Work</a>
             <a href="pricing.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Pricing</a>
-            <a href="booking.html" class="block text-base font-medium text-custom-light font-bold">Booking</a>
+            <a href="booking.html" class="block text-base font-bold text-custom-light">Booking</a>
+            <a href="payment.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Payment</a>
         </div>
     </header>
 
     <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-grow">
         <div class="text-center max-w-3xl mx-auto mb-12">
-            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray">
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card">
                 Reservation & Inquiry
             </span>
             <h1 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight mb-4">
@@ -183,7 +193,7 @@
             <!-- Booking Form Column -->
             <form id="bookingForm" class="lg:col-span-8 glass-card rounded-2xl p-6 sm:p-8 space-y-8">
                 
-                <!-- Step 1: Select Service Package -->
+                <!-- Step 1: Select Service Package with Budget-Friendly Pricing -->
                 <div>
                     <h2 class="text-lg font-bold text-custom-light uppercase tracking-wider mb-4 flex items-center gap-2">
                         <span class="w-6 h-6 rounded-full bg-neutral-500/20 text-xs flex items-center justify-center">1</span> 
@@ -191,52 +201,52 @@
                     </h2>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="packageContainer">
-                        <!-- Package Option 1 -->
+                        <!-- Package Option 1 - Essential ($100 / $20 Deposit) -->
                         <label class="package-option rounded-xl p-4 flex flex-col justify-between transition-all relative">
-                            <input type="radio" name="package" value="essential" class="sr-only" data-price="450" data-deposit="150" data-title="Essential Visuals">
+                            <input type="radio" name="package" value="essential" class="sr-only" data-price="100" data-deposit="20" data-title="Essential Visuals">
                             <div>
                                 <span class="text-xs font-bold uppercase tracking-wider text-custom-gray block">Basic</span>
                                 <h3 class="text-lg font-bold text-custom-light mt-1">Essential</h3>
                                 <p class="text-xs text-custom-gray mt-2">1-2 Hr Shoot, 5 Retouched Edits, 1 Location.</p>
                             </div>
                             <div class="mt-6 pt-3 border-t border-custom-glow flex items-baseline justify-between">
-                                <span class="text-xl font-black text-custom-light">$450</span>
-                                <span class="text-xs text-custom-gray">$150 Deposit</span>
+                                <span class="text-xl font-black text-custom-light">$100</span>
+                                <span class="text-xs text-emerald-400 font-semibold">$20 Deposit</span>
                             </div>
                         </label>
 
-                        <!-- Package Option 2 -->
+                        <!-- Package Option 2 - Cinematic ($220 / $20 Deposit) -->
                         <label class="package-option selected rounded-xl p-4 flex flex-col justify-between transition-all relative">
-                            <input type="radio" name="package" value="cinematic" class="sr-only" data-price="950" data-deposit="300" data-title="Cinematic Narrative" checked>
-                            <span class="absolute top-2 right-2 px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider rounded-full bg-neutral-500/20 text-custom-light">Popular</span>
+                            <input type="radio" name="package" value="cinematic" class="sr-only" data-price="220" data-deposit="20" data-title="Cinematic Narrative" checked>
+                            <span class="absolute top-2 right-2 px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">Popular</span>
                             <div>
                                 <span class="text-xs font-bold uppercase tracking-wider text-custom-gray block">Standard</span>
                                 <h3 class="text-lg font-bold text-custom-light mt-1">Cinematic</h3>
                                 <p class="text-xs text-custom-gray mt-2">Half-Day Shoot, 4K Video Edit, Drone Shots, 15 Edits.</p>
                             </div>
                             <div class="mt-6 pt-3 border-t border-custom-glow flex items-baseline justify-between">
-                                <span class="text-xl font-black text-custom-light">$950</span>
-                                <span class="text-xs text-custom-gray">$300 Deposit</span>
+                                <span class="text-xl font-black text-custom-light">$220</span>
+                                <span class="text-xs text-emerald-400 font-semibold">$20 Deposit</span>
                             </div>
                         </label>
 
-                        <!-- Package Option 3 -->
+                        <!-- Package Option 3 - Enterprise ($450 / $20 Deposit) -->
                         <label class="package-option rounded-xl p-4 flex flex-col justify-between transition-all relative">
-                            <input type="radio" name="package" value="enterprise" class="sr-only" data-price="2200" data-deposit="600" data-title="Full Commercial Campaign">
+                            <input type="radio" name="package" value="enterprise" class="sr-only" data-price="450" data-deposit="20" data-title="Full Commercial Campaign">
                             <div>
                                 <span class="text-xs font-bold uppercase tracking-wider text-custom-gray block">Full Commercial</span>
                                 <h3 class="text-lg font-bold text-custom-light mt-1">Enterprise</h3>
                                 <p class="text-xs text-custom-gray mt-2">Full Day Crew, Full Commercial Direction, Master Edits.</p>
                             </div>
                             <div class="mt-6 pt-3 border-t border-custom-glow flex items-baseline justify-between">
-                                <span class="text-xl font-black text-custom-light">$2,200</span>
-                                <span class="text-xs text-custom-gray">$600 Deposit</span>
+                                <span class="text-xl font-black text-custom-light">$450</span>
+                                <span class="text-xs text-emerald-400 font-semibold">$20 Deposit</span>
                             </div>
                         </label>
                     </div>
                 </div>
 
-                <!-- Step 2: Date & Details -->
+                <!-- Step 2: Date & Schedule Details -->
                 <div>
                     <h2 class="text-lg font-bold text-custom-light uppercase tracking-wider mb-4 flex items-center gap-2">
                         <span class="w-6 h-6 rounded-full bg-neutral-500/20 text-xs flex items-center justify-center">2</span> 
@@ -289,9 +299,9 @@
                     </div>
                 </div>
 
-                <!-- Submit Action -->
+                <!-- Submit Action Button -->
                 <button type="submit" id="submitBookingBtn" class="w-full py-4 rounded-xl btn-primary uppercase tracking-wider text-sm transition-all shadow-xl flex items-center justify-center gap-2">
-                    <span id="btnText">Pay <span id="btnDepositAmount">$300</span> Deposit & Confirm Reservation</span>
+                    <span id="btnText">Pay <span id="btnDepositAmount">$20</span> Deposit & Confirm Reservation</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
                 </button>
             </form>
@@ -308,21 +318,21 @@
                     </div>
 
                     <div class="flex justify-between items-center">
-                        <span class="text-custom-gray">Total Estimated Rate:</span>
-                        <span id="summaryTotal" class="font-bold text-custom-light">$950</span>
+                        <span class="text-custom-gray">Total Package Rate:</span>
+                        <span id="summaryTotal" class="font-bold text-custom-light">$220</span>
                     </div>
 
-                    <div class="flex justify-between items-center text-emerald-500 font-semibold">
-                        <span>Required Deposit (30%):</span>
-                        <span id="summaryDeposit" class="text-lg font-black">$300</span>
+                    <div class="flex justify-between items-center text-emerald-400 font-semibold border-t border-custom-glow pt-3">
+                        <span>Required Deposit:</span>
+                        <span id="summaryDeposit" class="text-lg font-black text-emerald-500">$20</span>
                     </div>
                 </div>
 
-                <div class="p-4 rounded-xl bg-neutral-500/10 border border-custom-glow space-y-2 text-xs text-custom-gray">
+                <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 space-y-2 text-xs text-custom-gray">
                     <p class="flex items-center gap-2 font-semibold text-custom-light">
-                        <i class="fa-solid fa-shield-halved text-emerald-500"></i> Reservation Guarantee
+                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Flat $20 Retainer Rate
                     </p>
-                    <p>Deposits secure your requested calendar date and are credited toward your total package cost.</p>
+                    <p class="text-xs leading-relaxed">Locks in your requested calendar date and credits directly toward your final project balance.</p>
                 </div>
 
                 <div class="pt-2 text-center text-xs text-custom-gray">
@@ -335,29 +345,34 @@
 
     <div id="modalOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card max-w-md w-full rounded-2xl p-6 sm:p-8 text-center space-y-5 animate-in fade-in zoom-in duration-300">
-            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-2xl">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-2xl border border-emerald-500/30">
                 <i class="fa-solid fa-circle-check"></i>
             </div>
             
-            <h3 class="text-2xl font-black text-custom-light uppercase tracking-tight">Booking Confirmed!</h3>
+            <h3 class="text-2xl font-black text-custom-light uppercase tracking-tight">Booking Details Saved!</h3>
             
             <p class="text-xs sm:text-sm text-custom-gray">
-                Thank you, <span id="modalClientName" class="text-custom-light font-bold"></span>! Your reservation for <span id="modalPackage" class="text-custom-light font-bold"></span> has been received.
+                Thank you, <span id="modalClientName" class="text-custom-light font-bold"></span>! Your reservation for <span id="modalPackage" class="text-custom-light font-bold"></span> has been created.
             </p>
 
-            <div class="p-4 rounded-xl bg-neutral-500/10 text-left text-xs space-y-2 border border-custom-glow text-custom-gray">
+            <div class="p-4 rounded-xl bg-neutral-900/60 text-left text-xs space-y-2 border border-custom-glow text-custom-gray">
                 <div><strong class="text-custom-light">Date & Time:</strong> <span id="modalDateTime"></span></div>
                 <div><strong class="text-custom-light">Location:</strong> <span id="modalLocation"></span></div>
-                <div><strong class="text-custom-light">Deposit Paid:</strong> <span id="modalDeposit" class="text-emerald-500 font-bold"></span></div>
+                <div><strong class="text-custom-light">Deposit Due:</strong> <span id="modalDeposit" class="text-emerald-500 font-bold">$20.00</span></div>
             </div>
 
-            <button id="closeModalBtn" class="w-full py-3 rounded-xl btn-primary uppercase text-xs tracking-wider transition-all">
-                Return to Home Page
+            <p class="text-xs text-amber-300 bg-amber-500/10 p-3 rounded-lg border border-amber-500/20">
+                <i class="fa-solid fa-circle-info mr-1"></i> Proceed to step 2 to complete your $20 PayPal deposit payment.
+            </p>
+
+            <button id="closeModalBtn" class="w-full py-3.5 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider transition-all shadow-lg flex items-center justify-center gap-2">
+                <span>Proceed to $20 Deposit Payment</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
             </button>
         </div>
     </div>
 
-    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom">
+    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
             <div class="flex items-center gap-3">
                 <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
@@ -373,11 +388,10 @@
     </footer>
 
     <script>
-        // --- 1. Theme Switcher Logic ---
+        // --- 1. Persistent Theme Toggle ---
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         
-        // Initialize theme from preference or system default
         const savedTheme = localStorage.getItem('timz_theme') || 
             (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
 
@@ -399,22 +413,25 @@
             applyTheme(newTheme);
         });
 
-        // --- 2. Mobile Navigation Toggle ---
+        // --- 2. Mobile Drawer Navigation ---
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
 
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
                 mobileMenu.classList.toggle('hidden');
+                mobileMenuIcon.className = isOpen ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
             });
         }
 
-        // --- 3. Restrict Past Dates in Calendar Input ---
+        // --- 3. Calendar Input Minimum Date restriction ---
         const eventDateInput = document.getElementById('eventDate');
         const today = new Date().toISOString().split('T')[0];
         eventDateInput.setAttribute('min', today);
 
-        // --- 4. Package Selection & Dynamic Deposit Calculation ---
+        // --- 4. Package Option Dynamic Selection ---
         const packageOptions = document.querySelectorAll('.package-option');
         const summaryPackage = document.getElementById('summaryPackage');
         const summaryTotal = document.getElementById('summaryTotal');
@@ -423,20 +440,16 @@
 
         packageOptions.forEach(option => {
             option.addEventListener('click', () => {
-                // Update selection visually
                 packageOptions.forEach(opt => opt.classList.remove('selected'));
                 option.classList.add('selected');
 
-                // Get inner radio input
                 const radio = option.querySelector('input[type="radio"]');
                 radio.checked = true;
 
-                // Extract price info from dataset
                 const title = radio.dataset.title;
                 const price = radio.dataset.price;
                 const deposit = radio.dataset.deposit;
 
-                // Update UI Summary
                 summaryPackage.textContent = title;
                 summaryTotal.textContent = `$${parseInt(price).toLocaleString()}`;
                 summaryDeposit.textContent = `$${deposit}`;
@@ -444,7 +457,7 @@
             });
         });
 
-        // --- 5. Form Submission & Modal Handling ---
+        // --- 5. Form Submission Modal & Transition to Payment ---
         const bookingForm = document.getElementById('bookingForm');
         const modalOverlay = document.getElementById('modalOverlay');
         const closeModalBtn = document.getElementById('closeModalBtn');
@@ -452,21 +465,22 @@
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Populate Modal with submitted information
             const selectedRadio = document.querySelector('input[name="package"]:checked');
             document.getElementById('modalClientName').textContent = document.getElementById('fullName').value;
             document.getElementById('modalPackage').textContent = selectedRadio.dataset.title;
             document.getElementById('modalDateTime').textContent = `${document.getElementById('eventDate').value} at ${document.getElementById('eventTime').value}`;
             document.getElementById('modalLocation').textContent = document.getElementById('location').value;
-            document.getElementById('modalDeposit').textContent = `$${selectedRadio.dataset.deposit}`;
+            document.getElementById('modalDeposit').textContent = `$${selectedRadio.dataset.deposit}.00`;
 
-            // Display custom modal
             modalOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         });
 
         closeModalBtn.addEventListener('click', () => {
             modalOverlay.classList.add('hidden');
-            window.location.href = 'index.html';
+            document.body.style.overflow = 'auto';
+            // Redirect smoothly to payment confirmation page
+            window.location.href = 'payment.html';
         });
     </script>
 </body>
