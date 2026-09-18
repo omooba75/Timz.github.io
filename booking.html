@@ -78,7 +78,6 @@
             z-index: 1001;
         }
 
-        /* Popping, Scaled-up SVG Logo */
         .brand-logo {
             height: 52px;
             width: auto;
@@ -139,7 +138,7 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
-        /* Mobile Menu Toggle Toggle Button */
+        /* Mobile Menu Toggle Button */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -238,7 +237,6 @@
             appearance: none;
         }
 
-        /* Specific Select Arrow Styling */
         .form-group select {
             background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffffff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
             background-repeat: no-repeat;
@@ -254,7 +252,6 @@
             background-color: var(--bg-input-focus);
         }
 
-        /* Ensure Options inside Dropdown are readable on dark mode */
         .form-group select option {
             background-color: #121318;
             color: var(--text-light);
@@ -451,7 +448,6 @@
                 gap: 24px;
             }
 
-            /* Prevents iOS zooming on focus */
             .form-group input,
             .form-group select,
             .form-group textarea {
@@ -476,7 +472,7 @@
                 <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
             </div>
 
-            <button class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+            <button class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -553,7 +549,7 @@
     </main>
 
     <!-- Custom Modal Overlay -->
-    <div class="custom-modal" id="errorModal">
+    <div class="custom-modal" id="errorModal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalMessage">
         <div class="modal-content">
             <h3 id="modalTitle">Notice</h3>
             <p id="modalMessage">There was an issue processing your request.</p>
@@ -570,13 +566,21 @@
 
     <!-- Form Handling & Mobile Nav Logic -->
     <script>
+        // Disable past dates on calendar dynamically
+        const dateInput = document.getElementById('date');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        }
+
         // Mobile Navigation Toggle
         const menuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
 
         menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
+            const isActive = menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isActive);
         });
 
         // Close Mobile Menu on Outside Click
@@ -584,6 +588,7 @@
             if (!menuToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
                 menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
 
@@ -603,7 +608,7 @@
         }
 
         form.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Stop default browser refresh
+            event.preventDefault();
 
             submitBtn.disabled = true;
             submitBtn.innerText = "Processing Booking Request...";
@@ -620,7 +625,6 @@
                 });
 
                 if (response.ok) {
-                    // Direct redirect to payment page upon successful submission
                     window.location.href = "payment.html";
                 } else {
                     showErrorModal("There was an issue submitting your request. Please check your fields and try again.");
