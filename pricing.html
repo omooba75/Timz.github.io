@@ -1,674 +1,681 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Pricing & Packages | TIMZ VISUALS</title>
-    
-    <!-- Meta Descriptions & SEO -->
-    <meta name="description" content="Affordable and high-quality photography and videography packages by TIMZ VISUALS in Ottawa. Lock in your session with a $20 deposit.">
-    <meta name="author" content="Timothy (Timz)">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMZ VISUALS - Investment & Pricing</title>
 
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* CSS Theme Variables (Dark Mode Default) */
         :root {
-            --bg-black: #08080a;
-            --bg-card: rgba(18, 19, 24, 0.75);
-            --bg-card-hover: rgba(28, 30, 38, 0.85);
-            --bg-nav: rgba(8, 8, 10, 0.85);
-            --bg-item: rgba(255, 255, 255, 0.03);
-            --accent-white: #ffffff;
-            --accent-hover: #e0e0e0;
-            --text-light: #ffffff;
-            --text-gray: #a0a0a0;
-            --border-glow: rgba(255, 255, 255, 0.15);
-            --font-main: 'Montserrat', sans-serif;
-            --transition-speed: 0.3s;
+            /* Dark Mode Variables (Default) */
+            --bg-color: #08080a;
+            --card-bg: rgba(18, 19, 24, 0.75);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text-color: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.15);
+            --nav-bg: rgba(8, 8, 10, 0.85);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --btn-primary-bg: #ffffff;
+            --btn-primary-text: #08080a;
             --logo-filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+            --badge-bg: rgba(255, 255, 255, 0.1);
+            --glow-color: rgba(255, 255, 255, 0.08);
+            --pill-active-bg: #ffffff;
+            --pill-active-text: #08080a;
+            --pill-inactive-bg: rgba(255, 255, 255, 0.06);
+            --modal-bg: rgba(18, 19, 24, 0.95);
+            --amber-accent: #fbbf24;
         }
 
         /* Light Mode Overrides */
         [data-theme="light"] {
-            --bg-black: #f4f5f8;
-            --bg-card: rgba(255, 255, 255, 0.85);
-            --bg-card-hover: rgba(255, 255, 255, 0.98);
-            --bg-nav: rgba(255, 255, 255, 0.9);
-            --bg-item: rgba(0, 0, 0, 0.04);
-            --accent-white: #0f1015;
-            --accent-hover: #2b2d38;
-            --text-light: #0f1015;
-            --text-gray: #555765;
-            --border-glow: rgba(0, 0, 0, 0.12);
+            --bg-color: #f4f5f8;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(0, 0, 0, 0.1);
+            --text-color: #0d0d11;
+            --text-muted: #555560;
+            --border-color: rgba(0, 0, 0, 0.12);
+            --nav-bg: rgba(244, 245, 248, 0.85);
+            --input-bg: rgba(0, 0, 0, 0.03);
+            --btn-primary-bg: #0d0d11;
+            --btn-primary-text: #ffffff;
             --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+            --badge-bg: rgba(0, 0, 0, 0.06);
+            --glow-color: rgba(0, 0, 0, 0.04);
+            --pill-active-bg: #0d0d11;
+            --pill-active-text: #ffffff;
+            --pill-inactive-bg: rgba(0, 0, 0, 0.05);
+            --modal-bg: rgba(244, 245, 248, 0.96);
+            --amber-accent: #d97706;
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
         }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--bg-black);
-            color: var(--text-light);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             overflow-x: hidden;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+        .bg-nav-custom { background-color: var(--nav-bg); }
+        .border-custom-glow { border-color: var(--border-color); }
+        .text-custom-light { color: var(--text-color); }
+        .text-custom-gray { color: var(--text-muted); }
 
-        /* Navigation Bar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            background: var(--bg-nav);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-glow);
-            transition: background var(--transition-speed), border-color var(--transition-speed);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            z-index: 1001;
-        }
-
-        .brand-logo {
-            height: 52px;
-            width: auto;
+        .brand-logo-img {
             filter: var(--logo-filter);
-            object-fit: contain;
-            transition: transform var(--transition-speed), filter var(--transition-speed);
         }
 
-        .brand-logo:hover {
-            transform: scale(1.05);
+        .glass-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
         }
 
-        .brand-name {
-            font-size: 1.6rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--text-light);
+        .filter-pill {
+            background-color: var(--pill-inactive-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--card-border);
         }
 
-        .brand-name span {
-            color: var(--text-light);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: color var(--transition-speed);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--text-gray);
-        }
-
-        .btn-nav {
-            background-color: var(--accent-white);
-            color: var(--bg-black) !important;
-            padding: 9px 22px;
-            border-radius: 20px;
-            font-weight: 800 !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            transition: all var(--transition-speed) !important;
-        }
-
-        .btn-nav:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        /* Mobile Menu Toggle Button */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .menu-toggle span {
-            height: 3px;
-            width: 100%;
-            background-color: var(--text-light);
-            border-radius: 10px;
-            transition: all var(--transition-speed) ease-in-out;
-        }
-
-        /* Theme Switcher Floating Button */
-        .theme-toggle-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--accent-white);
-            color: var(--bg-black);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            transition: transform var(--transition-speed), background-color var(--transition-speed);
-        }
-
-        .theme-toggle-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Main Pricing Container */
-        .pricing-container {
-            max-width: 1200px;
-            margin: 140px auto 60px auto;
-            padding: 0 30px;
-        }
-
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .pricing-header h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-
-        .pricing-header p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .filter-pill.active {
+            background-color: var(--pill-active-bg);
+            color: var(--pill-active-text);
+            border-color: var(--pill-active-bg);
             font-weight: 700;
         }
 
-        /* Packages Grid */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
+        .btn-primary {
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            font-weight: 700;
+        }
+        .btn-primary:hover {
+            opacity: 0.92;
+            transform: translateY(-2px);
         }
 
-        .package-card {
-            background-color: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 40px 25px 30px 25px;
-            border-radius: 16px;
-            border: 1px solid var(--border-glow);
-            text-align: center;
+        .pricing-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--amber-accent);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.popular-card {
+            border: 2px solid var(--amber-accent);
             position: relative;
-            transition: all var(--transition-speed);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        .package-card.featured {
-            border-color: var(--accent-white);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.05);
+        .theme-fab {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
         }
 
-        .badge-popular {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--accent-white);
-            color: var(--bg-black);
-            padding: 4px 18px;
-            font-size: 0.75rem;
-            font-weight: 900;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
         }
 
-        .package-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-white);
-            background-color: var(--bg-card-hover);
-        }
-
-        .package-card h2 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-
-        .package-card .price {
-            font-size: 2.8rem;
-            color: var(--text-light);
-            font-weight: 900;
-            margin-bottom: 25px;
-        }
-
-        .package-card ul {
-            list-style: none;
-            margin-bottom: 30px;
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            text-align: left;
-        }
-
-        .package-card ul li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .package-card ul li::before {
-            content: "✓";
-            color: var(--text-light);
-            font-weight: bold;
-        }
-
-        .btn-card {
-            background: var(--accent-white);
-            color: var(--bg-black);
-            padding: 14px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all var(--transition-speed);
-            display: block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn-card:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        /* Add-ons Section */
-        .addons-section {
-            background-color: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid var(--border-glow);
-            margin-bottom: 40px;
-        }
-
-        .addons-title {
-            font-size: 1.4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-light);
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .addons-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .addon-item {
-            background-color: var(--bg-item);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid var(--border-glow);
-            transition: border-color var(--transition-speed);
-        }
-
-        .addon-item:hover {
-            border-color: var(--accent-white);
-        }
-
-        .addon-item h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--text-light);
-        }
-
-        .addon-item p {
-            color: var(--text-light);
-            font-weight: 800;
-            font-size: 1.2rem;
-        }
-
-        /* Deposit Note */
-        .deposit-info {
-            text-align: center;
-            background-color: var(--bg-item);
-            border-left: 4px solid var(--text-light);
-            padding: 18px 22px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            line-height: 1.5;
-            border: 1px solid var(--border-glow);
-            border-left-width: 4px;
-        }
-
-        .deposit-info strong {
-            color: var(--text-light);
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--bg-nav);
-            backdrop-filter: blur(10px);
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid var(--border-glow);
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            margin-top: auto;
-        }
-
-        .footer-logo {
-            height: 60px;
-            width: auto;
-            margin: 0 auto 15px;
-            filter: var(--logo-filter);
-        }
-
-        /* Mobile Adaptations */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 20px;
-            }
-
-            .brand-logo {
-                height: 44px;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 6px);
-            }
-
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -6px);
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background-color: var(--bg-black);
-                backdrop-filter: blur(15px);
-                flex-direction: column;
-                justify-content: center;
-                gap: 35px;
-                transition: right var(--transition-speed) ease-in-out;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .pricing-container {
-                margin-top: 110px;
-                padding: 0 18px;
-            }
-
-            .pricing-header h1 {
-                font-size: 2rem;
-            }
-
-            .packages-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .addons-list {
-                grid-template-columns: 1fr;
-            }
+        /* Custom checkbox styling for calculator */
+        .calc-checkbox:checked {
+            background-color: var(--btn-primary-bg);
+            border-color: var(--btn-primary-bg);
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between relative">
 
     <!-- Header / Navigation Bar -->
-    <header>
-        <nav class="navbar" aria-label="Main Navigation">
-            <div class="logo-container">
-                <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="brand-logo">
-                <a href="index.html" class="brand-name">TIMZ <span>VISUALS</span></a>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand / Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-8 w-auto brand-logo-img transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/150x50/000000/ffffff?text=TIMZ+VISUALS';">
+                <span class="text-xl font-black tracking-widest text-custom-light uppercase">TIMZ <span class="font-light text-custom-gray">VISUALS</span></span>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html" class="text-custom-gray hover:text-custom-light transition-colors">Home</a>
+                <a href="work.html" class="text-custom-gray hover:text-custom-light transition-colors">Work</a>
+                <a href="pricing.html" class="text-custom-light transition-colors font-semibold border-b-2 border-custom-glow pb-1">Pricing</a>
+                <a href="booking.html" class="text-custom-gray hover:text-custom-light transition-colors">Booking</a>
+                <a href="payment.html" class="text-custom-gray hover:text-custom-light transition-colors">Payment</a>
+            </nav>
+
+            <!-- Action Button & Mobile Trigger -->
+            <div class="flex items-center gap-4">
+                <a href="booking.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider btn-primary transition-all">
+                    <span>Book Session</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Navigation Menu" aria-expanded="false">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+                </button>
             </div>
+        </div>
 
-            <button class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navLinks">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="pricing.html" class="active">Pricing</a></li>
-                <li><a href="booking.html" class="btn-nav">Book Now</a></li>
-            </ul>
-        </nav>
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-nav-custom border-b border-custom-glow px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
+            <a href="work.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Work</a>
+            <a href="pricing.html" class="block text-base font-bold text-custom-light">Pricing</a>
+            <a href="booking.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Booking</a>
+            <a href="payment.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Payment</a>
+            <a href="booking.html" class="inline-block w-full text-center py-3 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider mt-2">
+                Book Session Now
+            </a>
+        </div>
     </header>
 
-    <!-- Theme Switcher Button -->
-    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Light/Dark Theme">
-        <span id="themeIcon">☀️</span>
-    </button>
-
-    <!-- Main Pricing Section -->
-    <main class="pricing-container">
-        <div class="pricing-header">
-            <h1>Photography Rates</h1>
-            <p>Affordable, High-Quality Photo Packages</p>
+    <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-grow">
+        
+        <!-- Hero Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card">
+                Transparent Rates
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-black text-custom-light tracking-tight uppercase mb-4">
+                INVESTMENT & <span class="font-light text-custom-gray">PACKAGES</span>
+            </h1>
+            <p class="text-custom-gray text-sm sm:text-base leading-relaxed">
+                Tailored visual packages crafted for portraits, music videos, events, and commercial projects. All sessions require a simple <strong>$20 retainer deposit</strong> to lock in your date.
+            </p>
         </div>
 
-        <!-- Packages Grid -->
-        <div class="packages-grid">
+        <!-- Category Toggle (Photo / Video Switcher) -->
+        <div class="flex items-center justify-center gap-3 mb-12">
+            <div class="glass-card p-1.5 rounded-full inline-flex border border-custom-glow">
+                <button id="togglePhotoBtn" class="filter-pill active px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-camera"></i>
+                    <span>Photography</span>
+                </button>
+                <button id="toggleVideoBtn" class="filter-pill px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Videography</span>
+                </button>
+            </div>
             
-            <!-- Mini Session -->
-            <div class="package-card">
+            <!-- Quick Estimate Trigger Button -->
+            <button id="openCalcBtn" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border border-amber-500/40 text-amber-500 hover:bg-amber-500/10 transition-all">
+                <i class="fa-solid fa-calculator"></i>
+                <span>Estimate Builder</span>
+            </button>
+        </div>
+
+        <!-- Photography Packages Grid -->
+        <div id="photoGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Photo Card 1: Essential -->
+            <div class="pricing-card glass-card rounded-3xl p-8 flex flex-col justify-between">
                 <div>
-                    <h2>Mini Session</h2>
-                    <div class="price">$50</div>
-                    <ul>
-                        <li>20–30 Minutes</li>
-                        <li>5 Edited Digital Photos</li>
-                        <li>High-Resolution Gallery</li>
-                        <li>Fast Turnaround</li>
-                        <li>Great for Headshots / Quick Shoots</li>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold uppercase tracking-widest text-custom-gray">Starter Session</span>
+                        <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-neutral-500/10 border border-custom-glow text-custom-gray">Portrait</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-custom-light uppercase mb-2">Essential Photo</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black text-custom-light">$150</span>
+                        <span class="text-xs text-custom-gray">/ session</span>
+                    </div>
+                    <p class="text-xs text-custom-gray mb-6 leading-relaxed">Ideal for headshots, single outfit creative portraits, and quick social media updates.</p>
+                    
+                    <ul class="space-y-3 text-xs text-custom-gray mb-8 border-t border-custom-glow pt-6">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 1 Hour Studio or Location Shoot</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 1 Outfit / Concept</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 5 High-Res Professionally Retouched Photos</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Online Private Gallery Access</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 3 to 5 Day Delivery Window</li>
                     </ul>
                 </div>
-                <a href="booking.html?pkg=mini" class="btn-card">Select Package</a>
+                <div>
+                    <a href="booking.html?pkg=essential-photo" class="w-full py-3.5 rounded-xl border border-custom-glow hover:bg-neutral-500/10 text-custom-light uppercase text-xs font-bold tracking-wider transition-all flex items-center justify-center gap-2">
+                        <span>Select Package</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
             </div>
 
-            <!-- Standard Session -->
-            <div class="package-card featured">
-                <div class="badge-popular">Most Popular</div>
+            <!-- Photo Card 2: Signature (Featured) -->
+            <div class="pricing-card popular-card glass-card rounded-3xl p-8 flex flex-col justify-between shadow-2xl">
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-400 text-black px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
+                    Most Popular Choice
+                </div>
                 <div>
-                    <h2>Standard Session</h2>
-                    <div class="price">$100</div>
-                    <ul>
-                        <li>1 Full Hour Session</li>
-                        <li>15 Edited Digital Photos</li>
-                        <li>1 Outfit Change</li>
-                        <li>Full Online Gallery</li>
-                        <li>Best Value for Individuals</li>
+                    <div class="flex justify-between items-start mb-4 pt-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Full Creative</span>
+                        <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-amber-400/20 text-amber-400 border border-amber-400/30">Creative</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-custom-light uppercase mb-2">Signature Creative</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black text-custom-light">$280</span>
+                        <span class="text-xs text-custom-gray">/ session</span>
+                    </div>
+                    <p class="text-xs text-custom-gray mb-6 leading-relaxed">Comprehensive portrait experience with multiple looks, lighting setups, and gel effects.</p>
+                    
+                    <ul class="space-y-3 text-xs text-custom-light mb-8 border-t border-custom-glow pt-6">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 2.5 Hours Dedicated Studio/Location Shoot</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Up to 3 Outfit Changes</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 12 High-Res Master Retouched Photos</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Full Proofing Gallery (All RAW Previews)</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Express 48-Hour Rush Delivery Option</li>
                     </ul>
                 </div>
-                <a href="booking.html?pkg=standard" class="btn-card">Select Package</a>
+                <div>
+                    <a href="booking.html?pkg=signature-photo" class="w-full py-3.5 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg">
+                        <span>Book Creative ($20 Deposit)</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
             </div>
 
-            <!-- Sports & Events -->
-            <div class="package-card">
+            <!-- Photo Card 3: Brand & Event -->
+            <div class="pricing-card glass-card rounded-3xl p-8 flex flex-col justify-between">
                 <div>
-                    <h2>Sports / Events</h2>
-                    <div class="price">$120</div>
-                    <ul>
-                        <li>Full Game or 1.5 Hour Event</li>
-                        <li>25 Action Shots</li>
-                        <li>High-Speed Capture</li>
-                        <li>Express Delivery</li>
-                        <li>Great for Athletes & Parties</li>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold uppercase tracking-widest text-custom-gray">Commercial</span>
+                        <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-neutral-500/10 border border-custom-glow text-custom-gray">Events</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-custom-light uppercase mb-2">Brand & Event Coverage</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black text-custom-light">$450</span>
+                        <span class="text-xs text-custom-gray">/ 4 hours</span>
+                    </div>
+                    <p class="text-xs text-custom-gray mb-6 leading-relaxed">Full coverage for corporate events, parties, automotive showcases, and brand lookbooks.</p>
+                    
+                    <ul class="space-y-3 text-xs text-custom-gray mb-8 border-t border-custom-glow pt-6">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 4 Hours On-Site Coverage</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Unlimited Color-Graded Deliverables (50+)</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> High Resolution Commercial License</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Cloud Storage Archive for 1 Year</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Same-Day Teaser Photos (5 images)</li>
                     </ul>
                 </div>
-                <a href="booking.html?pkg=sports" class="btn-card">Select Package</a>
-            </div>
-
-            <!-- Group / Team -->
-            <div class="package-card">
                 <div>
-                    <h2>Group / Team</h2>
-                    <div class="price">$20 <span style="font-size: 0.9rem; opacity: 0.7;">/ person</span></div>
-                    <ul>
-                        <li>Minimum 5 People</li>
-                        <li>2 Individual Shots Per Person</li>
-                        <li>2 Group / Team Photos</li>
-                        <li>Shared Online Gallery</li>
-                        <li>Perfect for Squads & Teams</li>
-                    </ul>
+                    <a href="booking.html?pkg=event-photo" class="w-full py-3.5 rounded-xl border border-custom-glow hover:bg-neutral-500/10 text-custom-light uppercase text-xs font-bold tracking-wider transition-all flex items-center justify-center gap-2">
+                        <span>Select Package</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
                 </div>
-                <a href="booking.html?pkg=group" class="btn-card">Select Package</a>
             </div>
 
         </div>
 
-        <!-- Add-ons Section -->
-        <div class="addons-section">
-            <h2 class="addons-title">Extra Add-Ons</h2>
-            <div class="addons-list">
-                <div class="addon-item">
-                    <h3>Extra Edited Photo</h3>
-                    <p>$5 / Photo</p>
+        <!-- Videography Packages Grid (Hidden by default) -->
+        <div id="videoGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 hidden">
+            
+            <!-- Video Card 1: Social Reels -->
+            <div class="pricing-card glass-card rounded-3xl p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold uppercase tracking-widest text-custom-gray">Short Form</span>
+                        <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-neutral-500/10 border border-custom-glow text-custom-gray">Reels</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-custom-light uppercase mb-2">Social Reel Cut</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black text-custom-light">$250</span>
+                        <span class="text-xs text-custom-gray">/ project</span>
+                    </div>
+                    <p class="text-xs text-custom-gray mb-6 leading-relaxed">Vertical high-impact short form content for Instagram Reels, TikTok, and YouTube Shorts.</p>
+                    
+                    <ul class="space-y-3 text-xs text-custom-gray mb-8 border-t border-custom-glow pt-6">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 1.5 Hours Shoot Time</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 1x Edited Vertical Reel (30-60 secs)</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Sound Design & Trending Audio Sync</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Color Graded in 4K Quality</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 2 Free Revision Passes</li>
+                    </ul>
                 </div>
-                <div class="addon-item">
-                    <h3>24-Hour Rush Delivery</h3>
-                    <p>+$25</p>
+                <div>
+                    <a href="booking.html?pkg=social-reel" class="w-full py-3.5 rounded-xl border border-custom-glow hover:bg-neutral-500/10 text-custom-light uppercase text-xs font-bold tracking-wider transition-all flex items-center justify-center gap-2">
+                        <span>Select Package</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
                 </div>
-                <div class="addon-item">
-                    <h3>Extra Outfit Change</h3>
-                    <p>+$15</p>
+            </div>
+
+            <!-- Video Card 2: Music Video Production -->
+            <div class="pricing-card popular-card glass-card rounded-3xl p-8 flex flex-col justify-between shadow-2xl">
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-400 text-black px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
+                    Featured Visual Service
                 </div>
+                <div>
+                    <div class="flex justify-between items-start mb-4 pt-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Cinematic</span>
+                        <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-amber-400/20 text-amber-400 border border-amber-400/30">Music Video</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-custom-light uppercase mb-2">Music Video Master</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black text-custom-light">$600</span>
+                        <span class="text-xs text-custom-gray">/ project</span>
+                    </div>
+                    <p class="text-xs text-custom-gray mb-6 leading-relaxed">Full narrative and performance music video shoot with custom color grading and special FX.</p>
+                    
+                    <ul class="space-y-3 text-xs text-custom-light mb-8 border-t border-custom-glow pt-6">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Half-Day Shoot Coverage (up to 5 Hours)</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Treatment Concepting & Storyboarding</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Master 4K Music Video Cut</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 15-Sec Promo Teaser Included</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Custom Lighting Setup (RGB Gel Effects)</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="booking.html?pkg=music-video" class="w-full py-3.5 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg">
+                        <span>Book Video ($20 Deposit)</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Card 3: Full Event Recap -->
+            <div class="pricing-card glass-card rounded-3xl p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold uppercase tracking-widest text-custom-gray">Events</span>
+                        <span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-neutral-500/10 border border-custom-glow text-custom-gray">Recap</span>
+                    </div>
+                    <h3 class="text-2xl font-black text-custom-light uppercase mb-2">Event Recap Film</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black text-custom-light">$500</span>
+                        <span class="text-xs text-custom-gray">/ event</span>
+                    </div>
+                    <p class="text-xs text-custom-gray mb-6 leading-relaxed">Dynamic festival, concert, or commercial event highlight video capturing the atmosphere.</p>
+                    
+                    <ul class="space-y-3 text-xs text-custom-gray mb-8 border-t border-custom-glow pt-6">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 4 Hours Live Event Filming</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> 2-3 Minute Cinematic Aftermovie</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Licensed Musical Soundtrack</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Gimbal Smooth Stabilization</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-amber-400 text-xs"></i> Vertical Cut for Social Media Included</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="booking.html?pkg=event-recap" class="w-full py-3.5 rounded-xl border border-custom-glow hover:bg-neutral-500/10 text-custom-light uppercase text-xs font-bold tracking-wider transition-all flex items-center justify-center gap-2">
+                        <span>Select Package</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Deposit & Booking Policy Notice -->
+        <div class="mt-16 p-8 sm:p-10 rounded-3xl glass-card flex flex-col md:flex-row items-center justify-between gap-6 border border-custom-glow">
+            <div class="space-y-2 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2 text-amber-400 text-xs font-bold uppercase tracking-widest">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Deposit & Rescheduling Policy</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-black text-custom-light uppercase">Simple $20 Retainer Deposit</h3>
+                <p class="text-xs sm:text-sm text-custom-gray max-w-xl">
+                    All session dates are reserved upon payment of a <strong>$20 initial deposit</strong>. The remaining balance is paid on or before the day of your shoot. Free date rescheduling available up to 48 hours prior.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <button id="openCalcBtn2" class="px-6 py-3.5 rounded-xl border border-amber-500/50 hover:bg-amber-500/10 text-amber-400 uppercase text-xs font-bold tracking-wider transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Build Custom Quote</span>
+                </button>
+                <a href="booking.html" class="px-6 py-3.5 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg">
+                    <span>Reserve Date ($20)</span>
+                    <i class="fa-solid fa-calendar-check"></i>
+                </a>
             </div>
         </div>
 
-        <!-- Deposit Info Note -->
-        <div class="deposit-info">
-            📌 <strong>Booking Requirement:</strong> A <strong>$20 non-refundable deposit</strong> via PayPal is required for all bookings to lock in your date and time slot.
-        </div>
     </main>
 
+    <!-- Interactive Price Estimate Calculator Modal Widget -->
+    <div id="calcModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity duration-300">
+        <div class="max-w-2xl w-full rounded-3xl glass-card border border-custom-glow p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+            
+            <!-- Close Modal Button -->
+            <button id="closeCalcBtn" class="absolute top-6 right-6 text-custom-gray hover:text-custom-light text-xl p-2 focus:outline-none transition-colors" aria-label="Close Calculator">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Header -->
+            <div class="mb-6">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Instant Calculator</span>
+                <h2 class="text-2xl font-black text-custom-light uppercase">Custom Rate Estimator</h2>
+                <p class="text-xs text-custom-gray mt-1">Select your base service and add-on options to calculate an estimate.</p>
+            </div>
+
+            <!-- Base Service Selector -->
+            <div class="space-y-4 mb-6">
+                <label class="block text-xs font-bold uppercase tracking-wider text-custom-light">1. Select Base Service</label>
+                <select id="calcBaseService" class="w-full p-3.5 rounded-xl border border-custom-glow bg-neutral-900/50 text-custom-light text-xs font-semibold focus:outline-none focus:border-amber-400">
+                    <option value="150" data-name="Essential Photo ($150)">Essential Photo Shoot - $150</option>
+                    <option value="280" data-name="Signature Creative Photo ($280)" selected>Signature Creative Photo - $280</option>
+                    <option value="450" data-name="Brand & Event Coverage ($450)">Brand & Event Photo Coverage - $450</option>
+                    <option value="250" data-name="Social Reel Cut ($250)">Social Video Reel Cut - $250</option>
+                    <option value="600" data-name="Music Video Production ($600)">Music Video Production - $600</option>
+                    <option value="500" data-name="Event Recap Film ($500)">Event Recap Film - $500</option>
+                </select>
+            </div>
+
+            <!-- Add-ons Selection -->
+            <div class="space-y-3 mb-6">
+                <label class="block text-xs font-bold uppercase tracking-wider text-custom-light">2. Add-Ons & Enhancements</label>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <label class="flex items-center justify-between p-3 rounded-xl border border-custom-glow hover:bg-neutral-500/10 cursor-pointer transition-all">
+                        <span class="flex items-center gap-2 text-custom-light">
+                            <input type="checkbox" value="50" class="calc-checkbox rounded accent-amber-400 w-4 h-4" data-label="Extra Retouched Photo (5x)">
+                            <span>5x Extra Retouched Photos</span>
+                        </span>
+                        <span class="text-amber-400 font-bold">+$50</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3 rounded-xl border border-custom-glow hover:bg-neutral-500/10 cursor-pointer transition-all">
+                        <span class="flex items-center gap-2 text-custom-light">
+                            <input type="checkbox" value="75" class="calc-checkbox rounded accent-amber-400 w-4 h-4" data-label="24-Hour Rush Turnaround">
+                            <span>24-Hour Rush Delivery</span>
+                        </span>
+                        <span class="text-amber-400 font-bold">+$75</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3 rounded-xl border border-custom-glow hover:bg-neutral-500/10 cursor-pointer transition-all">
+                        <span class="flex items-center gap-2 text-custom-light">
+                            <input type="checkbox" value="40" class="calc-checkbox rounded accent-amber-400 w-4 h-4" data-label="Extra Outfit Change">
+                            <span>Extra Outfit Change</span>
+                        </span>
+                        <span class="text-amber-400 font-bold">+$40</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3 rounded-xl border border-custom-glow hover:bg-neutral-500/10 cursor-pointer transition-all">
+                        <span class="flex items-center gap-2 text-custom-light">
+                            <input type="checkbox" value="100" class="calc-checkbox rounded accent-amber-400 w-4 h-4" data-label="Extra Hour Shoot Time">
+                            <span>1x Additional Shoot Hour</span>
+                        </span>
+                        <span class="text-amber-400 font-bold">+$100</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3 rounded-xl border border-custom-glow hover:bg-neutral-500/10 cursor-pointer flex-1 sm:col-span-2 transition-all">
+                        <span class="flex items-center gap-2 text-custom-light">
+                            <input type="checkbox" value="120" class="calc-checkbox rounded accent-amber-400 w-4 h-4" data-label="15-Sec Video Promo Highlight">
+                            <span>Add 15-Sec Video Teaser (Vertical Reel Format)</span>
+                        </span>
+                        <span class="text-amber-400 font-bold">+$120</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Estimate Total Breakdown -->
+            <div class="p-4 rounded-2xl bg-neutral-900/60 border border-custom-glow mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-custom-gray block">Estimated Total Price</span>
+                    <div class="text-3xl font-black text-custom-light" id="calcTotal">$280</div>
+                    <span class="text-[10px] text-amber-400 font-semibold">* Includes initial $20 retainer deposit</span>
+                </div>
+                <a id="calcProceedBtn" href="booking.html" class="w-full sm:w-auto px-6 py-3.5 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg">
+                    <span>Lock In Estimate ($20)</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <p class="text-[11px] text-center text-custom-gray">
+                Estimates are generated for planning purposes. Final rate confirmed upon booking submission.
+            </p>
+        </div>
+    </div>
+
+    <!-- Floating Persistent Theme Switcher FAB -->
+    <button id="themeToggleFab" aria-label="Toggle Light/Dark Theme" class="theme-fab fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full glass-card flex items-center justify-center text-custom-light border border-custom-glow hover:scale-110 active:scale-95 transition-all duration-300">
+        <i id="themeIcon" class="fa-solid fa-sun text-lg"></i>
+    </button>
+
     <!-- Footer -->
-    <footer class="footer">
-        <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="footer-logo" loading="lazy">
-        <p>Visualizing Your Moments • Founded by Timothy (Timz)</p>
-        <p style="margin-top: 10px; opacity: 0.6;">&copy; 2026 TIMZ VISUALS. All rights reserved.</p>
+    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
+            <div class="flex items-center gap-3">
+                <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
+                <span class="font-bold text-custom-light uppercase tracking-wider">TIMZ VISUALS</span>
+            </div>
+            <p>© 2026 TIMZ VISUALS. All rights reserved.</p>
+            <div class="flex space-x-4 text-sm">
+                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Interactive Logic Script -->
     <script>
-        // Light & Dark Mode Toggle Switcher logic
-        const themeToggleBtn = document.getElementById('themeToggle');
+        // --- 1. Persistent Theme Management ---
+        const themeToggleFab = document.getElementById('themeToggleFab');
         const themeIcon = document.getElementById('themeIcon');
         
-        const savedTheme = localStorage.getItem('timz_theme') || 'dark';
-        if (savedTheme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeIcon.textContent = '🌙';
+        const savedTheme = localStorage.getItem('timz_theme') || 
+            (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'light') {
+                themeIcon.className = 'fa-solid fa-moon text-lg text-neutral-800';
+            } else {
+                themeIcon.className = 'fa-solid fa-sun text-lg text-amber-400';
+            }
+            localStorage.setItem('timz_theme', theme);
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'light') {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('timz_theme', 'dark');
-                themeIcon.textContent = '☀️';
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('timz_theme', 'light');
-                themeIcon.textContent = '🌙';
-            }
+        applyTheme(savedTheme);
+
+        themeToggleFab.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
         });
 
-        // Mobile Nav Drawer Toggle Logic
-        const menuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
+        // --- 2. Mobile Drawer Navigation Toggle ---
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
 
-        menuToggle.addEventListener('click', () => {
-            const isActive = menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            menuToggle.setAttribute('aria-expanded', isActive);
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+                mobileMenuIcon.className = isOpen ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
+            });
+        }
+
+        // --- 3. Photography vs Videography Category Toggle ---
+        const togglePhotoBtn = document.getElementById('togglePhotoBtn');
+        const toggleVideoBtn = document.getElementById('toggleVideoBtn');
+        const photoGrid = document.getElementById('photoGrid');
+        const videoGrid = document.getElementById('videoGrid');
+
+        togglePhotoBtn.addEventListener('click', () => {
+            togglePhotoBtn.classList.add('active');
+            toggleVideoBtn.classList.remove('active');
+            photoGrid.classList.remove('hidden');
+            videoGrid.classList.add('hidden');
         });
 
-        // Close mobile nav when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
+        toggleVideoBtn.addEventListener('click', () => {
+            toggleVideoBtn.classList.add('active');
+            togglePhotoBtn.classList.remove('active');
+            videoGrid.classList.remove('hidden');
+            photoGrid.classList.add('hidden');
+        });
+
+        // --- 4. Interactive Dynamic Price Estimate Calculator Modal ---
+        const calcModal = document.getElementById('calcModal');
+        const openCalcBtn = document.getElementById('openCalcBtn');
+        const openCalcBtn2 = document.getElementById('openCalcBtn2');
+        const closeCalcBtn = document.getElementById('closeCalcBtn');
+        const calcBaseService = document.getElementById('calcBaseService');
+        const calcCheckboxes = document.querySelectorAll('.calc-checkbox');
+        const calcTotal = document.getElementById('calcTotal');
+        const calcProceedBtn = document.getElementById('calcProceedBtn');
+
+        function updateEstimate() {
+            let total = parseInt(calcBaseService.value, 10) || 0;
+            calcCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    total += parseInt(cb.value, 10) || 0;
+                }
+            });
+            calcTotal.textContent = `$${total}`;
+            calcProceedBtn.href = `booking.html?estimated_total=${total}`;
+        }
+
+        function openModal() {
+            calcModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            updateEstimate();
+        }
+
+        function closeModal() {
+            calcModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (openCalcBtn) openCalcBtn.addEventListener('click', openModal);
+        if (openCalcBtn2) openCalcBtn2.addEventListener('click', openModal);
+        if (closeCalcBtn) closeCalcBtn.addEventListener('click', closeModal);
+
+        calcBaseService.addEventListener('change', updateEstimate);
+        calcCheckboxes.forEach(cb => cb.addEventListener('change', updateEstimate));
+
+        calcModal.addEventListener('click', (e) => {
+            if (e.target === calcModal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !calcModal.classList.contains('hidden')) {
+                closeModal();
             }
         });
     </script>
