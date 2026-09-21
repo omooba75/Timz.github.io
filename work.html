@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMZ VISUALS - Selected Works & Portfolio</title>
-
+    <title>TIMZ VISUALS - Selected Works</title>
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -18,71 +18,74 @@
 
     <style>
         :root {
-            /* Dark Mode Variables (Default) */
-            --bg-color: #08080a;
-            --card-bg: rgba(18, 19, 24, 0.55);
-            --card-border: rgba(255, 255, 255, 0.14);
-            --glass-blur: 18px;
-            --glass-inset-border: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+            /* Strict Black & White Dark Mode Theme Variables */
+            --bg-color: #050505;
+            --card-bg: rgba(20, 20, 20, 0.85);
+            --card-border: rgba(255, 255, 255, 0.18);
             --text-color: #ffffff;
-            --text-muted: #a0a0a0;
-            --border-color: rgba(255, 255, 255, 0.15);
-            --nav-bg: rgba(8, 8, 10, 0.65);
+            --text-muted: #a3a3a3;
+            --border-color: rgba(255, 255, 255, 0.2);
+            --nav-bg: rgba(10, 10, 10, 0.88);
             --input-bg: rgba(255, 255, 255, 0.05);
             --btn-primary-bg: #ffffff;
-            --btn-primary-text: #08080a;
+            --btn-primary-text: #000000;
+            --btn-sec-border: #ffffff;
+            --btn-sec-text: #ffffff;
+            --btn-sec-bg: rgba(255, 255, 255, 0.05);
             --logo-filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-            --badge-bg: rgba(255, 255, 255, 0.1);
-            --glow-color: rgba(255, 255, 255, 0.08);
-            --pill-active-bg: #ffffff;
-            --pill-active-text: #08080a;
-            --pill-inactive-bg: rgba(255, 255, 255, 0.06);
-            --modal-bg: rgba(8, 8, 10, 0.82);
-            --orb-opacity: 0.25;
-        }
-
-        /* Light Mode Overrides */
-        [data-theme="light"] {
-            --bg-color: #f4f5f8;
-            --card-bg: rgba(255, 255, 255, 0.65);
-            --card-border: rgba(0, 0, 0, 0.12);
+            --badge-bg: rgba(255, 255, 255, 0.12);
             --glass-blur: 16px;
-            --glass-inset-border: inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
-            --text-color: #0d0d11;
-            --text-muted: #555560;
-            --border-color: rgba(0, 0, 0, 0.12);
-            --nav-bg: rgba(244, 245, 248, 0.7);
-            --input-bg: rgba(0, 0, 0, 0.03);
-            --btn-primary-bg: #0d0d11;
-            --btn-primary-text: #ffffff;
-            --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
-            --badge-bg: rgba(0, 0, 0, 0.06);
-            --glow-color: rgba(0, 0, 0, 0.04);
-            --pill-active-bg: #0d0d11;
-            --pill-active-text: #ffffff;
-            --pill-inactive-bg: rgba(0, 0, 0, 0.05);
-            --modal-bg: rgba(244, 245, 248, 0.88);
-            --orb-opacity: 0.18;
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            
+            /* Ambient Monochrome Orbs */
+            --orb-1: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 70%);
+            --orb-2: radial-gradient(circle, rgba(200, 200, 200, 0.06) 0%, rgba(150, 150, 150, 0.01) 50%, transparent 75%);
+            --orb-3: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 45%, transparent 70%);
         }
 
-        /* Ultra-Frosted Mode Override */
-        [data-glass="ultra"] {
-            --card-bg: rgba(255, 255, 255, 0.08);
-            --glass-blur: 32px;
-            --card-border: rgba(255, 255, 255, 0.22);
-            --glass-inset-border: inset 0 1px 2px 0 rgba(255, 255, 255, 0.3);
-        }
-
-        [data-theme="light"][data-glass="ultra"] {
-            --card-bg: rgba(255, 255, 255, 0.45);
-            --glass-blur: 32px;
+        /* Light Mode Variables Override */
+        [data-theme="light"] {
+            --bg-color: #f7f7f7;
+            --card-bg: rgba(255, 255, 255, 0.92);
             --card-border: rgba(0, 0, 0, 0.15);
-            --glass-inset-border: inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
+            --text-color: #050505;
+            --text-muted: #525252;
+            --border-color: rgba(0, 0, 0, 0.15);
+            --nav-bg: rgba(245, 245, 245, 0.92);
+            --input-bg: rgba(0, 0, 0, 0.04);
+            --btn-primary-bg: #000000;
+            --btn-primary-text: #ffffff;
+            --btn-sec-border: #000000;
+            --btn-sec-text: #000000;
+            --btn-sec-bg: rgba(0, 0, 0, 0.04);
+            --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+            --badge-bg: rgba(0, 0, 0, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+
+            --orb-1: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.01) 40%, transparent 70%);
+            --orb-2: radial-gradient(circle, rgba(50, 50, 50, 0.04) 0%, rgba(0, 0, 0, 0.01) 50%, transparent 75%);
+            --orb-3: radial-gradient(circle, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.01) 45%, transparent 70%);
+        }
+
+        /* Ultra Frosted Glass Mode Overrides */
+        [data-glass="frosted"] {
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --card-border: rgba(255, 255, 255, 0.22);
+            --nav-bg: rgba(15, 15, 15, 0.65);
+            --glass-blur: 28px;
+            --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        [data-theme="light"][data-glass="frosted"] {
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-border: rgba(0, 0, 0, 0.22);
+            --nav-bg: rgba(255, 255, 255, 0.75);
+            --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
         }
 
         * {
             font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, backdrop-filter 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
         }
 
         body {
@@ -92,131 +95,137 @@
             position: relative;
         }
 
-        /* Ambient Glow Background Orbs */
-        .ambient-orb {
+        /* Ambient Glowing Background Orbs with float animation */
+        .orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(120px);
-            z-index: 0;
             pointer-events: none;
-            opacity: var(--orb-opacity);
-            transition: opacity 0.5s ease;
+            z-index: 0;
+            filter: blur(50px);
+            animation: floatOrb 12s ease-in-out infinite alternate;
         }
-
         .orb-1 {
-            width: 450px;
-            height: 450px;
-            top: -100px;
-            left: -100px;
-            background: radial-gradient(circle, #f59e0b, #d97706, transparent);
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--orb-1);
         }
-
         .orb-2 {
-            width: 500px;
-            height: 500px;
             top: 40%;
-            right: -150px;
-            background: radial-gradient(circle, #3b82f6, #1d4ed8, transparent);
+            right: -15%;
+            width: 45vw;
+            height: 45vw;
+            background: var(--orb-2);
+            animation-delay: -4s;
         }
-
         .orb-3 {
-            width: 400px;
-            height: 400px;
-            bottom: -100px;
+            bottom: -10%;
             left: 20%;
-            background: radial-gradient(circle, #8b5cf6, #6d28d9, transparent);
+            width: 50vw;
+            height: 50vw;
+            background: var(--orb-3);
+            animation-delay: -8s;
         }
 
-        .bg-nav-custom { 
-            background-color: var(--nav-bg); 
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 40px) scale(1.08); }
         }
-        
-        .border-custom-glow { border-color: var(--border-color); }
+
+        .bg-custom-card { background-color: var(--card-bg); }
         .text-custom-light { color: var(--text-color); }
         .text-custom-gray { color: var(--text-muted); }
+        .border-custom-glow { border-color: var(--border-color); }
+        .bg-nav-custom { background-color: var(--nav-bg); }
 
-        .brand-logo-img {
-            filter: var(--logo-filter);
-        }
+        .brand-logo-img { filter: var(--logo-filter); }
 
         .glass-card {
             background-color: var(--card-bg);
             backdrop-filter: blur(var(--glass-blur));
             -webkit-backdrop-filter: blur(var(--glass-blur));
             border: 1px solid var(--card-border);
-            box-shadow: var(--glass-inset-border), 0 20px 40px -15px rgba(0,0,0,0.3);
-        }
-
-        .filter-pill {
-            background-color: var(--pill-inactive-bg);
-            color: var(--text-muted);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-        }
-
-        .filter-pill.active {
-            background-color: var(--pill-active-bg);
-            color: var(--pill-active-text);
-            border-color: var(--pill-active-bg);
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            box-shadow: var(--glass-shadow);
         }
 
         .btn-primary {
             background-color: var(--btn-primary-bg);
             color: var(--btn-primary-text);
             font-weight: 700;
+            backdrop-filter: blur(8px);
         }
         .btn-primary:hover {
-            opacity: 0.92;
+            opacity: 0.9;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(255, 255, 255, 0.3);
         }
 
-        /* Portfolio Cards Animation & Hover Styling */
-        .portfolio-item {
+        .btn-secondary {
+            border: 1px solid var(--btn-sec-border);
+            color: var(--btn-sec-text);
+            background-color: var(--btn-sec-bg);
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+        }
+        .btn-secondary:hover {
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+        .filter-btn.active {
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-color: transparent;
+        }
+
+        .form-input {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            backdrop-filter: blur(10px);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--text-color);
+        }
+
+        /* Portfolio Card Zoom & Overlay Effects */
+        .portfolio-card {
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
         }
-
-        .portfolio-item:hover .gallery-img {
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+        }
+        .portfolio-card img {
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .portfolio-card:hover img {
             transform: scale(1.08);
         }
 
-        .portfolio-item:hover .overlay-card {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Custom Floating Theme & Glass Control FABs */
-        .theme-fab {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-        }
-
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 4px;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between relative">
+<body class="min-h-screen flex flex-col justify-between">
 
     <!-- Ambient Glowing Background Orbs -->
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-    <div class="ambient-orb orb-3"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-    <!-- Header / Navigation Bar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom border-b border-custom-glow">
+    <!-- Sticky Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10">
             
             <!-- Brand / Logo -->
@@ -234,221 +243,224 @@
                 <a href="payment.html" class="text-custom-gray hover:text-custom-light transition-colors">Payment</a>
             </nav>
 
-            <!-- Action Toggle & Buttons -->
-            <div class="flex items-center gap-3">
+            <!-- Navigation Bar Actions -->
+            <div class="flex items-center gap-3 sm:gap-4">
                 
-                <!-- Glassmorphism Mode Switcher Toggle -->
-                <button id="glassToggleBtn" class="px-3 py-1.5 rounded-full text-xs font-bold border border-custom-glow glass-card hover:border-amber-400 transition-all flex items-center gap-2 text-custom-light" title="Toggle Glass Frosted Intensity">
-                    <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
-                    <span id="glassToggleLabel" class="hidden sm:inline">Ultra Glass</span>
+                <!-- Saved Visual References Board Button -->
+                <button id="openBookmarksBtn" title="Saved Mood Board References" class="relative px-3.5 py-2 rounded-xl border border-custom-glow hover:bg-white/10 text-custom-light text-xs font-semibold transition-all flex items-center gap-2 glass-card">
+                    <i class="fa-solid fa-bookmark text-custom-light"></i>
+                    <span class="hidden sm:inline uppercase tracking-wider text-[11px]">Saved</span>
+                    <span id="savedBadgeCount" class="bg-white text-black font-extrabold text-[10px] w-5 h-5 rounded-full flex items-center justify-center">0</span>
                 </button>
 
-                <a href="booking.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider btn-primary transition-all">
-                    <span>Book Session</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </a>
+                <!-- Glassmorphism Aesthetic Toggle -->
+                <button id="glassToggleBtn" aria-label="Toggle Glassmorphism Mode" title="Toggle Translucent Glass Effect" class="px-3 py-2 rounded-xl border border-custom-glow hover:bg-white/10 text-custom-light text-xs font-semibold transition-all flex items-center gap-2 glass-card">
+                    <i id="glassIcon" class="fa-solid fa-wand-magic-sparkles text-custom-light"></i>
+                    <span id="glassLabel" class="hidden lg:inline uppercase tracking-wider text-[11px]">Glass: Max</span>
+                </button>
+
+                <!-- Theme Switcher Toggle -->
+                <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-full border border-custom-glow hover:bg-white/10 text-custom-light transition-all flex items-center justify-center w-10 h-10 glass-card">
+                    <i id="themeIcon" class="fa-solid fa-sun text-sm"></i>
+                </button>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Navigation Menu" aria-expanded="false">
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Mobile Menu">
                     <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Drawer Navigation -->
-        <div id="mobileMenu" class="hidden md:hidden bg-nav-custom border-b border-custom-glow px-6 py-6 space-y-4 relative z-10">
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-custom-card border-b border-custom-glow px-6 py-6 space-y-4 relative z-10">
             <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
             <a href="work.html" class="block text-base font-bold text-custom-light">Work</a>
             <a href="pricing.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Pricing</a>
             <a href="booking.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Booking</a>
             <a href="payment.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Payment</a>
-            <a href="booking.html" class="inline-block w-full text-center py-3 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider mt-2">
-                Book Session Now
-            </a>
+            <button id="openBookmarksBtnMobile" class="w-full py-3 text-xs uppercase font-bold tracking-wider rounded-xl btn-secondary flex items-center justify-center gap-2 mt-2">
+                <i class="fa-solid fa-bookmark text-xs"></i>
+                <span>View Saved References Board</span>
+            </button>
         </div>
     </header>
 
-    <!-- Main Section Content -->
     <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-grow relative z-10">
         
-        <!-- Hero Header -->
-        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card shadow-lg">
-                <i class="fa-solid fa-sparkles text-amber-400 mr-1.5"></i> Visual Showcase
+        <!-- Header / Title Section -->
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card">
+                Visual Showcase & Archive
             </span>
-            <h1 class="text-4xl sm:text-6xl font-black text-custom-light tracking-tight uppercase mb-4">
-                SELECTED <span class="font-light text-custom-gray">WORKS</span>
+            <h1 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight mb-4 uppercase">
+                SELECTED WORKS
             </h1>
             <p class="text-custom-gray text-sm sm:text-base leading-relaxed">
-                Explore a curated gallery of visual storytelling, creative portraits, music video productions, and event highlights captured through the lens of TIMZ VISUALS.
+                Explore our curated portfolio across commercial production, music videos, editorial photography, and high-energy live event coverage.
             </p>
         </div>
 
-        <!-- Filter Category Pills -->
-        <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-12" id="filterContainer">
-            <button data-filter="all" class="filter-pill active px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
-                All Work
-            </button>
-            <button data-filter="portraits" class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
-                Portraits
-            </button>
-            <button data-filter="music-videos" class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
-                Music Videos
-            </button>
-            <button data-filter="events" class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
-                Events
-            </button>
-            <button data-filter="automotive" class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105">
-                Automotive
-            </button>
-        </div>
-
-        <!-- Portfolio Grid Layout -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="portfolioGrid">
+        <!-- Search & Filter Bar Controls -->
+        <div class="mb-10 space-y-6">
             
-            <!-- Item 1: Portraits -->
-            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="portraits" data-title="Neon Shadows Portrait" data-sub="Studio Portraiture • 2026" data-img="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Neon Shadows Portrait" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
-                </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Portraits</span>
-                    <h3 class="text-xl font-bold text-white mb-1">Neon Shadows</h3>
-                    <p class="text-xs text-neutral-300 mb-4">High-contrast studio session with dynamic gel lighting.</p>
-                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
-                        <span>View Full Screen</span>
-                        <i class="fa-solid fa-expand text-xs"></i>
-                    </div>
-                </div>
+            <!-- Search Field -->
+            <div class="max-w-md mx-auto relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-custom-gray text-xs"></i>
+                <input type="text" id="portfolioSearchInput" placeholder="Search by title, gear (e.g. RED, Sony), or camera tag..." class="w-full pl-10 pr-4 py-3 rounded-2xl form-input text-xs sm:text-sm shadow-inner transition-all">
+                <button id="clearSearchBtn" class="hidden absolute right-4 top-1/2 -translate-y-1/2 text-custom-gray hover:text-custom-light text-xs">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
 
-            <!-- Item 2: Music Videos -->
-            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="music-videos" data-title="Midnight Motion Cut" data-sub="Music Video Shoot • 2026" data-img="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
-                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Music Video Production" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
-                </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Music Videos</span>
-                    <h3 class="text-xl font-bold text-white mb-1">Midnight Motion</h3>
-                    <p class="text-xs text-neutral-300 mb-4">4K visual treatment with cinematic color grading.</p>
-                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
-                        <span>View Full Screen</span>
-                        <i class="fa-solid fa-expand text-xs"></i>
-                    </div>
-                </div>
+            <!-- Filter Buttons Pills -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3" id="filterContainer">
+                <button class="filter-btn active px-5 py-2.5 rounded-full text-xs uppercase font-semibold tracking-wider transition-all" data-filter="all">
+                    All Work
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase font-semibold tracking-wider transition-all" data-filter="videography">
+                    <i class="fa-solid fa-video text-[10px] mr-1"></i> Music Videos
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase font-semibold tracking-wider transition-all" data-filter="photography">
+                    <i class="fa-solid fa-camera text-[10px] mr-1"></i> Portraits & Studio
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase font-semibold tracking-wider transition-all" data-filter="automotive">
+                    <i class="fa-solid fa-car text-[10px] mr-1"></i> Automotive
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase font-semibold tracking-wider transition-all" data-filter="commercial">
+                    <i class="fa-solid fa-briefcase text-[10px] mr-1"></i> Commercial
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase font-semibold tracking-wider transition-all" data-filter="events">
+                    <i class="fa-solid fa-bolt text-[10px] mr-1"></i> Events & Coverage
+                </button>
             </div>
-
-            <!-- Item 3: Events -->
-            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="events" data-title="Aura Underground Fest" data-sub="Live Event Coverage • 2025" data-img="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Event Coverage" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
-                </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Events</span>
-                    <h3 class="text-xl font-bold text-white mb-1">Aura Underground</h3>
-                    <p class="text-xs text-neutral-300 mb-4">Full festival recap, crowd highlights, and artist sets.</p>
-                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
-                        <span>View Full Screen</span>
-                        <i class="fa-solid fa-expand text-xs"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 4: Automotive -->
-            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="automotive" data-title="Apex Supercar Showcase" data-sub="Automotive Media • 2026" data-img="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
-                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Automotive Shoot" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
-                </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Automotive</span>
-                    <h3 class="text-xl font-bold text-white mb-1">Apex Stealth Series</h3>
-                    <p class="text-xs text-neutral-300 mb-4">Rollers and static shots for luxury custom automotive build.</p>
-                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
-                        <span>View Full Screen</span>
-                        <i class="fa-solid fa-expand text-xs"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 5: Portraits -->
-            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="portraits" data-title="Urban Silhouette" data-sub="Outdoor Creative • 2026" data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Urban Silhouette Portrait" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
-                </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Portraits</span>
-                    <h3 class="text-xl font-bold text-white mb-1">Urban Silhouette</h3>
-                    <p class="text-xs text-neutral-300 mb-4">Golden hour natural light portraits with moody grading.</p>
-                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
-                        <span>View Full Screen</span>
-                        <i class="fa-solid fa-expand text-xs"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 6: Music Videos -->
-            <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="music-videos" data-title="Echoes in Crimson" data-sub="Official Music Video • 2025" data-img="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Echoes in Crimson Music Video" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
-                </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Music Videos</span>
-                    <h3 class="text-xl font-bold text-white mb-1">Echoes in Crimson</h3>
-                    <p class="text-xs text-neutral-300 mb-4">High-energy narrative performance piece with FX.</p>
-                    <div class="flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-wider">
-                        <span>View Full Screen</span>
-                        <i class="fa-solid fa-expand text-xs"></i>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
-        <!-- Booking CTA Section -->
-        <div class="mt-20 p-8 sm:p-12 rounded-3xl glass-card text-center space-y-6 relative overflow-hidden shadow-2xl">
-            <span class="text-xs font-bold uppercase tracking-widest text-amber-400 block">Ready to Create?</span>
-            <h2 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight uppercase">
-                Let's Bring Your Vision To Life
-            </h2>
-            <p class="text-custom-gray text-sm sm:text-base max-w-xl mx-auto">
-                Secure your session date online with a refundable $20 retainer deposit and collaborate on your custom shoot.
-            </p>
-            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="booking.html" class="w-full sm:w-auto px-8 py-4 rounded-xl btn-primary uppercase text-xs tracking-wider transition-all flex items-center justify-center gap-2">
-                    <span>Reserve Session ($20 Deposit)</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a href="pricing.html" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-custom-glow glass-card hover:bg-neutral-500/10 text-custom-light uppercase text-xs tracking-wider font-bold transition-all">
-                    View Package Pricing
-                </a>
-            </div>
+        <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Portfolio items injected dynamically via JavaScript below -->
+        </div>
+
+        <!-- Empty State Container when no search results match -->
+        <div id="noResults" class="hidden text-center py-20 glass-card rounded-2xl max-w-xl mx-auto my-12">
+            <i class="fa-solid fa-photo-film text-4xl text-custom-gray mb-4"></i>
+            <h3 class="text-lg font-bold text-custom-light uppercase">No Visual Projects Found</h3>
+            <p class="text-xs text-custom-gray mt-2">Try adjusting your search terms or selecting a different project category above.</p>
+            <button id="resetFiltersBtn" class="mt-6 px-6 py-2.5 rounded-xl btn-secondary text-xs uppercase font-semibold tracking-wider">
+                Reset All Filters
+            </button>
         </div>
 
     </main>
 
-    <!-- Fullscreen Lightbox Modal -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl transition-all duration-300">
-        <!-- Close Button -->
-        <button id="closeLightboxBtn" class="absolute top-6 right-6 z-50 text-white hover:text-amber-400 text-2xl p-3 focus:outline-none transition-colors" aria-label="Close Lightbox">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <div class="max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center p-4 relative glass-card rounded-2xl">
-            <img id="lightboxImg" src="" alt="Expanded View" class="max-h-[70vh] w-auto max-w-full rounded-xl object-contain shadow-2xl border border-white/10">
-            <div class="text-center mt-4 space-y-1">
-                <h3 id="lightboxTitle" class="text-2xl font-black text-white uppercase tracking-wider"></h3>
-                <p id="lightboxSub" class="text-sm text-amber-400 font-medium"></p>
+    <!-- Fullscreen Interactive Lightbox Modal -->
+    <div id="lightboxModal" class="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div class="glass-card max-w-5xl w-full rounded-2xl p-4 sm:p-6 space-y-4 relative my-auto max-h-[95vh] flex flex-col justify-between overflow-y-auto">
+            
+            <!-- Lightbox Control Top Bar -->
+            <div class="flex items-center justify-between border-b border-custom-glow pb-3">
+                <div class="flex items-center gap-2">
+                    <span id="lbCategoryBadge" class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest bg-white/10 text-custom-light">
+                        CATEGORY
+                    </span>
+                    <span id="lbCounter" class="text-xs text-custom-gray font-mono">1 / 6</span>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button id="lbBookmarkBtn" class="p-2.5 rounded-xl border border-custom-glow hover:bg-white/10 text-custom-light text-xs transition-all flex items-center gap-1.5" title="Save to reference board">
+                        <i id="lbBookmarkIcon" class="fa-regular fa-bookmark"></i>
+                        <span id="lbBookmarkText" class="hidden sm:inline text-[11px] uppercase">Bookmark</span>
+                    </button>
+                    <button id="closeLightboxModal" class="p-2.5 rounded-xl border border-custom-glow hover:bg-white/10 text-custom-light text-xs transition-all w-9 h-9 flex items-center justify-center" aria-label="Close Lightbox">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
             </div>
+
+            <!-- Media Container & Navigation Arrows -->
+            <div class="relative w-full flex-grow flex items-center justify-center min-h-[300px] sm:min-h-[420px] bg-black/60 rounded-xl overflow-hidden group">
+                
+                <!-- Media Element (Image or Video) -->
+                <div id="lbMediaWrapper" class="w-full h-full flex items-center justify-center p-2">
+                    <img id="lbImage" src="" alt="Portfolio preview" class="max-h-[60vh] w-auto max-w-full object-contain rounded-lg shadow-2xl">
+                    <iframe id="lbVideo" class="hidden w-full aspect-video max-h-[60vh] rounded-lg" src="" title="Video Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <!-- Navigation Previous / Next Buttons -->
+                <button id="lbPrevBtn" class="absolute left-3 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-white hover:text-black transition-all border border-white/20" aria-label="Previous Project">
+                    <i class="fa-solid fa-chevron-left text-sm sm:text-base"></i>
+                </button>
+                <button id="lbNextBtn" class="absolute right-3 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-white hover:text-black transition-all border border-white/20" aria-label="Next Project">
+                    <i class="fa-solid fa-chevron-right text-sm sm:text-base"></i>
+                </button>
+            </div>
+
+            <!-- Metadata Details Grid Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3 border-t border-custom-glow items-center">
+                <div class="md:col-span-2 space-y-1.5">
+                    <h3 id="lbTitle" class="text-xl sm:text-2xl font-black text-custom-light uppercase tracking-tight">Project Title</h3>
+                    <p id="lbDescription" class="text-xs text-custom-gray leading-relaxed">Detailed project description explaining concept, lighting, and art direction.</p>
+                    
+                    <div class="flex flex-wrap gap-2 pt-2" id="lbTags">
+                        <!-- Dynamic tags -->
+                    </div>
+                </div>
+
+                <div class="space-y-3 bg-white/5 p-4 rounded-xl border border-custom-glow">
+                    <div class="text-[11px] text-custom-gray space-y-1">
+                        <div><strong class="text-custom-light uppercase">Client:</strong> <span id="lbClient">Self / Creative</span></div>
+                        <div><strong class="text-custom-light uppercase">Equipment:</strong> <span id="lbGear">Sony A7SIII / Cinema Rig</span></div>
+                        <div><strong class="text-custom-light uppercase">Year:</strong> <span id="lbYear">2026</span></div>
+                    </div>
+
+                    <a id="lbBookSimilarBtn" href="booking.html" class="w-full py-2.5 rounded-xl btn-primary text-center text-xs uppercase font-bold tracking-wider block transition-all shadow-md">
+                        Book Similar Session
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- Floating Persistent Theme Switcher FAB -->
-    <button id="themeToggleFab" aria-label="Toggle Light/Dark Theme" class="theme-fab fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full glass-card flex items-center justify-center text-custom-light border border-custom-glow hover:scale-110 active:scale-95 transition-all duration-300">
-        <i id="themeIcon" class="fa-solid fa-sun text-lg"></i>
-    </button>
+    <!-- Saved Mood Board References Drawer -->
+    <div id="bookmarksDrawer" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden flex justify-end">
+        <div class="glass-card max-w-md w-full h-full p-6 space-y-6 flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-300">
+            
+            <div class="space-y-4">
+                <div class="flex items-center justify-between border-b border-custom-glow pb-4">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bookmark text-custom-light"></i>
+                        <h3 class="text-lg font-black text-custom-light uppercase tracking-tight">Saved Visual References</h3>
+                    </div>
+                    <button id="closeBookmarksDrawer" class="text-custom-gray hover:text-custom-light text-lg">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <p class="text-xs text-custom-gray">
+                    Keep track of visual aesthetics, lighting styles, or shot compositions you love to share when booking your shoot.
+                </p>
+
+                <!-- Bookmarked Items List Container -->
+                <div id="bookmarksList" class="space-y-3 max-h-[55vh] overflow-y-auto pr-1">
+                    <!-- Dynamic Saved Items -->
+                </div>
+            </div>
+
+            <!-- Drawer Bottom CTA -->
+            <div class="space-y-3 pt-4 border-t border-custom-glow">
+                <a href="booking.html" class="w-full py-3.5 rounded-xl btn-primary text-center text-xs uppercase font-bold tracking-wider block transition-all shadow-lg flex items-center justify-center gap-2">
+                    <span>Send Reference Board & Book</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <button id="clearBookmarksBtn" class="w-full py-2 text-center text-[11px] text-custom-gray hover:text-custom-light uppercase transition-colors">
+                    Clear All Saved References
+                </button>
+            </div>
+
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12 relative z-10">
+    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
             <div class="flex items-center gap-3">
                 <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
@@ -464,58 +476,146 @@
     </footer>
 
     <script>
-        // --- 1. Persistent Theme Management ---
-        const themeToggleFab = document.getElementById('themeToggleFab');
+        // --- Portfolio Data Repository ---
+        const portfolioData = [
+            {
+                id: 'p1',
+                title: 'Midnight Echoes',
+                subtitle: 'Official Music Video',
+                category: 'videography',
+                categoryLabel: 'Music Video',
+                image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+                videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Sample embed
+                description: 'High-contrast moody lighting and handheld anamorphic frames capturing late-night urban energy.',
+                client: 'Sub Vision Records',
+                gear: 'RED Komodo 6K + Anamorphic Lenses',
+                year: '2026',
+                tags: ['Anamorphic', '4K Cinema', 'Color Graded', 'Night Shoot']
+            },
+            {
+                id: 'p2',
+                title: 'Monochrome Luxe',
+                subtitle: 'High Fashion Studio Editorial',
+                category: 'photography',
+                categoryLabel: 'Portraits & Studio',
+                image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+                videoUrl: null,
+                description: 'Ultra-retouched high-key black and white portraiture showcasing minimalist fashion tailoring.',
+                client: 'Vogue Editorial Concept',
+                gear: 'Sony A7R V + 85mm f/1.4 GM',
+                year: '2026',
+                tags: ['Studio Lighting', 'High Retouch', 'Monochrome']
+            },
+            {
+                id: 'p3',
+                title: 'Apex GT Speed',
+                subtitle: 'Track Day Cinema Reel',
+                category: 'automotive',
+                categoryLabel: 'Automotive',
+                image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
+                videoUrl: null,
+                description: 'Rolling shots, FPV drone chases, and exhaust flame captures on private circuit racing tracks.',
+                client: 'Apex Performance',
+                gear: 'Sony A7SIII + FPV Drone Rig',
+                year: '2025',
+                tags: ['Rolling Shots', 'FPV Drone', 'Slow Motion']
+            },
+            {
+                id: 'p4',
+                title: 'Aura Sound Festival',
+                subtitle: 'Live Mainstage Aftermovie',
+                category: 'events',
+                categoryLabel: 'Events & Coverage',
+                image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80',
+                videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                description: 'Immersive stage lighting coverage, crowd energy capture, and fast-paced editing for festival promotion.',
+                client: 'Aura Festival Group',
+                gear: 'Dual Sony FX3 Rigs',
+                year: '2025',
+                tags: ['Stage Lights', 'Crowd Coverage', 'Fast Cut']
+            },
+            {
+                id: 'p5',
+                title: 'Urban Kinetic Lookbook',
+                subtitle: 'Streetwear Brand Campaign',
+                category: 'commercial',
+                categoryLabel: 'Commercial',
+                image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
+                videoUrl: null,
+                description: 'Dynamic lifestyle photography captured in downtown concrete architectural locations.',
+                client: 'KINETIC Threads',
+                gear: 'Canon R5 + 35mm f/1.2',
+                year: '2026',
+                tags: ['Streetwear', 'Commercial', 'Natural Light']
+            },
+            {
+                id: 'p6',
+                title: 'Neon Underground',
+                subtitle: 'Cyberpunk Narrative Visual',
+                category: 'videography',
+                categoryLabel: 'Music Video',
+                image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80',
+                videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                description: 'Saturated neon tube lighting, rain-soaked reflections, and dramatic slow-motion visual storytelling.',
+                client: 'Synthwave Duo',
+                gear: 'BMPCC 6K Pro',
+                year: '2026',
+                tags: ['Neon Lighting', 'Atmospheric', 'Slow Motion']
+            }
+        ];
+
+        // --- Application State ---
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let currentLightboxIndex = 0;
+        let savedBookmarks = JSON.parse(localStorage.getItem('timz_saved_projects') || '[]');
+
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
+        const glassToggleBtn = document.getElementById('glassToggleBtn');
+        const glassIcon = document.getElementById('glassIcon');
+        const glassLabel = document.getElementById('glassLabel');
         
         const savedTheme = localStorage.getItem('timz_theme') || 
             (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        const savedGlassMode = localStorage.getItem('timz_glass') || 'frosted';
 
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             if (theme === 'light') {
-                themeIcon.className = 'fa-solid fa-moon text-lg text-neutral-800';
+                themeIcon.className = 'fa-solid fa-moon text-sm';
             } else {
-                themeIcon.className = 'fa-solid fa-sun text-lg text-amber-400';
+                themeIcon.className = 'fa-solid fa-sun text-sm';
             }
             localStorage.setItem('timz_theme', theme);
         }
 
-        applyTheme(savedTheme);
-
-        themeToggleFab.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        });
-
-        // --- 2. Glassmorphism Frosted Intensity Toggle ---
-        const glassToggleBtn = document.getElementById('glassToggleBtn');
-        const glassToggleLabel = document.getElementById('glassToggleLabel');
-        
-        const savedGlass = localStorage.getItem('timz_glass') || 'frosted';
-
         function applyGlassMode(mode) {
             document.documentElement.setAttribute('data-glass', mode);
-            if (mode === 'ultra') {
-                glassToggleLabel.textContent = 'Ultra Blur On';
-                glassToggleBtn.classList.add('border-amber-400');
+            if (mode === 'frosted') {
+                glassIcon.className = 'fa-solid fa-wand-magic-sparkles text-custom-light';
+                if (glassLabel) glassLabel.textContent = 'Glass: Max';
             } else {
-                glassToggleLabel.textContent = 'Ultra Glass';
-                glassToggleBtn.classList.remove('border-amber-400');
+                glassIcon.className = 'fa-solid fa-border-all text-custom-gray';
+                if (glassLabel) glassLabel.textContent = 'Glass: Solid';
             }
             localStorage.setItem('timz_glass', mode);
         }
 
-        applyGlassMode(savedGlass);
+        applyTheme(savedTheme);
+        applyGlassMode(savedGlassMode);
 
-        glassToggleBtn.addEventListener('click', () => {
-            const currentGlass = document.documentElement.getAttribute('data-glass') || 'frosted';
-            const newGlass = currentGlass === 'frosted' ? 'ultra' : 'frosted';
-            applyGlassMode(newGlass);
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
         });
 
-        // --- 3. Mobile Drawer Navigation Toggle ---
+        glassToggleBtn.addEventListener('click', () => {
+            const currentGlass = document.documentElement.getAttribute('data-glass') || 'solid';
+            applyGlassMode(currentGlass === 'frosted' ? 'solid' : 'frosted');
+        });
+
+        // Mobile Drawer Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileMenuIcon = document.getElementById('mobileMenuIcon');
@@ -524,81 +624,293 @@
             mobileMenuBtn.addEventListener('click', () => {
                 const isOpen = !mobileMenu.classList.contains('hidden');
                 mobileMenu.classList.toggle('hidden');
-                mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
                 mobileMenuIcon.className = isOpen ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
             });
         }
 
-        // --- 4. Dynamic Interactive Grid Category Filtering ---
-        const filterPills = document.querySelectorAll('#filterContainer .filter-pill');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const portfolioGrid = document.getElementById('portfolioGrid');
+        const noResults = document.getElementById('noResults');
 
-        filterPills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                // Active State Update
-                filterPills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
+        function renderPortfolioGrid() {
+            const filteredData = portfolioData.filter(item => {
+                const matchesFilter = currentFilter === 'all' || item.category === currentFilter;
+                const matchesSearch = searchQuery === '' || 
+                    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    item.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    item.gear.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+                return matchesFilter && matchesSearch;
+            });
 
-                const filterValue = pill.getAttribute('data-filter');
+            if (filteredData.length === 0) {
+                portfolioGrid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                return;
+            }
 
-                portfolioItems.forEach(item => {
-                    const category = item.getAttribute('data-category');
-                    if (filterValue === 'all' || category === filterValue) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.95)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
+            portfolioGrid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+
+            portfolioGrid.innerHTML = filteredData.map((item) => {
+                const isBookmarked = savedBookmarks.includes(item.id);
+                return `
+                    <div class="portfolio-card glass-card rounded-2xl overflow-hidden group cursor-pointer relative border border-custom-glow flex flex-col justify-between" data-id="${item.id}">
+                        <div class="relative overflow-hidden aspect-[4/3] bg-neutral-900">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
+                            
+                            <!-- Dark Gradient Hover Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+                            
+                            <!-- Category Badge -->
+                            <div class="absolute top-4 left-4 z-10">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-black/60 backdrop-blur-md text-white border border-white/20">
+                                    ${item.categoryLabel}
+                                </span>
+                            </div>
+
+                            <!-- Bookmark Quick Toggle Button -->
+                            <button onclick="toggleBookmark(event, '${item.id}')" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+                                <i class="${isBookmarked ? 'fa-solid text-white' : 'fa-regular'} fa-bookmark text-xs"></i>
+                            </button>
+
+                            <!-- Play Icon Badge for Videos -->
+                            ${item.videoUrl ? `
+                                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                                    <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-play text-sm ml-0.5"></i>
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            <!-- Card Bottom Info -->
+                            <div class="absolute bottom-4 left-4 right-4 z-10">
+                                <span class="text-[10px] uppercase font-bold text-custom-gray tracking-wider block">${item.subtitle}</span>
+                                <h3 class="text-lg font-black text-white uppercase tracking-tight group-hover:text-neutral-200 transition-colors">${item.title}</h3>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer Tags & Action -->
+                        <div class="p-4 flex items-center justify-between text-[11px] border-t border-custom-glow bg-black/20">
+                            <span class="text-custom-gray truncate max-w-[180px]"><i class="fa-solid fa-camera-retro text-[10px] mr-1"></i> ${item.gear}</span>
+                            <span class="font-bold text-custom-light uppercase tracking-wider group-hover:underline flex items-center gap-1">
+                                View <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Add click listeners to portfolio cards
+            document.querySelectorAll('.portfolio-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('button')) return; // Ignore bookmark button click
+                    const id = card.dataset.id;
+                    const index = portfolioData.findIndex(p => p.id === id);
+                    if (index !== -1) openLightbox(index);
                 });
             });
-        });
+        }
 
-        // --- 5. Lightbox Modal Preview Functionality ---
-        const lightboxModal = document.getElementById('lightboxModal');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxTitle = document.getElementById('lightboxTitle');
-        const lightboxSub = document.getElementById('lightboxSub');
-        const closeLightboxBtn = document.getElementById('closeLightboxBtn');
-
-        portfolioItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const imgSrc = item.getAttribute('data-img');
-                const title = item.getAttribute('data-title');
-                const sub = item.getAttribute('data-sub');
-
-                lightboxImg.src = imgSrc;
-                lightboxTitle.textContent = title;
-                lightboxSub.textContent = sub;
-
-                lightboxModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                renderPortfolioGrid();
             });
         });
+
+        const searchInput = document.getElementById('portfolioSearchInput');
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.trim();
+            clearSearchBtn.classList.toggle('hidden', searchQuery === '');
+            renderPortfolioGrid();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            clearSearchBtn.classList.add('hidden');
+            renderPortfolioGrid();
+        });
+
+        document.getElementById('resetFiltersBtn')?.addEventListener('click', () => {
+            currentFilter = 'all';
+            searchQuery = '';
+            searchInput.value = '';
+            clearSearchBtn.classList.add('hidden');
+            filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+            renderPortfolioGrid();
+        });
+
+        const lightboxModal = document.getElementById('lightboxModal');
+        const closeLightboxModal = document.getElementById('closeLightboxModal');
+        const lbImage = document.getElementById('lbImage');
+        const lbVideo = document.getElementById('lbVideo');
+        const lbTitle = document.getElementById('lbTitle');
+        const lbDescription = document.getElementById('lbDescription');
+        const lbCategoryBadge = document.getElementById('lbCategoryBadge');
+        const lbCounter = document.getElementById('lbCounter');
+        const lbClient = document.getElementById('lbClient');
+        const lbGear = document.getElementById('lbGear');
+        const lbYear = document.getElementById('lbYear');
+        const lbTags = document.getElementById('lbTags');
+        const lbBookmarkBtn = document.getElementById('lbBookmarkBtn');
+        const lbBookmarkIcon = document.getElementById('lbBookmarkIcon');
+        const lbBookmarkText = document.getElementById('lbBookmarkText');
+        const lbPrevBtn = document.getElementById('lbPrevBtn');
+        const lbNextBtn = document.getElementById('lbNextBtn');
+        const lbBookSimilarBtn = document.getElementById('lbBookSimilarBtn');
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const item = portfolioData[currentLightboxIndex];
+
+            // Set content
+            lbTitle.textContent = item.title;
+            lbDescription.textContent = item.description;
+            lbCategoryBadge.textContent = item.categoryLabel;
+            lbCounter.textContent = `${currentLightboxIndex + 1} / ${portfolioData.length}`;
+            lbClient.textContent = item.client;
+            lbGear.textContent = item.gear;
+            lbYear.textContent = item.year;
+
+            // Handle Video vs Image presentation
+            if (item.videoUrl) {
+                lbImage.classList.add('hidden');
+                lbVideo.classList.remove('hidden');
+                lbVideo.src = item.videoUrl;
+            } else {
+                lbVideo.classList.add('hidden');
+                lbVideo.src = '';
+                lbImage.classList.remove('hidden');
+                lbImage.src = item.image;
+            }
+
+            // Render tags
+            lbTags.innerHTML = item.tags.map(t => `
+                <span class="px-2.5 py-1 rounded-md bg-white/10 text-[10px] text-custom-light font-medium uppercase">${t}</span>
+            `).join('');
+
+            // Update CTA link
+            lbBookSimilarBtn.href = `booking.html?ref=${item.id}`;
+
+            updateLightboxBookmarkStatus();
+            lightboxModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
 
         function closeLightbox() {
             lightboxModal.classList.add('hidden');
+            lbVideo.src = '';
             document.body.style.overflow = 'auto';
         }
 
-        closeLightboxBtn.addEventListener('click', closeLightbox);
-        lightboxModal.addEventListener('click', (e) => {
-            if (e.target === lightboxModal) {
+        function updateLightboxBookmarkStatus() {
+            const item = portfolioData[currentLightboxIndex];
+            const isBookmarked = savedBookmarks.includes(item.id);
+            lbBookmarkIcon.className = isBookmarked ? 'fa-solid fa-bookmark text-white' : 'fa-regular fa-bookmark';
+            lbBookmarkText.textContent = isBookmarked ? 'Saved' : 'Bookmark';
+        }
+
+        lbPrevBtn.addEventListener('click', () => {
+            currentLightboxIndex = (currentLightboxIndex - 1 + portfolioData.length) % portfolioData.length;
+            openLightbox(currentLightboxIndex);
+        });
+
+        lbNextBtn.addEventListener('click', () => {
+            currentLightboxIndex = (currentLightboxIndex + 1) % portfolioData.length;
+            openLightbox(currentLightboxIndex);
+        });
+
+        closeLightboxModal.addEventListener('click', closeLightbox);
+
+        lbBookmarkBtn.addEventListener('click', () => {
+            const item = portfolioData[currentLightboxIndex];
+            toggleBookmark(null, item.id);
+            updateLightboxBookmarkStatus();
+        });
+
+        function toggleBookmark(event, id) {
+            if (event) event.stopPropagation();
+            if (savedBookmarks.includes(id)) {
+                savedBookmarks = savedBookmarks.filter(bId => bId !== id);
+            } else {
+                savedBookmarks.push(id);
+            }
+            localStorage.setItem('timz_saved_projects', JSON.stringify(savedBookmarks));
+            updateBookmarksUI();
+            renderPortfolioGrid();
+        }
+
+        const savedBadgeCount = document.getElementById('savedBadgeCount');
+        const bookmarksDrawer = document.getElementById('bookmarksDrawer');
+        const bookmarksList = document.getElementById('bookmarksList');
+        const openBookmarksBtn = document.getElementById('openBookmarksBtn');
+        const openBookmarksBtnMobile = document.getElementById('openBookmarksBtnMobile');
+        const closeBookmarksDrawer = document.getElementById('closeBookmarksDrawer');
+        const clearBookmarksBtn = document.getElementById('clearBookmarksBtn');
+
+        function updateBookmarksUI() {
+            if (savedBadgeCount) savedBadgeCount.textContent = savedBookmarks.length;
+
+            if (bookmarksList) {
+                if (savedBookmarks.length === 0) {
+                    bookmarksList.innerHTML = `
+                        <div class="text-center py-10 text-custom-gray text-xs">
+                            <i class="fa-regular fa-bookmark text-2xl mb-2 block"></i>
+                            No saved references yet. Click the bookmark icon on any portfolio item to build your mood board.
+                        </div>
+                    `;
+                } else {
+                    const bookmarkedItems = portfolioData.filter(p => savedBookmarks.includes(p.id));
+                    bookmarksList.innerHTML = bookmarkedItems.map(item => `
+                        <div class="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 border border-custom-glow">
+                            <img src="${item.image}" alt="${item.title}" class="w-14 h-14 object-cover rounded-lg">
+                            <div class="flex-grow min-w-0">
+                                <h4 class="text-xs font-bold text-custom-light uppercase truncate">${item.title}</h4>
+                                <span class="text-[10px] text-custom-gray block truncate">${item.categoryLabel}</span>
+                            </div>
+                            <button onclick="toggleBookmark(event, '${item.id}')" class="p-2 text-custom-gray hover:text-white text-xs">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        if (openBookmarksBtn) openBookmarksBtn.addEventListener('click', () => bookmarksDrawer.classList.remove('hidden'));
+        if (openBookmarksBtnMobile) openBookmarksBtnMobile.addEventListener('click', () => bookmarksDrawer.classList.remove('hidden'));
+        if (closeBookmarksDrawer) closeBookmarksDrawer.addEventListener('click', () => bookmarksDrawer.classList.add('hidden'));
+
+        if (clearBookmarksBtn) {
+            clearBookmarksBtn.addEventListener('click', () => {
+                savedBookmarks = [];
+                localStorage.setItem('timz_saved_projects', JSON.stringify(savedBookmarks));
+                updateBookmarksUI();
+                renderPortfolioGrid();
+            });
+        }
+
+        // Global Keyboard Support (ESC to close, Arrows to navigate)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
                 closeLightbox();
+                bookmarksDrawer?.classList.add('hidden');
+            }
+            if (!lightboxModal.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') lbPrevBtn.click();
+                if (e.key === 'ArrowRight') lbNextBtn.click();
             }
         });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
-                closeLightbox();
-            }
-        });
+        // Initialize Page
+        updateBookmarksUI();
+        renderPortfolioGrid();
     </script>
 </body>
 </html>
