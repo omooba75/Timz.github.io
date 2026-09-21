@@ -1,452 +1,997 @@
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-glass="frosted">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Payment & Checkout - TIMZ VISUALS</title>
-    
-    <!-- Google Fonts & Lucide Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>TIMZ VISUALS - Secure Payment & Checkout</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: ['class', '[data-theme="dark"]'],
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            gold: '#D4AF37',
-                            amber: '#FFBF00',
-                            bronze: '#AA7C11',
-                            darkBg: '#090A0F',
-                            cardDark: 'rgba(18, 20, 29, 0.7)',
-                            lightBg: '#F8FAF9',
-                            cardLight: 'rgba(255, 255, 255, 0.85)',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        display: ['"Space Grotesk"', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'glow': '0 0 30px -5px rgba(212, 175, 55, 0.3)',
-                        'glow-lg': '0 0 50px -10px rgba(212, 175, 55, 0.45)',
-                    }
-                }
-            }
-        }
-    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         :root {
-            --bg-primary: #090A0F;
-            --bg-secondary: #12141D;
-            --bg-glass: rgba(18, 20, 29, 0.75);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
-            --accent-gold: #D4AF37;
-            --accent-glow: rgba(212, 175, 55, 0.25);
-            --card-hover: rgba(255, 255, 255, 0.05);
+            /* Strict Black & White Dark Mode Theme Variables */
+            --bg-color: #050505;
+            --card-bg: rgba(18, 18, 18, 0.85);
+            --card-border: rgba(255, 255, 255, 0.18);
+            --text-color: #ffffff;
+            --text-muted: #a3a3a3;
+            --border-color: rgba(255, 255, 255, 0.2);
+            --nav-bg: rgba(10, 10, 10, 0.90);
+            --input-bg: rgba(255, 255, 255, 0.04);
+            --btn-primary-bg: #ffffff;
+            --btn-primary-text: #000000;
+            --btn-sec-border: rgba(255, 255, 255, 0.4);
+            --btn-sec-text: #ffffff;
+            --btn-sec-bg: rgba(255, 255, 255, 0.05);
+            --logo-filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+            --badge-bg: rgba(255, 255, 255, 0.12);
+            --glass-blur: 18px;
+            --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.7);
+            
+            /* Ambient Monochrome Ambient Glows */
+            --orb-1: radial-gradient(circle, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 70%);
+            --orb-2: radial-gradient(circle, rgba(200, 200, 200, 0.07) 0%, rgba(150, 150, 150, 0.01) 50%, transparent 75%);
+            --orb-3: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 45%, transparent 70%);
         }
 
-        html[data-theme="light"] {
-            --bg-primary: #F4F6F8;
-            --bg-secondary: #FFFFFF;
-            --bg-glass: rgba(255, 255, 255, 0.85);
-            --border-color: rgba(0, 0, 0, 0.08);
-            --text-main: #111827;
-            --text-muted: #4B5563;
-            --accent-gold: #B8860B;
-            --accent-glow: rgba(184, 134, 11, 0.15);
-            --card-hover: rgba(0, 0, 0, 0.03);
+        /* Light Mode Variables Override */
+        [data-theme="light"] {
+            --bg-color: #f7f7f7;
+            --card-bg: rgba(255, 255, 255, 0.94);
+            --card-border: rgba(0, 0, 0, 0.15);
+            --text-color: #050505;
+            --text-muted: #525252;
+            --border-color: rgba(0, 0, 0, 0.15);
+            --nav-bg: rgba(245, 245, 245, 0.92);
+            --input-bg: rgba(0, 0, 0, 0.035);
+            --btn-primary-bg: #000000;
+            --btn-primary-text: #ffffff;
+            --btn-sec-border: rgba(0, 0, 0, 0.4);
+            --btn-sec-text: #000000;
+            --btn-sec-bg: rgba(0, 0, 0, 0.04);
+            --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+            --badge-bg: rgba(0, 0, 0, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+
+            --orb-1: radial-gradient(circle, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.01) 40%, transparent 70%);
+            --orb-2: radial-gradient(circle, rgba(50, 50, 50, 0.04) 0%, rgba(0, 0, 0, 0.01) 50%, transparent 75%);
+            --orb-3: radial-gradient(circle, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.01) 45%, transparent 70%);
+        }
+
+        /* Ultra Frosted Glass Mode Overrides */
+        [data-glass="frosted"] {
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.22);
+            --nav-bg: rgba(15, 15, 15, 0.75);
+            --glass-blur: 28px;
+            --glass-shadow: 0 16px 50px 0 rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        [data-theme="light"][data-glass="frosted"] {
+            --card-bg: rgba(255, 255, 255, 0.70);
+            --card-border: rgba(0, 0, 0, 0.20);
+            --nav-bg: rgba(255, 255, 255, 0.80);
+            --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mono-font {
+            font-family: 'JetBrains Mono', monospace;
         }
 
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background-color 0.4s ease, color 0.4s ease;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             overflow-x: hidden;
+            position: relative;
         }
 
-        .glass-panel {
-            background: var(--bg-glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+        /* Ambient Glowing Background Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(60px);
+            animation: floatOrb 14s ease-in-out infinite alternate;
+        }
+        .orb-1 {
+            top: -10%;
+            left: -10%;
+            width: 55vw;
+            height: 55vw;
+            background: var(--orb-1);
+        }
+        .orb-2 {
+            top: 35%;
+            right: -15%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--orb-2);
+            animation-delay: -5s;
+        }
+        .orb-3 {
+            bottom: -10%;
+            left: 20%;
+            width: 55vw;
+            height: 55vw;
+            background: var(--orb-3);
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(35px, 45px) scale(1.08); }
+        }
+
+        .bg-custom-card { background-color: var(--card-bg); }
+        .text-custom-light { color: var(--text-color); }
+        .text-custom-gray { color: var(--text-muted); }
+        .border-custom-glow { border-color: var(--border-color); }
+        .bg-nav-custom { background-color: var(--nav-bg); }
+
+        .brand-logo-img { filter: var(--logo-filter); }
+
+        .glass-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--card-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .btn-primary {
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            font-weight: 800;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+        }
+        .btn-primary:hover {
+            opacity: 0.92;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="light"] .btn-primary:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--btn-sec-border);
+            color: var(--btn-sec-text);
+            background-color: var(--btn-sec-bg);
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+        }
+        .btn-secondary:hover {
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            transform: translateY(-2px);
+        }
+
+        .form-input {
+            background-color: var(--input-bg);
             border: 1px solid var(--border-color);
+            color: var(--text-color);
+            backdrop-filter: blur(10px);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--text-color);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        [data-theme="light"] .form-input:focus {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
         }
 
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF0B3 0%, #D4AF37 50%, #997A15 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* 3D Interactive Card Flip Styles */
+        .card-wrapper {
+            perspective: 1000px;
+        }
+        .credit-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        .credit-card-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1.25rem;
+        }
+        .card-back {
+            transform: rotateY(180deg);
         }
 
-        html[data-theme="light"] .gold-gradient-text {
-            background: linear-gradient(135deg, #8A6400 0%, #B8860B 50%, #5E4300 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Metallic Luxe Card Styling */
+        .card-metal-bg {
+            background: linear-gradient(135deg, #1f1f1f 0%, #0a0a0a 50%, #171717 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.3);
+        }
+        
+        [data-theme="light"] .card-metal-bg {
+            background: linear-gradient(135deg, #2b2b2b 0%, #121212 50%, #222222 100%);
+            color: #ffffff;
         }
 
-        /* Card Shimmer Simulation */
-        .credit-card-bg {
-            background: linear-gradient(135deg, #1f1b0e 0%, #090a0f 50%, #2b220a 100%);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(212, 175, 55, 0.3);
-            border-radius: 4px;
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-yellow-500/30 selection:text-amber-300">
+<body class="min-h-screen flex flex-col justify-between">
 
-    <!-- TOP SECURITY BAR -->
-    <div class="bg-gradient-to-r from-emerald-950/80 via-emerald-800/40 to-emerald-950/80 border-b border-emerald-500/20 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-2">
-        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
-        <span>Encrypted 256-Bit SSL Checkout • Official TIMZ VISUALS Booking Terminal</span>
+    <!-- Ambient Glowing Background Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Security Header Status Banner -->
+    <div class="bg-black/90 border-b border-white/10 text-xs py-2 px-4 relative z-50 text-neutral-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/10 text-[10px] font-bold uppercase tracking-widest text-white border border-white/20">
+                    <i data-lucide="shield-check" class="w-3 h-3 text-white"></i> 256-Bit SSL Encrypted
+                </span>
+                <span class="hidden sm:inline text-neutral-400 text-[11px]">Direct PCI-DSS Compliant Production Gateway</span>
+            </div>
+            <div class="flex items-center gap-4 text-[11px]">
+                <span class="flex items-center gap-1 font-mono text-white"><i data-lucide="lock" class="w-3 h-3 text-white"></i> SECURE_CHECKOUT</span>
+                <span class="hidden md:inline text-neutral-500">Session ID: <span id="sessionIdDisplay" class="font-mono text-neutral-300">TMZ-88942-X</span></span>
+            </div>
+        </div>
     </div>
 
-    <!-- NAVIGATION HEADER -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 transition-colors">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Sticky Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10">
             
-            <!-- LOGO (EXACT ORIGINAL LOGO preserved) -->
+            <!-- Brand / Logo -->
             <a href="index.html" class="flex items-center gap-3 group">
-                <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-700 p-[1.5px] shadow-glow transition-transform group-hover:scale-105">
-                    <div class="w-full h-full bg-black rounded-[10px] flex items-center justify-center font-display font-black text-xl text-amber-400 tracking-tighter">
-                        TZ
-                    </div>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-display font-extrabold text-xl tracking-wider gold-gradient-text uppercase">TIMZ VISUALS</span>
-                    <span class="text-[10px] tracking-[0.25em] text-gray-400 font-semibold uppercase -mt-1">Studio & Production</span>
-                </div>
+                <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-8 w-auto brand-logo-img transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/150x50/000000/ffffff?text=TIMZ+VISUALS';">
+                <span class="text-xl font-black tracking-widest text-custom-light uppercase">TIMZ <span class="font-light text-custom-gray">VISUALS</span></span>
             </a>
 
-            <!-- NAV LINKS -->
-            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
-                <a href="index.html" class="hover:text-amber-400 transition-colors py-1">Home</a>
-                <a href="work.html" class="hover:text-amber-400 transition-colors py-1">Portfolio & Work</a>
-                <a href="pricing.html" class="hover:text-amber-400 transition-colors py-1">Pricing & Packages</a>
-                <a href="booking.html" class="hover:text-amber-400 transition-colors py-1">Reserve Date</a>
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="index.html" class="text-custom-gray hover:text-custom-light transition-colors">Home</a>
+                <a href="work.html" class="text-custom-gray hover:text-custom-light transition-colors">Work</a>
+                <a href="pricing.html" class="text-custom-gray hover:text-custom-light transition-colors">Pricing</a>
+                <a href="booking.html" class="text-custom-gray hover:text-custom-light transition-colors">Booking</a>
+                <a href="payment.html" class="text-custom-light transition-colors font-semibold border-b-2 border-custom-glow pb-1">Payment</a>
             </nav>
 
-            <!-- CONTROLS -->
-            <div class="flex items-center gap-4">
-                <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-full border border-white/10 hover:border-amber-400/50 bg-white/5 hover:bg-white/10 transition-all text-amber-400" title="Toggle Theme">
-                    <i data-lucide="sun" id="themeSunIcon" class="w-5 h-5 hidden"></i>
-                    <i data-lucide="moon" id="themeMoonIcon" class="w-5 h-5"></i>
+            <!-- Navigation Bar Actions -->
+            <div class="flex items-center gap-3 sm:gap-4">
+                
+                <!-- Saved Visual References Board Button -->
+                <button id="openBookmarksBtn" title="Saved Mood Board References" class="relative px-3.5 py-2 rounded-xl border border-custom-glow hover:bg-white/10 text-custom-light text-xs font-semibold transition-all flex items-center gap-2 glass-card">
+                    <i data-lucide="bookmark" class="w-3.5 h-3.5 text-custom-light"></i>
+                    <span class="hidden sm:inline uppercase tracking-wider text-[11px]">Saved</span>
+                    <span id="savedBadgeCount" class="bg-white text-black font-extrabold text-[10px] w-5 h-5 rounded-full flex items-center justify-center">0</span>
                 </button>
 
-                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg border border-white/10 text-gray-300 hover:text-white">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                <!-- Glassmorphism Aesthetic Toggle -->
+                <button id="glassToggleBtn" aria-label="Toggle Glassmorphism Mode" title="Toggle Translucent Glass Effect" class="px-3 py-2 rounded-xl border border-custom-glow hover:bg-white/10 text-custom-light text-xs font-semibold transition-all flex items-center gap-2 glass-card">
+                    <i id="glassIcon" data-lucide="sparkles" class="w-3.5 h-3.5 text-custom-light"></i>
+                    <span id="glassLabel" class="hidden lg:inline uppercase tracking-wider text-[11px]">Glass: Max</span>
+                </button>
+
+                <!-- Theme Switcher Toggle -->
+                <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-full border border-custom-glow hover:bg-white/10 text-custom-light transition-all flex items-center justify-center w-10 h-10 glass-card">
+                    <i id="themeIcon" class="fa-solid fa-sun text-sm"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Mobile Menu">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
 
-        <!-- MOBILE NAV -->
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-white/10 px-6 py-6 space-y-4">
-            <a href="index.html" class="block py-2 font-medium hover:text-amber-400">Home</a>
-            <a href="work.html" class="block py-2 font-medium hover:text-amber-400">Portfolio & Work</a>
-            <a href="pricing.html" class="block py-2 font-medium hover:text-amber-400">Pricing & Packages</a>
-            <a href="booking.html" class="block py-2 font-medium hover:text-amber-400">Reserve Date</a>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-custom-card border-b border-custom-glow px-6 py-6 space-y-4 relative z-10">
+            <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
+            <a href="work.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Work</a>
+            <a href="pricing.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Pricing</a>
+            <a href="booking.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Booking</a>
+            <a href="payment.html" class="block text-base font-bold text-custom-light">Payment</a>
         </div>
     </header>
 
-    <!-- PAYMENT CONTENT CONTAINER -->
-    <main class="flex-grow max-w-5xl mx-auto px-4 py-12 w-full">
+    <main class="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-grow relative z-10">
         
-        <!-- STEP INDICATOR -->
-        <div class="flex items-center justify-between max-w-xl mx-auto mb-10 text-xs font-bold uppercase tracking-wider">
-            <div class="flex items-center gap-2 text-amber-400">
-                <span class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center">1</span>
-                <span>Session Details</span>
-            </div>
-            <div class="h-px bg-white/20 flex-grow mx-4"></div>
-            <div class="flex items-center gap-2 text-amber-400">
-                <span class="w-6 h-6 rounded-full bg-amber-400 text-black flex items-center justify-center font-black">2</span>
-                <span>Deposit & Payment</span>
+        <!-- Header & Progress Steps Indicator -->
+        <div class="mb-10 text-center max-w-3xl mx-auto">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-custom-glow mb-4 text-custom-light glass-card">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-white"></i> Encrypted Transaction
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight uppercase mb-3">
+                SECURE CHECKOUT
+            </h1>
+            <p class="text-custom-gray text-xs sm:text-sm max-w-xl mx-auto">
+                Lock in your production date, secure crew reservation, and process your initial deposit retainer.
+            </p>
+
+            <!-- Checkout Process Steps -->
+            <div class="mt-8 flex items-center justify-center gap-2 sm:gap-4 max-w-md mx-auto">
+                <div class="flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-full bg-white/10 text-white border border-white/30 flex items-center justify-center font-bold text-xs">1</span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-custom-gray hidden sm:inline">Session Details</span>
+                </div>
+                <div class="w-12 sm:w-20 h-[1px] bg-white/20"></div>
+                <div class="flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-full bg-white text-black font-extrabold flex items-center justify-center text-xs shadow-lg">2</span>
+                    <span class="text-xs font-black uppercase tracking-wider text-custom-light">Deposit & Payment</span>
+                </div>
             </div>
         </div>
 
-        <!-- SUCCESS MESSAGE STATE (HIDDEN BY DEFAULT) -->
-        <div id="successCard" class="hidden glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/40 text-center space-y-6 max-w-2xl mx-auto">
-            <div class="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto shadow-glow">
-                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
-            </div>
-            <h1 class="text-3xl font-display font-extrabold">Retainer Deposit Confirmed!</h1>
-            <p class="text-gray-300 text-sm leading-relaxed">Your session slot is now officially locked into the TIMZ VISUALS production calendar. A receipt and calendar invite have been sent to your email.</p>
-
-            <div class="bg-black/40 rounded-2xl p-6 text-left space-y-3 border border-white/10 text-sm">
-                <div class="flex justify-between border-b border-white/10 pb-2">
-                    <span class="text-gray-400">Transaction ID:</span>
-                    <span class="font-mono text-xs text-amber-300 font-bold">TZ-2026-98421</span>
-                </div>
-                <div class="flex justify-between border-b border-white/10 pb-2">
-                    <span class="text-gray-400">Payment Method:</span>
-                    <span class="font-medium text-white">Apple Pay / Visa •••• 4242</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400">Amount Paid:</span>
-                    <span class="font-bold text-emerald-400">$150.00 USD</span>
-                </div>
-            </div>
-
-            <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="index.html" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-extrabold shadow-glow hover:scale-105 transition-all text-sm">
-                    Return to Home Studio
-                </a>
-                <a href="work.html" class="px-8 py-3.5 rounded-xl border border-white/20 text-gray-300 font-bold hover:bg-white/10 transition-all text-sm">
-                    Explore Gallery
-                </a>
-            </div>
-        </div>
-
-        <!-- MAIN CHECKOUT FORM LAYOUT -->
-        <div id="checkoutGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- MAIN CHECKOUT VIEW CONTAINER -->
+        <div id="checkoutFormContainer" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- LEFT: PAYMENT METHODS & CREDIT CARD INPUTS (2 COLUMNS) -->
-            <div class="lg:col-span-2 space-y-6">
+            <!-- LEFT COLUMN: Payment Forms & Live Metallic Card (7 Cols) -->
+            <div class="lg:col-span-7 space-y-8">
                 
-                <!-- EXPRESS PAY METHODS -->
-                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400">Express Checkout Options</label>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button type="button" onclick="processPayment('Apple Pay')" class="py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all flex items-center justify-center gap-2 text-white font-bold text-sm">
-                            <i data-lucide="apple" class="w-5 h-5 fill-current"></i>
+                <!-- Express Express Checkout Section -->
+                <div class="glass-card rounded-2xl p-6 border border-custom-glow space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-custom-gray flex items-center gap-2">
+                            <i data-lucide="zap" class="w-4 h-4 text-white"></i> Express Instant Checkout
+                        </span>
+                        <span class="text-[10px] text-custom-gray uppercase">Zero Setup Required</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                        <!-- Apple Pay Express Button -->
+                        <button type="button" onclick="triggerExpressPayment('Apple Pay')" class="py-3.5 px-4 rounded-xl bg-white text-black hover:bg-neutral-200 transition-all font-black text-sm flex items-center justify-center gap-2 shadow-lg group">
+                            <i class="fa-brands fa-apple text-lg"></i>
                             <span>Pay</span>
                         </button>
-                        <button type="button" onclick="processPayment('Google Pay')" class="py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all flex items-center justify-center gap-2 text-white font-bold text-sm">
-                            <i data-lucide="wallet" class="w-5 h-5 text-amber-400"></i>
-                            <span>G Pay</span>
+                        
+                        <!-- Google Pay Express Button -->
+                        <button type="button" onclick="triggerExpressPayment('Google Pay')" class="py-3.5 px-4 rounded-xl bg-black text-white border border-white/30 hover:bg-neutral-900 transition-all font-black text-sm flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-brands fa-google text-base"></i>
+                            <span>Pay</span>
                         </button>
                     </div>
-                    <div class="relative my-4 text-center">
-                        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-white/10"></div></div>
-                        <span class="relative bg-[var(--bg-primary)] px-4 text-xs text-gray-400 font-semibold uppercase">Or pay with card</span>
+
+                    <div class="relative flex py-2 items-center">
+                        <div class="flex-grow border-t border-custom-glow"></div>
+                        <span class="flex-shrink mx-4 text-[10px] uppercase tracking-widest text-custom-gray font-bold">Or Pay With Credit / Debit Card</span>
+                        <div class="flex-grow border-t border-custom-glow"></div>
                     </div>
                 </div>
 
-                <!-- CREDIT CARD FORM -->
-                <form id="paymentForm" onsubmit="handleFormSubmit(event)" class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6">
-                    <div class="flex items-center justify-between">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-amber-400">Credit or Debit Card</label>
-                        <div class="flex items-center gap-2 text-gray-400 text-xs">
-                            <i data-lucide="credit-card" class="w-4 h-4 text-amber-400"></i>
-                            <span>Visa, Mastercard, Amex</span>
+                <!-- Live Interactive Credit Card Preview -->
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between text-xs px-1">
+                        <span class="font-bold uppercase tracking-wider text-custom-light text-[11px]">Interactive Card Preview</span>
+                        <span class="text-[10px] text-custom-gray font-mono"><i data-lucide="rotate-3d" class="w-3 h-3 inline mr-1"></i> Flips automatically on CVC focus</span>
+                    </div>
+
+                    <div class="card-wrapper w-full h-52 sm:h-60 relative">
+                        <div id="interactiveCreditCard" class="credit-card-inner">
+                            
+                            <!-- CARD FRONT -->
+                            <div class="card-front card-metal-bg p-6 flex flex-col justify-between overflow-hidden">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <!-- Chip SVG -->
+                                        <div class="w-11 h-8 rounded-md bg-gradient-to-r from-neutral-400 via-neutral-100 to-neutral-300 border border-white/40 flex items-center justify-center overflow-hidden relative shadow-inner">
+                                            <div class="w-full h-[1px] bg-black/40 absolute top-2"></div>
+                                            <div class="w-full h-[1px] bg-black/40 absolute bottom-2"></div>
+                                            <div class="h-full w-[1px] bg-black/40 absolute left-3"></div>
+                                            <div class="h-full w-[1px] bg-black/40 absolute right-3"></div>
+                                        </div>
+                                        <i data-lucide="wifi" class="w-5 h-5 text-neutral-400 rotate-90"></i>
+                                    </div>
+                                    <span id="cardVendorLogo" class="font-black italic text-lg text-white tracking-wider">VISA</span>
+                                </div>
+
+                                <div class="space-y-1">
+                                    <div class="text-[9px] uppercase tracking-widest text-neutral-400">Card Number</div>
+                                    <div id="cardPreviewNumber" class="mono-font text-lg sm:text-2xl font-bold tracking-widest text-white drop-shadow">
+                                        •••• •••• •••• ••••
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between pt-2">
+                                    <div>
+                                        <div class="text-[8px] uppercase tracking-widest text-neutral-400">Card Holder</div>
+                                        <div id="cardPreviewName" class="font-bold text-xs sm:text-sm uppercase tracking-wider text-white truncate max-w-[180px] sm:max-w-[220px]">
+                                            YOUR NAME HERE
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-[8px] uppercase tracking-widest text-neutral-400">Expires</div>
+                                        <div id="cardPreviewExpiry" class="mono-font text-xs sm:text-sm font-bold text-white">
+                                            MM/YY
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CARD BACK -->
+                            <div class="card-back card-metal-bg p-6 flex flex-col justify-between overflow-hidden">
+                                <div class="w-full h-10 bg-black absolute top-5 left-0"></div>
+                                <div class="mt-14 space-y-2">
+                                    <div class="text-[9px] uppercase tracking-widest text-neutral-400 text-right pr-2">Authorized Signature / CVC</div>
+                                    <div class="bg-neutral-200 h-9 rounded flex items-center justify-end px-3">
+                                        <span id="cardPreviewCvc" class="mono-font text-black font-extrabold text-sm tracking-widest">
+                                            •••
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between text-[9px] text-neutral-400 uppercase tracking-widest">
+                                    <span>TIMZ VISUALS VIP PRODUCTION</span>
+                                    <span>SECURITY VERIFIED</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit Card Form Fields -->
+                <form id="paymentForm" onsubmit="handlePaymentSubmit(event)" class="glass-card rounded-2xl p-6 sm:p-8 border border-custom-glow space-y-6">
+                    <div class="flex items-center justify-between border-b border-custom-glow pb-4">
+                        <h3 class="text-base font-black text-custom-light uppercase tracking-tight flex items-center gap-2">
+                            <i data-lucide="credit-card" class="w-4 h-4 text-white"></i> Card Details
+                        </h3>
+                        <div class="flex items-center gap-2 text-custom-gray text-lg">
+                            <i class="fa-brands fa-cc-visa"></i>
+                            <i class="fa-brands fa-cc-mastercard"></i>
+                            <i class="fa-brands fa-cc-amex"></i>
                         </div>
                     </div>
 
-                    <!-- VIRTUAL CARD PREVIEW CARD -->
-                    <div class="credit-card-bg p-6 rounded-2xl relative overflow-hidden space-y-6 shadow-2xl">
-                        <div class="flex items-center justify-between">
-                            <span class="font-display font-extrabold text-amber-400 tracking-wider">TZ VISUALS PAY</span>
-                            <i data-lucide="wifi" class="w-5 h-5 text-amber-400/70 rotate-90"></i>
-                        </div>
-                        
-                        <div>
-                            <span class="text-[10px] uppercase text-gray-400 font-mono tracking-widest block mb-1">Card Number</span>
-                            <div id="cardDisplayNum" class="font-mono text-lg tracking-widest text-white font-bold">•••• •••• •••• 4242</div>
-                        </div>
-
-                        <div class="flex justify-between items-end text-xs font-mono">
-                            <div>
-                                <span class="text-[9px] uppercase text-gray-400 block">Card Holder</span>
-                                <span id="cardDisplayName" class="font-bold text-white uppercase tracking-wider">VALUED CLIENT</span>
-                            </div>
-                            <div>
-                                <span class="text-[9px] uppercase text-gray-400 block">Expires</span>
-                                <span id="cardDisplayExp" class="font-bold text-white">12/28</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CARD INPUT FIELDS -->
                     <div class="space-y-4">
+                        <!-- Name on Card -->
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1.5">Name on Card</label>
-                            <input type="text" id="cardHolderName" placeholder="Valued Client" required oninput="updateCardPreview()" class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-custom-gray mb-2">Name on Card</label>
+                            <div class="relative">
+                                <input type="text" id="cardNameInput" required placeholder="e.g. MARCUS VANCE" class="w-full pl-10 pr-4 py-3 rounded-xl form-input text-xs sm:text-sm font-medium uppercase tracking-wider">
+                                <i data-lucide="user" class="w-4 h-4 text-custom-gray absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                            </div>
                         </div>
 
+                        <!-- Card Number -->
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1.5">Card Number</label>
-                            <input type="text" id="cardNumber" maxlength="19" placeholder="4242 •••• •••• 4242" required oninput="updateCardPreview()" class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white font-mono">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-custom-gray mb-2">Card Number</label>
+                            <div class="relative">
+                                <input type="text" id="cardNumberInput" required maxlength="19" placeholder="4532 8892 1049 3302" class="w-full pl-10 pr-4 py-3 rounded-xl form-input text-xs sm:text-sm font-medium mono-font tracking-widest">
+                                <i data-lucide="credit-card" class="w-4 h-4 text-custom-gray absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                            </div>
                         </div>
 
+                        <!-- Expiry and CVC Row -->
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1.5">Expiration (MM/YY)</label>
-                                <input type="text" id="cardExp" maxlength="5" placeholder="12/28" required oninput="updateCardPreview()" class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white font-mono">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-custom-gray mb-2">Expiry Date</label>
+                                <div class="relative">
+                                    <input type="text" id="cardExpiryInput" required maxlength="5" placeholder="MM/YY" class="w-full pl-10 pr-4 py-3 rounded-xl form-input text-xs sm:text-sm font-medium mono-font tracking-wider">
+                                    <i data-lucide="calendar" class="w-4 h-4 text-custom-gray absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                                </div>
                             </div>
+
                             <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1.5">CVC / CVV</label>
-                                <input type="text" id="cardCvc" maxlength="4" placeholder="888" required class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white font-mono">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-custom-gray mb-2">CVC / CVV</label>
+                                <div class="relative">
+                                    <input type="text" id="cardCvcInput" required maxlength="4" placeholder="892" class="w-full pl-10 pr-4 py-3 rounded-xl form-input text-xs sm:text-sm font-medium mono-font tracking-wider">
+                                    <i data-lucide="lock" class="w-4 h-4 text-custom-gray absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                                </div>
                             </div>
+                        </div>
+
+                        <!-- Save Card Toggle -->
+                        <div class="pt-2 flex items-center justify-between">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" checked class="w-4 h-4 rounded bg-white/10 border-white/30 text-black focus:ring-0">
+                                <span class="text-xs text-custom-gray font-medium">Save card securely for future production edits</span>
+                            </label>
                         </div>
                     </div>
 
-                    <!-- SUBMIT BUTTON -->
-                    <button type="submit" id="payButton" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-600 text-black font-extrabold text-center shadow-glow hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                        <i data-lucide="lock" class="w-4 h-4"></i>
-                        <span>Authorize Retainer Deposit ($150.00)</span>
-                    </button>
+                    <!-- Submit Button -->
+                    <div class="pt-4 border-t border-custom-glow space-y-3">
+                        <button type="submit" id="payButton" class="w-full py-4 rounded-xl btn-primary text-sm uppercase font-black tracking-widest transition-all flex items-center justify-center gap-3 shadow-2xl">
+                            <span id="payBtnText">Authorize & Pay <span id="payBtnAmount">$875.00</span></span>
+                            <i data-lucide="arrow-right" id="payBtnIcon" class="w-4 h-4 text-black"></i>
+                            <!-- Spinner (Hidden by default) -->
+                            <div id="paySpinner" class="hidden w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                        </button>
+                        
+                        <p class="text-[10px] text-center text-custom-gray">
+                            By clicking Authorize, you agree to TIMZ VISUALS <a href="#" class="underline hover:text-white">Terms of Production</a> and lock in your session slot.
+                        </p>
+                    </div>
                 </form>
 
             </div>
 
-            <!-- RIGHT: ORDER SUMMARY PANEL -->
-            <div class="lg:col-span-1">
-                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/30 sticky top-28 space-y-6">
-                    <h3 class="text-lg font-bold font-display uppercase tracking-wide border-b border-white/10 pb-4">Reservation Summary</h3>
-                    
-                    <!-- SUMMARY ITEM DETAILS -->
-                    <div class="space-y-4 text-sm">
-                        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10">
-                            <!-- UNTOUCHED BRAND IMAGE -->
-                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=200" alt="Studio Session" class="w-12 h-12 rounded-lg object-cover">
+            <!-- RIGHT COLUMN: Reservation Summary & Order Breakdown (5 Cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <div class="glass-card rounded-2xl p-6 sm:p-8 border border-custom-glow space-y-6 sticky top-28">
+                    <div class="flex items-center justify-between border-b border-custom-glow pb-4">
+                        <div>
+                            <span class="text-[10px] uppercase font-bold tracking-widest text-custom-gray block">Order Reference</span>
+                            <h2 class="text-lg font-black text-custom-light uppercase tracking-tight">Reservation Summary</h2>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-white/10 text-custom-light border border-white/20 text-[10px] font-bold uppercase tracking-wider">
+                            Pending Deposit
+                        </span>
+                    </div>
+
+                    <!-- Package Selected Details Card -->
+                    <div class="p-4 rounded-xl bg-white/5 border border-custom-glow space-y-3">
+                        <div class="flex items-start justify-between">
                             <div>
-                                <span class="font-bold text-white block text-xs">Photography & Reel Session</span>
-                                <span class="text-[11px] text-gray-400">4 Hours • Standard Package</span>
+                                <span id="summaryCategory" class="text-[10px] font-bold uppercase tracking-widest text-custom-gray block">Music Video Package</span>
+                                <h3 id="summaryTitle" class="text-base font-black text-custom-light uppercase">CINEMATIC NARRATIVE III</h3>
                             </div>
+                            <span id="summaryPrice" class="text-base font-black text-custom-light font-mono">$3,500</span>
                         </div>
 
-                        <div class="space-y-2 text-xs pt-2">
-                            <div class="flex justify-between text-gray-400">
-                                <span>Total Production Estimate:</span>
-                                <span class="font-bold text-white">$600.00</span>
+                        <div class="text-xs text-custom-gray space-y-1 pt-1 border-t border-white/10">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="video" class="w-3.5 h-3.5 text-custom-light"></i>
+                                <span id="summaryGear">RED Komodo 6K + Cinema Anamorphic Lens Suite</span>
                             </div>
-                            <div class="flex justify-between text-gray-400">
-                                <span>Retainer Due Now (25%):</span>
-                                <span class="font-bold text-amber-400">$150.00</span>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="clock" class="w-3.5 h-3.5 text-custom-light"></i>
+                                <span>Full Day Coverage (10 Hours Crew Production)</span>
                             </div>
-                            <div class="flex justify-between text-gray-400">
-                                <span>Remaining Balance at Shoot:</span>
-                                <span class="font-bold text-white">$450.00</span>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-custom-light"></i>
+                                <span>Includes Master Color Grade + 4K Edit</span>
                             </div>
-                        </div>
-
-                        <div class="border-t border-white/10 pt-4 flex justify-between items-baseline">
-                            <span class="text-sm font-bold">Charge Amount Today:</span>
-                            <span class="text-2xl font-bold font-display gold-gradient-text">$150.00</span>
                         </div>
                     </div>
 
-                    <!-- GUARANTEE BADGES -->
-                    <div class="space-y-3 pt-2 text-xs text-gray-400 border-t border-white/10">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-                            <span>Date held instantly upon confirmation</span>
+                    <!-- Payment Mode Switch Toggle (25% Deposit vs Full Payment) -->
+                    <div class="space-y-3">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-custom-gray">Select Payment Option</label>
+                        <div class="grid grid-cols-2 gap-2 p-1.5 rounded-xl bg-white/5 border border-custom-glow">
+                            <button type="button" id="payDepositOption" onclick="setPaymentOption('deposit')" class="py-2.5 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-white text-black shadow-md">
+                                25% Deposit ($875)
+                            </button>
+                            <button type="button" id="payFullOption" onclick="setPaymentOption('full')" class="py-2.5 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all text-custom-gray hover:text-custom-light">
+                                Pay Full ($3,500)
+                            </button>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="shield" class="w-4 h-4 text-amber-400 flex-shrink-0"></i>
-                            <span>Full refund if cancelled within 24h</span>
+                    </div>
+
+                    <!-- Cost Breakdown List -->
+                    <div class="space-y-2.5 text-xs border-t border-custom-glow pt-4">
+                        <div class="flex justify-between text-custom-gray">
+                            <span>Production Base Package:</span>
+                            <span id="breakdownBase" class="font-mono text-custom-light">$3,500.00</span>
+                        </div>
+                        <div class="flex justify-between text-custom-gray">
+                            <span>Permit & Location Insurance:</span>
+                            <span class="font-mono text-custom-light">$0.00 (Included)</span>
+                        </div>
+                        <div class="flex justify-between text-custom-gray">
+                            <span>Local Sales Tax (Estimated 0%):</span>
+                            <span class="font-mono text-custom-light">$0.00</span>
+                        </div>
+
+                        <div class="border-t border-custom-glow pt-3 flex justify-between items-baseline">
+                            <div>
+                                <span class="text-sm font-black text-custom-light uppercase tracking-tight block">Due Now</span>
+                                <span id="dueNowLabel" class="text-[10px] text-custom-gray">(25% Non-Refundable Booking Retainer)</span>
+                            </div>
+                            <span id="breakdownTotal" class="text-xl font-black text-custom-light font-mono">$875.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Quality Guarantees Badges -->
+                    <div class="space-y-2 pt-2">
+                        <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 text-xs text-custom-gray">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-white flex-shrink-0"></i>
+                            <span>Date reservation locked immediately upon authorization.</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 text-xs text-custom-gray">
+                            <i data-lucide="award" class="w-5 h-5 text-white flex-shrink-0"></i>
+                            <span>100% On-Time Cinema Master Delivery Guarantee.</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SUCCESS RECEIPT MODAL (Hidden by Default) -->
+        <div id="successReceiptModal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-2xl z-50 flex items-center justify-center p-4 overflow-y-auto">
+            <div class="glass-card max-w-xl w-full rounded-2xl p-6 sm:p-8 space-y-6 my-auto relative border border-white/30 shadow-2xl text-center">
+                
+                <div class="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center mx-auto shadow-2xl">
+                    <i data-lucide="check" class="w-8 h-8 text-black stroke-[3]"></i>
+                </div>
+
+                <div class="space-y-2">
+                    <span class="px-3 py-1 rounded-full bg-white/10 text-white text-[10px] font-bold uppercase tracking-widest border border-white/20">
+                        Transaction Verified & Confirmed
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-custom-light uppercase tracking-tight">PRODUCTION BOOKED</h2>
+                    <p class="text-xs text-custom-gray">Your payment receipt and creative brief confirmation have been dispatched to your email.</p>
+                </div>
+
+                <!-- Printable Receipt Box -->
+                <div class="p-5 rounded-xl bg-white/5 border border-custom-glow text-left space-y-3 font-mono text-xs">
+                    <div class="flex justify-between pb-2 border-b border-white/10 text-[11px] text-custom-gray">
+                        <span>Receipt ID: <strong id="receiptTxId" class="text-white">TX-99384102</strong></span>
+                        <span id="receiptDate">SEP 21, 2026</span>
+                    </div>
+
+                    <div class="space-y-1.5 pt-1">
+                        <div class="flex justify-between">
+                            <span class="text-custom-gray">Client Name:</span>
+                            <span id="receiptClientName" class="text-white font-bold">MARCUS VANCE</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-custom-gray">Package Selected:</span>
+                            <span id="receiptPackage" class="text-white font-bold">CINEMATIC NARRATIVE III</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-custom-gray">Amount Charged:</span>
+                            <span id="receiptAmount" class="text-white font-bold">$875.00 USD</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-custom-gray">Payment Method:</span>
+                            <span id="receiptMethod" class="text-white font-bold">VISA Ending in 3302</span>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button onclick="window.print()" class="w-full py-3 rounded-xl btn-secondary text-xs uppercase font-bold tracking-wider flex items-center justify-center gap-2">
+                        <i data-lucide="printer" class="w-4 h-4"></i> Print Official Receipt
+                    </button>
+                    <a href="index.html" class="w-full py-3 rounded-xl btn-primary text-xs uppercase font-black tracking-widest flex items-center justify-center gap-2">
+                        Return to Homepage
+                    </a>
+                </div>
+
+            </div>
         </div>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="glass-panel border-t border-white/10 mt-20 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-            <div class="flex items-center gap-2">
-                <span class="font-bold text-white gold-gradient-text">TIMZ VISUALS</span>
-                <span>• Secure Checkout Terminal</span>
+    <!-- Saved Mood Board References Drawer -->
+    <div id="bookmarksDrawer" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden flex justify-end">
+        <div class="glass-card max-w-md w-full h-full p-6 space-y-6 flex flex-col justify-between overflow-y-auto">
+            
+            <div class="space-y-4">
+                <div class="flex items-center justify-between border-b border-custom-glow pb-4">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="bookmark" class="w-4 h-4 text-custom-light"></i>
+                        <h3 class="text-lg font-black text-custom-light uppercase tracking-tight">Saved Visual References</h3>
+                    </div>
+                    <button id="closeBookmarksDrawer" class="text-custom-gray hover:text-custom-light text-lg">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <p class="text-xs text-custom-gray">
+                    Your saved creative visual references tied to this booking session.
+                </p>
+
+                <!-- Bookmarked Items List Container -->
+                <div id="bookmarksList" class="space-y-3 max-h-[55vh] overflow-y-auto pr-1">
+                    <!-- Dynamic Saved Items -->
+                </div>
+            </div>
+
+            <!-- Drawer Bottom CTA -->
+            <div class="space-y-3 pt-4 border-t border-custom-glow">
+                <button id="clearBookmarksBtn" class="w-full py-2 text-center text-[11px] text-custom-gray hover:text-custom-light uppercase transition-colors">
+                    Clear Saved References
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
+            <div class="flex items-center gap-3">
+                <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
+                <span class="font-bold text-custom-light uppercase tracking-wider">TIMZ VISUALS</span>
             </div>
             <p>© 2026 TIMZ VISUALS. All rights reserved.</p>
+            <div class="flex space-x-4 text-sm">
+                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT & THEME SYNCHRONIZATION -->
     <script>
+        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // 1. GLOBAL LOCALSTORAGE THEME SYNCHRONIZATION
-        function initTheme() {
-            const savedTheme = localStorage.getItem('timz_theme') || 'dark';
-            applyTheme(savedTheme);
-        }
+        // --- Application State ---
+        let currentPaymentMode = 'deposit'; // 'deposit' or 'full'
+        let basePackagePrice = 3500;
+        let depositRate = 0.25;
+        let savedBookmarks = JSON.parse(localStorage.getItem('timz_saved_projects') || '[]');
+
+        // --- Theme & Aesthetics Handler ---
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const glassToggleBtn = document.getElementById('glassToggleBtn');
+        const glassIcon = document.getElementById('glassIcon');
+        const glassLabel = document.getElementById('glassLabel');
+        
+        const savedTheme = localStorage.getItem('timz_theme') || 
+            (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        const savedGlassMode = localStorage.getItem('timz_glass') || 'frosted';
 
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('timz_theme', theme);
-
-            const sunIcon = document.getElementById('themeSunIcon');
-            const moonIcon = document.getElementById('themeMoonIcon');
-
             if (theme === 'light') {
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
+                themeIcon.className = 'fa-solid fa-moon text-sm';
             } else {
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
+                themeIcon.className = 'fa-solid fa-sun text-sm';
             }
+            localStorage.setItem('timz_theme', theme);
         }
 
-        function toggleTheme() {
+        function applyGlassMode(mode) {
+            document.documentElement.setAttribute('data-glass', mode);
+            if (mode === 'frosted') {
+                if (glassIcon) glassIcon.setAttribute('data-lucide', 'sparkles');
+                if (glassLabel) glassLabel.textContent = 'Glass: Max';
+            } else {
+                if (glassIcon) glassIcon.setAttribute('data-lucide', 'layout-grid');
+                if (glassLabel) glassLabel.textContent = 'Glass: Solid';
+            }
+            lucide.createIcons();
+            localStorage.setItem('timz_glass', mode);
+        }
+
+        applyTheme(savedTheme);
+        applyGlassMode(savedGlassMode);
+
+        themeToggleBtn?.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        glassToggleBtn?.addEventListener('click', () => {
+            const currentGlass = document.documentElement.getAttribute('data-glass') || 'solid';
+            applyGlassMode(currentGlass === 'frosted' ? 'solid' : 'frosted');
+        });
+
+        // Mobile Menu Navigation
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuIcon.className = isOpen ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
+            });
         }
 
-        window.addEventListener('storage', (event) => {
-            if (event.key === 'timz_theme' && event.newValue) {
-                applyTheme(event.newValue);
+        // --- Interactive Payment Amount & Option Calculation ---
+        function setPaymentOption(mode) {
+            currentPaymentMode = mode;
+            const payDepositBtn = document.getElementById('payDepositOption');
+            const payFullBtn = document.getElementById('payFullOption');
+            const breakdownTotal = document.getElementById('breakdownTotal');
+            const dueNowLabel = document.getElementById('dueNowLabel');
+            const payBtnAmount = document.getElementById('payBtnAmount');
+
+            if (mode === 'deposit') {
+                payDepositBtn.className = "py-2.5 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-white text-black shadow-md";
+                payFullBtn.className = "py-2.5 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all text-custom-gray hover:text-custom-light";
+                
+                const amount = basePackagePrice * depositRate;
+                breakdownTotal.textContent = `$${amount.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+                dueNowLabel.textContent = "(25% Non-Refundable Booking Retainer)";
+                payBtnAmount.textContent = `$${amount.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            } else {
+                payFullBtn.className = "py-2.5 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all bg-white text-black shadow-md";
+                payDepositBtn.className = "py-2.5 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all text-custom-gray hover:text-custom-light";
+                
+                breakdownTotal.textContent = `$${basePackagePrice.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+                dueNowLabel.textContent = "(Full Session Payment)";
+                payBtnAmount.textContent = `$${basePackagePrice.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+            }
+        }
+
+        // --- Live Credit Card Interactive Bindings & Flip Logic ---
+        const interactiveCreditCard = document.getElementById('interactiveCreditCard');
+        const cardNameInput = document.getElementById('cardNameInput');
+        const cardNumberInput = document.getElementById('cardNumberInput');
+        const cardExpiryInput = document.getElementById('cardExpiryInput');
+        const cardCvcInput = document.getElementById('cardCvcInput');
+
+        const cardPreviewName = document.getElementById('cardPreviewName');
+        const cardPreviewNumber = document.getElementById('cardPreviewNumber');
+        const cardPreviewExpiry = document.getElementById('cardPreviewExpiry');
+        const cardPreviewCvc = document.getElementById('cardPreviewCvc');
+        const cardVendorLogo = document.getElementById('cardVendorLogo');
+
+        // Name Binding
+        cardNameInput.addEventListener('input', (e) => {
+            cardPreviewName.textContent = e.target.value.trim().toUpperCase() || 'YOUR NAME HERE';
+        });
+
+        // Card Number Formatting & Vendor Detection
+        cardNumberInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.substring(0, 16);
+            
+            // Format with spaces
+            const formatted = value.match(/.{1,4}/g)?.join(' ') || '';
+            e.target.value = formatted;
+            cardPreviewNumber.textContent = formatted || '•••• •••• •••• ••••';
+
+            // Vendor Detection
+            if (value.startsWith('4')) {
+                cardVendorLogo.textContent = 'VISA';
+            } else if (value.startsWith('5')) {
+                cardVendorLogo.textContent = 'MASTERCARD';
+            } else if (value.startsWith('3')) {
+                cardVendorLogo.textContent = 'AMEX';
+            } else {
+                cardVendorLogo.textContent = 'VISA';
             }
         });
 
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        }
-
-        // 2. CARD PREVIEW UPDATER
-        function updateCardPreview() {
-            const name = document.getElementById('cardHolderName').value;
-            const num = document.getElementById('cardNumber').value;
-            const exp = document.getElementById('cardExp').value;
-
-            document.getElementById('cardDisplayName').textContent = name.trim() !== '' ? name.toUpperCase() : 'VALUED CLIENT';
-            document.getElementById('cardDisplayNum').textContent = num.trim() !== '' ? num : '•••• •••• •••• 4242';
-            document.getElementById('cardDisplayExp').textContent = exp.trim() !== '' ? exp : '12/28';
-        }
-
-        // 3. PAYMENT PROCESSING SIMULATION
-        function processPayment(methodName) {
-            const btn = document.getElementById('payButton');
-            btn.disabled = true;
-            btn.innerHTML = `<span class="animate-spin rounded-full h-4 w-4 border-2 border-black border-t-transparent"></span> Processing ${methodName}...`;
-
-            setTimeout(() => {
-                document.getElementById('checkoutGrid').classList.add('hidden');
-                document.getElementById('successCard').classList.remove('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 1500);
-        }
-
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            processPayment('Credit Card');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
+        // Expiry Date Formatting
+        cardExpiryInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value.substring(0, 5);
+            cardPreviewExpiry.textContent = e.target.value || 'MM/YY';
         });
+
+        // CVC Binding & Auto-Flip on Focus
+        cardCvcInput.addEventListener('focus', () => {
+            interactiveCreditCard.classList.add('is-flipped');
+        });
+        cardCvcInput.addEventListener('blur', () => {
+            interactiveCreditCard.classList.remove('is-flipped');
+        });
+        cardCvcInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '').substring(0, 4);
+            e.target.value = value;
+            cardPreviewCvc.textContent = value || '•••';
+        });
+
+        // --- Payment Processing Simulation ---
+        function handlePaymentSubmit(event) {
+            event.preventDefault();
+
+            const payButton = document.getElementById('payButton');
+            const payBtnText = document.getElementById('payBtnText');
+            const payBtnIcon = document.getElementById('payBtnIcon');
+            const paySpinner = document.getElementById('paySpinner');
+
+            // Disable button and show spinner
+            payButton.disabled = true;
+            payBtnText.textContent = "Processing Transaction...";
+            payBtnIcon.classList.add('hidden');
+            paySpinner.classList.remove('hidden');
+
+            // Simulate server transaction latency (2 seconds)
+            setTimeout(() => {
+                payButton.disabled = false;
+                payBtnText.innerHTML = `Authorize & Pay <span id="payBtnAmount">${document.getElementById('breakdownTotal').textContent}</span>`;
+                payBtnIcon.classList.remove('hidden');
+                paySpinner.classList.add('hidden');
+
+                // Populate Receipt Modal Details
+                document.getElementById('receiptClientName').textContent = cardNameInput.value.trim().toUpperCase() || 'CLIENT';
+                document.getElementById('receiptAmount').textContent = `${document.getElementById('breakdownTotal').textContent} USD`;
+                
+                const last4 = cardNumberInput.value.slice(-4) || '3302';
+                document.getElementById('receiptMethod').textContent = `${cardVendorLogo.textContent} Ending in ${last4}`;
+                
+                // Show Success Receipt Modal
+                document.getElementById('successReceiptModal').classList.remove('hidden');
+            }, 2000);
+        }
+
+        // Express Payment Trigger Simulation
+        function triggerExpressPayment(provider) {
+            const total = document.getElementById('breakdownTotal').textContent;
+            if (confirm(`Authorize instant checkout using ${provider} for ${total}?`)) {
+                document.getElementById('receiptClientName').textContent = `${provider.toUpperCase()} USER`;
+                document.getElementById('receiptAmount').textContent = `${total} USD`;
+                document.getElementById('receiptMethod').textContent = provider;
+                document.getElementById('successReceiptModal').classList.remove('hidden');
+            }
+        }
+
+        // --- Saved References Drawer UI ---
+        const savedBadgeCount = document.getElementById('savedBadgeCount');
+        const bookmarksDrawer = document.getElementById('bookmarksDrawer');
+        const bookmarksList = document.getElementById('bookmarksList');
+        const openBookmarksBtn = document.getElementById('openBookmarksBtn');
+        const closeBookmarksDrawer = document.getElementById('closeBookmarksDrawer');
+        const clearBookmarksBtn = document.getElementById('clearBookmarksBtn');
+
+        function updateBookmarksUI() {
+            if (savedBadgeCount) savedBadgeCount.textContent = savedBookmarks.length;
+
+            if (bookmarksList) {
+                if (savedBookmarks.length === 0) {
+                    bookmarksList.innerHTML = `
+                        <div class="text-center py-10 text-custom-gray text-xs">
+                            <i data-lucide="bookmark" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
+                            No saved references found.
+                        </div>
+                    `;
+                    lucide.createIcons();
+                } else {
+                    bookmarksList.innerHTML = savedBookmarks.map((id, index) => `
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-custom-glow text-xs">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="image" class="w-4 h-4 text-white"></i>
+                                <span class="font-bold text-white uppercase">Reference Ref #${id}</span>
+                            </div>
+                            <span class="text-[10px] text-custom-gray">Saved</span>
+                        </div>
+                    `).join('');
+                    lucide.createIcons();
+                }
+            }
+        }
+
+        if (openBookmarksBtn) openBookmarksBtn.addEventListener('click', () => bookmarksDrawer.classList.remove('hidden'));
+        if (closeBookmarksDrawer) closeBookmarksDrawer.addEventListener('click', () => bookmarksDrawer.classList.add('hidden'));
+
+        if (clearBookmarksBtn) {
+            clearBookmarksBtn.addEventListener('click', () => {
+                savedBookmarks = [];
+                localStorage.setItem('timz_saved_projects', JSON.stringify(savedBookmarks));
+                updateBookmarksUI();
+            });
+        }
+
+        // Initialize Bookmarks
+        updateBookmarksUI();
     </script>
 </body>
 </html>
