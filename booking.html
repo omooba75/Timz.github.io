@@ -1,486 +1,435 @@
-<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMZ VISUALS - Book a Session</title>
+    <title>Reserve Date & Production - TIMZ VISUALS</title>
+    
+    <!-- Google Fonts & Lucide Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: ['class', '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            amber: '#FFBF00',
+                            bronze: '#AA7C11',
+                            darkBg: '#090A0F',
+                            cardDark: 'rgba(18, 20, 29, 0.7)',
+                            lightBg: '#F8FAF9',
+                            cardLight: 'rgba(255, 255, 255, 0.85)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 30px -5px rgba(212, 175, 55, 0.3)',
+                        'glow-lg': '0 0 50px -10px rgba(212, 175, 55, 0.45)',
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
         :root {
-            /* Default Dark Mode Theme Variables */
-            --bg-color: #08080a;
-            --card-bg: rgba(18, 19, 24, 0.75);
-            --card-border: rgba(255, 255, 255, 0.15);
-            --text-color: #ffffff;
-            --text-muted: #a0a0a0;
-            --border-color: rgba(255, 255, 255, 0.2);
-            --nav-bg: rgba(8, 8, 10, 0.85);
-            --input-bg: rgba(255, 255, 255, 0.05);
-            --btn-primary-bg: #ffffff;
-            --btn-primary-text: #08080a;
-            --btn-sec-border: #ffffff;
-            --btn-sec-text: #ffffff;
-            --btn-sec-bg: rgba(255, 255, 255, 0.05);
-            --logo-filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-            --badge-bg: rgba(255, 255, 255, 0.1);
+            --bg-primary: #090A0F;
+            --bg-secondary: #12141D;
+            --bg-glass: rgba(18, 20, 29, 0.75);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --accent-gold: #D4AF37;
+            --accent-glow: rgba(212, 175, 55, 0.25);
+            --card-hover: rgba(255, 255, 255, 0.05);
         }
 
-        /* Light Mode Variables Override */
-        [data-theme="light"] {
-            --bg-color: #f4f5f7;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(0, 0, 0, 0.1);
-            --text-color: #0d0d11;
-            --text-muted: #555560;
-            --border-color: rgba(0, 0, 0, 0.12);
-            --nav-bg: rgba(244, 245, 247, 0.85);
-            --input-bg: rgba(0, 0, 0, 0.03);
-            --btn-primary-bg: #0d0d11;
-            --btn-primary-text: #ffffff;
-            --btn-sec-border: #0d0d11;
-            --btn-sec-text: #0d0d11;
-            --btn-sec-bg: rgba(0, 0, 0, 0.05);
-            --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
-            --badge-bg: rgba(0, 0, 0, 0.06);
-        }
-
-        * {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+        html[data-theme="light"] {
+            --bg-primary: #F4F6F8;
+            --bg-secondary: #FFFFFF;
+            --bg-glass: rgba(255, 255, 255, 0.85);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --text-main: #111827;
+            --text-muted: #4B5563;
+            --accent-gold: #B8860B;
+            --accent-glow: rgba(184, 134, 11, 0.15);
+            --card-hover: rgba(0, 0, 0, 0.03);
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease;
             overflow-x: hidden;
         }
 
-        .bg-custom-card { background-color: var(--card-bg); }
-        .text-custom-light { color: var(--text-color); }
-        .text-custom-gray { color: var(--text-muted); }
-        .border-custom-glow { border-color: var(--border-color); }
-        .bg-nav-custom { background-color: var(--nav-bg); }
-
-        .brand-logo-img {
-            filter: var(--logo-filter);
-        }
-
-        .glass-card {
-            background-color: var(--card-bg);
+        .glass-panel {
+            background: var(--bg-glass);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--card-border);
-        }
-
-        .btn-primary {
-            background-color: var(--btn-primary-bg);
-            color: var(--btn-primary-text);
-            font-weight: 700;
-        }
-        .btn-primary:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .form-input {
-            background-color: var(--input-bg);
             border: 1px solid var(--border-color);
-            color: var(--text-color);
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--text-color);
         }
 
-        /* Package Option Card Radio Custom Styling */
-        .package-option {
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid var(--border-color);
-            background-color: var(--input-bg);
-        }
-        .package-option.selected {
-            border-color: var(--text-color);
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
-        }
-        [data-theme="light"] .package-option.selected {
-            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B3 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Custom Scrollbar */
+        html[data-theme="light"] .gold-gradient-text {
+            background: linear-gradient(135deg, #8A6400 0%, #B8860B 50%, #5E4300 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-color);
+            background: var(--bg-primary);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
+            background: rgba(212, 175, 55, 0.3);
             border-radius: 4px;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between selection:bg-yellow-500/30 selection:text-amber-300">
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="bg-gradient-to-r from-amber-900/60 via-amber-600/40 to-yellow-900/60 border-b border-amber-500/20 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>Instant Calendar Lock & Retainer Reservation Active</span>
+    </div>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- Brand / Logo -->
+            <!-- LOGO (UNTOUCHED BRAND LOGO) -->
             <a href="index.html" class="flex items-center gap-3 group">
-                <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-8 w-auto brand-logo-img transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/150x50/000000/ffffff?text=TIMZ+VISUALS';">
-                <span class="text-xl font-black tracking-widest text-custom-light uppercase">TIMZ <span class="font-light text-custom-gray">VISUALS</span></span>
+                <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-700 p-[1.5px] shadow-glow transition-transform group-hover:scale-105">
+                    <div class="w-full h-full bg-black rounded-[10px] flex items-center justify-center font-display font-black text-xl text-amber-400 tracking-tighter">
+                        TZ
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-extrabold text-xl tracking-wider gold-gradient-text uppercase">TIMZ VISUALS</span>
+                    <span class="text-[10px] tracking-[0.25em] text-gray-400 font-semibold uppercase -mt-1">Studio & Production</span>
+                </div>
             </a>
 
-            <!-- Desktop Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="index.html" class="text-custom-gray hover:text-custom-light transition-colors">Home</a>
-                <a href="work.html" class="text-custom-gray hover:text-custom-light transition-colors">Work</a>
-                <a href="pricing.html" class="text-custom-gray hover:text-custom-light transition-colors">Pricing</a>
-                <a href="booking.html" class="text-custom-light transition-colors font-semibold border-b-2 border-custom-glow pb-1">Booking</a>
-                <a href="payment.html" class="text-custom-gray hover:text-custom-light transition-colors">Payment</a>
+            <!-- NAV LINKS -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="index.html" class="hover:text-amber-400 transition-colors py-1">Home</a>
+                <a href="work.html" class="hover:text-amber-400 transition-colors py-1">Portfolio & Work</a>
+                <a href="pricing.html" class="hover:text-amber-400 transition-colors py-1">Pricing & Packages</a>
+                <a href="booking.html" class="text-amber-400 font-semibold py-1">Reserve Date</a>
             </nav>
 
-            <!-- Actions -->
+            <!-- CONTROLS -->
             <div class="flex items-center gap-4">
-                <!-- Theme Switcher Toggle -->
-                <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-full border border-custom-glow hover:bg-neutral-800/20 text-custom-light transition-all flex items-center justify-center w-10 h-10">
-                    <i id="themeIcon" class="fa-solid fa-sun text-sm"></i>
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-full border border-white/10 hover:border-amber-400/50 bg-white/5 hover:bg-white/10 transition-all text-amber-400" title="Toggle Theme">
+                    <i data-lucide="sun" id="themeSunIcon" class="w-5 h-5 hidden"></i>
+                    <i data-lucide="moon" id="themeMoonIcon" class="w-5 h-5"></i>
                 </button>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Mobile Menu">
-                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg border border-white/10 text-gray-300 hover:text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden bg-custom-card border-b border-custom-glow px-6 py-6 space-y-4">
-            <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
-            <a href="work.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Work</a>
-            <a href="pricing.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Pricing</a>
-            <a href="booking.html" class="block text-base font-bold text-custom-light">Booking</a>
-            <a href="payment.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Payment</a>
+        <!-- MOBILE NAV -->
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-white/10 px-6 py-6 space-y-4">
+            <a href="index.html" class="block py-2 font-medium hover:text-amber-400">Home</a>
+            <a href="work.html" class="block py-2 font-medium hover:text-amber-400">Portfolio & Work</a>
+            <a href="pricing.html" class="block py-2 font-medium hover:text-amber-400">Pricing & Packages</a>
+            <a href="booking.html" class="block py-2 font-semibold text-amber-400">Reserve Date</a>
         </div>
     </header>
 
-    <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-grow">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card">
-                Reservation & Inquiry
-            </span>
-            <h1 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight mb-4">
-                RESERVE YOUR PRODUCTION
-            </h1>
-            <p class="text-custom-gray text-sm sm:text-base">
-                Select your desired visual production package, schedule a date, and secure your session instantly.
-            </p>
+    <!-- BOOKING CONTAINER -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 py-12 w-full">
+        
+        <!-- HEADER TITLE & COVER IMAGE -->
+        <div class="relative rounded-3xl overflow-hidden mb-12 glass-panel border border-white/10 p-8 sm:p-12">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=1600" alt="Booking Studio Cover" class="absolute inset-0 w-full h-full object-cover opacity-20 filter brightness-50">
+            <div class="relative z-10 max-w-2xl">
+                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">Step 1 of 2 • Slot Selection</span>
+                <h1 class="text-3xl sm:text-5xl font-display font-extrabold mt-4">Reserve Your Shoot</h1>
+                <p class="text-gray-300 mt-3 text-sm sm:text-base leading-relaxed">Customize your production scope below. Our dynamic engine will calculate real-time estimates and hold your session slot upon deposit.</p>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- INTERACTIVE BOOKING FORM -->
+        <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- Booking Form Column -->
-            <form id="bookingForm" class="lg:col-span-8 glass-card rounded-2xl p-6 sm:p-8 space-y-8">
+            <!-- LEFT INPUT CONFIGURATIONS (2 COLUMNS) -->
+            <div class="lg:col-span-2 space-y-6">
                 
-                <!-- Step 1: Select Service Package with Budget-Friendly Pricing -->
-                <div>
-                    <h2 class="text-lg font-bold text-custom-light uppercase tracking-wider mb-4 flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-neutral-500/20 text-xs flex items-center justify-center">1</span> 
-                        Choose Production Package
-                    </h2>
+                <!-- 1. SERVICE CATEGORY -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-4">1. Choose Visual Service Discipline</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        
+                        <label class="cursor-pointer">
+                            <input type="radio" name="serviceType" value="photo" class="peer hidden" checked onchange="recalculateBooking()">
+                            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 peer-checked:border-amber-400 peer-checked:bg-amber-500/10 transition-all text-center group">
+                                <i data-lucide="camera" class="w-7 h-7 mx-auto mb-2 text-amber-400 group-hover:scale-110 transition-transform"></i>
+                                <div class="font-bold text-sm">Photography</div>
+                                <div class="text-[11px] text-gray-400 mt-1">Portrait / Lookbook</div>
+                            </div>
+                        </label>
+
+                        <label class="cursor-pointer">
+                            <input type="radio" name="serviceType" value="video" class="peer hidden" onchange="recalculateBooking()">
+                            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 peer-checked:border-amber-400 peer-checked:bg-amber-500/10 transition-all text-center group">
+                                <i data-lucide="video" class="w-7 h-7 mx-auto mb-2 text-amber-400 group-hover:scale-110 transition-transform"></i>
+                                <div class="font-bold text-sm">Cinematography</div>
+                                <div class="text-[11px] text-gray-400 mt-1">4K/8K Film & Reel</div>
+                            </div>
+                        </label>
+
+                        <label class="cursor-pointer">
+                            <input type="radio" name="serviceType" value="full" class="peer hidden" onchange="recalculateBooking()">
+                            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 peer-checked:border-amber-400 peer-checked:bg-amber-500/10 transition-all text-center group">
+                                <i data-lucide="clapperboard" class="w-7 h-7 mx-auto mb-2 text-amber-400 group-hover:scale-110 transition-transform"></i>
+                                <div class="font-bold text-sm">Full Hybrid</div>
+                                <div class="text-[11px] text-gray-400 mt-1">Photo + Cinema Team</div>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+
+                <!-- 2. DATE & DURATION -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">Target Date</label>
+                        <div class="relative">
+                            <input type="date" id="shootDate" required class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">Duration / Coverage Hours</label>
+                        <select id="shootHours" onchange="recalculateBooking()" class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
+                            <option value="2">2 Hours (Quick Session)</option>
+                            <option value="4" selected>4 Hours (Half-Day Standard)</option>
+                            <option value="8">8 Hours (Full-Day Production)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 3. ADD-ON UPGRADES -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-1">Production Enhancements & Add-Ons</label>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="packageContainer">
-                        <!-- Package Option 1 - Essential ($100 / $20 Deposit) -->
-                        <label class="package-option rounded-xl p-4 flex flex-col justify-between transition-all relative">
-                            <input type="radio" name="package" value="essential" class="sr-only" data-price="100" data-deposit="20" data-title="Essential Visuals">
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer border border-white/5 transition-all">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="addonDrone" onchange="recalculateBooking()" class="w-5 h-5 text-amber-400 rounded focus:ring-amber-400 accent-amber-500">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-custom-gray block">Basic</span>
-                                <h3 class="text-lg font-bold text-custom-light mt-1">Essential</h3>
-                                <p class="text-xs text-custom-gray mt-2">1-2 Hr Shoot, 5 Retouched Edits, 1 Location.</p>
+                                <span class="text-sm font-semibold block">4K Aerial Drone Operator</span>
+                                <span class="text-xs text-gray-400">Licensed FPV & Cinema Drone Capture</span>
                             </div>
-                            <div class="mt-6 pt-3 border-t border-custom-glow flex items-baseline justify-between">
-                                <span class="text-xl font-black text-custom-light">$100</span>
-                                <span class="text-xs text-emerald-400 font-semibold">$20 Deposit</span>
-                            </div>
-                        </label>
+                        </div>
+                        <span class="text-xs font-bold text-amber-400">+$250</span>
+                    </label>
 
-                        <!-- Package Option 2 - Cinematic ($220 / $20 Deposit) -->
-                        <label class="package-option selected rounded-xl p-4 flex flex-col justify-between transition-all relative">
-                            <input type="radio" name="package" value="cinematic" class="sr-only" data-price="220" data-deposit="20" data-title="Cinematic Narrative" checked>
-                            <span class="absolute top-2 right-2 px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">Popular</span>
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer border border-white/5 transition-all">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="addonStudio" onchange="recalculateBooking()" class="w-5 h-5 text-amber-400 rounded focus:ring-amber-400 accent-amber-500">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-custom-gray block">Standard</span>
-                                <h3 class="text-lg font-bold text-custom-light mt-1">Cinematic</h3>
-                                <p class="text-xs text-custom-gray mt-2">Half-Day Shoot, 4K Video Edit, Drone Shots, 15 Edits.</p>
+                                <span class="text-sm font-semibold block">Studio Space Rental Pass</span>
+                                <span class="text-xs text-gray-400">Cyclorama Wall & Lighting Rig Included</span>
                             </div>
-                            <div class="mt-6 pt-3 border-t border-custom-glow flex items-baseline justify-between">
-                                <span class="text-xl font-black text-custom-light">$220</span>
-                                <span class="text-xs text-emerald-400 font-semibold">$20 Deposit</span>
-                            </div>
-                        </label>
+                        </div>
+                        <span class="text-xs font-bold text-amber-400">+$300</span>
+                    </label>
 
-                        <!-- Package Option 3 - Enterprise ($450 / $20 Deposit) -->
-                        <label class="package-option rounded-xl p-4 flex flex-col justify-between transition-all relative">
-                            <input type="radio" name="package" value="enterprise" class="sr-only" data-price="450" data-deposit="20" data-title="Full Commercial Campaign">
+                    <label class="flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer border border-white/5 transition-all">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="addonFast" onchange="recalculateBooking()" class="w-5 h-5 text-amber-400 rounded focus:ring-amber-400 accent-amber-500">
                             <div>
-                                <span class="text-xs font-bold uppercase tracking-wider text-custom-gray block">Full Commercial</span>
-                                <h3 class="text-lg font-bold text-custom-light mt-1">Enterprise</h3>
-                                <p class="text-xs text-custom-gray mt-2">Full Day Crew, Full Commercial Direction, Master Edits.</p>
+                                <span class="text-sm font-semibold block">24-Hour Express Turnaround</span>
+                                <span class="text-xs text-gray-400">Rush Delivery for Social Reels or PR</span>
                             </div>
-                            <div class="mt-6 pt-3 border-t border-custom-glow flex items-baseline justify-between">
-                                <span class="text-xl font-black text-custom-light">$450</span>
-                                <span class="text-xs text-emerald-400 font-semibold">$20 Deposit</span>
-                            </div>
-                        </label>
-                    </div>
+                        </div>
+                        <span class="text-xs font-bold text-amber-400">+$200</span>
+                    </label>
                 </div>
 
-                <!-- Step 2: Date & Schedule Details -->
-                <div>
-                    <h2 class="text-lg font-bold text-custom-light uppercase tracking-wider mb-4 flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-neutral-500/20 text-xs flex items-center justify-center">2</span> 
-                        Schedule & Location
-                    </h2>
+                <!-- 4. CONTACT & PROJECT BRIEF -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400">Client Details</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label for="eventDate" class="block text-xs font-semibold uppercase tracking-wider text-custom-gray mb-1">Preferred Date *</label>
-                            <input type="date" id="eventDate" required class="w-full rounded-xl px-4 py-3 text-sm form-input">
-                        </div>
-                        <div>
-                            <label for="eventTime" class="block text-xs font-semibold uppercase tracking-wider text-custom-gray mb-1">Preferred Start Time *</label>
-                            <select id="eventTime" required class="w-full rounded-xl px-4 py-3 text-sm form-input">
-                                <option value="" disabled selected>Select start time</option>
-                                <option value="09:00 AM">09:00 AM</option>
-                                <option value="01:00 PM">01:00 PM</option>
-                                <option value="05:00 PM">05:00 PM (Golden Hour)</option>
-                            </select>
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="location" class="block text-xs font-semibold uppercase tracking-wider text-custom-gray mb-1">Shoot Location / City *</label>
-                            <input type="text" id="location" placeholder="e.g. Studio Downtown, Los Angeles, CA" required class="w-full rounded-xl px-4 py-3 text-sm form-input">
-                        </div>
+                        <input type="text" id="clientName" placeholder="Your Full Name" required class="bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
+                        <input type="email" id="clientEmail" placeholder="Email Address" required class="bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
                     </div>
+                    <textarea id="projectNotes" rows="4" placeholder="Briefly share location details, moodboards, or creative vision..." class="w-full bg-black/40 border border-white/15 rounded-xl p-4 text-sm focus:border-amber-400 focus:outline-none text-white"></textarea>
                 </div>
 
-                <!-- Step 3: Contact Details -->
-                <div>
-                    <h2 class="text-lg font-bold text-custom-light uppercase tracking-wider mb-4 flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-full bg-neutral-500/20 text-xs flex items-center justify-center">3</span> 
-                        Client Contact Information
-                    </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label for="fullName" class="block text-xs font-semibold uppercase tracking-wider text-custom-gray mb-1">Full Name *</label>
-                            <input type="text" id="fullName" placeholder="John Doe" required class="w-full rounded-xl px-4 py-3 text-sm form-input">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-custom-gray mb-1">Email Address *</label>
-                            <input type="email" id="email" placeholder="john@example.com" required class="w-full rounded-xl px-4 py-3 text-sm form-input">
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-custom-gray mb-1">Phone Number *</label>
-                            <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required class="w-full rounded-xl px-4 py-3 text-sm form-input">
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="notes" class="block text-xs font-semibold uppercase tracking-wider text-custom-gray mb-1">Project Brief / Additional Notes</label>
-                            <textarea id="notes" rows="3" placeholder="Tell us about your creative vision, references, or special requests..." class="w-full rounded-xl px-4 py-3 text-sm form-input"></textarea>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
-                <!-- Submit Action Button -->
-                <button type="submit" id="submitBookingBtn" class="w-full py-4 rounded-xl btn-primary uppercase tracking-wider text-sm transition-all shadow-xl flex items-center justify-center gap-2">
-                    <span id="btnText">Pay <span id="btnDepositAmount">$20</span> Deposit & Confirm Reservation</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </button>
-            </form>
-
-            <aside class="lg:col-span-4 glass-card rounded-2xl p-6 sticky top-28 space-y-6">
-                <h3 class="text-base font-bold text-custom-light uppercase tracking-wider border-b border-custom-glow pb-3">
-                    Booking Summary
-                </h3>
-
-                <div class="space-y-4 text-sm">
-                    <div class="flex justify-between items-center">
-                        <span class="text-custom-gray">Package:</span>
-                        <span id="summaryPackage" class="font-bold text-custom-light">Cinematic Narrative</span>
+            <!-- RIGHT SUMMARY & ESTIMATE PANEL -->
+            <div class="lg:col-span-1">
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/30 sticky top-28 space-y-6">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <h3 class="text-lg font-bold font-display uppercase tracking-wide">Estimate Breakdown</h3>
+                        <span class="text-xs px-2.5 py-1 bg-amber-500/20 text-amber-400 font-bold rounded-full border border-amber-500/30">Live Quote</span>
                     </div>
 
-                    <div class="flex justify-between items-center">
-                        <span class="text-custom-gray">Total Package Rate:</span>
-                        <span id="summaryTotal" class="font-bold text-custom-light">$220</span>
+                    <div class="space-y-3.5 text-sm">
+                        <div class="flex justify-between text-gray-400">
+                            <span>Base Hourly Rate:</span>
+                            <span id="summaryBaseRate" class="font-bold text-white">$150/hr</span>
+                        </div>
+                        <div class="flex justify-between text-gray-400">
+                            <span>Selected Hours:</span>
+                            <span id="summaryDuration" class="font-bold text-white">4 Hours</span>
+                        </div>
+                        <div class="flex justify-between text-gray-400">
+                            <span>Upgrades & Add-ons:</span>
+                            <span id="summaryAddons" class="font-bold text-white">$0</span>
+                        </div>
+                        
+                        <div class="border-t border-white/10 pt-4 flex justify-between items-baseline">
+                            <span class="text-base font-bold">Estimated Total:</span>
+                            <span id="summaryTotal" class="text-3xl font-bold font-display gold-gradient-text">$600</span>
+                        </div>
+                        
+                        <div class="bg-white/5 rounded-xl p-3 border border-white/10 text-xs text-gray-300 flex justify-between items-center">
+                            <span>25% Retainer Deposit Required:</span>
+                            <span id="summaryDeposit" class="font-bold text-amber-400">$150.00</span>
+                        </div>
                     </div>
 
-                    <div class="flex justify-between items-center text-emerald-400 font-semibold border-t border-custom-glow pt-3">
-                        <span>Required Deposit:</span>
-                        <span id="summaryDeposit" class="text-lg font-black text-emerald-500">$20</span>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-600 text-black font-extrabold text-center shadow-glow hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                        <span>Lock Date & Pay Retainer</span>
+                    </button>
+
+                    <div class="space-y-2 pt-2">
+                        <p class="text-xs text-gray-400 text-center flex items-center justify-center gap-1.5">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Instant email confirmation upon booking</span>
+                        </p>
+                        <p class="text-[11px] text-gray-500 text-center leading-tight">
+                            Free date rescheduling up to 72 hours prior to shoot.
+                        </p>
                     </div>
                 </div>
+            </div>
 
-                <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 space-y-2 text-xs text-custom-gray">
-                    <p class="flex items-center gap-2 font-semibold text-custom-light">
-                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Flat $20 Retainer Rate
-                    </p>
-                    <p class="text-xs leading-relaxed">Locks in your requested calendar date and credits directly toward your final project balance.</p>
-                </div>
-
-                <div class="pt-2 text-center text-xs text-custom-gray">
-                    Need custom consultation? <a href="mailto:contact@timzvisuals.com" class="text-custom-light underline font-medium">Contact Direct</a>
-                </div>
-            </aside>
-
-        </div>
+        </form>
     </main>
 
-    <div id="modalOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-card max-w-md w-full rounded-2xl p-6 sm:p-8 text-center space-y-5 animate-in fade-in zoom-in duration-300">
-            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-2xl border border-emerald-500/30">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            
-            <h3 class="text-2xl font-black text-custom-light uppercase tracking-tight">Booking Details Saved!</h3>
-            
-            <p class="text-xs sm:text-sm text-custom-gray">
-                Thank you, <span id="modalClientName" class="text-custom-light font-bold"></span>! Your reservation for <span id="modalPackage" class="text-custom-light font-bold"></span> has been created.
-            </p>
-
-            <div class="p-4 rounded-xl bg-neutral-900/60 text-left text-xs space-y-2 border border-custom-glow text-custom-gray">
-                <div><strong class="text-custom-light">Date & Time:</strong> <span id="modalDateTime"></span></div>
-                <div><strong class="text-custom-light">Location:</strong> <span id="modalLocation"></span></div>
-                <div><strong class="text-custom-light">Deposit Due:</strong> <span id="modalDeposit" class="text-emerald-500 font-bold">$20.00</span></div>
-            </div>
-
-            <p class="text-xs text-amber-300 bg-amber-500/10 p-3 rounded-lg border border-amber-500/20">
-                <i class="fa-solid fa-circle-info mr-1"></i> Proceed to step 2 to complete your $20 PayPal deposit payment.
-            </p>
-
-            <button id="closeModalBtn" class="w-full py-3.5 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider transition-all shadow-lg flex items-center justify-center gap-2">
-                <span>Proceed to $20 Deposit Payment</span>
-                <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-        </div>
-    </div>
-
-    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
-            <div class="flex items-center gap-3">
-                <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
-                <span class="font-bold text-custom-light uppercase tracking-wider">TIMZ VISUALS</span>
+    <!-- FOOTER -->
+    <footer class="glass-panel border-t border-white/10 mt-20 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-white gold-gradient-text">TIMZ VISUALS</span>
+                <span>• Studio Reservation Terminal</span>
             </div>
             <p>© 2026 TIMZ VISUALS. All rights reserved.</p>
-            <div class="flex space-x-4 text-sm">
-                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
-                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
         </div>
     </footer>
 
+    <!-- INTERACTIVE SCRIPT -->
     <script>
-        // --- 1. Persistent Theme Toggle ---
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const themeIcon = document.getElementById('themeIcon');
-        
-        const savedTheme = localStorage.getItem('timz_theme') || 
-            (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        lucide.createIcons();
+
+        // 1. THEME SYNCHRONIZATION
+        function initTheme() {
+            const savedTheme = localStorage.getItem('timz_theme') || 'dark';
+            applyTheme(savedTheme);
+        }
 
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
-            if (theme === 'light') {
-                themeIcon.className = 'fa-solid fa-moon text-sm';
-            } else {
-                themeIcon.className = 'fa-solid fa-sun text-sm';
-            }
             localStorage.setItem('timz_theme', theme);
+
+            const sunIcon = document.getElementById('themeSunIcon');
+            const moonIcon = document.getElementById('themeMoonIcon');
+
+            if (theme === 'light') {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
         }
 
-        applyTheme(savedTheme);
-
-        themeToggleBtn.addEventListener('click', () => {
+        function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             applyTheme(newTheme);
-        });
-
-        // --- 2. Mobile Drawer Navigation ---
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
-
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                const isOpen = !mobileMenu.classList.contains('hidden');
-                mobileMenu.classList.toggle('hidden');
-                mobileMenuIcon.className = isOpen ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
-            });
         }
 
-        // --- 3. Calendar Input Minimum Date restriction ---
-        const eventDateInput = document.getElementById('eventDate');
-        const today = new Date().toISOString().split('T')[0];
-        eventDateInput.setAttribute('min', today);
-
-        // --- 4. Package Option Dynamic Selection ---
-        const packageOptions = document.querySelectorAll('.package-option');
-        const summaryPackage = document.getElementById('summaryPackage');
-        const summaryTotal = document.getElementById('summaryTotal');
-        const summaryDeposit = document.getElementById('summaryDeposit');
-        const btnDepositAmount = document.getElementById('btnDepositAmount');
-
-        packageOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                packageOptions.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-
-                const radio = option.querySelector('input[type="radio"]');
-                radio.checked = true;
-
-                const title = radio.dataset.title;
-                const price = radio.dataset.price;
-                const deposit = radio.dataset.deposit;
-
-                summaryPackage.textContent = title;
-                summaryTotal.textContent = `$${parseInt(price).toLocaleString()}`;
-                summaryDeposit.textContent = `$${deposit}`;
-                btnDepositAmount.textContent = `$${deposit}`;
-            });
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'timz_theme' && event.newValue) {
+                applyTheme(event.newValue);
+            }
         });
 
-        // --- 5. Form Submission Modal & Transition to Payment ---
-        const bookingForm = document.getElementById('bookingForm');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const closeModalBtn = document.getElementById('closeModalBtn');
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
 
-        bookingForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        // 2. REAL-TIME BOOKING ENGINE
+        function recalculateBooking() {
+            const serviceType = document.querySelector('input[name="serviceType"]:checked')?.value || 'photo';
+            const hours = parseInt(document.getElementById('shootHours')?.value || 4);
+            
+            let baseRate = 150; // Photography base
+            if (serviceType === 'video') baseRate = 220;
+            if (serviceType === 'full') baseRate = 300;
 
-            const selectedRadio = document.querySelector('input[name="package"]:checked');
-            document.getElementById('modalClientName').textContent = document.getElementById('fullName').value;
-            document.getElementById('modalPackage').textContent = selectedRadio.dataset.title;
-            document.getElementById('modalDateTime').textContent = `${document.getElementById('eventDate').value} at ${document.getElementById('eventTime').value}`;
-            document.getElementById('modalLocation').textContent = document.getElementById('location').value;
-            document.getElementById('modalDeposit').textContent = `$${selectedRadio.dataset.deposit}.00`;
+            let subtotal = baseRate * hours;
 
-            modalOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
+            let addonsTotal = 0;
+            if (document.getElementById('addonDrone')?.checked) addonsTotal += 250;
+            if (document.getElementById('addonStudio')?.checked) addonsTotal += 300;
+            if (document.getElementById('addonFast')?.checked) addonsTotal += 200;
 
-        closeModalBtn.addEventListener('click', () => {
-            modalOverlay.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            // Redirect smoothly to payment confirmation page
-            window.location.href = 'payment.html';
+            const finalTotal = subtotal + addonsTotal;
+            const depositAmount = (finalTotal * 0.25).toFixed(2);
+
+            document.getElementById('summaryBaseRate').textContent = `$${baseRate}/hr`;
+            document.getElementById('summaryDuration').textContent = `${hours} Hours`;
+            document.getElementById('summaryAddons').textContent = `$${addonsTotal}`;
+            document.getElementById('summaryTotal').textContent = `$${finalTotal}`;
+            document.getElementById('summaryDeposit').textContent = `$${depositAmount}`;
+        }
+
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            const clientName = document.getElementById('clientName').value;
+            const total = document.getElementById('summaryTotal').textContent;
+            const deposit = document.getElementById('summaryDeposit').textContent;
+
+            alert(`Thank you ${clientName}!\n\nYour session reservation estimate is ${total}.\nRequired retainer deposit: ${deposit}.\n\n(Demo Mode: Redirecting to payment authorization screen...)`);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            recalculateBooking();
+            
+            // Set default date input min to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('shootDate').setAttribute('min', today);
         });
     </script>
 </body>
