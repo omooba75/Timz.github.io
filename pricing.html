@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-glass="frosted">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,60 +18,60 @@
 
     <style>
         :root {
-            /* Default Dark Mode Theme Variables */
-            --bg-color: #08080a;
-            --card-bg: rgba(18, 19, 24, 0.75);
-            --card-border: rgba(255, 255, 255, 0.15);
+            /* Black & White Dark Mode Theme Variables */
+            --bg-color: #050505;
+            --card-bg: rgba(20, 20, 20, 0.8);
+            --card-border: rgba(255, 255, 255, 0.18);
             --text-color: #ffffff;
-            --text-muted: #a0a0a0;
+            --text-muted: #a3a3a3;
             --border-color: rgba(255, 255, 255, 0.2);
-            --nav-bg: rgba(8, 8, 10, 0.85);
+            --nav-bg: rgba(10, 10, 10, 0.88);
             --input-bg: rgba(255, 255, 255, 0.05);
             --btn-primary-bg: #ffffff;
-            --btn-primary-text: #08080a;
+            --btn-primary-text: #000000;
             --btn-sec-border: #ffffff;
             --btn-sec-text: #ffffff;
             --btn-sec-bg: rgba(255, 255, 255, 0.05);
             --logo-filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-            --badge-bg: rgba(255, 255, 255, 0.1);
+            --badge-bg: rgba(255, 255, 255, 0.12);
             --glass-blur: 16px;
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
         }
 
-        /* Light Mode Variables Override */
+        /* Light Mode Variables Override (High Contrast B&W) */
         [data-theme="light"] {
-            --bg-color: #f4f5f7;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(0, 0, 0, 0.1);
-            --text-color: #0d0d11;
-            --text-muted: #555560;
-            --border-color: rgba(0, 0, 0, 0.12);
-            --nav-bg: rgba(244, 245, 247, 0.85);
-            --input-bg: rgba(0, 0, 0, 0.03);
-            --btn-primary-bg: #0d0d11;
+            --bg-color: #f7f7f7;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: rgba(0, 0, 0, 0.15);
+            --text-color: #050505;
+            --text-muted: #525252;
+            --border-color: rgba(0, 0, 0, 0.15);
+            --nav-bg: rgba(245, 245, 245, 0.9);
+            --input-bg: rgba(0, 0, 0, 0.04);
+            --btn-primary-bg: #000000;
             --btn-primary-text: #ffffff;
-            --btn-sec-border: #0d0d11;
-            --btn-sec-text: #0d0d11;
-            --btn-sec-bg: rgba(0, 0, 0, 0.05);
+            --btn-sec-border: #000000;
+            --btn-sec-text: #000000;
+            --btn-sec-bg: rgba(0, 0, 0, 0.04);
             --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
-            --badge-bg: rgba(0, 0, 0, 0.06);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            --badge-bg: rgba(0, 0, 0, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
         }
 
-        /* Ultra Frosted Glass Mode Overrides */
+        /* Ultra Frosted Glass Mode Overrides (Monochrome) */
         [data-glass="frosted"] {
-            --card-bg: rgba(255, 255, 255, 0.07);
-            --card-border: rgba(255, 255, 255, 0.25);
-            --nav-bg: rgba(18, 19, 24, 0.45);
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --card-border: rgba(255, 255, 255, 0.22);
+            --nav-bg: rgba(15, 15, 15, 0.55);
             --glass-blur: 28px;
-            --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+            --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
         }
 
         [data-theme="light"][data-glass="frosted"] {
-            --card-bg: rgba(255, 255, 255, 0.45);
-            --card-border: rgba(255, 255, 255, 0.6);
-            --nav-bg: rgba(255, 255, 255, 0.55);
-            --glass-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.12), inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.5);
+            --card-border: rgba(0, 0, 0, 0.25);
+            --nav-bg: rgba(255, 255, 255, 0.65);
+            --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
         }
 
         * {
@@ -83,10 +83,11 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
+            /* Subdued neutral radial background overlay */
             background-image: 
-                radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 85% 60%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 50% 90%, rgba(236, 72, 153, 0.08) 0%, transparent 45%);
+                radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
             background-attachment: fixed;
         }
 
@@ -136,7 +137,7 @@
             background-color: var(--btn-primary-bg);
             color: var(--btn-primary-text);
             font-weight: 700;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .form-input {
@@ -165,7 +166,6 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- Header Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
@@ -192,13 +192,13 @@
                 </button>
 
                 <!-- Glassmorphism Aesthetic Toggle -->
-                <button id="glassToggleBtn" aria-label="Toggle Glassmorphism Mode" title="Toggle Translucent Glass Effect" class="px-3 py-2 rounded-xl border border-custom-glow hover:bg-neutral-800/20 text-custom-light text-xs font-semibold transition-all flex items-center gap-2 glass-card">
-                    <i id="glassIcon" class="fa-solid fa-wand-magic-sparkles text-emerald-400"></i>
-                    <span id="glassLabel" class="hidden lg:inline uppercase tracking-wider text-[11px]">Glass: On</span>
+                <button id="glassToggleBtn" aria-label="Toggle Glassmorphism Mode" title="Toggle Translucent Glass Effect" class="px-3 py-2 rounded-xl border border-custom-glow hover:bg-white/10 text-custom-light text-xs font-semibold transition-all flex items-center gap-2 glass-card">
+                    <i id="glassIcon" class="fa-solid fa-wand-magic-sparkles text-custom-light"></i>
+                    <span id="glassLabel" class="hidden lg:inline uppercase tracking-wider text-[11px]">Glass: Max</span>
                 </button>
 
                 <!-- Theme Switcher Toggle -->
-                <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-full border border-custom-glow hover:bg-neutral-800/20 text-custom-light transition-all flex items-center justify-center w-10 h-10 glass-card">
+                <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-full border border-custom-glow hover:bg-white/10 text-custom-light transition-all flex items-center justify-center w-10 h-10 glass-card">
                     <i id="themeIcon" class="fa-solid fa-sun text-sm"></i>
                 </button>
 
@@ -253,7 +253,7 @@
         <div id="videographyGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-16">
             
             <!-- Essential Video Package -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-neutral-400/50 transition-all">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-white/50 transition-all">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-custom-gray block mb-1">Starter Tier</span>
                     <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Essential Video</h3>
@@ -266,23 +266,23 @@
 
                     <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>1 - 2 Hours Dedicated Shooting</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>1080p Full HD Master Edit</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Licensed Audio Track Included</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>1 Revision Round</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>3-Day Turnaround Delivery</span>
                         </li>
                     </ul>
@@ -293,14 +293,14 @@
                 </a>
             </div>
 
-            <!-- Cinematic Video Package (Popular) -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative border-2 border-emerald-500/40 shadow-2xl group transition-all transform hover:-translate-y-1">
-                <span class="absolute -top-3.5 right-6 px-3 py-1 text-[10px] uppercase font-black tracking-widest rounded-full bg-emerald-500 text-black shadow-lg">
+            <!-- Cinematic Video Package (Popular) - High Contrast Monochrome Accent -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative border-2 border-white/80 shadow-2xl group transition-all transform hover:-translate-y-1">
+                <span class="absolute -top-3.5 right-6 px-3 py-1 text-[10px] uppercase font-black tracking-widest rounded-full bg-white text-black shadow-lg">
                     Most Popular
                 </span>
                 
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 block mb-1">Standard Production</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-custom-light block mb-1">Standard Production</span>
                     <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Cinematic Narrative</h3>
                     <p class="text-xs text-custom-gray mt-2 min-h-[36px]">Full production value for music videos, brand stories, and events.</p>
                     
@@ -311,23 +311,23 @@
 
                     <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
                         <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Up to 4 Hours Shooting Time</span>
                         </li>
                         <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>4K Ultra HD Master & Vertical Cut</span>
                         </li>
                         <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Aerial Drone Footage Included</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Custom Color Grading & Sound FX</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>3 Revision Rounds</span>
                         </li>
                     </ul>
@@ -339,7 +339,7 @@
             </div>
 
             <!-- Enterprise Video Package -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-neutral-400/50 transition-all">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-white/50 transition-all">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-custom-gray block mb-1">Commercial Tier</span>
                     <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Enterprise Commercial</h3>
@@ -352,23 +352,23 @@
 
                     <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Full Day Crew Coverage (Up to 8 Hrs)</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Multi-Cam 4K Cinema Rig Setup</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Commercial Licensing & Rights</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Full Creative Direction & Storyboarding</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Priority 48-Hour Turnaround</span>
                         </li>
                     </ul>
@@ -384,7 +384,7 @@
         <div id="photographyGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-16 hidden">
             
             <!-- Portrait Photography -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-neutral-400/50 transition-all">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-white/50 transition-all">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-custom-gray block mb-1">Personal Sessions</span>
                     <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Portrait & Studio</h3>
@@ -397,19 +397,19 @@
 
                     <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>1 Hour Studio / Location Shoot</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>5 Ultra-Retouched Final Images</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Online Private Proofing Gallery</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Full High-Res Print Release</span>
                         </li>
                     </ul>
@@ -421,13 +421,13 @@
             </div>
 
             <!-- Brand Lookbook Photography -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative border-2 border-emerald-500/40 shadow-2xl group transition-all transform hover:-translate-y-1">
-                <span class="absolute -top-3.5 right-6 px-3 py-1 text-[10px] uppercase font-black tracking-widest rounded-full bg-emerald-500 text-black shadow-lg">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative border-2 border-white/80 shadow-2xl group transition-all transform hover:-translate-y-1">
+                <span class="absolute -top-3.5 right-6 px-3 py-1 text-[10px] uppercase font-black tracking-widest rounded-full bg-white text-black shadow-lg">
                     Popular Choice
                 </span>
 
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 block mb-1">Commercial & Fashion</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-custom-light block mb-1">Commercial & Fashion</span>
                     <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Brand Lookbook</h3>
                     <p class="text-xs text-custom-gray mt-2 min-h-[36px]">Fashion lookbooks, merchandise launches, and editorial shoots.</p>
                     
@@ -438,19 +438,19 @@
 
                     <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
                         <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>3 Hours Multi-Look Shooting</span>
                         </li>
                         <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>15 Retouched High-Res Images</span>
                         </li>
                         <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>All RAW Files Unedited Delivery</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Commercial License Included</span>
                         </li>
                     </ul>
@@ -462,7 +462,7 @@
             </div>
 
             <!-- Event & Lifestyle Photography -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-neutral-400/50 transition-all">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-white/50 transition-all">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-custom-gray block mb-1">Full Coverage</span>
                     <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Event & Coverage</h3>
@@ -475,19 +475,19 @@
 
                     <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Up to 5 Hours Live Event Coverage</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>50+ Color Corrected High-Res Photos</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>Same-Day 5 Image Teaser Pack</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-emerald-400"></i>
+                            <i class="fa-solid fa-check text-custom-light"></i>
                             <span>2-Day Turnaround Gallery</span>
                         </li>
                     </ul>
@@ -502,7 +502,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center glass-card rounded-2xl p-6 sm:p-8 mb-16 border border-custom-glow">
             <div class="md:col-span-8 space-y-3">
-                <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+                <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-custom-light">
                     <i class="fa-solid fa-shield-halved"></i>
                     <span>Deposit & Booking Guarantee</span>
                 </div>
@@ -537,7 +537,7 @@
 
             <!-- Modal Header -->
             <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Interactive Quote Builder</span>
+                <span class="text-xs font-bold uppercase tracking-widest text-custom-light">Interactive Quote Builder</span>
                 <h3 class="text-2xl font-black text-custom-light uppercase tracking-tight mt-1">
                     Calculate Custom Rate
                 </h3>
@@ -565,32 +565,32 @@
                     <label class="block font-semibold text-custom-light uppercase tracking-wider mb-3">Optional Production Add-Ons</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="calcAddonsContainer">
                         
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-neutral-400/40 transition-all">
-                            <input type="checkbox" class="calc-addon rounded bg-transparent text-emerald-500 focus:ring-0" value="50" data-name="Aerial Drone Coverage">
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-white/40 transition-all">
+                            <input type="checkbox" class="calc-addon rounded bg-transparent border-custom-glow text-white focus:ring-0 accent-white" value="50" data-name="Aerial Drone Coverage">
                             <div class="flex-grow">
                                 <div class="font-bold text-custom-light text-xs">Drone Aerial Footage</div>
                                 <div class="text-[10px] text-custom-gray">+$50 USD</div>
                             </div>
                         </label>
 
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-neutral-400/40 transition-all">
-                            <input type="checkbox" class="calc-addon rounded bg-transparent text-emerald-500 focus:ring-0" value="40" data-name="Express 24-Hour Turnaround">
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-white/40 transition-all">
+                            <input type="checkbox" class="calc-addon rounded bg-transparent border-custom-glow text-white focus:ring-0 accent-white" value="40" data-name="Express 24-Hour Turnaround">
                             <div class="flex-grow">
                                 <div class="font-bold text-custom-light text-xs">Express 24H Delivery</div>
                                 <div class="text-[10px] text-custom-gray">+$40 USD</div>
                             </div>
                         </label>
 
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-neutral-400/40 transition-all">
-                            <input type="checkbox" class="calc-addon rounded bg-transparent text-emerald-500 focus:ring-0" value="60" data-name="RAW File Archival Access">
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-white/40 transition-all">
+                            <input type="checkbox" class="calc-addon rounded bg-transparent border-custom-glow text-white focus:ring-0 accent-white" value="60" data-name="RAW File Archival Access">
                             <div class="flex-grow">
                                 <div class="font-bold text-custom-light text-xs">RAW Unedited Master Files</div>
                                 <div class="text-[10px] text-custom-gray">+$60 USD</div>
                             </div>
                         </label>
 
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-neutral-400/40 transition-all">
-                            <input type="checkbox" class="calc-addon rounded bg-transparent text-emerald-500 focus:ring-0" value="30" data-name="Additional Social Reels Edit">
+                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-white/40 transition-all">
+                            <input type="checkbox" class="calc-addon rounded bg-transparent border-custom-glow text-white focus:ring-0 accent-white" value="30" data-name="Additional Social Reels Edit">
                             <div class="flex-grow">
                                 <div class="font-bold text-custom-light text-xs">Extra Social Vertical Cut</div>
                                 <div class="text-[10px] text-custom-gray">+$30 USD</div>
@@ -601,7 +601,7 @@
                 </div>
 
                 <!-- Live Summary Breakdown Box -->
-                <div class="p-4 rounded-xl bg-neutral-900/60 border border-custom-glow space-y-3">
+                <div class="p-4 rounded-xl bg-neutral-900/80 border border-custom-glow space-y-3">
                     <div class="flex justify-between items-center border-b border-custom-glow pb-2 text-xs">
                         <span class="text-custom-gray">Selected Base:</span>
                         <span id="calcBaseDisplay" class="font-bold text-custom-light">Cinematic Narrative</span>
@@ -614,7 +614,7 @@
                     <div class="pt-3 border-t border-custom-glow flex items-center justify-between">
                         <div>
                             <div class="text-xs uppercase font-bold text-custom-light">Estimated Total</div>
-                            <div class="text-[10px] text-emerald-400 font-semibold">Deposit required: $20.00</div>
+                            <div class="text-[10px] text-custom-gray font-semibold">Deposit required: $20.00</div>
                         </div>
                         <span id="calcTotalDisplay" class="text-2xl font-black text-custom-light">$220.00</span>
                     </div>
@@ -672,7 +672,7 @@
         function applyGlassMode(mode) {
             document.documentElement.setAttribute('data-glass', mode);
             if (mode === 'frosted') {
-                glassIcon.className = 'fa-solid fa-wand-magic-sparkles text-emerald-400';
+                glassIcon.className = 'fa-solid fa-wand-magic-sparkles text-custom-light';
                 if (glassLabel) glassLabel.textContent = 'Glass: Max';
             } else {
                 glassIcon.className = 'fa-solid fa-border-all text-custom-gray';
