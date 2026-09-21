@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-glass="frosted">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,12 +20,14 @@
         :root {
             /* Dark Mode Variables (Default) */
             --bg-color: #08080a;
-            --card-bg: rgba(18, 19, 24, 0.75);
-            --card-border: rgba(255, 255, 255, 0.12);
+            --card-bg: rgba(18, 19, 24, 0.55);
+            --card-border: rgba(255, 255, 255, 0.14);
+            --glass-blur: 18px;
+            --glass-inset-border: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
             --text-color: #ffffff;
             --text-muted: #a0a0a0;
             --border-color: rgba(255, 255, 255, 0.15);
-            --nav-bg: rgba(8, 8, 10, 0.85);
+            --nav-bg: rgba(8, 8, 10, 0.65);
             --input-bg: rgba(255, 255, 255, 0.05);
             --btn-primary-bg: #ffffff;
             --btn-primary-text: #08080a;
@@ -35,18 +37,21 @@
             --pill-active-bg: #ffffff;
             --pill-active-text: #08080a;
             --pill-inactive-bg: rgba(255, 255, 255, 0.06);
-            --modal-bg: rgba(8, 8, 10, 0.92);
+            --modal-bg: rgba(8, 8, 10, 0.82);
+            --orb-opacity: 0.25;
         }
 
         /* Light Mode Overrides */
         [data-theme="light"] {
             --bg-color: #f4f5f8;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(0, 0, 0, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-border: rgba(0, 0, 0, 0.12);
+            --glass-blur: 16px;
+            --glass-inset-border: inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
             --text-color: #0d0d11;
             --text-muted: #555560;
             --border-color: rgba(0, 0, 0, 0.12);
-            --nav-bg: rgba(244, 245, 248, 0.85);
+            --nav-bg: rgba(244, 245, 248, 0.7);
             --input-bg: rgba(0, 0, 0, 0.03);
             --btn-primary-bg: #0d0d11;
             --btn-primary-text: #ffffff;
@@ -56,21 +61,78 @@
             --pill-active-bg: #0d0d11;
             --pill-active-text: #ffffff;
             --pill-inactive-bg: rgba(0, 0, 0, 0.05);
-            --modal-bg: rgba(244, 245, 248, 0.94);
+            --modal-bg: rgba(244, 245, 248, 0.88);
+            --orb-opacity: 0.18;
+        }
+
+        /* Ultra-Frosted Mode Override */
+        [data-glass="ultra"] {
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --glass-blur: 32px;
+            --card-border: rgba(255, 255, 255, 0.22);
+            --glass-inset-border: inset 0 1px 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="light"][data-glass="ultra"] {
+            --card-bg: rgba(255, 255, 255, 0.45);
+            --glass-blur: 32px;
+            --card-border: rgba(0, 0, 0, 0.15);
+            --glass-inset-border: inset 0 1px 2px 0 rgba(255, 255, 255, 0.9);
         }
 
         * {
             font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, backdrop-filter 0.3s ease;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
+            position: relative;
         }
 
-        .bg-nav-custom { background-color: var(--nav-bg); }
+        /* Ambient Glow Background Orbs */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: var(--orb-opacity);
+            transition: opacity 0.5s ease;
+        }
+
+        .orb-1 {
+            width: 450px;
+            height: 450px;
+            top: -100px;
+            left: -100px;
+            background: radial-gradient(circle, #f59e0b, #d97706, transparent);
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            top: 40%;
+            right: -150px;
+            background: radial-gradient(circle, #3b82f6, #1d4ed8, transparent);
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: 20%;
+            background: radial-gradient(circle, #8b5cf6, #6d28d9, transparent);
+        }
+
+        .bg-nav-custom { 
+            background-color: var(--nav-bg); 
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+        }
+        
         .border-custom-glow { border-color: var(--border-color); }
         .text-custom-light { color: var(--text-color); }
         .text-custom-gray { color: var(--text-muted); }
@@ -81,15 +143,18 @@
 
         .glass-card {
             background-color: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
             border: 1px solid var(--card-border);
+            box-shadow: var(--glass-inset-border), 0 20px 40px -15px rgba(0,0,0,0.3);
         }
 
         .filter-pill {
             background-color: var(--pill-inactive-bg);
             color: var(--text-muted);
             border: 1px solid var(--card-border);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
         }
 
         .filter-pill.active {
@@ -97,6 +162,7 @@
             color: var(--pill-active-text);
             border-color: var(--pill-active-bg);
             font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
         }
 
         .btn-primary {
@@ -107,9 +173,10 @@
         .btn-primary:hover {
             opacity: 0.92;
             transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(255, 255, 255, 0.3);
         }
 
-        /* Portfolio Cards Animation */
+        /* Portfolio Cards Animation & Hover Styling */
         .portfolio-item {
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
         }
@@ -123,9 +190,9 @@
             transform: translateY(0);
         }
 
-        /* Custom Floating Theme Switcher Button */
+        /* Custom Floating Theme & Glass Control FABs */
         .theme-fab {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
         }
 
         /* Custom Scrollbar */
@@ -143,9 +210,14 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between relative">
 
+    <!-- Ambient Glowing Background Orbs -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+
     <!-- Header / Navigation Bar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom border-b border-custom-glow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10">
             
             <!-- Brand / Logo -->
             <a href="index.html" class="flex items-center gap-3 group">
@@ -162,8 +234,15 @@
                 <a href="payment.html" class="text-custom-gray hover:text-custom-light transition-colors">Payment</a>
             </nav>
 
-            <!-- Action Button & Mobile Trigger -->
-            <div class="flex items-center gap-4">
+            <!-- Action Toggle & Buttons -->
+            <div class="flex items-center gap-3">
+                
+                <!-- Glassmorphism Mode Switcher Toggle -->
+                <button id="glassToggleBtn" class="px-3 py-1.5 rounded-full text-xs font-bold border border-custom-glow glass-card hover:border-amber-400 transition-all flex items-center gap-2 text-custom-light" title="Toggle Glass Frosted Intensity">
+                    <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                    <span id="glassToggleLabel" class="hidden sm:inline">Ultra Glass</span>
+                </button>
+
                 <a href="booking.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider btn-primary transition-all">
                     <span>Book Session</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -177,7 +256,7 @@
         </div>
 
         <!-- Mobile Drawer Navigation -->
-        <div id="mobileMenu" class="hidden md:hidden bg-nav-custom border-b border-custom-glow px-6 py-6 space-y-4">
+        <div id="mobileMenu" class="hidden md:hidden bg-nav-custom border-b border-custom-glow px-6 py-6 space-y-4 relative z-10">
             <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
             <a href="work.html" class="block text-base font-bold text-custom-light">Work</a>
             <a href="pricing.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Pricing</a>
@@ -189,12 +268,13 @@
         </div>
     </header>
 
-    <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-grow">
+    <!-- Main Section Content -->
+    <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-grow relative z-10">
         
         <!-- Hero Header -->
         <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card">
-                Visual Showcase
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card shadow-lg">
+                <i class="fa-solid fa-sparkles text-amber-400 mr-1.5"></i> Visual Showcase
             </span>
             <h1 class="text-4xl sm:text-6xl font-black text-custom-light tracking-tight uppercase mb-4">
                 SELECTED <span class="font-light text-custom-gray">WORKS</span>
@@ -228,10 +308,10 @@
             
             <!-- Item 1: Portraits -->
             <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="portraits" data-title="Neon Shadows Portrait" data-sub="Studio Portraiture • 2026" data-img="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Neon Shadows Portrait" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
                 </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
                     <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Portraits</span>
                     <h3 class="text-xl font-bold text-white mb-1">Neon Shadows</h3>
                     <p class="text-xs text-neutral-300 mb-4">High-contrast studio session with dynamic gel lighting.</p>
@@ -244,10 +324,10 @@
 
             <!-- Item 2: Music Videos -->
             <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="music-videos" data-title="Midnight Motion Cut" data-sub="Music Video Shoot • 2026" data-img="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
                     <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Music Video Production" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
                 </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
                     <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Music Videos</span>
                     <h3 class="text-xl font-bold text-white mb-1">Midnight Motion</h3>
                     <p class="text-xs text-neutral-300 mb-4">4K visual treatment with cinematic color grading.</p>
@@ -260,10 +340,10 @@
 
             <!-- Item 3: Events -->
             <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="events" data-title="Aura Underground Fest" data-sub="Live Event Coverage • 2025" data-img="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
                     <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Event Coverage" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
                 </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
                     <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Events</span>
                     <h3 class="text-xl font-bold text-white mb-1">Aura Underground</h3>
                     <p class="text-xs text-neutral-300 mb-4">Full festival recap, crowd highlights, and artist sets.</p>
@@ -276,10 +356,10 @@
 
             <!-- Item 4: Automotive -->
             <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="automotive" data-title="Apex Supercar Showcase" data-sub="Automotive Media • 2026" data-img="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
                     <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Automotive Shoot" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
                 </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
                     <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Automotive</span>
                     <h3 class="text-xl font-bold text-white mb-1">Apex Stealth Series</h3>
                     <p class="text-xs text-neutral-300 mb-4">Rollers and static shots for luxury custom automotive build.</p>
@@ -292,10 +372,10 @@
 
             <!-- Item 5: Portraits -->
             <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="portraits" data-title="Urban Silhouette" data-sub="Outdoor Creative • 2026" data-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Urban Silhouette Portrait" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
                 </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
                     <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Portraits</span>
                     <h3 class="text-xl font-bold text-white mb-1">Urban Silhouette</h3>
                     <p class="text-xs text-neutral-300 mb-4">Golden hour natural light portraits with moody grading.</p>
@@ -308,10 +388,10 @@
 
             <!-- Item 6: Music Videos -->
             <div class="portfolio-item group relative overflow-hidden rounded-2xl glass-card cursor-pointer" data-category="music-videos" data-title="Echoes in Crimson" data-sub="Official Music Video • 2025" data-img="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80">
-                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+                <div class="aspect-[4/5] w-full overflow-hidden bg-neutral-900/50 relative">
                     <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Echoes in Crimson Music Video" class="gallery-img w-full h-full object-cover transition-transform duration-700 ease-out" loading="lazy">
                 </div>
-                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300">
+                <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 backdrop-blur-[2px]">
                     <span class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-1">Music Videos</span>
                     <h3 class="text-xl font-bold text-white mb-1">Echoes in Crimson</h3>
                     <p class="text-xs text-neutral-300 mb-4">High-energy narrative performance piece with FX.</p>
@@ -334,11 +414,11 @@
                 Secure your session date online with a refundable $20 retainer deposit and collaborate on your custom shoot.
             </p>
             <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="booking.html" class="w-full sm:w-auto px-8 py-4 rounded-xl btn-primary uppercase text-xs tracking-wider transition-all shadow-xl flex items-center justify-center gap-2">
+                <a href="booking.html" class="w-full sm:w-auto px-8 py-4 rounded-xl btn-primary uppercase text-xs tracking-wider transition-all flex items-center justify-center gap-2">
                     <span>Reserve Session ($20 Deposit)</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <a href="pricing.html" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-custom-glow hover:bg-neutral-500/10 text-custom-light uppercase text-xs tracking-wider font-bold transition-all">
+                <a href="pricing.html" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-custom-glow glass-card hover:bg-neutral-500/10 text-custom-light uppercase text-xs tracking-wider font-bold transition-all">
                     View Package Pricing
                 </a>
             </div>
@@ -347,17 +427,17 @@
     </main>
 
     <!-- Fullscreen Lightbox Modal -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-md transition-opacity duration-300">
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl transition-all duration-300">
         <!-- Close Button -->
         <button id="closeLightboxBtn" class="absolute top-6 right-6 z-50 text-white hover:text-amber-400 text-2xl p-3 focus:outline-none transition-colors" aria-label="Close Lightbox">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
-        <div class="max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center p-2 relative">
-            <img id="lightboxImg" src="" alt="Expanded View" class="max-h-[75vh] w-auto max-w-full rounded-xl object-contain shadow-2xl">
+        <div class="max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center p-4 relative glass-card rounded-2xl">
+            <img id="lightboxImg" src="" alt="Expanded View" class="max-h-[70vh] w-auto max-w-full rounded-xl object-contain shadow-2xl border border-white/10">
             <div class="text-center mt-4 space-y-1">
                 <h3 id="lightboxTitle" class="text-2xl font-black text-white uppercase tracking-wider"></h3>
-                <p id="lightboxSub" class="text-sm text-neutral-400 font-medium"></p>
+                <p id="lightboxSub" class="text-sm text-amber-400 font-medium"></p>
             </div>
         </div>
     </div>
@@ -368,7 +448,7 @@
     </button>
 
     <!-- Footer -->
-    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12">
+    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12 relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
             <div class="flex items-center gap-3">
                 <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
@@ -384,7 +464,7 @@
     </footer>
 
     <script>
-        // --- 1. Theme Management with Persistence ---
+        // --- 1. Persistent Theme Management ---
         const themeToggleFab = document.getElementById('themeToggleFab');
         const themeIcon = document.getElementById('themeIcon');
         
@@ -409,7 +489,33 @@
             applyTheme(newTheme);
         });
 
-        // --- 2. Mobile Drawer Navigation Toggle ---
+        // --- 2. Glassmorphism Frosted Intensity Toggle ---
+        const glassToggleBtn = document.getElementById('glassToggleBtn');
+        const glassToggleLabel = document.getElementById('glassToggleLabel');
+        
+        const savedGlass = localStorage.getItem('timz_glass') || 'frosted';
+
+        function applyGlassMode(mode) {
+            document.documentElement.setAttribute('data-glass', mode);
+            if (mode === 'ultra') {
+                glassToggleLabel.textContent = 'Ultra Blur On';
+                glassToggleBtn.classList.add('border-amber-400');
+            } else {
+                glassToggleLabel.textContent = 'Ultra Glass';
+                glassToggleBtn.classList.remove('border-amber-400');
+            }
+            localStorage.setItem('timz_glass', mode);
+        }
+
+        applyGlassMode(savedGlass);
+
+        glassToggleBtn.addEventListener('click', () => {
+            const currentGlass = document.documentElement.getAttribute('data-glass') || 'frosted';
+            const newGlass = currentGlass === 'frosted' ? 'ultra' : 'frosted';
+            applyGlassMode(newGlass);
+        });
+
+        // --- 3. Mobile Drawer Navigation Toggle ---
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileMenuIcon = document.getElementById('mobileMenuIcon');
@@ -423,7 +529,7 @@
             });
         }
 
-        // --- 3. Dynamic Interactive Grid Category Filtering ---
+        // --- 4. Dynamic Interactive Grid Category Filtering ---
         const filterPills = document.querySelectorAll('#filterContainer .filter-pill');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
 
@@ -454,7 +560,7 @@
             });
         });
 
-        // --- 4. Lightbox Modal Preview Functionality ---
+        // --- 5. Lightbox Modal Preview Functionality ---
         const lightboxModal = document.getElementById('lightboxModal');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxTitle = document.getElementById('lightboxTitle');
