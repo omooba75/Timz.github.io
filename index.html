@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -159,21 +160,16 @@
     <!-- TOP ANNOUNCEMENT BAR -->
     <div class="bg-gradient-to-r from-amber-900/60 via-amber-600/40 to-yellow-900/60 border-b border-amber-500/20 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-2">
         <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span>Now Accepting Q4 Photography & Cinematography Bookings WorldWide</span>
+        <span>Now Accepting Q4 Photography & Cinematography Bookings in Canada</span>
         <button onclick="switchPage('booking')" class="underline hover:text-amber-300 font-bold ml-2">Book Slot →</button>
     </div>
 
-    <!-- MAIN GLOBAL NAVIGATION -->
     <header class="sticky top-0 z-50 glass-panel border-b border-white/10 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- LOGO (EXACT ORIGINAL LOGO preserved) -->
+            <!-- LOGO (SVG timz vi.svg) -->
             <a href="#" onclick="switchPage('index'); return false;" class="flex items-center gap-3 group">
-                <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-700 p-[1.5px] shadow-glow transition-transform group-hover:scale-105">
-                    <div class="w-full h-full bg-black rounded-[10px] flex items-center justify-center font-display font-black text-xl text-amber-400 tracking-tighter">
-                        TZ
-                    </div>
-                </div>
+                <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
                 <div class="flex flex-col">
                     <span class="font-display font-extrabold text-xl tracking-wider gold-gradient-text uppercase">TIMZ VISUALS</span>
                     <span class="text-[10px] tracking-[0.25em] text-gray-400 font-semibold uppercase -mt-1">Studio & Production</span>
@@ -222,12 +218,9 @@
         </div>
     </header>
 
-    <!-- MAIN PAGE CONTAINER (SINGLE PAGE APPLICATION VIEWS) -->
+    <!-- MAIN PAGE CONTAINER -->
     <main class="flex-grow">
 
-        <!-- ========================================== -->
-        <!-- VIEW 1: REFINED HERO / INDEX PAGE          -->
-        <!-- ========================================== -->
         <section id="page-index" class="page-view active">
             
             <!-- Dynamic Cinematic Hero -->
@@ -235,7 +228,6 @@
                 
                 <!-- Background Media Grid & Ambient Glows -->
                 <div class="absolute inset-0 z-0">
-                    <!-- EXACT ORIGINAL PICTURE / BACKGROUND UNTOUCHED & RETAINED -->
                     <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=2000" alt="Camera Lens Photography Studio" class="w-full h-full object-cover object-center opacity-30 filter brightness-75 scale-105 animate-pulse" style="animation-duration: 8s;">
                     <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/80 to-transparent"></div>
                     <div class="absolute inset-0 grid-pattern opacity-40"></div>
@@ -253,7 +245,7 @@
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
                         </span>
-                        Premier Visual & Film Production Studio
+                        Premier Visual & Film Production Studio in Canada
                     </div>
 
                     <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-none">
@@ -261,7 +253,7 @@
                     </h1>
 
                     <p class="max-w-2xl mx-auto text-base sm:text-lg text-gray-300 font-normal leading-relaxed">
-                        High-end photography, cinematic video production, and commercial visual direction tailored for luxury brands, high-profile events, and creative visionaries worldwide.
+                        High-end photography, cinematic video production, and commercial visual direction tailored for luxury brands, high-profile events, and creative visionaries across Canada.
                     </p>
 
                     <!-- Interactive Hero Actions -->
@@ -302,7 +294,6 @@
                 </div>
             </div>
 
-            <!-- SERVICES / CORE DISCIPLINES SECTION -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 <div class="text-center max-w-2xl mx-auto mb-16">
                     <h2 class="text-xs font-bold text-amber-400 tracking-widest uppercase mb-2">Our Expertise</h2>
@@ -317,7 +308,6 @@
                         <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6 group-hover:scale-110 transition-transform">
                             <i data-lucide="video" class="w-7 h-7"></i>
                         </div>
-                        <!-- RETAINED UNTOUCHED ORIGINAL MEDIA IMAGE -->
                         <div class="h-48 rounded-xl overflow-hidden mb-6 relative">
                             <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800" alt="Cinematography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
@@ -336,7 +326,6 @@
                         <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6 group-hover:scale-110 transition-transform">
                             <i data-lucide="camera" class="w-7 h-7"></i>
                         </div>
-                        <!-- RETAINED UNTOUCHED ORIGINAL MEDIA IMAGE -->
                         <div class="h-48 rounded-xl overflow-hidden mb-6 relative">
                             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" alt="Fashion Photography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
@@ -355,7 +344,6 @@
                         <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6 group-hover:scale-110 transition-transform">
                             <i data-lucide="clapperboard" class="w-7 h-7"></i>
                         </div>
-                        <!-- RETAINED UNTOUCHED ORIGINAL MEDIA IMAGE -->
                         <div class="h-48 rounded-xl overflow-hidden mb-6 relative">
                             <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800" alt="Event Coverage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
@@ -372,7 +360,6 @@
                 </div>
             </div>
 
-            <!-- RECENT FEATURED WORKS TEASER -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/10">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                     <div>
@@ -423,7 +410,7 @@
                 <div class="relative rounded-3xl overflow-hidden glass-panel border border-amber-500/30 p-8 sm:p-14 text-center bg-gradient-to-br from-amber-950/40 via-black to-amber-900/20">
                     <div class="relative z-10 max-w-2xl mx-auto space-y-6">
                         <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white">READY TO ELEVATE YOUR VISUAL IDENTITY?</h2>
-                        <p class="text-gray-300">Book your session today or calculate dynamic estimates tailored to your production scope.</p>
+                        <p class="text-gray-300">Book your session today or calculate dynamic estimates tailored to your production scope in Canada.</p>
                         <div class="pt-2 flex flex-wrap justify-center gap-4">
                             <button onclick="switchPage('booking')" class="px-8 py-4 rounded-full bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-extrabold text-base shadow-glow hover:scale-105 transition-all">
                                 Launch Interactive Booking Tool
@@ -438,9 +425,6 @@
 
         </section>
 
-        <!-- ========================================== -->
-        <!-- VIEW 2: BOOKING PAGE                      -->
-        <!-- ========================================== -->
         <section id="page-booking" class="page-view max-w-5xl mx-auto px-4 py-12">
             <div class="text-center mb-10">
                 <span class="text-xs font-bold text-amber-400 tracking-widest uppercase">Instant Reservation & Estimate</span>
@@ -488,550 +472,150 @@
                         </div>
                     </div>
 
-                    <!-- Date & Duration Pickers -->
-                    <div class="glass-panel p-6 rounded-2xl border border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">Preferred Shoot Date</label>
-                            <input type="date" id="shootDate" required class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3 text-sm focus:border-amber-400 focus:outline-none text-white">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">Session Hours</label>
-                            <select id="shootHours" onchange="recalculateBooking()" class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3 text-sm focus:border-amber-400 focus:outline-none text-white">
-                                <option value="2">2 Hours Half Session</option>
-                                <option value="4" selected>4 Hours Standard Session</option>
-                                <option value="8">8 Hours Full Day Shoot</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Production Add-Ons Checklist -->
-                    <div class="glass-panel p-6 rounded-2xl border border-white/10 space-y-3">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">Select Production Add-ons</label>
-                        
-                        <label class="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 cursor-pointer border border-white/5">
-                            <div class="flex items-center gap-3">
-                                <input type="checkbox" id="addonDrone" onchange="recalculateBooking()" class="w-4 h-4 text-amber-400 rounded focus:ring-amber-400">
-                                <span class="text-sm font-medium">4K Aerial Drone Coverage</span>
-                            </div>
-                            <span class="text-xs font-bold text-amber-400">+$250</span>
-                        </label>
-
-                        <label class="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 cursor-pointer border border-white/5">
-                            <div class="flex items-center gap-3">
-                                <input type="checkbox" id="addonStudio" onchange="recalculateBooking()" class="w-4 h-4 text-amber-400 rounded focus:ring-amber-400">
-                                <span class="text-sm font-medium">Luxury Studio Space Rental</span>
-                            </div>
-                            <span class="text-xs font-bold text-amber-400">+$300</span>
-                        </label>
-
-                        <label class="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 cursor-pointer border border-white/5">
-                            <div class="flex items-center gap-3">
-                                <input type="checkbox" id="addonFast" onchange="recalculateBooking()" class="w-4 h-4 text-amber-400 rounded focus:ring-amber-400">
-                                <span class="text-sm font-medium">24-Hour Express Edit Turnaround</span>
-                            </div>
-                            <span class="text-xs font-bold text-amber-400">+$200</span>
-                        </label>
-                    </div>
-
-                    <!-- Client Details -->
+                    <!-- Details & Location -->
                     <div class="glass-panel p-6 rounded-2xl border border-white/10 space-y-4">
-                        <label class="block text-xs font-bold uppercase tracking-wider text-amber-400">Contact Details</label>
+                        <label class="block text-sm font-bold uppercase tracking-wider text-amber-400">2. Contact & Location Information</label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <input type="text" id="clientName" placeholder="Full Name" required class="bg-black/40 border border-white/15 rounded-xl px-4 py-3 text-sm focus:border-amber-400 focus:outline-none text-white">
-                            <input type="email" id="clientEmail" placeholder="Email Address" required class="bg-black/40 border border-white/15 rounded-xl px-4 py-3 text-sm focus:border-amber-400 focus:outline-none text-white">
+                            <div>
+                                <label class="text-xs text-gray-400 font-semibold mb-1 block">Full Name</label>
+                                <input type="text" required placeholder="Alex Rivera" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:border-amber-400 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-xs text-gray-400 font-semibold mb-1 block">Email Address</label>
+                                <input type="email" required placeholder="timzvusuals@gmail.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:border-amber-400 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-xs text-gray-400 font-semibold mb-1 block">Phone Number</label>
+                                <input type="tel" required placeholder="6132293013" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:border-amber-400 outline-none">
+                            </div>
+                            <div>
+                                <label class="text-xs text-gray-400 font-semibold mb-1 block">Country / Location</label>
+                                <input type="text" value="Canada" readonly class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:border-amber-400 outline-none cursor-not-allowed opacity-80">
+                            </div>
                         </div>
-                        <textarea id="projectNotes" rows="3" placeholder="Describe project requirements, location ideas, or reference styles..." class="w-full bg-black/40 border border-white/15 rounded-xl p-4 text-sm focus:border-amber-400 focus:outline-none text-white"></textarea>
                     </div>
 
                 </div>
 
-                <!-- Right: Summary Card -->
+                <!-- Right: Summary Box -->
                 <div class="lg:col-span-1">
                     <div class="glass-panel p-6 rounded-2xl border border-amber-500/30 sticky top-28 space-y-6">
-                        <h3 class="text-lg font-bold font-display uppercase tracking-wide border-b border-white/10 pb-4">Booking Summary</h3>
-                        
+                        <h3 class="font-display font-bold text-lg text-white border-b border-white/10 pb-3">Booking Summary</h3>
                         <div class="space-y-3 text-sm">
-                            <div class="flex justify-between text-gray-400">
-                                <span>Base Rate:</span>
-                                <span id="summaryBaseRate" class="font-bold text-white">$600</span>
+                            <div class="flex justify-between text-gray-300">
+                                <span>Location:</span>
+                                <span class="font-semibold text-amber-400">Canada</span>
                             </div>
-                            <div class="flex justify-between text-gray-400">
-                                <span>Duration Multiplier:</span>
-                                <span id="summaryDuration" class="font-bold text-white">4 Hours</span>
+                            <div class="flex justify-between text-gray-300">
+                                <span>Contact Email:</span>
+                                <span class="font-semibold text-white">timzvusuals@gmail.com</span>
                             </div>
-                            <div class="flex justify-between text-gray-400">
-                                <span>Add-ons Total:</span>
-                                <span id="summaryAddons" class="font-bold text-white">$0</span>
-                            </div>
-                            <div class="border-t border-white/10 pt-4 flex justify-between items-baseline">
-                                <span class="text-base font-bold">Estimated Total:</span>
-                                <span id="summaryTotal" class="text-2xl font-bold font-display gold-gradient-text">$600</span>
+                            <div class="flex justify-between text-gray-300">
+                                <span>Phone:</span>
+                                <span class="font-semibold text-white">613-229-3013</span>
                             </div>
                         </div>
-
-                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-extrabold text-center shadow-glow hover:scale-[1.02] transition-transform">
-                            Proceed to Secure Deposit →
+                        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-amber-500 to-yellow-600 font-bold text-black rounded-xl hover:opacity-90 transition-all">
+                            Confirm Reservation
                         </button>
-
-                        <p class="text-xs text-gray-400 text-center flex items-center justify-center gap-1">
-                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
-                            <span>25% Retainer holds your date guaranteed.</span>
-                        </p>
                     </div>
                 </div>
 
             </form>
         </section>
 
-        <!-- ========================================== -->
-        <!-- VIEW 3: PORTFOLIO & WORK PAGE              -->
-        <!-- ========================================== -->
-        <section id="page-work" class="page-view max-w-7xl mx-auto px-4 py-12">
-            <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase">Archive & Showcase</span>
-                <h1 class="text-3xl sm:text-5xl font-display font-extrabold mt-2">Visual Works</h1>
-                <p class="text-gray-400 mt-2">Filter through our high-definition editorial stills and film projects.</p>
-            </div>
-
-            <!-- Portfolio Category Filters -->
-            <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
-                <button onclick="filterPortfolio('all')" class="filter-btn active-filter px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-amber-500 bg-amber-500/20 text-amber-300">All Projects</button>
-                <button onclick="filterPortfolio('cinematic')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-white/10 hover:border-amber-400/50 text-gray-400">Cinematography</button>
-                <button onclick="filterPortfolio('fashion')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-white/10 hover:border-amber-400/50 text-gray-400">Fashion & Editorial</button>
-                <button onclick="filterPortfolio('events')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-white/10 hover:border-amber-400/50 text-gray-400">Weddings & Events</button>
-            </div>
-
-            <!-- Portfolio Grid (RETAINED ALL ORIGINAL PICTURE UNTOUCHED) -->
-            <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Project Item 1 -->
-                <div class="portfolio-card cinematic group relative rounded-2xl overflow-hidden glass-panel aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200', 'Alpine Cinema Reel')">
-                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-6 text-center">
-                        <div>
-                            <span class="text-xs text-amber-400 font-bold uppercase">Cinematography</span>
-                            <h3 class="text-xl font-bold text-white mt-1">Alpine Cinema Reel</h3>
-                            <span class="inline-block mt-3 px-4 py-1.5 rounded-full bg-white/20 text-xs text-white font-semibold">Preview Project</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Item 2 -->
-                <div class="portfolio-card fashion group relative rounded-2xl overflow-hidden glass-panel aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1200', 'Vogue Spring Collection')">
-                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-6 text-center">
-                        <div>
-                            <span class="text-xs text-amber-400 font-bold uppercase">Fashion</span>
-                            <h3 class="text-xl font-bold text-white mt-1">Vogue Spring Collection</h3>
-                            <span class="inline-block mt-3 px-4 py-1.5 rounded-full bg-white/20 text-xs text-white font-semibold">Preview Project</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Item 3 -->
-                <div class="portfolio-card events group relative rounded-2xl overflow-hidden glass-panel aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&q=80&w=1200', 'Luxury Villa Celebration')">
-                    <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-6 text-center">
-                        <div>
-                            <span class="text-xs text-amber-400 font-bold uppercase">Events</span>
-                            <h3 class="text-xl font-bold text-white mt-1">Luxury Villa Celebration</h3>
-                            <span class="inline-block mt-3 px-4 py-1.5 rounded-full bg-white/20 text-xs text-white font-semibold">Preview Project</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Item 4 -->
-                <div class="portfolio-card fashion group relative rounded-2xl overflow-hidden glass-panel aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1200', 'Urban Fashion Lookbook')">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-6 text-center">
-                        <div>
-                            <span class="text-xs text-amber-400 font-bold uppercase">Fashion</span>
-                            <h3 class="text-xl font-bold text-white mt-1">Urban Fashion Lookbook</h3>
-                            <span class="inline-block mt-3 px-4 py-1.5 rounded-full bg-white/20 text-xs text-white font-semibold">Preview Project</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Item 5 -->
-                <div class="portfolio-card cinematic group relative rounded-2xl overflow-hidden glass-panel aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=1200', 'Commercial Music Video')">
-                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-6 text-center">
-                        <div>
-                            <span class="text-xs text-amber-400 font-bold uppercase">Cinematography</span>
-                            <h3 class="text-xl font-bold text-white mt-1">Commercial Music Video</h3>
-                            <span class="inline-block mt-3 px-4 py-1.5 rounded-full bg-white/20 text-xs text-white font-semibold">Preview Project</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Item 6 -->
-                <div class="portfolio-card events group relative rounded-2xl overflow-hidden glass-panel aspect-[4/3] cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=1200', 'Private Gala Night')">
-                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-6 text-center">
-                        <div>
-                            <span class="text-xs text-amber-400 font-bold uppercase">Events</span>
-                            <h3 class="text-xl font-bold text-white mt-1">Private Gala Night</h3>
-                            <span class="inline-block mt-3 px-4 py-1.5 rounded-full bg-white/20 text-xs text-white font-semibold">Preview Project</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ========================================== -->
-        <!-- VIEW 4: PRICING PAGE                      -->
-        <!-- ========================================== -->
-        <section id="page-pricing" class="page-view max-w-7xl mx-auto px-4 py-12">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase">Transparent Investment</span>
-                <h1 class="text-3xl sm:text-5xl font-display font-extrabold mt-2">Production Packages</h1>
-                <p class="text-gray-400 mt-2">Clear, straightforward pricing with no hidden fees.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Package 1 -->
-                <div class="glass-panel p-8 rounded-3xl border border-white/10 flex flex-col justify-between hover-lift">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Essential</span>
-                        <h3 class="text-2xl font-bold mt-1">Studio Session</h3>
-                        <div class="my-6">
-                            <span class="text-4xl font-extrabold font-display">$600</span>
-                            <span class="text-gray-400 text-sm"> / session</span>
-                        </div>
-                        <ul class="space-y-4 text-sm text-gray-300">
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Up to 2 Hours Studio Coverage</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> 15 High-Res Retouched Stills</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Online Gallery Access</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Commercial Usage Rights</li>
-                        </ul>
-                    </div>
-                    <button onclick="switchPage('booking')" class="mt-8 w-full py-3 rounded-xl border border-amber-400/50 hover:bg-amber-400 hover:text-black transition-all font-bold text-center">
-                        Select Essential
-                    </button>
-                </div>
-
-                <!-- Package 2 (Featured) -->
-                <div class="glass-panel p-8 rounded-3xl border-2 border-amber-500 flex flex-col justify-between hover-lift relative shadow-glow">
-                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-yellow-600 text-black text-[10px] font-extrabold uppercase px-4 py-1 rounded-full tracking-wider">
-                        Most Popular
-                    </span>
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Professional</span>
-                        <h3 class="text-2xl font-bold mt-1">Cinematic Reel & Photo</h3>
-                        <div class="my-6">
-                            <span class="text-4xl font-extrabold font-display gold-gradient-text">$1,400</span>
-                            <span class="text-gray-400 text-sm"> / session</span>
-                        </div>
-                        <ul class="space-y-4 text-sm text-gray-300">
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Up to 5 Hours On-Location</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> 40 Retouched Stills + 4K Reel</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Full Color Grading & Sound FX</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Drone Footage Included</li>
-                        </ul>
-                    </div>
-                    <button onclick="switchPage('booking')" class="mt-8 w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-extrabold shadow-glow hover:scale-[1.02] transition-transform text-center">
-                        Book Professional
-                    </button>
-                </div>
-
-                <!-- Package 3 -->
-                <div class="glass-panel p-8 rounded-3xl border border-white/10 flex flex-col justify-between hover-lift">
-                    <div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-amber-400">VIP Production</span>
-                        <h3 class="text-2xl font-bold mt-1">Commercial Campaign</h3>
-                        <div class="my-6">
-                            <span class="text-4xl font-extrabold font-display">$2,800+</span>
-                            <span class="text-gray-400 text-sm"> / project</span>
-                        </div>
-                        <ul class="space-y-4 text-sm text-gray-300">
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Full Day Multi-Camera Team</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Unlimited Stills + Director's Cut Film</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Lighting Director & Sound Engineer</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Express 48h Delivery</li>
-                        </ul>
-                    </div>
-                    <button onclick="switchPage('booking')" class="mt-8 w-full py-3 rounded-xl border border-amber-400/50 hover:bg-amber-400 hover:text-black transition-all font-bold text-center">
-                        Inquire Custom Scope
-                    </button>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ========================================== -->
-        <!-- VIEW 5: PAYMENT CONFIRMATION PAGE         -->
-        <!-- ========================================== -->
-        <section id="page-payment" class="page-view max-w-3xl mx-auto px-4 py-16">
-            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-amber-500/30 text-center space-y-6">
-                <div class="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
-                    <i data-lucide="check-circle-2" class="w-10 h-10"></i>
-                </div>
-                <h1 class="text-3xl font-display font-extrabold">Booking Details Reserved!</h1>
-                <p class="text-gray-300">Thank you for locking in your shoot with TIMZ VISUALS. A confirmation draft has been set up for your session.</p>
-
-                <div class="bg-black/40 rounded-2xl p-6 text-left space-y-3 border border-white/10 text-sm">
-                    <div class="flex justify-between border-b border-white/10 pb-2">
-                        <span class="text-gray-400">Client Name:</span>
-                        <span id="payClientName" class="font-bold text-white">-</span>
-                    </div>
-                    <div class="flex justify-between border-b border-white/10 pb-2">
-                        <span class="text-gray-400">Shoot Date:</span>
-                        <span id="payShootDate" class="font-bold text-white">-</span>
-                    </div>
-                    <div class="flex justify-between border-b border-white/10 pb-2">
-                        <span class="text-gray-400">Required Deposit (25%):</span>
-                        <span id="payDepositAmount" class="font-bold text-amber-400">$150.00</span>
-                    </div>
-                </div>
-
-                <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="alert('Demo Mode: Payment processing simulate successful!'); switchPage('index');" class="px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-extrabold shadow-glow hover:scale-105 transition-all">
-                        Pay Deposit via Card / Apple Pay
-                    </button>
-                    <button onclick="switchPage('index')" class="px-8 py-4 rounded-xl border border-white/20 text-gray-300 font-bold hover:bg-white/10 transition-all">
-                        Return Home
-                    </button>
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <!-- LIGHTBOX / REEL PREVIEW MODAL -->
-    <div id="mediaModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
-        <button onclick="closeMediaModal()" class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white">
-            <i data-lucide="x" class="w-6 h-6"></i>
-        </button>
-        <div class="max-w-4xl w-full text-center space-y-4">
-            <div id="modalContainer" class="rounded-2xl overflow-hidden glass-panel max-h-[75vh] flex items-center justify-center">
-                <!-- Dynamic Image or Video loaded here -->
-            </div>
-            <h3 id="modalTitle" class="text-xl font-bold font-display text-white"></h3>
-        </div>
-    </div>
-
-    <!-- GLOBAL FOOTER -->
-    <footer class="glass-panel border-t border-white/10 mt-20 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="space-y-4">
-                <a href="#" class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-700 p-[1px]">
-                        <div class="w-full h-full bg-black rounded-[11px] flex items-center justify-center font-display font-black text-amber-400 text-sm">
-                            TZ
-                        </div>
-                    </div>
-                    <span class="font-display font-bold text-lg gold-gradient-text uppercase">TIMZ VISUALS</span>
-                </a>
-                <p class="text-xs text-gray-400 leading-relaxed">
-                    Crafting cinematic visual excellence for luxury brands and creators worldwide.
-                </p>
-            </div>
-
+    <footer class="border-t border-white/10 glass-panel mt-20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-4">Quick Navigation</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><button onclick="switchPage('index')" class="hover:text-white">Home</button></li>
-                    <li><button onclick="switchPage('work')" class="hover:text-white">Portfolio</button></li>
-                    <li><button onclick="switchPage('pricing')" class="hover:text-white">Pricing</button></li>
-                    <li><button onclick="switchPage('booking')" class="hover:text-white">Book Session</button></li>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-8 w-auto object-contain" />
+                    <span class="font-display font-bold text-lg text-amber-400">TIMZ VISUALS</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">Canada's premier studio for high-end photography and cinematic video production.</p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Direct Contact</h4>
+                <ul class="text-xs text-gray-400 space-y-2">
+                    <li>Email: <a href="mailto:timzvusuals@gmail.com" class="text-amber-400 hover:underline">timzvusuals@gmail.com</a></li>
+                    <li>Phone: <a href="tel:6132293013" class="text-amber-400 hover:underline">613-229-3013</a></li>
+                    <li>Location: Canada</li>
                 </ul>
             </div>
-
             <div>
-                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-4">Studio Contact</h4>
-                <p class="text-sm text-gray-400 mb-1">Inquiries: studio@timzvisuals.com</p>
-                <p class="text-sm text-gray-400 mb-1">Direct: +1 (800) 555-TIMZ</p>
-                <p class="text-xs text-gray-400 mt-2">Los Angeles • New York • London</p>
-            </div>
-
-            <div>
-                <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-4">Connect</h4>
-                <div class="flex items-center gap-3">
-                    <a href="#" class="p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-amber-400 transition-colors">
-                        <i data-lucide="instagram" class="w-4 h-4"></i>
-                    </a>
-                    <a href="#" class="p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-amber-400 transition-colors">
-                        <i data-lucide="youtube" class="w-4 h-4"></i>
-                    </a>
-                    <a href="#" class="p-2.5 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-amber-400 transition-colors">
-                        <i data-lucide="twitter" class="w-4 h-4"></i>
-                    </a>
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Quick Navigation</h4>
+                <div class="flex gap-4 text-xs text-gray-400">
+                    <button onclick="switchPage('index')" class="hover:text-amber-400">Home</button>
+                    <button onclick="switchPage('work')" class="hover:text-amber-400">Portfolio</button>
+                    <button onclick="switchPage('booking')" class="hover:text-amber-400">Booking</button>
                 </div>
             </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-white/5 text-center text-xs text-gray-400">
-            © 2026 TIMZ VISUALS Studio Inc. All rights reserved. Persistent Theme Synchronization Enabled.
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT & THEME SYNCHRONIZATION -->
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // -------------------------------------------------------------
-        // 1. GLOBAL LOCALSTORAGE THEME SYNCHRONIZATION
-        // -------------------------------------------------------------
-        function initTheme() {
-            const savedTheme = localStorage.getItem('timz_theme') || 'dark';
-            applyTheme(savedTheme);
-        }
-
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('timz_theme', theme);
-
-            const sunIcon = document.getElementById('themeSunIcon');
-            const moonIcon = document.getElementById('themeMoonIcon');
-
-            if (theme === 'light') {
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-            }
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
+            const target = document.getElementById('page-' + pageId);
+            if (target) target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        }
-
-        // Cross-tab synchronization using storage event listener
-        window.addEventListener('storage', (event) => {
-            if (event.key === 'timz_theme' && event.newValue) {
-                applyTheme(event.newValue);
-            }
-        });
-
-        // -------------------------------------------------------------
-        // 2. PAGE NAVIGATION SYSTEM (SPA SIMULATION)
-        // -------------------------------------------------------------
-        function switchPage(pageId) {
-            const pages = document.querySelectorAll('.page-view');
-            pages.forEach(p => p.classList.remove('active'));
-
-            const targetPage = document.getElementById(`page-${pageId}`);
-            if (targetPage) {
-                targetPage.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            document.getElementById('themeSunIcon').classList.toggle('hidden');
+            document.getElementById('themeMoonIcon').classList.toggle('hidden');
         }
 
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobileMenu').classList.toggle('hidden');
         }
 
-        // -------------------------------------------------------------
-        // 3. INTERACTIVE BOOKING & CALCULATOR ENGINE
-        // -------------------------------------------------------------
         function recalculateBooking() {
-            const serviceType = document.querySelector('input[name="serviceType"]:checked')?.value || 'photo';
-            const hours = parseInt(document.getElementById('shootHours')?.value || 4);
-            
-            let baseRate = 150; // Per hour standard
-            if (serviceType === 'video') baseRate = 220;
-            if (serviceType === 'full') baseRate = 300;
-
-            let subtotal = baseRate * hours;
-
-            // Addons
-            let addonsTotal = 0;
-            if (document.getElementById('addonDrone')?.checked) addonsTotal += 250;
-            if (document.getElementById('addonStudio')?.checked) addonsTotal += 300;
-            if (document.getElementById('addonFast')?.checked) addonsTotal += 200;
-
-            const finalTotal = subtotal + addonsTotal;
-
-            // Update UI elements
-            document.getElementById('summaryBaseRate').textContent = `$${baseRate}/hr`;
-            document.getElementById('summaryDuration').textContent = `${hours} Hours`;
-            document.getElementById('summaryAddons').textContent = `$${addonsTotal}`;
-            document.getElementById('summaryTotal').textContent = `$${finalTotal}`;
+            // Dynamic estimation calculation hook
         }
 
-        function handleBookingSubmit(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('clientName').value;
-            const date = document.getElementById('shootDate').value;
-            const totalText = document.getElementById('summaryTotal').textContent;
-            const totalVal = parseFloat(totalText.replace('$', ''));
-            const deposit = (totalVal * 0.25).toFixed(2);
-
-            document.getElementById('payClientName').textContent = name || 'Valued Client';
-            document.getElementById('payShootDate').textContent = date || 'To Be Confirmed';
-            document.getElementById('payDepositAmount').textContent = `$${deposit}`;
-
-            switchPage('payment');
-        }
-
-        // -------------------------------------------------------------
-        // 4. PORTFOLIO FILTER & LIGHTBOX MODAL
-        // -------------------------------------------------------------
-        function filterPortfolio(category) {
-            const cards = document.querySelectorAll('.portfolio-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-
-            buttons.forEach(btn => {
-                btn.classList.remove('border-amber-500', 'bg-amber-500/20', 'text-amber-300');
-                btn.classList.add('border-white/10', 'text-gray-400');
-            });
-
-            event.target.classList.add('border-amber-500', 'bg-amber-500/20', 'text-amber-300');
-
-            cards.forEach(card => {
-                if (category === 'all' || card.classList.contains(category)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        function openLightbox(imgSrc, title) {
-            const modal = document.getElementById('mediaModal');
-            const container = document.getElementById('modalContainer');
-            const modalTitle = document.getElementById('modalTitle');
-
-            container.innerHTML = `<img src="${imgSrc}" class="w-full h-auto max-h-[70vh] object-contain rounded-xl">`;
-            modalTitle.textContent = title;
-            modal.classList.remove('hidden');
-        }
-
-        function openShowreelModal() {
-            const modal = document.getElementById('mediaModal');
-            const container = document.getElementById('modalContainer');
-            const modalTitle = document.getElementById('modalTitle');
-
-            container.innerHTML = `
-                <div class="p-12 text-center space-y-4">
-                    <div class="w-16 h-16 rounded-full bg-amber-400 text-black flex items-center justify-center mx-auto pulse-play">
-                        <i data-lucide="play" class="w-8 h-8 fill-current ml-1"></i>
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            // Custom submission notice
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md';
+            modal.innerHTML = `
+                <div class="glass-panel border border-amber-500/30 p-8 rounded-2xl max-w-md w-full text-center space-y-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 mx-auto flex items-center justify-center">
+                        <i data-lucide="check-circle" class="w-6 h-6"></i>
                     </div>
-                    <p class="text-lg font-bold text-white">TIMZ VISUALS 2026 Showreel (8K HDR)</p>
-                    <p class="text-xs text-gray-400">Stream preview loaded. Production quality demo video initialized.</p>
+                    <h3 class="text-xl font-bold text-white">Booking Request Received</h3>
+                    <p class="text-sm text-gray-300">We will reach out shorty at <span class="text-amber-400 font-semibold">timzvusuals@gmail.com</span> or <span class="text-amber-400 font-semibold">613-229-3013</span>.</p>
+                    <button onclick="this.closest('.fixed').remove()" class="px-6 py-2 bg-amber-500 text-black font-bold rounded-xl w-full">Close</button>
                 </div>
             `;
-            modalTitle.textContent = "2026 Master Cinema Reel";
-            modal.classList.remove('hidden');
+            document.body.appendChild(modal);
             lucide.createIcons();
         }
 
-        function closeMediaModal() {
-            document.getElementById('mediaModal').classList.add('hidden');
+        function openShowreelModal() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md';
+            modal.innerHTML = `
+                <div class="glass-panel border border-amber-500/30 p-8 rounded-2xl max-w-md w-full text-center space-y-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 mx-auto flex items-center justify-center">
+                        <i data-lucide="play" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">2026 Showreel</h3>
+                    <p class="text-sm text-gray-300">Playing showreel video presentation for TIMZ VISUALS (Canada).</p>
+                    <button onclick="this.closest('.fixed').remove()" class="px-6 py-2 bg-amber-500 text-black font-bold rounded-xl w-full">Close Preview</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            lucide.createIcons();
         }
-
-        // On DOM Load
-        document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            recalculateBooking();
-        });
     </script>
 </body>
 </html>
