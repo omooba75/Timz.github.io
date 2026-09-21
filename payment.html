@@ -1,469 +1,451 @@
-<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMZ VISUALS - Payment & Deposit Confirmation</title>
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Secure Payment & Checkout - TIMZ VISUALS</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts & Lucide Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: ['class', '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            amber: '#FFBF00',
+                            bronze: '#AA7C11',
+                            darkBg: '#090A0F',
+                            cardDark: 'rgba(18, 20, 29, 0.7)',
+                            lightBg: '#F8FAF9',
+                            cardLight: 'rgba(255, 255, 255, 0.85)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 30px -5px rgba(212, 175, 55, 0.3)',
+                        'glow-lg': '0 0 50px -10px rgba(212, 175, 55, 0.45)',
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
         :root {
-            /* Default Dark Mode Theme Variables */
-            --bg-color: #08080a;
-            --card-bg: rgba(18, 19, 24, 0.75);
-            --card-border: rgba(255, 255, 255, 0.15);
-            --text-color: #ffffff;
-            --text-muted: #a0a0a0;
-            --border-color: rgba(255, 255, 255, 0.2);
-            --nav-bg: rgba(8, 8, 10, 0.85);
-            --input-bg: rgba(255, 255, 255, 0.05);
-            --btn-primary-bg: #ffffff;
-            --btn-primary-text: #08080a;
-            --btn-sec-border: #ffffff;
-            --btn-sec-text: #ffffff;
-            --btn-sec-bg: rgba(255, 255, 255, 0.05);
-            --logo-filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-            --badge-bg: rgba(255, 255, 255, 0.1);
-            --accent-glow: rgba(255, 255, 255, 0.08);
-            --paypal-blue: #0070ba;
-            --paypal-hover: #005ea6;
-            --notice-bg: rgba(234, 179, 8, 0.1);
-            --notice-border: rgba(234, 179, 8, 0.3);
-            --notice-text: #fef08a;
-            --amber-accent: #fbbf24;
+            --bg-primary: #090A0F;
+            --bg-secondary: #12141D;
+            --bg-glass: rgba(18, 20, 29, 0.75);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --accent-gold: #D4AF37;
+            --accent-glow: rgba(212, 175, 55, 0.25);
+            --card-hover: rgba(255, 255, 255, 0.05);
         }
 
-        /* Light Mode Variables Override */
-        [data-theme="light"] {
-            --bg-color: #f4f5f8;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(0, 0, 0, 0.1);
-            --text-color: #0d0d11;
-            --text-muted: #555560;
-            --border-color: rgba(0, 0, 0, 0.12);
-            --nav-bg: rgba(244, 245, 248, 0.85);
-            --input-bg: rgba(0, 0, 0, 0.03);
-            --btn-primary-bg: #0d0d11;
-            --btn-primary-text: #ffffff;
-            --btn-sec-border: #0d0d11;
-            --btn-sec-text: #0d0d11;
-            --btn-sec-bg: rgba(0, 0, 0, 0.05);
-            --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
-            --badge-bg: rgba(0, 0, 0, 0.06);
-            --accent-glow: rgba(0, 0, 0, 0.04);
-            --paypal-blue: #0070ba;
-            --paypal-hover: #005ea6;
-            --notice-bg: rgba(234, 179, 8, 0.12);
-            --notice-border: rgba(202, 138, 4, 0.4);
-            --notice-text: #854d0e;
-            --amber-accent: #d97706;
-        }
-
-        * {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+        html[data-theme="light"] {
+            --bg-primary: #F4F6F8;
+            --bg-secondary: #FFFFFF;
+            --bg-glass: rgba(255, 255, 255, 0.85);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --text-main: #111827;
+            --text-muted: #4B5563;
+            --accent-gold: #B8860B;
+            --accent-glow: rgba(184, 134, 11, 0.15);
+            --card-hover: rgba(0, 0, 0, 0.03);
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease;
             overflow-x: hidden;
         }
 
-        .bg-custom-card { background-color: var(--card-bg); }
-        .text-custom-light { color: var(--text-color); }
-        .text-custom-gray { color: var(--text-muted); }
-        .border-custom-glow { border-color: var(--border-color); }
-        .bg-nav-custom { background-color: var(--nav-bg); }
-
-        .brand-logo-img {
-            filter: var(--logo-filter);
-        }
-
-        .glass-card {
-            background-color: var(--card-bg);
+        .glass-panel {
+            background: var(--bg-glass);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border-color);
         }
 
-        .btn-primary {
-            background-color: var(--btn-primary-bg);
-            color: var(--btn-primary-text);
-            font-weight: 700;
-        }
-        .btn-primary:hover {
-            opacity: 0.92;
-            transform: translateY(-2px);
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B3 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .btn-paypal {
-            background-color: var(--paypal-blue);
-            color: #ffffff;
-            font-weight: 700;
-        }
-        .btn-paypal:hover {
-            background-color: var(--paypal-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 112, 186, 0.35);
+        html[data-theme="light"] .gold-gradient-text {
+            background: linear-gradient(135deg, #8A6400 0%, #B8860B 50%, #5E4300 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .notice-box {
-            background-color: var(--notice-bg);
-            border: 1px solid var(--notice-border);
-            color: var(--notice-text);
+        /* Card Shimmer Simulation */
+        .credit-card-bg {
+            background: linear-gradient(135deg, #1f1b0e 0%, #090a0f 50%, #2b220a 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
-        .theme-fab {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-color);
+            background: var(--bg-primary);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
+            background: rgba(212, 175, 55, 0.3);
             border-radius: 4px;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between relative">
+<body class="min-h-screen flex flex-col justify-between selection:bg-yellow-500/30 selection:text-amber-300">
 
-    <!-- Navigation Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
+    <!-- TOP SECURITY BAR -->
+    <div class="bg-gradient-to-r from-emerald-950/80 via-emerald-800/40 to-emerald-950/80 border-b border-emerald-500/20 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-2">
+        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+        <span>Encrypted 256-Bit SSL Checkout • Official TIMZ VISUALS Booking Terminal</span>
+    </div>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- Brand / Logo -->
+            <!-- LOGO (EXACT ORIGINAL LOGO preserved) -->
             <a href="index.html" class="flex items-center gap-3 group">
-                <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-8 w-auto brand-logo-img transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/150x50/000000/ffffff?text=TIMZ+VISUALS';">
-                <span class="text-xl font-black tracking-widest text-custom-light uppercase">TIMZ <span class="font-light text-custom-gray">VISUALS</span></span>
+                <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-700 p-[1.5px] shadow-glow transition-transform group-hover:scale-105">
+                    <div class="w-full h-full bg-black rounded-[10px] flex items-center justify-center font-display font-black text-xl text-amber-400 tracking-tighter">
+                        TZ
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-extrabold text-xl tracking-wider gold-gradient-text uppercase">TIMZ VISUALS</span>
+                    <span class="text-[10px] tracking-[0.25em] text-gray-400 font-semibold uppercase -mt-1">Studio & Production</span>
+                </div>
             </a>
 
-            <!-- Desktop Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="index.html" class="text-custom-gray hover:text-custom-light transition-colors">Home</a>
-                <a href="work.html" class="text-custom-gray hover:text-custom-light transition-colors">Work</a>
-                <a href="pricing.html" class="text-custom-gray hover:text-custom-light transition-colors">Pricing</a>
-                <a href="booking.html" class="text-custom-gray hover:text-custom-light transition-colors">Booking</a>
-                <a href="payment.html" class="text-custom-light transition-colors font-semibold border-b-2 border-custom-glow pb-1">Payment</a>
+            <!-- NAV LINKS -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="index.html" class="hover:text-amber-400 transition-colors py-1">Home</a>
+                <a href="work.html" class="hover:text-amber-400 transition-colors py-1">Portfolio & Work</a>
+                <a href="pricing.html" class="hover:text-amber-400 transition-colors py-1">Pricing & Packages</a>
+                <a href="booking.html" class="hover:text-amber-400 transition-colors py-1">Reserve Date</a>
             </nav>
 
-            <!-- Action Button & Mobile Trigger -->
+            <!-- CONTROLS -->
             <div class="flex items-center gap-4">
-                <a href="booking.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider btn-primary transition-all">
-                    <span>Book Session</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </a>
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-full border border-white/10 hover:border-amber-400/50 bg-white/5 hover:bg-white/10 transition-all text-amber-400" title="Toggle Theme">
+                    <i data-lucide="sun" id="themeSunIcon" class="w-5 h-5 hidden"></i>
+                    <i data-lucide="moon" id="themeMoonIcon" class="w-5 h-5"></i>
+                </button>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Navigation Menu" aria-expanded="false">
-                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg border border-white/10 text-gray-300 hover:text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Drawer Navigation -->
-        <div id="mobileMenu" class="hidden md:hidden bg-nav-custom border-b border-custom-glow px-6 py-6 space-y-4">
-            <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
-            <a href="work.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Work</a>
-            <a href="pricing.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Pricing</a>
-            <a href="booking.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Booking</a>
-            <a href="payment.html" class="block text-base font-bold text-custom-light">Payment</a>
-            <a href="booking.html" class="inline-block w-full text-center py-3 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider mt-2">
-                Book Session Now
-            </a>
+        <!-- MOBILE NAV -->
+        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-white/10 px-6 py-6 space-y-4">
+            <a href="index.html" class="block py-2 font-medium hover:text-amber-400">Home</a>
+            <a href="work.html" class="block py-2 font-medium hover:text-amber-400">Portfolio & Work</a>
+            <a href="pricing.html" class="block py-2 font-medium hover:text-amber-400">Pricing & Packages</a>
+            <a href="booking.html" class="block py-2 font-medium hover:text-amber-400">Reserve Date</a>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full flex-grow flex flex-col justify-center">
+    <!-- PAYMENT CONTENT CONTAINER -->
+    <main class="flex-grow max-w-5xl mx-auto px-4 py-12 w-full">
         
-        <!-- Header Title Section -->
-        <div class="text-center max-w-2xl mx-auto mb-10">
-            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card">
-                Step 2 of 2: Secure Session
-            </span>
-            <h1 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight mb-3 uppercase">
-                DEPOSIT <span class="font-light text-custom-gray">PAYMENT</span>
-            </h1>
-            <p class="text-custom-gray text-sm sm:text-base leading-relaxed">
-                To finalize your session reservation, please submit your required retainer deposit via PayPal below.
-            </p>
+        <!-- STEP INDICATOR -->
+        <div class="flex items-center justify-between max-w-xl mx-auto mb-10 text-xs font-bold uppercase tracking-wider">
+            <div class="flex items-center gap-2 text-amber-400">
+                <span class="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-400 flex items-center justify-center">1</span>
+                <span>Session Details</span>
+            </div>
+            <div class="h-px bg-white/20 flex-grow mx-4"></div>
+            <div class="flex items-center gap-2 text-amber-400">
+                <span class="w-6 h-6 rounded-full bg-amber-400 text-black flex items-center justify-center font-black">2</span>
+                <span>Deposit & Payment</span>
+            </div>
         </div>
 
-        <!-- Main Payment Glass Container -->
-        <div class="glass-card rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl relative overflow-hidden">
-            
-            <!-- Deposit Highlight Header -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-neutral-500/10 border border-custom-glow">
-                <div class="text-center sm:text-left">
-                    <span class="text-xs font-bold uppercase tracking-wider text-custom-gray block">Required Retainer</span>
-                    <h2 class="text-xl sm:text-2xl font-black text-custom-light mt-0.5 uppercase">Reservation Deposit</h2>
-                    <p class="text-xs text-custom-gray mt-1">Locks in your date & credits directly toward your final balance.</p>
+        <!-- SUCCESS MESSAGE STATE (HIDDEN BY DEFAULT) -->
+        <div id="successCard" class="hidden glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-500/40 text-center space-y-6 max-w-2xl mx-auto">
+            <div class="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto shadow-glow">
+                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+            </div>
+            <h1 class="text-3xl font-display font-extrabold">Retainer Deposit Confirmed!</h1>
+            <p class="text-gray-300 text-sm leading-relaxed">Your session slot is now officially locked into the TIMZ VISUALS production calendar. A receipt and calendar invite have been sent to your email.</p>
+
+            <div class="bg-black/40 rounded-2xl p-6 text-left space-y-3 border border-white/10 text-sm">
+                <div class="flex justify-between border-b border-white/10 pb-2">
+                    <span class="text-gray-400">Transaction ID:</span>
+                    <span class="font-mono text-xs text-amber-300 font-bold">TZ-2026-98421</span>
                 </div>
-                <div class="text-center sm:text-right bg-emerald-500/10 border border-emerald-500/30 px-6 py-3 rounded-2xl w-full sm:w-auto">
-                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 block">Amount Due Now</span>
-                    <span class="text-3xl sm:text-4xl font-black text-emerald-500">$20.00</span>
+                <div class="flex justify-between border-b border-white/10 pb-2">
+                    <span class="text-gray-400">Payment Method:</span>
+                    <span class="font-medium text-white">Apple Pay / Visa •••• 4242</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Amount Paid:</span>
+                    <span class="font-bold text-emerald-400">$150.00 USD</span>
                 </div>
             </div>
 
-            <!-- Important Note Section with Memo Helper -->
-            <div class="notice-box p-6 rounded-2xl space-y-4 text-xs sm:text-sm">
-                <div class="flex items-center gap-2 font-bold uppercase tracking-wider">
-                    <i class="fa-solid fa-circle-exclamation text-base"></i>
-                    <span>Important Payment Instruction:</span>
-                </div>
-                <p class="leading-relaxed opacity-95">
-                    📌 Please include <strong>"Deposit - [Your Full Name]"</strong> in the note/memo section when sending your PayPal payment so Timothy knows who sent it!
-                </p>
+            <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-extrabold shadow-glow hover:scale-105 transition-all text-sm">
+                    Return to Home Studio
+                </a>
+                <a href="work.html" class="px-8 py-3.5 rounded-xl border border-white/20 text-gray-300 font-bold hover:bg-white/10 transition-all text-sm">
+                    Explore Gallery
+                </a>
+            </div>
+        </div>
+
+        <!-- MAIN CHECKOUT FORM LAYOUT -->
+        <div id="checkoutGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- LEFT: PAYMENT METHODS & CREDIT CARD INPUTS (2 COLUMNS) -->
+            <div class="lg:col-span-2 space-y-6">
                 
-                <!-- Dynamic Memo Generator Preview -->
-                <div class="pt-2 border-t border-amber-500/20 space-y-2">
-                    <label for="clientNameInput" class="block text-[11px] font-bold uppercase tracking-wider text-custom-gray">
-                        Type your name below to preview your payment memo:
-                    </label>
-                    <input type="text" id="clientNameInput" placeholder="e.g., Alex Johnson" class="w-full p-3 rounded-xl border border-custom-glow bg-neutral-900/40 text-custom-light text-xs focus:outline-none focus:border-amber-400">
-                    
-                    <div class="p-3 rounded-xl bg-black/30 border border-custom-glow flex items-center justify-between gap-2 text-xs">
-                        <span class="text-custom-gray truncate">Note Memo Preview: <strong id="memoPreviewText" class="text-amber-400 font-mono">Deposit - [Your Name]</strong></span>
-                        <button id="copyMemoBtn" class="px-3 py-1.5 rounded-lg bg-neutral-500/20 hover:bg-neutral-500/30 text-custom-light text-[11px] font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shrink-0">
-                            <i class="fa-regular fa-copy"></i>
-                            <span id="copyMemoLabel">Copy Memo</span>
+                <!-- EXPRESS PAY METHODS -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400">Express Checkout Options</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button type="button" onclick="processPayment('Apple Pay')" class="py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all flex items-center justify-center gap-2 text-white font-bold text-sm">
+                            <i data-lucide="apple" class="w-5 h-5 fill-current"></i>
+                            <span>Pay</span>
                         </button>
+                        <button type="button" onclick="processPayment('Google Pay')" class="py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all flex items-center justify-center gap-2 text-white font-bold text-sm">
+                            <i data-lucide="wallet" class="w-5 h-5 text-amber-400"></i>
+                            <span>G Pay</span>
+                        </button>
+                    </div>
+                    <div class="relative my-4 text-center">
+                        <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-white/10"></div></div>
+                        <span class="relative bg-[var(--bg-primary)] px-4 text-xs text-gray-400 font-semibold uppercase">Or pay with card</span>
+                    </div>
+                </div>
+
+                <!-- CREDIT CARD FORM -->
+                <form id="paymentForm" onsubmit="handleFormSubmit(event)" class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-amber-400">Credit or Debit Card</label>
+                        <div class="flex items-center gap-2 text-gray-400 text-xs">
+                            <i data-lucide="credit-card" class="w-4 h-4 text-amber-400"></i>
+                            <span>Visa, Mastercard, Amex</span>
+                        </div>
+                    </div>
+
+                    <!-- VIRTUAL CARD PREVIEW CARD -->
+                    <div class="credit-card-bg p-6 rounded-2xl relative overflow-hidden space-y-6 shadow-2xl">
+                        <div class="flex items-center justify-between">
+                            <span class="font-display font-extrabold text-amber-400 tracking-wider">TZ VISUALS PAY</span>
+                            <i data-lucide="wifi" class="w-5 h-5 text-amber-400/70 rotate-90"></i>
+                        </div>
+                        
+                        <div>
+                            <span class="text-[10px] uppercase text-gray-400 font-mono tracking-widest block mb-1">Card Number</span>
+                            <div id="cardDisplayNum" class="font-mono text-lg tracking-widest text-white font-bold">•••• •••• •••• 4242</div>
+                        </div>
+
+                        <div class="flex justify-between items-end text-xs font-mono">
+                            <div>
+                                <span class="text-[9px] uppercase text-gray-400 block">Card Holder</span>
+                                <span id="cardDisplayName" class="font-bold text-white uppercase tracking-wider">VALUED CLIENT</span>
+                            </div>
+                            <div>
+                                <span class="text-[9px] uppercase text-gray-400 block">Expires</span>
+                                <span id="cardDisplayExp" class="font-bold text-white">12/28</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD INPUT FIELDS -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1.5">Name on Card</label>
+                            <input type="text" id="cardHolderName" placeholder="Valued Client" required oninput="updateCardPreview()" class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1.5">Card Number</label>
+                            <input type="text" id="cardNumber" maxlength="19" placeholder="4242 •••• •••• 4242" required oninput="updateCardPreview()" class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white font-mono">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1.5">Expiration (MM/YY)</label>
+                                <input type="text" id="cardExp" maxlength="5" placeholder="12/28" required oninput="updateCardPreview()" class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white font-mono">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1.5">CVC / CVV</label>
+                                <input type="text" id="cardCvc" maxlength="4" placeholder="888" required class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white font-mono">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUBMIT BUTTON -->
+                    <button type="submit" id="payButton" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-600 text-black font-extrabold text-center shadow-glow hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                        <span>Authorize Retainer Deposit ($150.00)</span>
+                    </button>
+                </form>
+
+            </div>
+
+            <!-- RIGHT: ORDER SUMMARY PANEL -->
+            <div class="lg:col-span-1">
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/30 sticky top-28 space-y-6">
+                    <h3 class="text-lg font-bold font-display uppercase tracking-wide border-b border-white/10 pb-4">Reservation Summary</h3>
+                    
+                    <!-- SUMMARY ITEM DETAILS -->
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10">
+                            <!-- UNTOUCHED BRAND IMAGE -->
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=200" alt="Studio Session" class="w-12 h-12 rounded-lg object-cover">
+                            <div>
+                                <span class="font-bold text-white block text-xs">Photography & Reel Session</span>
+                                <span class="text-[11px] text-gray-400">4 Hours • Standard Package</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-xs pt-2">
+                            <div class="flex justify-between text-gray-400">
+                                <span>Total Production Estimate:</span>
+                                <span class="font-bold text-white">$600.00</span>
+                            </div>
+                            <div class="flex justify-between text-gray-400">
+                                <span>Retainer Due Now (25%):</span>
+                                <span class="font-bold text-amber-400">$150.00</span>
+                            </div>
+                            <div class="flex justify-between text-gray-400">
+                                <span>Remaining Balance at Shoot:</span>
+                                <span class="font-bold text-white">$450.00</span>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-4 flex justify-between items-baseline">
+                            <span class="text-sm font-bold">Charge Amount Today:</span>
+                            <span class="text-2xl font-bold font-display gold-gradient-text">$150.00</span>
+                        </div>
+                    </div>
+
+                    <!-- GUARANTEE BADGES -->
+                    <div class="space-y-3 pt-2 text-xs text-gray-400 border-t border-white/10">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                            <span>Date held instantly upon confirmation</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="shield" class="w-4 h-4 text-amber-400 flex-shrink-0"></i>
+                            <span>Full refund if cancelled within 24h</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- PayPal Payment Action Box -->
-            <div class="p-6 rounded-2xl border border-custom-glow bg-neutral-900/30 text-center space-y-5">
-                <div class="flex items-center justify-center gap-2 text-custom-light text-sm font-semibold">
-                    <i class="fa-brands fa-paypal text-2xl text-blue-500"></i>
-                    <span class="uppercase tracking-wider font-bold">Send Payment via PayPal Direct</span>
-                </div>
-
-                <!-- PayPal Button & Copy Handle Row -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-                    <a href="https://paypal.me/Timz34" target="_blank" rel="noopener noreferrer" class="btn-paypal w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all">
-                        <i class="fa-brands fa-paypal text-lg"></i>
-                        <span>Pay $20.00 via PayPal.me/Timz34</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
-                    </a>
-                    
-                    <button id="copyLinkBtn" class="w-full sm:w-auto px-5 py-4 rounded-xl border border-custom-glow hover:bg-neutral-500/10 text-custom-light text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-link"></i>
-                        <span id="copyLinkLabel">Copy Link</span>
-                    </button>
-                </div>
-
-                <p class="text-xs text-custom-gray">
-                    Redirects to PayPal securely in a new browser tab.
-                </p>
-            </div>
-
-            <!-- Confirmation Action -->
-            <div class="pt-4 border-t border-custom-glow space-y-3">
-                <button type="button" id="confirmDepositBtn" class="w-full py-4 rounded-xl btn-primary uppercase tracking-wider text-xs sm:text-sm font-bold transition-all shadow-xl flex items-center justify-center gap-2">
-                    <span>I Have Sent My Deposit</span>
-                    <i class="fa-solid fa-circle-check text-base"></i>
-                </button>
-                <p class="text-center text-xs text-custom-gray">
-                    Click this button immediately after completing your PayPal transaction.
-                </p>
-            </div>
         </div>
 
     </main>
 
-    <!-- Modal Overlay -->
-    <div id="paymentModalOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
-        <div class="glass-card max-w-md w-full rounded-3xl p-6 sm:p-8 text-center space-y-6 shadow-2xl relative overflow-hidden border border-custom-glow">
-            
-            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-3xl border border-emerald-500/30">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            
-            <div class="space-y-2">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Notice Registered</span>
-                <h3 class="text-2xl font-black text-custom-light uppercase tracking-tight">Notification Sent!</h3>
-            </div>
-            
-            <p class="text-xs sm:text-sm text-custom-gray leading-relaxed">
-                Thank you! We've registered your deposit submission notice. Timothy will verify the payment against PayPal and reach out via email shortly with your booking confirmation and details.
-            </p>
-
-            <!-- Dynamic Receipt Summary Box -->
-            <div class="p-4 rounded-2xl bg-neutral-900/60 text-left text-xs space-y-2 border border-custom-glow text-custom-gray">
-                <div class="flex justify-between items-center border-b border-custom-glow pb-2 mb-2">
-                    <span class="font-bold text-custom-light uppercase tracking-wider">Receipt Details</span>
-                    <span id="modalRefCode" class="font-mono text-[10px] text-amber-400">#REF-0000</span>
-                </div>
-                <div><strong class="text-custom-light">Recipient:</strong> Timothy / TIMZ VISUALS</div>
-                <div><strong class="text-custom-light">Deposit Amount:</strong> $20.00 USD</div>
-                <div><strong class="text-custom-light">Client Note:</strong> <span id="modalMemoVal" class="font-mono text-amber-400">Deposit - Guest</span></div>
-                <div><strong class="text-custom-light">Status:</strong> <span class="text-amber-400 font-bold">Pending Verification</span></div>
-            </div>
-
-            <button id="closePaymentModalBtn" class="w-full py-4 rounded-xl btn-primary uppercase text-xs font-bold tracking-wider transition-all shadow-lg flex items-center justify-center gap-2">
-                <span>Return to Home Page</span>
-                <i class="fa-solid fa-house text-xs"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- Floating Theme Switcher FAB -->
-    <button id="themeToggleFab" aria-label="Toggle Light/Dark Theme" class="theme-fab fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full glass-card flex items-center justify-center text-custom-light border border-custom-glow hover:scale-110 active:scale-95 transition-all duration-300">
-        <i id="themeIcon" class="fa-solid fa-sun text-lg"></i>
-    </button>
-
-    <!-- Footer -->
-    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
-            <div class="flex items-center gap-3">
-                <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
-                <span class="font-bold text-custom-light uppercase tracking-wider">TIMZ VISUALS</span>
+    <!-- FOOTER -->
+    <footer class="glass-panel border-t border-white/10 mt-20 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-white gold-gradient-text">TIMZ VISUALS</span>
+                <span>• Secure Checkout Terminal</span>
             </div>
             <p>© 2026 TIMZ VISUALS. All rights reserved.</p>
-            <div class="flex space-x-4 text-sm">
-                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
-                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
         </div>
     </footer>
 
+    <!-- INTERACTIVE JAVASCRIPT & THEME SYNCHRONIZATION -->
     <script>
-        // --- 1. Persistent Theme Management ---
-        const themeToggleFab = document.getElementById('themeToggleFab');
-        const themeIcon = document.getElementById('themeIcon');
-        
-        const savedTheme = localStorage.getItem('timz_theme') || 
-            (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        lucide.createIcons();
+
+        // 1. GLOBAL LOCALSTORAGE THEME SYNCHRONIZATION
+        function initTheme() {
+            const savedTheme = localStorage.getItem('timz_theme') || 'dark';
+            applyTheme(savedTheme);
+        }
 
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
-            if (theme === 'light') {
-                themeIcon.className = 'fa-solid fa-moon text-lg text-neutral-800';
-            } else {
-                themeIcon.className = 'fa-solid fa-sun text-lg text-amber-400';
-            }
             localStorage.setItem('timz_theme', theme);
+
+            const sunIcon = document.getElementById('themeSunIcon');
+            const moonIcon = document.getElementById('themeMoonIcon');
+
+            if (theme === 'light') {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
         }
 
-        applyTheme(savedTheme);
-
-        themeToggleFab.addEventListener('click', () => {
+        function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             applyTheme(newTheme);
-        });
-
-        // --- 2. Mobile Drawer Navigation Toggle ---
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
-
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                const isOpen = !mobileMenu.classList.contains('hidden');
-                mobileMenu.classList.toggle('hidden');
-                mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
-                mobileMenuIcon.className = isOpen ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
-            });
         }
 
-        // --- 3. Interactive Memo & Copy Utilities ---
-        const clientNameInput = document.getElementById('clientNameInput');
-        const memoPreviewText = document.getElementById('memoPreviewText');
-        const copyMemoBtn = document.getElementById('copyMemoBtn');
-        const copyMemoLabel = document.getElementById('copyMemoLabel');
-
-        function getMemoString() {
-            const name = clientNameInput.value.trim();
-            return name ? `Deposit - ${name}` : 'Deposit - [Your Name]';
-        }
-
-        clientNameInput.addEventListener('input', () => {
-            memoPreviewText.textContent = getMemoString();
-        });
-
-        copyMemoBtn.addEventListener('click', () => {
-            const memoToCopy = clientNameInput.value.trim() ? `Deposit - ${clientNameInput.value.trim()}` : 'Deposit - ';
-            
-            const textarea = document.createElement('textarea');
-            textarea.value = memoToCopy;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-
-            copyMemoLabel.textContent = 'Copied!';
-            setTimeout(() => {
-                copyMemoLabel.textContent = 'Copy Memo';
-            }, 2000);
-        });
-
-        const copyLinkBtn = document.getElementById('copyLinkBtn');
-        const copyLinkLabel = document.getElementById('copyLinkLabel');
-
-        copyLinkBtn.addEventListener('click', () => {
-            const paypalUrl = 'https://paypal.me/Timz34';
-            const textarea = document.createElement('textarea');
-            textarea.value = paypalUrl;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-
-            copyLinkLabel.textContent = 'Link Copied!';
-            setTimeout(() => {
-                copyLinkLabel.textContent = 'Copy Link';
-            }, 2000);
-        });
-
-        // --- 4. Deposit Confirmation & Glassmorphism Modal ---
-        const confirmDepositBtn = document.getElementById('confirmDepositBtn');
-        const paymentModalOverlay = document.getElementById('paymentModalOverlay');
-        const closePaymentModalBtn = document.getElementById('closePaymentModalBtn');
-        const modalRefCode = document.getElementById('modalRefCode');
-        const modalMemoVal = document.getElementById('modalMemoVal');
-
-        confirmDepositBtn.addEventListener('click', () => {
-            // Generate pseudo random reference code
-            const randomRef = 'REF-' + Math.floor(100000 + Math.random() * 900000);
-            modalRefCode.textContent = `#${randomRef}`;
-            
-            const currentMemo = clientNameInput.value.trim() ? `Deposit - ${clientNameInput.value.trim()}` : 'Deposit - [Not Specified]';
-            modalMemoVal.textContent = currentMemo;
-
-            paymentModalOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
-
-        closePaymentModalBtn.addEventListener('click', () => {
-            paymentModalOverlay.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            window.location.href = 'index.html';
-        });
-
-        paymentModalOverlay.addEventListener('click', (e) => {
-            if (e.target === paymentModalOverlay) {
-                paymentModalOverlay.classList.add('hidden');
-                document.body.style.overflow = 'auto';
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'timz_theme' && event.newValue) {
+                applyTheme(event.newValue);
             }
+        });
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // 2. CARD PREVIEW UPDATER
+        function updateCardPreview() {
+            const name = document.getElementById('cardHolderName').value;
+            const num = document.getElementById('cardNumber').value;
+            const exp = document.getElementById('cardExp').value;
+
+            document.getElementById('cardDisplayName').textContent = name.trim() !== '' ? name.toUpperCase() : 'VALUED CLIENT';
+            document.getElementById('cardDisplayNum').textContent = num.trim() !== '' ? num : '•••• •••• •••• 4242';
+            document.getElementById('cardDisplayExp').textContent = exp.trim() !== '' ? exp : '12/28';
+        }
+
+        // 3. PAYMENT PROCESSING SIMULATION
+        function processPayment(methodName) {
+            const btn = document.getElementById('payButton');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin rounded-full h-4 w-4 border-2 border-black border-t-transparent"></span> Processing ${methodName}...`;
+
+            setTimeout(() => {
+                document.getElementById('checkoutGrid').classList.add('hidden');
+                document.getElementById('successCard').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1500);
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            processPayment('Credit Card');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
         });
     </script>
 </body>
