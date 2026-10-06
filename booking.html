@@ -1,436 +1,988 @@
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reserve Date & Production - TIMZ VISUALS</title>
-    
-    <!-- Google Fonts & Lucide Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
+    <title>TIMZ VISUALS | Luxury Visual Storytelling & Production</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: ['class', '[data-theme="dark"]'],
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            gold: '#D4AF37',
-                            amber: '#FFBF00',
-                            bronze: '#AA7C11',
-                            darkBg: '#090A0F',
-                            cardDark: 'rgba(18, 20, 29, 0.7)',
-                            lightBg: '#F8FAF9',
-                            cardLight: 'rgba(255, 255, 255, 0.85)',
-                        }
+                        obsidian: '#050505',
+                        charcoal: '#0c0c0c',
+                        darkcard: 'rgba(18, 18, 18, 0.65)',
+                        lightcard: 'rgba(255, 255, 255, 0.75)',
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        display: ['"Space Grotesk"', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
                     },
                     boxShadow: {
-                        'glow': '0 0 30px -5px rgba(212, 175, 55, 0.3)',
-                        'glow-lg': '0 0 50px -10px rgba(212, 175, 55, 0.45)',
+                        'glow-white': '0 0 25px -5px rgba(255, 255, 255, 0.15)',
+                        'glow-black': '0 0 25px -5px rgba(0, 0, 0, 0.15)',
+                        'glass-dark': '0 8px 32px 0 rgba(0, 0, 0, 0.5)',
+                        'glass-light': '0 8px 32px 0 rgba(0, 0, 0, 0.06)',
                     }
                 }
             }
         }
     </script>
-
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Glassmorphism & Card Flip Styles -->
     <style>
-        :root {
-            --bg-primary: #090A0F;
-            --bg-secondary: #12141D;
-            --bg-glass: rgba(18, 20, 29, 0.75);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
-            --accent-gold: #D4AF37;
-            --accent-glow: rgba(212, 175, 55, 0.25);
-            --card-hover: rgba(255, 255, 255, 0.05);
-        }
-
-        html[data-theme="light"] {
-            --bg-primary: #F4F6F8;
-            --bg-secondary: #FFFFFF;
-            --bg-glass: rgba(255, 255, 255, 0.85);
-            --border-color: rgba(0, 0, 0, 0.08);
-            --text-main: #111827;
-            --text-muted: #4B5563;
-            --accent-gold: #B8860B;
-            --accent-glow: rgba(184, 134, 11, 0.15);
-            --card-hover: rgba(0, 0, 0, 0.03);
-        }
-
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: background-color 0.4s ease, color 0.4s ease;
-            overflow-x: hidden;
         }
 
-        .glass-panel {
-            background: var(--bg-glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-color);
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF0B3 0%, #D4AF37 50%, #997A15 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Geometric Grid Background Patterns */
+        .bg-grid-pattern-dark {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        html[data-theme="light"] .gold-gradient-text {
-            background: linear-gradient(135deg, #8A6400 0%, #B8860B 50%, #5E4300 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .bg-grid-pattern-light {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
+        /* Glassmorphism Classes */
+        .glass-panel-dark {
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-light {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+        }
+
+        .dark .glass-card-hover:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 35px -10px rgba(255, 255, 255, 0.08);
+        }
+
+        .light .glass-card-hover:hover {
+            border-color: rgba(0, 0, 0, 0.25);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 3D Interactive Card Flip Styling */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
+            background: rgba(0,0,0,0.1);
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(212, 175, 55, 0.3);
+            background: rgba(120, 120, 120, 0.3);
             border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(120, 120, 120, 0.5);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-yellow-500/30 selection:text-amber-300">
+<body class="bg-obsidian text-neutral-100 antialiased selection:bg-white selection:text-black dark:bg-obsidian dark:text-neutral-100 bg-white text-neutral-900 transition-colors duration-300 min-h-screen flex flex-col justify-between">
 
-    <!-- ANNOUNCEMENT BAR -->
-    <div class="bg-gradient-to-r from-amber-900/60 via-amber-600/40 to-yellow-900/60 border-b border-amber-500/20 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-2">
-        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span>Instant Calendar Lock & Retainer Reservation Active</span>
-    </div>
-
-    <!-- NAVIGATION HEADER -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 transition-colors">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- LOGO (UNTOUCHED BRAND LOGO) -->
-            <a href="index.html" class="flex items-center gap-3 group">
-                <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-700 p-[1.5px] shadow-glow transition-transform group-hover:scale-105">
-                    <div class="w-full h-full bg-black rounded-[10px] flex items-center justify-center font-display font-black text-xl text-amber-400 tracking-tighter">
-                        TZ
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto">
+            <nav id="main-nav" class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light rounded-full px-5 py-3 flex items-center justify-between transition-all duration-300 shadow-glass-dark dark:shadow-glass-dark">
+                <!-- Logo with exact 'timz vi.svg' image & fallback handling -->
+                <a href="#" onclick="switchPage('page-index'); return false;" class="flex items-center gap-3 group">
+                    <div class="relative w-9 h-9 rounded-full bg-white text-black dark:bg-white dark:text-black light:bg-black light:text-white flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105 border border-neutral-700/30">
+                        <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('logo-fallback-text').classList.remove('hidden');">
+                        <span id="logo-fallback-text" class="hidden font-display font-black text-sm tracking-tighter">TZ</span>
                     </div>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-display font-extrabold text-xl tracking-wider gold-gradient-text uppercase">TIMZ VISUALS</span>
-                    <span class="text-[10px] tracking-[0.25em] text-gray-400 font-semibold uppercase -mt-1">Studio & Production</span>
-                </div>
-            </a>
+                    <span class="font-display font-bold text-lg tracking-wider dark:text-white text-black">
+                        TIMZ <span class="font-light text-neutral-400">VISUALS</span>
+                    </span>
+                </a>
 
-            <!-- NAV LINKS -->
-            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
-                <a href="index.html" class="hover:text-amber-400 transition-colors py-1">Home</a>
-                <a href="work.html" class="hover:text-amber-400 transition-colors py-1">Portfolio & Work</a>
-                <a href="pricing.html" class="hover:text-amber-400 transition-colors py-1">Pricing & Packages</a>
-                <a href="booking.html" class="text-amber-400 font-semibold py-1">Reserve Date</a>
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                    <button onclick="switchPage('page-index')" class="nav-link transition-colors dark:text-neutral-300 text-neutral-700 hover:text-black dark:hover:text-white" data-page="page-index">HOME</button>
+                    <button onclick="switchPage('page-work')" class="nav-link transition-colors dark:text-neutral-300 text-neutral-700 hover:text-black dark:hover:text-white" data-page="page-work">PORTFOLIO</button>
+                    <button onclick="switchPage('page-pricing')" class="nav-link transition-colors dark:text-neutral-300 text-neutral-700 hover:text-black dark:hover:text-white" data-page="page-pricing">PRICING</button>
+                    <button onclick="switchPage('page-booking')" class="nav-link transition-colors dark:text-neutral-300 text-neutral-700 hover:text-black dark:hover:text-white" data-page="page-booking">RESERVE DATE</button>
+                </div>
+
+                <!-- Right Actions (Theme Toggle & CTA) -->
+                <div class="flex items-center gap-3">
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme" class="p-2.5 rounded-full dark:bg-neutral-900/80 bg-neutral-100 border border-neutral-700/40 dark:border-neutral-700/60 text-neutral-200 dark:text-neutral-200 light:text-neutral-800 hover:bg-neutral-800 dark:hover:bg-neutral-800 transition-colors">
+                        <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-neutral-900"></i>
+                    </button>
+
+                    <!-- CTA Button -->
+                    <button onclick="switchPage('page-booking')" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-medium text-xs tracking-wider uppercase bg-white text-black dark:bg-white dark:text-black light:bg-black light:text-white hover:opacity-90 transition-all duration-300 shadow-md">
+                        <span>Book Shoot</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" aria-label="Open Menu" class="md:hidden p-2 rounded-xl dark:bg-neutral-900 bg-neutral-100 text-neutral-900 dark:text-neutral-100">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
             </nav>
-
-            <!-- CONTROLS -->
-            <div class="flex items-center gap-4">
-                <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-full border border-white/10 hover:border-amber-400/50 bg-white/5 hover:bg-white/10 transition-all text-amber-400" title="Toggle Theme">
-                    <i data-lucide="sun" id="themeSunIcon" class="w-5 h-5 hidden"></i>
-                    <i data-lucide="moon" id="themeMoonIcon" class="w-5 h-5"></i>
-                </button>
-
-                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg border border-white/10 text-gray-300 hover:text-white">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
         </div>
 
-        <!-- MOBILE NAV -->
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-white/10 px-6 py-6 space-y-4">
-            <a href="index.html" class="block py-2 font-medium hover:text-amber-400">Home</a>
-            <a href="work.html" class="block py-2 font-medium hover:text-amber-400">Portfolio & Work</a>
-            <a href="pricing.html" class="block py-2 font-medium hover:text-amber-400">Pricing & Packages</a>
-            <a href="booking.html" class="block py-2 font-semibold text-amber-400">Reserve Date</a>
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-x-4 top-20 z-50 glass-panel-dark dark:glass-panel-dark rounded-3xl p-6 shadow-2xl border border-neutral-800 transition-all">
+            <div class="flex flex-col gap-4 text-center font-display font-medium">
+                <button onclick="switchPage('page-index'); toggleMobileMenu();" class="py-2.5 text-lg border-b border-neutral-800/60 dark:text-white text-black">HOME</button>
+                <button onclick="switchPage('page-work'); toggleMobileMenu();" class="py-2.5 text-lg border-b border-neutral-800/60 dark:text-white text-black">PORTFOLIO & WORK</button>
+                <button onclick="switchPage('page-pricing'); toggleMobileMenu();" class="py-2.5 text-lg border-b border-neutral-800/60 dark:text-white text-black">PRICING & PACKAGES</button>
+                <button onclick="switchPage('page-booking'); toggleMobileMenu();" class="py-2.5 text-lg dark:text-white text-black">RESERVE DATE</button>
+                <button onclick="switchPage('page-booking'); toggleMobileMenu();" class="mt-2 w-full py-3 rounded-xl bg-white text-black font-semibold text-sm">
+                    BOOK SHOOT NOW
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- BOOKING CONTAINER -->
-    <main class="flex-grow max-w-6xl mx-auto px-4 py-12 w-full">
-        
-        <!-- HEADER TITLE & COVER IMAGE -->
-        <div class="relative rounded-3xl overflow-hidden mb-12 glass-panel border border-white/10 p-8 sm:p-12">
-            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=1600" alt="Booking Studio Cover" class="absolute inset-0 w-full h-full object-cover opacity-20 filter brightness-50">
-            <div class="relative z-10 max-w-2xl">
-                <span class="text-xs font-bold text-amber-400 tracking-widest uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">Step 1 of 2 • Slot Selection</span>
-                <h1 class="text-3xl sm:text-5xl font-display font-extrabold mt-4">Reserve Your Shoot</h1>
-                <p class="text-gray-300 mt-3 text-sm sm:text-base leading-relaxed">Customize your production scope below. Our dynamic engine will calculate real-time estimates and hold your session slot upon deposit.</p>
-            </div>
+    <main class="flex-grow pt-28 pb-16">
+
+        <!-- ================= PAGE 1: HOME VIEW ================= -->
+        <div id="page-index" class="page-section transition-opacity duration-300">
+            <!-- Hero Section -->
+            <section class="relative min-h-[80vh] flex items-center justify-center px-4 overflow-hidden">
+                <div class="absolute inset-0 bg-grid-pattern-dark dark:bg-grid-pattern-dark light:bg-grid-pattern-light opacity-60"></div>
+                
+                <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/5 dark:bg-white/5 light:bg-black/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+                <div class="relative max-w-5xl mx-auto text-center z-10 px-4">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest border dark:border-neutral-800 dark:bg-neutral-900/80 border-neutral-300 bg-neutral-100/80 mb-8 backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="dark:text-neutral-300 text-neutral-700">NOW BOOKING SEASON 2026</span>
+                    </div>
+
+                    <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.05] mb-8 dark:text-white text-black">
+                        CRAFTING <span class="text-transparent bg-clip-text bg-gradient-to-r dark:from-white dark:via-neutral-300 dark:to-neutral-600 from-black via-neutral-700 to-neutral-400">CINEMATIC</span> STORIES THAT INSPIRE
+                    </h1>
+
+                    <p class="max-w-2xl mx-auto text-base sm:text-lg dark:text-neutral-400 text-neutral-600 mb-10 font-normal leading-relaxed">
+                        High-end luxury production, editorial photography, and commercial filmmaking. Designed for brands, artists, and weddings seeking pure visual mastery.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onclick="switchPage('page-booking')" class="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-sm tracking-wider uppercase dark:bg-white dark:text-black bg-black text-white hover:opacity-90 transition-all duration-300 shadow-lg flex items-center justify-center gap-3">
+                            <span>Reserve Your Shoot Now</span>
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="openShowreelModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-sm tracking-wider uppercase border border-neutral-700/80 dark:border-neutral-700/80 dark:text-white text-black dark:bg-neutral-900/60 bg-neutral-100/60 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i>
+                            <span>Watch Showreel</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20 pt-10 border-t border-neutral-800/40 dark:border-neutral-800/60 border-neutral-200">
+                        <div class="p-4 text-center">
+                            <p class="font-display font-bold text-3xl sm:text-4xl dark:text-white text-black">450+</p>
+                            <p class="text-xs font-medium uppercase tracking-wider dark:text-neutral-400 text-neutral-500 mt-1">Projects Delivered</p>
+                        </div>
+                        <div class="p-4 text-center">
+                            <p class="font-display font-bold text-3xl sm:text-4xl dark:text-white text-black">12+</p>
+                            <p class="text-xs font-medium uppercase tracking-wider dark:text-neutral-400 text-neutral-500 mt-1">Industry Awards</p>
+                        </div>
+                        <div class="p-4 text-center">
+                            <p class="font-display font-bold text-3xl sm:text-4xl dark:text-white text-black">8K RED</p>
+                            <p class="text-xs font-medium uppercase tracking-wider dark:text-neutral-400 text-neutral-500 mt-1">Cinema Standard</p>
+                        </div>
+                        <div class="p-4 text-center">
+                            <p class="font-display font-bold text-3xl sm:text-4xl dark:text-white text-black">100%</p>
+                            <p class="text-xs font-medium uppercase tracking-wider dark:text-neutral-400 text-neutral-500 mt-1">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Production Services Section -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-8 py-20">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl dark:text-white text-black mb-4">PRODUCTION SERVICES</h2>
+                    <p class="dark:text-neutral-400 text-neutral-600 text-sm sm:text-base">Custom crafted visual packages built with precision, top-tier cinematography gear, and artistic color grading.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800 dark:border-neutral-800 light:border-neutral-200 glass-card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-white mb-6">
+                                <i data-lucide="video" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-xl dark:text-white text-black mb-3">Commercial & Music Videos</h3>
+                            <p class="dark:text-neutral-400 text-neutral-600 text-sm leading-relaxed mb-6">High-energy narrative visual content designed for brands, record labels, and commercial campaigns.</p>
+                        </div>
+                        <ul class="text-xs dark:text-neutral-300 text-neutral-700 space-y-2 mb-6 border-t border-neutral-800/60 pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5"></i> 4K/8K Anamorphic Filming</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5"></i> Custom Sound Design & Score</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5"></i> Color Grading & VFX</li>
+                        </ul>
+                        <button onclick="switchPage('page-pricing')" class="w-full py-3 rounded-xl border border-neutral-700/60 dark:border-neutral-700 text-xs font-semibold uppercase tracking-wider dark:text-white text-black hover:bg-white hover:text-black transition-all">Explore Service</button>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800 dark:border-neutral-800 light:border-neutral-200 glass-card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-white mb-6">
+                                <i data-lucide="camera" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-xl dark:text-white text-black mb-3">Editorial & Fashion</h3>
+                            <p class="dark:text-neutral-400 text-neutral-600 text-sm leading-relaxed mb-6">Striking high-fashion editorial portrait photography and runway video campaigns focused on aesthetics.</p>
+                        </div>
+                        <ul class="text-xs dark:text-neutral-300 text-neutral-700 space-y-2 mb-6 border-t border-neutral-800/60 pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5"></i> Studio & Location Sets</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5"></i> High-End Skin Retouching</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5"></i> Magazine-Ready Delivery</li>
+                        </ul>
+                        <button onclick="switchPage('page-pricing')" class="w-full py-3 rounded-xl border border-neutral-700/60 dark:border-neutral-700 text-xs font-semibold uppercase tracking-wider dark:text-white text-black hover:bg-white hover:text-black transition-all">Explore Service</button>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800 dark:border-neutral-800 light:border-neutral-200 glass-card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-700 flex items-center justify-center text-white mb-6">
+                                <i data-lucide="sparkles" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-xl dark:text-white text-black mb-3">Luxury Weddings & Events</h3>
+                            <p class="dark:text-neutral-400 text-neutral-600 text-sm leading-relaxed mb-6">Unobtrusive cinematic documentary coverage for high-end destination weddings and exclusive galas.</p>
+                        </div>
+                        <ul class="text-xs dark:text-neutral-300 text-neutral-700 space-y-2 mb-6 border-t border-neutral-800/60 pt-4">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5"></i> Full Feature Highlight Film</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5"></i> Drone Aerial Cinematography</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5"></i> Heirloom Photo Albums</li>
+                        </ul>
+                        <button onclick="switchPage('page-pricing')" class="w-full py-3 rounded-xl border border-neutral-700/60 dark:border-neutral-700 text-xs font-semibold uppercase tracking-wider dark:text-white text-black hover:bg-white hover:text-black transition-all">Explore Service</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Highlights Showcase -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-8 py-16">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <p class="text-xs font-mono uppercase tracking-widest dark:text-neutral-400 text-neutral-500 mb-2">CURATED SELECTION</p>
+                        <h2 class="font-display font-bold text-3xl sm:text-4xl dark:text-white text-black">FEATURED PRODUCTIONS</h2>
+                    </div>
+                    <button onclick="switchPage('page-work')" class="mt-4 md:mt-0 text-sm font-semibold flex items-center gap-2 dark:text-white text-black hover:underline">
+                        <span>View All Projects</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Project Card 1: Using 'dig.jpeg' background with fallback -->
+                    <div class="group relative rounded-3xl overflow-hidden glass-panel-dark cursor-pointer h-96" onclick="openShowreelModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="dig.jpeg" alt="ECLIPSE URBAN APPAREL" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-8 flex flex-col justify-end">
+                            <span class="text-xs font-mono text-neutral-300 uppercase tracking-widest mb-1">Commercial / Fashion</span>
+                            <h3 class="font-display font-bold text-2xl text-white mb-2">ECLIPSE URBAN APPAREL</h3>
+                            <p class="text-neutral-300 text-xs max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">Anamorphic brand film shot in Tokyo for Paris Fashion Week.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="group relative rounded-3xl overflow-hidden glass-panel-dark cursor-pointer h-96" onclick="openShowreelModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80" alt="Luxury Wedding" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-8 flex flex-col justify-end">
+                            <span class="text-xs font-mono text-neutral-300 uppercase tracking-widest mb-1">Destination Wedding</span>
+                            <h3 class="font-display font-bold text-2xl text-white mb-2">THE AMALFI ELEGANZA</h3>
+                            <p class="text-neutral-300 text-xs max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">3-Day cinematic coverage in Ravello, Italy featuring 8K aerial visuals.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
-        <!-- INTERACTIVE BOOKING FORM -->
-        <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <!-- LEFT INPUT CONFIGURATIONS (2 COLUMNS) -->
-            <div class="lg:col-span-2 space-y-6">
-                
-                <!-- 1. SERVICE CATEGORY -->
-                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-4">1. Choose Visual Service Discipline</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        
-                        <label class="cursor-pointer">
-                            <input type="radio" name="serviceType" value="photo" class="peer hidden" checked onchange="recalculateBooking()">
-                            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 peer-checked:border-amber-400 peer-checked:bg-amber-500/10 transition-all text-center group">
-                                <i data-lucide="camera" class="w-7 h-7 mx-auto mb-2 text-amber-400 group-hover:scale-110 transition-transform"></i>
-                                <div class="font-bold text-sm">Photography</div>
-                                <div class="text-[11px] text-gray-400 mt-1">Portrait / Lookbook</div>
-                            </div>
-                        </label>
-
-                        <label class="cursor-pointer">
-                            <input type="radio" name="serviceType" value="video" class="peer hidden" onchange="recalculateBooking()">
-                            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 peer-checked:border-amber-400 peer-checked:bg-amber-500/10 transition-all text-center group">
-                                <i data-lucide="video" class="w-7 h-7 mx-auto mb-2 text-amber-400 group-hover:scale-110 transition-transform"></i>
-                                <div class="font-bold text-sm">Cinematography</div>
-                                <div class="text-[11px] text-gray-400 mt-1">4K/8K Film & Reel</div>
-                            </div>
-                        </label>
-
-                        <label class="cursor-pointer">
-                            <input type="radio" name="serviceType" value="full" class="peer hidden" onchange="recalculateBooking()">
-                            <div class="p-5 rounded-2xl border border-white/10 bg-white/5 peer-checked:border-amber-400 peer-checked:bg-amber-500/10 transition-all text-center group">
-                                <i data-lucide="clapperboard" class="w-7 h-7 mx-auto mb-2 text-amber-400 group-hover:scale-110 transition-transform"></i>
-                                <div class="font-bold text-sm">Full Hybrid</div>
-                                <div class="text-[11px] text-gray-400 mt-1">Photo + Cinema Team</div>
-                            </div>
-                        </label>
-
-                    </div>
+        <!-- ================= PAGE 2: PORTFOLIO / WORK VIEW ================= -->
+        <div id="page-work" class="page-section hidden transition-opacity duration-300">
+            <section class="max-w-7xl mx-auto px-4 sm:px-8 py-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h1 class="font-display font-bold text-4xl sm:text-5xl dark:text-white text-black mb-4">SELECTED WORKS</h1>
+                    <p class="dark:text-neutral-400 text-neutral-600 text-sm sm:text-base">Explore our gallery of cinematic visuals, editorial photography, and brand productions.</p>
                 </div>
 
-                <!-- 2. DATE & DURATION -->
-                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">Target Date</label>
-                        <div class="relative">
-                            <input type="date" id="shootDate" required class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">Duration / Coverage Hours</label>
-                        <select id="shootHours" onchange="recalculateBooking()" class="w-full bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
-                            <option value="2">2 Hours (Quick Session)</option>
-                            <option value="4" selected>4 Hours (Half-Day Standard)</option>
-                            <option value="8">8 Hours (Full-Day Production)</option>
-                        </select>
-                    </div>
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+                    <button onclick="filterPortfolio('all')" class="portfolio-tab px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase border border-neutral-700 dark:border-neutral-700 bg-white text-black dark:bg-white dark:text-black" data-filter="all">All Works</button>
+                    <button onclick="filterPortfolio('cinema')" class="portfolio-tab px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase border border-neutral-700/50 dark:border-neutral-800 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 hover:text-white transition-colors" data-filter="cinema">Cinematography</button>
+                    <button onclick="filterPortfolio('fashion')" class="portfolio-tab px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase border border-neutral-700/50 dark:border-neutral-800 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 hover:text-white transition-colors" data-filter="fashion">Fashion & Editorial</button>
+                    <button onclick="filterPortfolio('wedding')" class="portfolio-tab px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase border border-neutral-700/50 dark:border-neutral-800 dark:text-neutral-300 text-neutral-700 hover:bg-neutral-800 hover:text-white transition-colors" data-filter="wedding">Weddings</button>
                 </div>
 
-                <!-- 3. ADD-ON UPGRADES -->
-                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400 mb-1">Production Enhancements & Add-Ons</label>
-                    
-                    <label class="flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer border border-white/5 transition-all">
-                        <div class="flex items-center gap-3">
-                            <input type="checkbox" id="addonDrone" onchange="recalculateBooking()" class="w-5 h-5 text-amber-400 rounded focus:ring-amber-400 accent-amber-500">
-                            <div>
-                                <span class="text-sm font-semibold block">4K Aerial Drone Operator</span>
-                                <span class="text-xs text-gray-400">Licensed FPV & Cinema Drone Capture</span>
+                <!-- Portfolio Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+                    <div class="portfolio-item cinema group relative rounded-3xl overflow-hidden glass-panel-dark h-80 cursor-pointer" onclick="openShowreelModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Cinematography" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                            <span class="text-xs font-mono text-neutral-300 uppercase">Cinematography</span>
+                            <h4 class="font-display font-bold text-xl text-white">NIGHT RUNNER SHORT FILM</h4>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item fashion group relative rounded-3xl overflow-hidden glass-panel-dark h-80 cursor-pointer" onclick="openShowreelModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80" alt="Fashion Editorial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                            <span class="text-xs font-mono text-neutral-300 uppercase">Fashion</span>
+                            <h4 class="font-display font-bold text-xl text-white">VOGUE MONOCHROME</h4>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item wedding group relative rounded-3xl overflow-hidden glass-panel-dark h-80 cursor-pointer" onclick="openShowreelModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Wedding" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                            <span class="text-xs font-mono text-neutral-300 uppercase">Weddings</span>
+                            <h4 class="font-display font-bold text-xl text-white">ESTATE WEDDING FILM</h4>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item cinema group relative rounded-3xl overflow-hidden glass-panel-dark h-80 cursor-pointer" onclick="openShowreelModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Commercial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                            <span class="text-xs font-mono text-neutral-300 uppercase">Commercial</span>
+                            <h4 class="font-display font-bold text-xl text-white">CHRONO WATCH AD</h4>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item fashion group relative rounded-3xl overflow-hidden glass-panel-dark h-80 cursor-pointer" onclick="openShowreelModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80" alt="Editorial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                            <span class="text-xs font-mono text-neutral-300 uppercase">Editorial</span>
+                            <h4 class="font-display font-bold text-xl text-white">PARIS LOOKBOOK 2026</h4>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item wedding group relative rounded-3xl overflow-hidden glass-panel-dark h-80 cursor-pointer" onclick="openShowreelModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Wedding Portrait" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+                            <span class="text-xs font-mono text-neutral-300 uppercase">Weddings</span>
+                            <h4 class="font-display font-bold text-xl text-white">COASTAL VOWS</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE 3: PRICING & PACKAGES VIEW ================= -->
+        <div id="page-pricing" class="page-section hidden transition-opacity duration-300">
+            <section class="max-w-7xl mx-auto px-4 sm:px-8 py-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h1 class="font-display font-bold text-4xl sm:text-5xl dark:text-white text-black mb-4">PACKAGES & PRICING</h1>
+                    <p class="dark:text-neutral-400 text-neutral-600 text-sm sm:text-base">Transparent pricing for top-tier visual production. Select a tier to customize your shoot instantly.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Standard Package -->
+                    <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800 dark:border-neutral-800 light:border-neutral-200 glass-card-hover flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono uppercase tracking-widest text-neutral-400">ESSENTIAL</span>
+                            <h3 class="font-display font-bold text-2xl dark:text-white text-black mt-2 mb-4">Standard Shoot</h3>
+                            <div class="mb-6">
+                                <span class="text-4xl font-extrabold font-display dark:text-white text-black">$1,800</span>
+                                <span class="text-xs dark:text-neutral-400 text-neutral-500"> / Session</span>
+                            </div>
+                            <ul class="text-xs space-y-3 dark:text-neutral-300 text-neutral-700 mb-8 border-t border-neutral-800/60 pt-6">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Up to 4 Hours Coverage</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 1 Lead Director / Photographer</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 25 Retouched Ultra-HD Photos</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 2-Minute Highlight Reel</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Online Gallery Delivery</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPackageAndBook('standard')" class="w-full py-3.5 rounded-full bg-white text-black dark:bg-white dark:text-black font-semibold text-xs uppercase tracking-wider hover:opacity-90 transition-all">
+                            Select Standard Tier
+                        </button>
+                    </div>
+
+                    <!-- Deluxe Package (Featured) -->
+                    <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border-2 border-white/40 dark:border-white/40 light:border-black/40 glass-card-hover flex flex-col justify-between relative shadow-2xl">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-white text-black font-mono font-bold text-[10px] uppercase tracking-widest">
+                            MOST POPULAR
+                        </div>
+                        <div>
+                            <span class="text-xs font-mono uppercase tracking-widest text-neutral-400">PREMIUM CINEMA</span>
+                            <h3 class="font-display font-bold text-2xl dark:text-white text-black mt-2 mb-4">Deluxe Production</h3>
+                            <div class="mb-6">
+                                <span class="text-4xl font-extrabold font-display dark:text-white text-black">$3,500</span>
+                                <span class="text-xs dark:text-neutral-400 text-neutral-500"> / Session</span>
+                            </div>
+                            <ul class="text-xs space-y-3 dark:text-neutral-300 text-neutral-700 mb-8 border-t border-neutral-800/60 pt-6">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Up to 8 Hours Full Coverage</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 2 Lead Operators (Photo + Film)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 60 High-Res Edited Photos</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 5-Minute 4K Film + Teaser</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Licensed Music & Drone Footage</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPackageAndBook('deluxe')" class="w-full py-3.5 rounded-full bg-white text-black dark:bg-white dark:text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all shadow-lg">
+                            Select Deluxe Tier
+                        </button>
+                    </div>
+
+                    <!-- Executive Hybrid Package -->
+                    <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800 dark:border-neutral-800 light:border-neutral-200 glass-card-hover flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono uppercase tracking-widest text-neutral-400">FULL HYBRID</span>
+                            <h3 class="font-display font-bold text-2xl dark:text-white text-black mt-2 mb-4">Executive Hybrid</h3>
+                            <div class="mb-6">
+                                <span class="text-4xl font-extrabold font-display dark:text-white text-black">$6,200</span>
+                                <span class="text-xs dark:text-neutral-400 text-neutral-500"> / Session</span>
+                            </div>
+                            <ul class="text-xs space-y-3 dark:text-neutral-300 text-neutral-700 mb-8 border-t border-neutral-800/60 pt-6">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Full Day Unlimited Coverage</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Full Crew (3 Operators + Assistant)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> All Deliverables + RAW Footage</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 4K Drone Aerial Filming included</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 48-Hour Rush Express Delivery</li>
+                            </ul>
+                        </div>
+                        <button onclick="selectPackageAndBook('executive')" class="w-full py-3.5 rounded-full bg-white text-black dark:bg-white dark:text-black font-semibold text-xs uppercase tracking-wider hover:opacity-90 transition-all">
+                            Select Executive Tier
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE 4: RESERVE DATE / BOOKING & CHECKOUT ================= -->
+        <div id="page-booking" class="page-section hidden transition-opacity duration-300">
+            <section class="max-w-6xl mx-auto px-4 sm:px-8 py-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h1 class="font-display font-bold text-4xl sm:text-5xl dark:text-white text-black mb-4">RESERVE & CHECKOUT</h1>
+                    <p class="dark:text-neutral-400 text-neutral-600 text-sm">Configure your shoot requirements and complete your reservation with instant 25% retainer deposit options.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Booking Estimator & Details -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <!-- Step 1: Service Type -->
+                        <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-6 rounded-3xl border border-neutral-800">
+                            <label class="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-3">1. Select Service Type</label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <button type="button" onclick="updateCalc('service', 'photo')" id="service-photo" class="calc-service-btn p-3 rounded-2xl border border-neutral-700/60 text-center transition-all bg-white text-black font-semibold text-xs">
+                                    Photography
+                                </button>
+                                <button type="button" onclick="updateCalc('service', 'cinema')" id="service-cinema" class="calc-service-btn p-3 rounded-2xl border border-neutral-700/60 text-center transition-all dark:text-white text-black text-xs">
+                                    Cinematography
+                                </button>
+                                <button type="button" onclick="updateCalc('service', 'hybrid')" id="service-hybrid" class="calc-service-btn p-3 rounded-2xl border border-neutral-700/60 text-center transition-all dark:text-white text-black text-xs">
+                                    Hybrid (Both)
+                                </button>
                             </div>
                         </div>
-                        <span class="text-xs font-bold text-amber-400">+$250</span>
-                    </label>
 
-                    <label class="flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer border border-white/5 transition-all">
-                        <div class="flex items-center gap-3">
-                            <input type="checkbox" id="addonStudio" onchange="recalculateBooking()" class="w-5 h-5 text-amber-400 rounded focus:ring-amber-400 accent-amber-500">
-                            <div>
-                                <span class="text-sm font-semibold block">Studio Space Rental Pass</span>
-                                <span class="text-xs text-gray-400">Cyclorama Wall & Lighting Rig Included</span>
+                        <!-- Step 2: Coverage Duration Slider -->
+                        <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-6 rounded-3xl border border-neutral-800">
+                            <div class="flex items-center justify-between mb-3">
+                                <label class="text-xs font-mono uppercase tracking-wider text-neutral-400">2. Coverage Duration</label>
+                                <span id="hours-display" class="font-display font-bold text-lg dark:text-white text-black">4 Hours</span>
+                            </div>
+                            <input type="range" id="hours-slider" min="2" max="12" value="4" step="1" oninput="updateCalc('hours', this.value)" class="w-full accent-white cursor-pointer h-2 bg-neutral-700 rounded-lg">
+                        </div>
+
+                        <!-- Step 3: Add-on Upgrades -->
+                        <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-6 rounded-3xl border border-neutral-800">
+                            <label class="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-4">3. Select Optional Add-ons</label>
+                            <div class="space-y-3">
+                                <label class="flex items-center justify-between p-3 rounded-2xl border border-neutral-800/80 cursor-pointer hover:bg-neutral-800/30">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="addon-drone" onchange="updateCalc()" class="w-4 h-4 rounded accent-white">
+                                        <span class="text-sm dark:text-white text-black">4K Aerial Drone Coverage</span>
+                                    </div>
+                                    <span class="text-xs font-mono dark:text-neutral-400 text-neutral-600">+$450</span>
+                                </label>
+                                <label class="flex items-center justify-between p-3 rounded-2xl border border-neutral-800/80 cursor-pointer hover:bg-neutral-800/30">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="addon-express" onchange="updateCalc()" class="w-4 h-4 rounded accent-white">
+                                        <span class="text-sm dark:text-white text-black">Express 48-Hour Turnaround</span>
+                                    </div>
+                                    <span class="text-xs font-mono dark:text-neutral-400 text-neutral-600">+$350</span>
+                                </label>
+                                <label class="flex items-center justify-between p-3 rounded-2xl border border-neutral-800/80 cursor-pointer hover:bg-neutral-800/30">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="addon-raw" onchange="updateCalc()" class="w-4 h-4 rounded accent-white">
+                                        <span class="text-sm dark:text-white text-black">Raw Unedited Project Files</span>
+                                    </div>
+                                    <span class="text-xs font-mono dark:text-neutral-400 text-neutral-600">+$300</span>
+                                </label>
                             </div>
                         </div>
-                        <span class="text-xs font-bold text-amber-400">+$300</span>
-                    </label>
 
-                    <label class="flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-white/10 cursor-pointer border border-white/5 transition-all">
-                        <div class="flex items-center gap-3">
-                            <input type="checkbox" id="addonFast" onchange="recalculateBooking()" class="w-5 h-5 text-amber-400 rounded focus:ring-amber-400 accent-amber-500">
-                            <div>
-                                <span class="text-sm font-semibold block">24-Hour Express Turnaround</span>
-                                <span class="text-xs text-gray-400">Rush Delivery for Social Reels or PR</span>
+                        <!-- Step 4: Interactive Payment Form & Card Input -->
+                        <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-6 rounded-3xl border border-neutral-800">
+                            <label class="block text-xs font-mono uppercase tracking-wider text-neutral-400 mb-4">4. Reservation & Payment Details</label>
+                            
+                            <!-- Express Checkout Options -->
+                            <div class="mb-6 space-y-2">
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-400 block mb-2">Express Checkout</span>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button type="button" onclick="triggerExpressPayment('Apple Pay')" class="py-2.5 px-4 rounded-xl bg-black text-white dark:bg-white dark:text-black font-semibold text-xs flex items-center justify-center gap-2 border border-neutral-700 hover:opacity-90 transition-opacity">
+                                        <i data-lucide="smartphone" class="w-4 h-4"></i> Apple Pay
+                                    </button>
+                                    <button type="button" onclick="triggerExpressPayment('Google Pay')" class="py-2.5 px-4 rounded-xl bg-neutral-900 text-white border border-neutral-700 font-semibold text-xs flex items-center justify-center gap-2 hover:bg-neutral-800 transition-colors">
+                                        <i data-lucide="zap" class="w-4 h-4"></i> Google Pay
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="relative flex items-center justify-center my-6">
+                                <div class="border-t border-neutral-800 w-full"></div>
+                                <span class="bg-obsidian px-3 text-[10px] font-mono uppercase text-neutral-500 absolute">Or Pay with Card</span>
+                            </div>
+
+                            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <input type="text" id="cust-name" required placeholder="Your Full Name" oninput="updateCardPreview()" class="w-full px-4 py-3 rounded-xl dark:bg-neutral-900 bg-neutral-100 border border-neutral-800 text-sm dark:text-white text-black focus:outline-none focus:border-white">
+                                    <input type="email" required placeholder="Email Address" class="w-full px-4 py-3 rounded-xl dark:bg-neutral-900 bg-neutral-100 border border-neutral-800 text-sm dark:text-white text-black focus:outline-none focus:border-white">
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <input type="date" required class="w-full px-4 py-3 rounded-xl dark:bg-neutral-900 bg-neutral-100 border border-neutral-800 text-sm dark:text-white text-black focus:outline-none focus:border-white">
+                                    <input type="text" placeholder="Shoot Location / Venue" class="w-full px-4 py-3 rounded-xl dark:bg-neutral-900 bg-neutral-100 border border-neutral-800 text-sm dark:text-white text-black focus:outline-none focus:border-white">
+                                </div>
+
+                                <!-- Card Form Inputs connected to Interactive 3D Card -->
+                                <div class="pt-4 border-t border-neutral-800/80 space-y-4">
+                                    <div>
+                                        <label class="block text-[10px] font-mono uppercase text-neutral-400 mb-1">Card Number</label>
+                                        <input type="text" id="card-num-input" maxlength="19" placeholder="4532 •••• •••• 8892" oninput="formatAndBindCardNumber(this)" class="w-full px-4 py-3 rounded-xl dark:bg-neutral-900 bg-neutral-100 border border-neutral-800 text-sm dark:text-white text-black font-mono focus:outline-none focus:border-white">
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-[10px] font-mono uppercase text-neutral-400 mb-1">Expiration Date</label>
+                                            <input type="text" id="card-exp-input" maxlength="5" placeholder="MM/YY" oninput="bindCardExpiry(this)" class="w-full px-4 py-3 rounded-xl dark:bg-neutral-900 bg-neutral-100 border border-neutral-800 text-sm dark:text-white text-black font-mono focus:outline-none focus:border-white">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-mono uppercase text-neutral-400 mb-1">CVC / Security Code</label>
+                                            <input type="text" id="card-cvc-input" maxlength="4" placeholder="123" onfocus="flipCard(true)" onblur="flipCard(false)" oninput="bindCardCvc(this)" class="w-full px-4 py-3 rounded-xl dark:bg-neutral-900 bg-neutral-100 border border-neutral-800 text-sm dark:text-white text-black font-mono focus:outline-none focus:border-white">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Live Dynamic Summary & 3D Interactive Card Container -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <!-- 3D Interactive Card Element -->
+                        <div class="perspective-1000 w-full h-56">
+                            <div id="credit-card-3d" class="relative w-full h-full transform-style-3d duration-500 rounded-3xl p-6 shadow-2xl glass-panel-dark border border-neutral-700/80 flex flex-col justify-between overflow-hidden">
+                                <!-- CARD FRONT -->
+                                <div class="card-front absolute inset-0 p-6 flex flex-col justify-between backface-hidden bg-gradient-to-br from-neutral-900/90 via-black to-neutral-800/90 rounded-3xl">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-7 h-7 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs">TZ</div>
+                                            <span class="font-display font-bold text-xs tracking-widest text-white">TIMZ VISUALS</span>
+                                        </div>
+                                        <i data-lucide="nfc" class="w-5 h-5 text-neutral-400"></i>
+                                    </div>
+                                    
+                                    <div>
+                                        <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block mb-1">Card Number</span>
+                                        <p id="card-num-preview" class="font-mono text-lg tracking-widest text-white">•••• •••• •••• 8892</p>
+                                    </div>
+
+                                    <div class="flex justify-between items-end">
+                                        <div>
+                                            <span class="text-[9px] font-mono text-neutral-400 uppercase tracking-widest block">Card Holder</span>
+                                            <p id="card-name-preview" class="font-display text-sm font-semibold uppercase text-white truncate max-w-[180px]">VALUED CLIENT</p>
+                                        </div>
+                                        <div>
+                                            <span class="text-[9px] font-mono text-neutral-400 uppercase tracking-widest block">Expires</span>
+                                            <p id="card-exp-preview" class="font-mono text-xs text-white">12/28</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- CARD BACK -->
+                                <div class="card-back absolute inset-0 py-6 backface-hidden rotate-y-180 bg-neutral-950 rounded-3xl flex flex-col justify-between border border-neutral-800">
+                                    <div class="w-full h-10 bg-neutral-800 mt-2"></div>
+                                    <div class="px-6">
+                                        <div class="bg-neutral-900 p-2 rounded-lg flex justify-end items-center">
+                                            <span id="card-cvc-preview" class="font-mono text-sm tracking-widest text-white">•••</span>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-neutral-500 uppercase mt-1 block text-right">CVC CODE</span>
+                                    </div>
+                                    <div class="px-6 flex justify-between items-center text-[10px] font-mono text-neutral-500">
+                                        <span>TIMZ VISUALS SECURE CHECKOUT</span>
+                                        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <span class="text-xs font-bold text-amber-400">+$200</span>
-                    </label>
-                </div>
 
-                <!-- 4. CONTACT & PROJECT BRIEF -->
-                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-amber-400">Client Details</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" id="clientName" placeholder="Your Full Name" required class="bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
-                        <input type="email" id="clientEmail" placeholder="Email Address" required class="bg-black/40 border border-white/15 rounded-xl px-4 py-3.5 text-sm focus:border-amber-400 focus:outline-none text-white">
-                    </div>
-                    <textarea id="projectNotes" rows="4" placeholder="Briefly share location details, moodboards, or creative vision..." class="w-full bg-black/40 border border-white/15 rounded-xl p-4 text-sm focus:border-amber-400 focus:outline-none text-white"></textarea>
-                </div>
+                        <!-- Live Summary Box -->
+                        <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800 shadow-2xl">
+                            <h3 class="font-display font-bold text-xl dark:text-white text-black mb-6 flex items-center justify-between">
+                                <span>RESERVATION SUMMARY</span>
+                                <i data-lucide="receipt" class="w-5 h-5 text-neutral-400"></i>
+                            </h3>
 
-            </div>
+                            <div class="space-y-4 text-sm mb-6 border-b border-neutral-800/80 pb-6">
+                                <div class="flex justify-between">
+                                    <span class="dark:text-neutral-400 text-neutral-600">Base Service Rate</span>
+                                    <span id="summary-base-price" class="font-mono font-medium dark:text-white text-black">$800</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="dark:text-neutral-400 text-neutral-600">Coverage (<span id="summary-hours">4</span> hrs)</span>
+                                    <span id="summary-hours-price" class="font-mono font-medium dark:text-white text-black">$600</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="dark:text-neutral-400 text-neutral-600">Selected Add-ons</span>
+                                    <span id="summary-addons-price" class="font-mono font-medium dark:text-white text-black">$0</span>
+                                </div>
+                            </div>
 
-            <!-- RIGHT SUMMARY & ESTIMATE PANEL -->
-            <div class="lg:col-span-1">
-                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/30 sticky top-28 space-y-6">
-                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                        <h3 class="text-lg font-bold font-display uppercase tracking-wide">Estimate Breakdown</h3>
-                        <span class="text-xs px-2.5 py-1 bg-amber-500/20 text-amber-400 font-bold rounded-full border border-amber-500/30">Live Quote</span>
-                    </div>
+                            <!-- Deposit Retainer Toggle Option -->
+                            <div class="p-4 rounded-2xl bg-neutral-900/60 border border-neutral-800 mb-6 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-semibold dark:text-white text-black">Pay 25% Deposit Now</p>
+                                    <p class="text-[10px] dark:text-neutral-400 text-neutral-500">Reserve date immediately, pay rest on shoot day</p>
+                                </div>
+                                <input type="checkbox" id="deposit-toggle" checked onchange="updateCalc()" class="w-5 h-5 accent-white rounded cursor-pointer">
+                            </div>
 
-                    <div class="space-y-3.5 text-sm">
-                        <div class="flex justify-between text-gray-400">
-                            <span>Base Hourly Rate:</span>
-                            <span id="summaryBaseRate" class="font-bold text-white">$150/hr</span>
+                            <div class="flex justify-between items-end mb-8">
+                                <div>
+                                    <span id="total-label" class="text-xs font-mono uppercase dark:text-neutral-400 text-neutral-500">25% DEPOSIT DUE NOW</span>
+                                    <p id="total-full-breakdown" class="text-[10px] dark:text-neutral-400 text-neutral-500">Full Shoot Value: $1,400</p>
+                                </div>
+                                <span id="summary-total" class="text-4xl font-extrabold font-display dark:text-white text-black">$350</span>
+                            </div>
+
+                            <button type="submit" form="booking-form" class="w-full py-4 rounded-full bg-white text-black dark:bg-white dark:text-black font-extrabold text-xs uppercase tracking-wider hover:opacity-90 transition-all shadow-xl flex items-center justify-center gap-2">
+                                <span>Confirm & Complete Booking</span>
+                                <i data-lucide="lock" class="w-4 h-4"></i>
+                            </button>
                         </div>
-                        <div class="flex justify-between text-gray-400">
-                            <span>Selected Hours:</span>
-                            <span id="summaryDuration" class="font-bold text-white">4 Hours</span>
-                        </div>
-                        <div class="flex justify-between text-gray-400">
-                            <span>Upgrades & Add-ons:</span>
-                            <span id="summaryAddons" class="font-bold text-white">$0</span>
-                        </div>
-                        
-                        <div class="border-t border-white/10 pt-4 flex justify-between items-baseline">
-                            <span class="text-base font-bold">Estimated Total:</span>
-                            <span id="summaryTotal" class="text-3xl font-bold font-display gold-gradient-text">$600</span>
-                        </div>
-                        
-                        <div class="bg-white/5 rounded-xl p-3 border border-white/10 text-xs text-gray-300 flex justify-between items-center">
-                            <span>25% Retainer Deposit Required:</span>
-                            <span id="summaryDeposit" class="font-bold text-amber-400">$150.00</span>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-600 text-black font-extrabold text-center shadow-glow hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                        <i data-lucide="lock" class="w-4 h-4"></i>
-                        <span>Lock Date & Pay Retainer</span>
-                    </button>
-
-                    <div class="space-y-2 pt-2">
-                        <p class="text-xs text-gray-400 text-center flex items-center justify-center gap-1.5">
-                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
-                            <span>Instant email confirmation upon booking</span>
-                        </p>
-                        <p class="text-[11px] text-gray-500 text-center leading-tight">
-                            Free date rescheduling up to 72 hours prior to shoot.
-                        </p>
                     </div>
                 </div>
-            </div>
+            </section>
+        </div>
 
-        </form>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="glass-panel border-t border-white/10 mt-20 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-            <div class="flex items-center gap-2">
-                <span class="font-bold text-white gold-gradient-text">TIMZ VISUALS</span>
-                <span>• Studio Reservation Terminal</span>
+    <!-- SHOWREEL LIGHTBOX MODAL -->
+    <div id="video-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl">
+        <div class="relative w-full max-w-4xl aspect-video bg-black rounded-3xl overflow-hidden border border-neutral-800 shadow-2xl">
+            <button onclick="closeShowreelModal()" class="absolute top-4 right-4 z-10 p-2 rounded-full bg-neutral-900/80 text-white hover:bg-neutral-800">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <iframe id="modal-iframe" class="w-full h-full" src="" title="TIMZ VISUALS Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- BOOKING CONFIRMATION RECEIPT MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl">
+        <div class="glass-panel-dark dark:glass-panel-dark p-8 rounded-3xl max-w-md w-full text-center border border-neutral-700 shadow-2xl">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="check-circle" class="w-8 h-8"></i>
             </div>
-            <p>© 2026 TIMZ VISUALS. All rights reserved.</p>
+            <h3 class="font-display font-bold text-2xl text-white mb-2">DATE RESERVED!</h3>
+            <p class="text-neutral-300 text-sm mb-6">Your production slot with TIMZ VISUALS is confirmed. A receipt and calendar invite have been sent to your email.</p>
+            
+            <div class="p-4 rounded-2xl bg-neutral-900 border border-neutral-800 text-left text-xs mb-6 space-y-2 font-mono">
+                <div class="flex justify-between"><span class="text-neutral-500">Client:</span><span id="receipt-name" class="text-white">Valued Client</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500">Service:</span><span id="receipt-service" class="text-white">Photography</span></div>
+                <div class="flex justify-between"><span class="text-neutral-500">Amount Paid:</span><span id="receipt-paid" class="text-emerald-400 font-bold">$350.00</span></div>
+            </div>
+
+            <button onclick="closeBookingModal()" class="w-full py-3.5 rounded-full bg-white text-black font-bold text-xs uppercase tracking-wider">Close Window</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-neutral-800/60 dark:border-neutral-800/60 light:border-neutral-200 py-12 px-4 sm:px-8 mt-20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="relative w-8 h-8 rounded-full bg-white text-black flex items-center justify-center overflow-hidden border border-neutral-700/30">
+                    <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('footer-logo-fallback').classList.remove('hidden');">
+                    <span id="footer-logo-fallback" class="hidden font-display font-black text-xs tracking-tighter">TZ</span>
+                </div>
+                <span class="font-display font-bold text-base dark:text-white text-black">TIMZ VISUALS</span>
+            </div>
+
+            <p class="text-xs dark:text-neutral-400 text-neutral-500">
+                &copy; 2026 TIMZ VISUALS. All rights reserved. Premium Monochrome Visual Production.
+            </p>
+
+            <div class="flex gap-4 dark:text-neutral-400 text-neutral-600 text-xs">
+                <a href="#" class="hover:underline">Instagram</a>
+                <a href="#" class="hover:underline">Vimeo</a>
+                <a href="#" class="hover:underline">YouTube</a>
+            </div>
         </div>
     </footer>
 
-    <!-- INTERACTIVE SCRIPT -->
+    <!-- JAVASCRIPT APP LOGIC -->
     <script>
-        lucide.createIcons();
+        // State variables for calculator
+        let calcState = {
+            service: 'photo',
+            hours: 4,
+            drone: false,
+            express: false,
+            raw: false,
+            depositOnly: true
+        };
 
-        // 1. THEME SYNCHRONIZATION
+        // Initialize Lucide Icons & App State
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initTheme();
+            updateCalc();
+        });
+
+        // Theme Toggle Functionality
         function initTheme() {
-            const savedTheme = localStorage.getItem('timz_theme') || 'dark';
-            applyTheme(savedTheme);
-        }
-
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('timz_theme', theme);
-
-            const sunIcon = document.getElementById('themeSunIcon');
-            const moonIcon = document.getElementById('themeMoonIcon');
-
-            if (theme === 'light') {
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
             } else {
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
             }
         }
 
         function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        }
-
-        window.addEventListener('storage', (event) => {
-            if (event.key === 'timz_theme' && event.newValue) {
-                applyTheme(event.newValue);
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                localStorage.setItem('theme', 'dark');
             }
-        });
-
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
+            lucide.createIcons();
         }
 
-        // 2. REAL-TIME BOOKING ENGINE
-        function recalculateBooking() {
-            const serviceType = document.querySelector('input[name="serviceType"]:checked')?.value || 'photo';
-            const hours = parseInt(document.getElementById('shootHours')?.value || 4);
+        // SPA Navigation Routing
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Mobile Nav Drawer
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Showreel Lightbox Modal Logic
+        function openShowreelModal(videoUrl) {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-iframe');
+            iframe.src = videoUrl + "?autoplay=1";
+            modal.classList.remove('hidden');
+        }
+
+        function closeShowreelModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-iframe');
+            iframe.src = "";
+            modal.classList.add('hidden');
+        }
+
+        // Portfolio Category Filter
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Package pre-fill selection handler
+        function selectPackageAndBook(tier) {
+            switchPage('page-booking');
+            if (tier === 'standard') {
+                updateCalc('service', 'photo');
+                document.getElementById('hours-slider').value = 4;
+                updateCalc('hours', 4);
+            } else if (tier === 'deluxe') {
+                updateCalc('service', 'cinema');
+                document.getElementById('hours-slider').value = 8;
+                updateCalc('hours', 8);
+            } else if (tier === 'executive') {
+                updateCalc('service', 'hybrid');
+                document.getElementById('hours-slider').value = 10;
+                updateCalc('hours', 10);
+            }
+        }
+
+        // Booking Calculator Engine
+        function updateCalc(type, value) {
+            if (type === 'service') {
+                calcState.service = value;
+                document.querySelectorAll('.calc-service-btn').forEach(btn => {
+                    btn.classList.remove('bg-white', 'text-black', 'font-semibold');
+                    btn.classList.add('dark:text-white', 'text-black');
+                });
+                const activeBtn = document.getElementById(`service-${value}`);
+                if (activeBtn) {
+                    activeBtn.classList.add('bg-white', 'text-black', 'font-semibold');
+                }
+            } else if (type === 'hours') {
+                calcState.hours = parseInt(value);
+                document.getElementById('hours-display').innerText = `${value} Hours`;
+            }
+
+            calcState.drone = document.getElementById('addon-drone').checked;
+            calcState.express = document.getElementById('addon-express').checked;
+            calcState.raw = document.getElementById('addon-raw').checked;
+            calcState.depositOnly = document.getElementById('deposit-toggle').checked;
+
+            // Price Calculation Logic
+            let baseRate = calcState.service === 'photo' ? 800 : calcState.service === 'cinema' ? 1200 : 1800;
+            let hourlyRate = 150;
+            let hoursTotal = calcState.hours * hourlyRate;
             
-            let baseRate = 150; // Photography base
-            if (serviceType === 'video') baseRate = 220;
-            if (serviceType === 'full') baseRate = 300;
-
-            let subtotal = baseRate * hours;
-
             let addonsTotal = 0;
-            if (document.getElementById('addonDrone')?.checked) addonsTotal += 250;
-            if (document.getElementById('addonStudio')?.checked) addonsTotal += 300;
-            if (document.getElementById('addonFast')?.checked) addonsTotal += 200;
+            if (calcState.drone) addonsTotal += 450;
+            if (calcState.express) addonsTotal += 350;
+            if (calcState.raw) addonsTotal += 300;
 
-            const finalTotal = subtotal + addonsTotal;
-            const depositAmount = (finalTotal * 0.25).toFixed(2);
+            let fullTotal = baseRate + hoursTotal + addonsTotal;
+            let chargeTotal = calcState.depositOnly ? Math.round(fullTotal * 0.25) : fullTotal;
 
-            document.getElementById('summaryBaseRate').textContent = `$${baseRate}/hr`;
-            document.getElementById('summaryDuration').textContent = `${hours} Hours`;
-            document.getElementById('summaryAddons').textContent = `$${addonsTotal}`;
-            document.getElementById('summaryTotal').textContent = `$${finalTotal}`;
-            document.getElementById('summaryDeposit').textContent = `$${depositAmount}`;
+            // DOM Updates
+            document.getElementById('summary-base-price').innerText = `$${baseRate.toLocaleString()}`;
+            document.getElementById('summary-hours').innerText = calcState.hours;
+            document.getElementById('summary-hours-price').innerText = `$${hoursTotal.toLocaleString()}`;
+            document.getElementById('summary-addons-price').innerText = `$${addonsTotal.toLocaleString()}`;
+            document.getElementById('summary-total').innerText = `$${chargeTotal.toLocaleString()}`;
+
+            if (calcState.depositOnly) {
+                document.getElementById('total-label').innerText = '25% DEPOSIT DUE NOW';
+                document.getElementById('total-full-breakdown').innerText = `Full Shoot Value: $${fullTotal.toLocaleString()}`;
+            } else {
+                document.getElementById('total-label').innerText = 'FULL AMOUNT DUE NOW';
+                document.getElementById('total-full-breakdown').innerText = 'Complete upfront payment';
+            }
+        }
+
+        // 3D Credit Card Real-time Binding & Flip Functions
+        function flipCard(back) {
+            const card = document.getElementById('credit-card-3d');
+            if (back) {
+                card.classList.add('rotate-y-180');
+            } else {
+                card.classList.remove('rotate-y-180');
+            }
+        }
+
+        function formatAndBindCardNumber(input) {
+            let val = input.value.replace(/\D/g, '').substring(0, 16);
+            let formatted = val.match(/.{1,4}/g)?.join(' ') || '';
+            input.value = formatted;
+            document.getElementById('card-num-preview').innerText = formatted || '•••• •••• •••• 8892';
+        }
+
+        function bindCardExpiry(input) {
+            let val = input.value.replace(/\D/g, '').substring(0, 4);
+            if (val.length >= 2) {
+                val = val.substring(0, 2) + '/' + val.substring(2);
+            }
+            input.value = val;
+            document.getElementById('card-exp-preview').innerText = val || '12/28';
+        }
+
+        function bindCardCvc(input) {
+            let val = input.value.replace(/\D/g, '').substring(0, 4);
+            input.value = val;
+            document.getElementById('card-cvc-preview').innerText = val || '•••';
+        }
+
+        function updateCardPreview() {
+            const name = document.getElementById('cust-name').value;
+            document.getElementById('card-name-preview').innerText = name.trim() ? name.toUpperCase() : 'VALUED CLIENT';
+        }
+
+        function triggerExpressPayment(method) {
+            const nameInput = document.getElementById('cust-name').value;
+            const clientName = nameInput.trim() ? nameInput : `${method} Customer`;
+            showBookingConfirmation(clientName);
         }
 
         function handleBookingSubmit(event) {
             event.preventDefault();
-            const clientName = document.getElementById('clientName').value;
-            const total = document.getElementById('summaryTotal').textContent;
-            const deposit = document.getElementById('summaryDeposit').textContent;
-
-            alert(`Thank you ${clientName}!\n\nYour session reservation estimate is ${total}.\nRequired retainer deposit: ${deposit}.\n\n(Demo Mode: Redirecting to payment authorization screen...)`);
+            const nameInput = document.getElementById('cust-name').value;
+            showBookingConfirmation(nameInput.trim() || 'Valued Client');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            recalculateBooking();
+        function showBookingConfirmation(name) {
+            const serviceName = calcState.service === 'photo' ? 'Photography' : calcState.service === 'cinema' ? 'Cinematography' : 'Hybrid (Both)';
+            const paid = document.getElementById('summary-total').innerText;
             
-            // Set default date input min to today
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('shootDate').setAttribute('min', today);
-        });
+            document.getElementById('receipt-name').innerText = name;
+            document.getElementById('receipt-service').innerText = serviceName;
+            document.getElementById('receipt-paid').innerText = paid;
+            
+            document.getElementById('booking-modal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+            switchPage('page-index');
+        }
     </script>
 </body>
 </html>
