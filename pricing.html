@@ -1,813 +1,779 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" data-glass="frosted">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMZ VISUALS - Investment & Pricing</title>
+    <title>TIMZ VISUALS | Luxury Pricing & Production Tiers</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#050505',
+                        charcoal: '#0c0c0c',
+                        darkcard: 'rgba(18, 18, 18, 0.75)',
+                        lightcard: 'rgba(255, 255, 255, 0.85)',
+                        paypal: {
+                            gold: '#FFC439',
+                            goldHover: '#F2BA36',
+                            blue: '#003087',
+                            darkBlue: '#001C64',
+                            lightBlue: '#0079C1'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glow-white': '0 0 30px -5px rgba(255, 255, 255, 0.12)',
+                        'glow-paypal': '0 0 25px -3px rgba(255, 196, 57, 0.25)',
+                        'glass-dark': '0 8px 32px 0 rgba(0, 0, 0, 0.6)',
+                        'glass-light': '0 8px 32px 0 rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Custom Glassmorphism & Monochrome Styling -->
     <style>
-        :root {
-            /* Black & White Dark Mode Theme Variables */
-            --bg-color: #050505;
-            --card-bg: rgba(20, 20, 20, 0.8);
-            --card-border: rgba(255, 255, 255, 0.18);
-            --text-color: #ffffff;
-            --text-muted: #a3a3a3;
-            --border-color: rgba(255, 255, 255, 0.2);
-            --nav-bg: rgba(10, 10, 10, 0.88);
-            --input-bg: rgba(255, 255, 255, 0.05);
-            --btn-primary-bg: #ffffff;
-            --btn-primary-text: #000000;
-            --btn-sec-border: #ffffff;
-            --btn-sec-text: #ffffff;
-            --btn-sec-bg: rgba(255, 255, 255, 0.05);
-            --logo-filter: invert(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-            --badge-bg: rgba(255, 255, 255, 0.12);
-            --glass-blur: 16px;
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-        }
-
-        /* Light Mode Variables Override (High Contrast B&W) */
-        [data-theme="light"] {
-            --bg-color: #f7f7f7;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --card-border: rgba(0, 0, 0, 0.15);
-            --text-color: #050505;
-            --text-muted: #525252;
-            --border-color: rgba(0, 0, 0, 0.15);
-            --nav-bg: rgba(245, 245, 245, 0.9);
-            --input-bg: rgba(0, 0, 0, 0.04);
-            --btn-primary-bg: #000000;
-            --btn-primary-text: #ffffff;
-            --btn-sec-border: #000000;
-            --btn-sec-text: #000000;
-            --btn-sec-bg: rgba(0, 0, 0, 0.04);
-            --logo-filter: invert(0) drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
-            --badge-bg: rgba(0, 0, 0, 0.08);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
-        }
-
-        /* Ultra Frosted Glass Mode Overrides (Monochrome) */
-        [data-glass="frosted"] {
-            --card-bg: rgba(255, 255, 255, 0.06);
-            --card-border: rgba(255, 255, 255, 0.22);
-            --nav-bg: rgba(15, 15, 15, 0.55);
-            --glass-blur: 28px;
-            --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
-        }
-
-        [data-theme="light"][data-glass="frosted"] {
-            --card-bg: rgba(255, 255, 255, 0.5);
-            --card-border: rgba(0, 0, 0, 0.25);
-            --nav-bg: rgba(255, 255, 255, 0.65);
-            --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
-        }
-
-        * {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            /* Subdued neutral radial background overlay */
-            background-image: 
-                radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 45%),
-                radial-gradient(circle at 85% 60%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
-            background-attachment: fixed;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        .bg-custom-card { background-color: var(--card-bg); }
-        .text-custom-light { color: var(--text-color); }
-        .text-custom-gray { color: var(--text-muted); }
-        .border-custom-glow { border-color: var(--border-color); }
-        .bg-nav-custom { background-color: var(--nav-bg); }
-
-        .brand-logo-img {
-            filter: var(--logo-filter);
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        .glass-card {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--card-border);
-            box-shadow: var(--glass-shadow);
+        /* Geometric Grid Background Patterns */
+        .bg-grid-pattern-dark {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        .btn-primary {
-            background-color: var(--btn-primary-bg);
-            color: var(--btn-primary-text);
-            font-weight: 700;
-            backdrop-filter: blur(8px);
-        }
-        .btn-primary:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
+        .bg-grid-pattern-light {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        .btn-secondary {
-            border: 1px solid var(--btn-sec-border);
-            color: var(--btn-sec-text);
-            background-color: var(--btn-sec-bg);
-            font-weight: 600;
-            backdrop-filter: blur(8px);
-        }
-        .btn-secondary:hover {
-            background-color: var(--btn-primary-bg);
-            color: var(--btn-primary-text);
-            transform: translateY(-2px);
+        /* Glassmorphism Styles */
+        .glass-panel-dark {
+            background: rgba(15, 15, 15, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .tab-btn.active {
-            background-color: var(--btn-primary-bg);
-            color: var(--btn-primary-text);
-            font-weight: 700;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        .glass-panel-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .form-input {
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            backdrop-filter: blur(10px);
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--text-color);
-        }
-
-        /* Custom Scrollbar */
+        /* Smooth Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-color);
+            background: rgba(0,0,0,0.1);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
+            background: rgba(120, 120, 120, 0.3);
             border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(120, 120, 120, 0.5);
+        }
+
+        /* Accent Glows */
+        .glow-effect {
+            box-shadow: 0 0 35px -5px rgba(255, 255, 255, 0.15);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="bg-obsidian text-neutral-100 antialiased selection:bg-white selection:text-black dark:bg-obsidian dark:text-neutral-100 light:bg-slate-50 light:text-neutral-900 transition-colors duration-300 min-h-screen flex flex-col justify-between">
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-nav-custom backdrop-blur-md border-b border-custom-glow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- Brand / Logo -->
-            <a href="index.html" class="flex items-center gap-3 group">
-                <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-8 w-auto brand-logo-img transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/150x50/000000/ffffff?text=TIMZ+VISUALS';">
-                <span class="text-xl font-black tracking-widest text-custom-light uppercase">TIMZ <span class="font-light text-custom-gray">VISUALS</span></span>
-            </a>
+    <div class="bg-neutral-900/90 dark:bg-neutral-900/90 light:bg-neutral-200 border-b border-neutral-800 dark:border-neutral-800 light:border-neutral-300 text-[11px] font-mono py-2 px-4 text-center tracking-widest uppercase flex items-center justify-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="dark:text-neutral-300 light:text-neutral-700">Official Production Rates • Direct Merchant Checkout via PayPal (@Timz34)</span>
+    </div>
 
-            <!-- Desktop Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="index.html" class="text-custom-gray hover:text-custom-light transition-colors">Home</a>
-                <a href="work.html" class="text-custom-gray hover:text-custom-light transition-colors">Work</a>
-                <a href="pricing.html" class="text-custom-light transition-colors font-semibold border-b-2 border-custom-glow pb-1">Pricing</a>
-                <a href="booking.html" class="text-custom-gray hover:text-custom-light transition-colors">Booking</a>
-                <a href="payment.html" class="text-custom-gray hover:text-custom-light transition-colors">Payment</a>
+    <header class="sticky top-0 z-40 transition-all duration-300 py-4 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto">
+            <nav id="main-nav" class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light rounded-full px-5 py-3 flex items-center justify-between transition-all duration-300 shadow-glass-dark">
+                
+                <!-- Logo with fallback -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="relative w-10 h-10 rounded-full bg-white text-black dark:bg-white dark:text-black light:bg-black light:text-white flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105 border border-neutral-700/30">
+                        <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-10 w-auto object-contain" onError="this.style.display='none'; document.getElementById('header-logo-fallback').classList.remove('hidden');">
+                        <span id="header-logo-fallback" class="hidden font-display font-black text-sm tracking-tighter">TZ</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-bold text-base tracking-wider dark:text-white light:text-black leading-none">
+                            TIMZ <span class="font-light text-neutral-400">VISUALS</span>
+                        </span>
+                        <span class="text-[9px] font-mono tracking-widest text-neutral-500 uppercase mt-0.5">Studio &amp; Production</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase">
+                    <a href="index.html" class="transition-colors dark:text-neutral-300 light:text-neutral-700 hover:text-black dark:hover:text-white">Home</a>
+                    <a href="work.html" class="transition-colors dark:text-neutral-300 light:text-neutral-700 hover:text-black dark:hover:text-white">Work</a>
+                    <a href="pricing.html" class="transition-colors text-white font-bold border-b-2 border-white pb-0.5 dark:text-white light:text-black">Pricing &amp; Packages</a>
+                    <a href="payment.html" class="transition-colors dark:text-neutral-300 light:text-neutral-700 hover:text-black dark:hover:text-white flex items-center gap-1.5">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                        <span>Pay via PayPal</span>
+                    </a>
+                </div>
+
+                <!-- Actions: Theme Toggle & Merchant Status -->
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-900/80 border border-neutral-800 text-[10px] font-mono text-neutral-300">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                        <span>Merchant: <strong class="text-white">@Timz34</strong></span>
+                    </div>
+
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme" class="p-2.5 rounded-full dark:bg-neutral-900/80 light:bg-neutral-200 border border-neutral-700/40 dark:border-neutral-700/60 dark:text-neutral-200 light:text-neutral-800 hover:scale-105 transition-all">
+                        <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden p-2.5 rounded-full dark:bg-neutral-900 light:bg-neutral-200 border border-neutral-700/40">
+                        <i data-lucide="menu" class="w-4 h-4"></i>
+                    </button>
+                </div>
             </nav>
 
-            <!-- Actions -->
-            <div class="flex items-center gap-3 sm:gap-4">
-                <button id="openEstimatorBtnHeader" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs uppercase font-bold tracking-wider rounded-xl btn-secondary transition-all">
-                    <i class="fa-solid fa-calculator text-xs"></i>
-                    <span>Rate Estimator</span>
-                </button>
-
-                <!-- Glassmorphism Aesthetic Toggle -->
-                <button id="glassToggleBtn" aria-label="Toggle Glassmorphism Mode" title="Toggle Translucent Glass Effect" class="px-3 py-2 rounded-xl border border-custom-glow hover:bg-white/10 text-custom-light text-xs font-semibold transition-all flex items-center gap-2 glass-card">
-                    <i id="glassIcon" class="fa-solid fa-wand-magic-sparkles text-custom-light"></i>
-                    <span id="glassLabel" class="hidden lg:inline uppercase tracking-wider text-[11px]">Glass: Max</span>
-                </button>
-
-                <!-- Theme Switcher Toggle -->
-                <button id="themeToggleBtn" aria-label="Toggle Theme" class="p-2.5 rounded-full border border-custom-glow hover:bg-white/10 text-custom-light transition-all flex items-center justify-center w-10 h-10 glass-card">
-                    <i id="themeIcon" class="fa-solid fa-sun text-sm"></i>
-                </button>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-custom-light focus:outline-none" aria-label="Open Mobile Menu">
-                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
-                </button>
+            <!-- Mobile Drawer Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-3 p-6 glass-panel-dark rounded-3xl border border-neutral-800 space-y-4 text-center font-mono text-xs uppercase tracking-widest">
+                <a href="index.html" class="block py-2 text-neutral-300 hover:text-white">Home</a>
+                <a href="work.html" class="block py-2 text-neutral-300 hover:text-white">Work</a>
+                <a href="pricing.html" class="block py-2 text-white font-bold underline">Pricing &amp; Packages</a>
+                <a href="payment.html" class="block py-2 text-emerald-400 font-bold">Pay via PayPal (@Timz34)</a>
             </div>
-        </div>
-
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden bg-custom-card border-b border-custom-glow px-6 py-6 space-y-4">
-            <a href="index.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Home</a>
-            <a href="work.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Work</a>
-            <a href="pricing.html" class="block text-base font-bold text-custom-light">Pricing</a>
-            <a href="booking.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Booking</a>
-            <a href="payment.html" class="block text-base font-medium text-custom-gray hover:text-custom-light">Payment</a>
-            <button id="openEstimatorBtnMobile" class="w-full py-3 text-xs uppercase font-bold tracking-wider rounded-xl btn-secondary flex items-center justify-center gap-2 mt-2">
-                <i class="fa-solid fa-calculator text-xs"></i>
-                <span>Custom Rate Estimator</span>
-            </button>
         </div>
     </header>
 
-    <main class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex-grow">
-        
-        <!-- Page Title Header -->
-        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border border-custom-glow mb-4 text-custom-gray glass-card">
-                Transparent & Investment Rates
-            </span>
-            <h1 class="text-3xl sm:text-5xl font-black text-custom-light tracking-tight mb-4 uppercase">
-                PRODUCTION PACKAGES
-            </h1>
-            <p class="text-custom-gray text-sm sm:text-base leading-relaxed">
-                Elevate your visual identity with our structured tiers. Lock in any production date with a flat <strong class="text-custom-light">$20 retainer deposit</strong>.
-            </p>
+    <main class="flex-grow py-12 px-4 sm:px-8 relative overflow-hidden">
+        <!-- Ambient Grid & Glow Backdrops -->
+        <div class="absolute inset-0 bg-grid-pattern-dark dark:bg-grid-pattern-dark light:bg-grid-pattern-light opacity-40 pointer-events-none"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-neutral-500/5 dark:bg-white/5 light:bg-black/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-            <!-- Category Switcher Tabs -->
-            <div class="inline-flex p-1.5 rounded-2xl glass-card mt-8 border border-custom-glow gap-2">
-                <button id="tabVideography" class="tab-btn active px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-video text-xs"></i>
-                    <span>Videography</span>
-                </button>
-                <button id="tabPhotography" class="tab-btn px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wider uppercase text-custom-gray hover:text-custom-light transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-camera text-xs"></i>
-                    <span>Photography</span>
-                </button>
-            </div>
-        </div>
-
-        <div id="videographyGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-16">
+        <div class="max-w-7xl mx-auto relative z-10">
             
-            <!-- Essential Video Package -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-white/50 transition-all">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-custom-gray block mb-1">Starter Tier</span>
-                    <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Essential Video</h3>
-                    <p class="text-xs text-custom-gray mt-2 min-h-[36px]">Ideal for short promos, social reels, or quick high-impact highlights.</p>
-                    
-                    <div class="my-6 pt-6 border-t border-custom-glow flex items-baseline gap-2">
-                        <span class="text-4xl font-black text-custom-light">$100</span>
-                        <span class="text-xs text-custom-gray uppercase">/ Session</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>1 - 2 Hours Dedicated Shooting</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>1080p Full HD Master Edit</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Licensed Audio Track Included</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>1 Revision Round</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>3-Day Turnaround Delivery</span>
-                        </li>
-                    </ul>
+            <!-- Page Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-widest border border-neutral-700/60 bg-neutral-900/60 text-neutral-300 mb-5 backdrop-blur-md">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-neutral-200"></i>
+                    <span>Transparent Commercial Investment</span>
                 </div>
-
-                <a href="booking.html?package=essential" class="w-full py-3.5 rounded-xl btn-secondary text-center text-xs uppercase tracking-wider block transition-all">
-                    Book with $20 Deposit
-                </a>
-            </div>
-
-            <!-- Cinematic Video Package (Popular) - High Contrast Monochrome Accent -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative border-2 border-white/80 shadow-2xl group transition-all transform hover:-translate-y-1">
-                <span class="absolute -top-3.5 right-6 px-3 py-1 text-[10px] uppercase font-black tracking-widest rounded-full bg-white text-black shadow-lg">
-                    Most Popular
-                </span>
-                
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-custom-light block mb-1">Standard Production</span>
-                    <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Cinematic Narrative</h3>
-                    <p class="text-xs text-custom-gray mt-2 min-h-[36px]">Full production value for music videos, brand stories, and events.</p>
-                    
-                    <div class="my-6 pt-6 border-t border-custom-glow flex items-baseline gap-2">
-                        <span class="text-4xl font-black text-custom-light">$220</span>
-                        <span class="text-xs text-custom-gray uppercase">/ Session</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
-                        <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Up to 4 Hours Shooting Time</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>4K Ultra HD Master & Vertical Cut</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Aerial Drone Footage Included</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Custom Color Grading & Sound FX</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>3 Revision Rounds</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <a href="booking.html?package=cinematic" class="w-full py-3.5 rounded-xl btn-primary text-center text-xs uppercase tracking-wider block transition-all shadow-lg">
-                    Book with $20 Deposit
-                </a>
-            </div>
-
-            <!-- Enterprise Video Package -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-white/50 transition-all">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-custom-gray block mb-1">Commercial Tier</span>
-                    <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Enterprise Commercial</h3>
-                    <p class="text-xs text-custom-gray mt-2 min-h-[36px]">Complete end-to-end commercial filmmaking and advertising content.</p>
-                    
-                    <div class="my-6 pt-6 border-t border-custom-glow flex items-baseline gap-2">
-                        <span class="text-4xl font-black text-custom-light">$450</span>
-                        <span class="text-xs text-custom-gray uppercase">/ Session</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Full Day Crew Coverage (Up to 8 Hrs)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Multi-Cam 4K Cinema Rig Setup</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Commercial Licensing & Rights</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Full Creative Direction & Storyboarding</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Priority 48-Hour Turnaround</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <a href="booking.html?package=enterprise" class="w-full py-3.5 rounded-xl btn-secondary text-center text-xs uppercase tracking-wider block transition-all">
-                    Book with $20 Deposit
-                </a>
-            </div>
-
-        </div>
-
-        <div id="photographyGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-16 hidden">
-            
-            <!-- Portrait Photography -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-white/50 transition-all">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-custom-gray block mb-1">Personal Sessions</span>
-                    <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Portrait & Studio</h3>
-                    <p class="text-xs text-custom-gray mt-2 min-h-[36px]">Clean headshots, model portfolios, and individual creative concepts.</p>
-                    
-                    <div class="my-6 pt-6 border-t border-custom-glow flex items-baseline gap-2">
-                        <span class="text-4xl font-black text-custom-light">$90</span>
-                        <span class="text-xs text-custom-gray uppercase">/ Session</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>1 Hour Studio / Location Shoot</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>5 Ultra-Retouched Final Images</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Online Private Proofing Gallery</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Full High-Res Print Release</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <a href="booking.html?package=portrait" class="w-full py-3.5 rounded-xl btn-secondary text-center text-xs uppercase tracking-wider block transition-all">
-                    Book with $20 Deposit
-                </a>
-            </div>
-
-            <!-- Brand Lookbook Photography -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative border-2 border-white/80 shadow-2xl group transition-all transform hover:-translate-y-1">
-                <span class="absolute -top-3.5 right-6 px-3 py-1 text-[10px] uppercase font-black tracking-widest rounded-full bg-white text-black shadow-lg">
-                    Popular Choice
-                </span>
-
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-custom-light block mb-1">Commercial & Fashion</span>
-                    <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Brand Lookbook</h3>
-                    <p class="text-xs text-custom-gray mt-2 min-h-[36px]">Fashion lookbooks, merchandise launches, and editorial shoots.</p>
-                    
-                    <div class="my-6 pt-6 border-t border-custom-glow flex items-baseline gap-2">
-                        <span class="text-4xl font-black text-custom-light">$180</span>
-                        <span class="text-xs text-custom-gray uppercase">/ Session</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
-                        <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>3 Hours Multi-Look Shooting</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>15 Retouched High-Res Images</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-custom-light font-medium">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>All RAW Files Unedited Delivery</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Commercial License Included</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <a href="booking.html?package=lookbook" class="w-full py-3.5 rounded-xl btn-primary text-center text-xs uppercase tracking-wider block transition-all shadow-lg">
-                    Book with $20 Deposit
-                </a>
-            </div>
-
-            <!-- Event & Lifestyle Photography -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between relative group hover:border-white/50 transition-all">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-custom-gray block mb-1">Full Coverage</span>
-                    <h3 class="text-2xl font-black text-custom-light tracking-tight uppercase">Event & Coverage</h3>
-                    <p class="text-xs text-custom-gray mt-2 min-h-[36px]">Live concerts, corporate galas, release parties, and festivals.</p>
-                    
-                    <div class="my-6 pt-6 border-t border-custom-glow flex items-baseline gap-2">
-                        <span class="text-4xl font-black text-custom-light">$320</span>
-                        <span class="text-xs text-custom-gray uppercase">/ Session</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs text-custom-gray border-t border-custom-glow pt-6 mb-8">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Up to 5 Hours Live Event Coverage</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>50+ Color Corrected High-Res Photos</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>Same-Day 5 Image Teaser Pack</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-check text-custom-light"></i>
-                            <span>2-Day Turnaround Gallery</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <a href="booking.html?package=event" class="w-full py-3.5 rounded-xl btn-secondary text-center text-xs uppercase tracking-wider block transition-all">
-                    Book with $20 Deposit
-                </a>
-            </div>
-
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center glass-card rounded-2xl p-6 sm:p-8 mb-16 border border-custom-glow">
-            <div class="md:col-span-8 space-y-3">
-                <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-custom-light">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <span>Deposit & Booking Guarantee</span>
-                </div>
-                <h2 class="text-xl sm:text-2xl font-black text-custom-light tracking-tight uppercase">
-                    Flat $20 Retainer Policy
-                </h2>
-                <p class="text-xs sm:text-sm text-custom-gray leading-relaxed">
-                    We keep booking effortless. Every package requires only a flat <strong class="text-custom-light">$20 non-refundable deposit</strong> to secure your calendar slot. The remaining balance is only due on or after shoot completion.
+                <h1 class="font-display font-extrabold text-4xl sm:text-6xl tracking-tight mb-4 dark:text-white light:text-black uppercase">
+                    PRODUCTION TIERS &amp; PRICING
+                </h1>
+                <p class="dark:text-neutral-400 light:text-neutral-600 text-sm sm:text-base leading-relaxed">
+                    Tailored photography, cinematography, and full hybrid visual solutions. Lock your production date directly via verified PayPal checkout for <strong class="text-white dark:text-white light:text-black">@Timz34</strong>.
                 </p>
-            </div>
-            
-            <div class="md:col-span-4 flex flex-col gap-3">
-                <button id="openEstimatorBtnBanner" class="w-full py-4 rounded-xl btn-primary text-xs uppercase font-bold tracking-wider transition-all shadow-xl flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-calculator text-xs"></i>
-                    <span>Build Custom Estimate</span>
-                </button>
-                <a href="booking.html" class="w-full py-3 rounded-xl btn-secondary text-center text-xs uppercase font-semibold tracking-wider transition-all">
-                    Direct Calendar Booking
-                </a>
-            </div>
-        </div>
 
+                <div class="mt-8 inline-flex items-center p-1.5 rounded-full bg-neutral-900/90 dark:bg-neutral-900/90 light:bg-neutral-200 border border-neutral-800 dark:border-neutral-800 light:border-neutral-300 shadow-inner">
+                    <button type="button" id="btn-billing-standard" onclick="setBillingMode('standard')" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-black dark:bg-white dark:text-black shadow-md">
+                        Standard Package Rates
+                    </button>
+                    <button type="button" id="btn-billing-retainer" onclick="setBillingMode('retainer')" class="px-6 py-2.5 rounded-full text-xs font-bold text-neutral-400 hover:text-white transition-all flex items-center gap-2">
+                        <span>Retainer / Monthly</span>
+                        <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-[9px] uppercase tracking-wider">Save 15%</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-24">
+                
+                <!-- Package Tier 1: Essential Visuals -->
+                <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800/80 shadow-2xl flex flex-col justify-between transition-all duration-300 hover:border-neutral-600 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-mono tracking-widest uppercase text-neutral-400">Tier 01</span>
+                            <i data-lucide="camera" class="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h2 class="font-display font-bold text-2xl dark:text-white light:text-black mb-2">Essential Visuals</h2>
+                        <p class="text-xs text-neutral-400 mb-6 min-h-[36px]">Ideal for portraits, personal brand content, mini events, and fast-turnaround social teasers.</p>
+                        
+                        <div class="mb-8 pb-6 border-b border-neutral-800">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-4xl font-extrabold font-display dark:text-white light:text-black" id="price-pkg-1">$1,250</span>
+                                <span class="text-xs font-mono text-neutral-400" id="unit-pkg-1">/ shoot</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-neutral-500 block mt-1" id="strike-pkg-1">No monthly lock-in</span>
+                        </div>
+
+                        <!-- Feature List -->
+                        <ul class="space-y-3.5 text-xs text-neutral-300 dark:text-neutral-300 light:text-neutral-700 mb-8 font-medium">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span><strong>4 Hours</strong> On-Location Coverage</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span><strong>15 High-Res</strong> Retouched Edits</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span><strong>1 Mini Reel / Social Teaser</strong> (1080p vertical)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span>Basic Color Grading &amp; Skin Retouching</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span>Online Private Gallery Delivery in <strong>5 Business Days</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" onclick="selectPackage('photo', 1250, 'Essential Visuals Package')" class="w-full py-4 px-6 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white border border-neutral-700 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 group-hover:border-white">
+                        <span>Select Essential &amp; Pay via PayPal</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Package Tier 2: Premier Production (FLAGSHIP / POPULAR) -->
+                <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border-2 border-white dark:border-white light:border-black shadow-glow-white flex flex-col justify-between transition-all duration-300 relative scale-[1.02] bg-neutral-900/90">
+                    
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-white text-black font-display font-bold text-[10px] tracking-widest uppercase shadow-md">
+                        ★ MOST POPULAR FLAGSHIP TIER
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-4 mt-2">
+                            <span class="text-[10px] font-mono tracking-widest uppercase text-emerald-400 font-bold">Tier 02 • Recommended</span>
+                            <i data-lucide="film" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <h2 class="font-display font-bold text-2xl dark:text-white light:text-black mb-2">Premier Production</h2>
+                        <p class="text-xs text-neutral-300 mb-6 min-h-[36px]">Full-day commercial photo &amp; cinema coverage for luxury brands, artists, and high-profile campaigns.</p>
+                        
+                        <div class="mb-8 pb-6 border-b border-neutral-800">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-4xl font-extrabold font-display dark:text-white light:text-black" id="price-pkg-2">$2,850</span>
+                                <span class="text-xs font-mono text-neutral-400" id="unit-pkg-2">/ shoot</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-emerald-400 block mt-1" id="strike-pkg-2">Includes Drone Aerials &amp; Sound Mix</span>
+                        </div>
+
+                        <!-- Feature List -->
+                        <ul class="space-y-3.5 text-xs text-neutral-200 dark:text-neutral-200 light:text-neutral-800 mb-8 font-medium">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span><strong>8 Hours Full Day</strong> Production Coverage</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span><strong>35 High-Res</strong> Editorial Retouched Edits</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span><strong>4K Commercial / Music Film</strong> (Up to 3 Minutes)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span>Advanced 4K Aerial Drone Cinematography</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span>Master Color Grading + Professional Audio Mix</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span>Express Delivery in <strong>3 Business Days</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" onclick="selectPackage('cinema', 2850, 'Premier Production Tier')" class="w-full py-4 px-6 rounded-full bg-paypal-gold hover:bg-paypal-goldHover text-black font-extrabold text-xs uppercase tracking-wider shadow-glow-paypal transition-all flex items-center justify-center gap-2 cursor-pointer">
+                        <span class="font-display font-black text-sm italic text-[#003087]">PayPal</span>
+                        <span>Select Premier &amp; Checkout (@Timz34)</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Package Tier 3: Cinema Masterclass -->
+                <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800/80 shadow-2xl flex flex-col justify-between transition-all duration-300 hover:border-neutral-600 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-mono tracking-widest uppercase text-neutral-400">Tier 03 • Enterprise</span>
+                            <i data-lucide="clapperboard" class="w-5 h-5 text-neutral-400 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h2 class="font-display font-bold text-2xl dark:text-white light:text-black mb-2">Cinema Masterclass</h2>
+                        <p class="text-xs text-neutral-400 mb-6 min-h-[36px]">Full multi-day production scale with cinema crew, 8K RED cameras, scriptwriting &amp; RAW archival files.</p>
+                        
+                        <div class="mb-8 pb-6 border-b border-neutral-800">
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-4xl font-extrabold font-display dark:text-white light:text-black" id="price-pkg-3">$5,400</span>
+                                <span class="text-xs font-mono text-neutral-400" id="unit-pkg-3">/ shoot</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-neutral-500 block mt-1" id="strike-pkg-3">Full Studio Crew Included</span>
+                        </div>
+
+                        <!-- Feature List -->
+                        <ul class="space-y-3.5 text-xs text-neutral-300 dark:text-neutral-300 light:text-neutral-700 mb-8 font-medium">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span><strong>Multi-Day / Unlimited Hours</strong> Coverage</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span>Full Editorial Photo Suite (<strong>75+ Edits</strong>)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span><strong>8K RED Cinema Camera</strong> Production Unit</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span>Full Creative Direction, Lighting Crew &amp; Scripting</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                                <span>RAW Cinema Deliverables + Express <strong>48h Rush Turnaround</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" onclick="selectPackage('hybrid', 5400, 'Cinema Masterclass Tier')" class="w-full py-4 px-6 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white border border-neutral-700 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 group-hover:border-white">
+                        <span>Select Masterclass &amp; Pay via PayPal</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 sm:p-12 rounded-3xl border border-neutral-800/80 shadow-2xl mb-24 relative">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 mb-3">
+                            <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+                            <span>Interactive Real-Time Estimator</span>
+                        </div>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl dark:text-white light:text-black">
+                            CUSTOM PRODUCTION ESTIMATOR
+                        </h2>
+                        <p class="text-xs text-neutral-400 mt-2">Configure exact production parameters to calculate an instant quote before booking via PayPal (@Timz34).</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Step 1: Service Type Selection -->
+                        <div>
+                            <label class="block text-[11px] font-mono uppercase text-neutral-400 mb-3">1. Select Production Discipline</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <button type="button" onclick="setCalcService('photo')" id="calc-service-photo" class="calc-service-btn p-4 rounded-2xl border border-white bg-white/10 text-white text-xs font-bold transition-all flex flex-col items-center gap-2">
+                                    <i data-lucide="camera" class="w-5 h-5"></i>
+                                    <span>Photography Only</span>
+                                </button>
+                                <button type="button" onclick="setCalcService('video')" id="calc-service-video" class="calc-service-btn p-4 rounded-2xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 text-xs font-bold transition-all flex flex-col items-center gap-2 hover:border-neutral-700">
+                                    <i data-lucide="video" class="w-5 h-5"></i>
+                                    <span>Cinematography Only</span>
+                                </button>
+                                <button type="button" onclick="setCalcService('hybrid')" id="calc-service-hybrid" class="calc-service-btn p-4 rounded-2xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 text-xs font-bold transition-all flex flex-col items-center gap-2 hover:border-neutral-700">
+                                    <i data-lucide="layers" class="w-5 h-5"></i>
+                                    <span>Full Hybrid (Photo + Video)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Duration Slider -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-[11px] font-mono uppercase text-neutral-400">2. Coverage Duration (Hours)</label>
+                                <span id="calc-hours-display" class="font-mono text-sm font-bold text-emerald-400">6 Hours</span>
+                            </div>
+                            <input type="range" id="calc-hours-range" min="2" max="24" step="1" value="6" oninput="calculateCustomEstimate()" class="w-full accent-white bg-neutral-800 h-2 rounded-lg cursor-pointer">
+                            <div class="flex justify-between text-[10px] font-mono text-neutral-500 mt-1">
+                                <span>2 Hrs (Half Day)</span>
+                                <span>8 Hrs (Full Day)</span>
+                                <span>24 Hrs (Multi-Day Shoot)</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Optional Add-on Deliverables -->
+                        <div>
+                            <label class="block text-[11px] font-mono uppercase text-neutral-400 mb-3">3. Deliverables &amp; Add-on Enhancements</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <label class="flex items-center justify-between p-3.5 rounded-2xl border border-neutral-800 bg-neutral-900/40 cursor-pointer hover:border-neutral-700 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="calc-addon-drone" onchange="calculateCustomEstimate()" checked class="w-4 h-4 accent-emerald-400 rounded">
+                                        <span class="text-xs text-neutral-200">4K Aerial Drone Cinematography</span>
+                                    </div>
+                                    <span class="text-xs font-mono text-neutral-400">+$450</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3.5 rounded-2xl border border-neutral-800 bg-neutral-900/40 cursor-pointer hover:border-neutral-700 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="calc-addon-express" onchange="calculateCustomEstimate()" class="w-4 h-4 accent-emerald-400 rounded">
+                                        <span class="text-xs text-neutral-200">Express 24-Hour Rush Delivery</span>
+                                    </div>
+                                    <span class="text-xs font-mono text-neutral-400">+$500</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3.5 rounded-2xl border border-neutral-800 bg-neutral-900/40 cursor-pointer hover:border-neutral-700 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="calc-addon-raw" onchange="calculateCustomEstimate()" checked class="w-4 h-4 accent-emerald-400 rounded">
+                                        <span class="text-xs text-neutral-200">RAW Uncut Footage &amp; Audio Drive</span>
+                                    </div>
+                                    <span class="text-xs font-mono text-neutral-400">+$300</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3.5 rounded-2xl border border-neutral-800 bg-neutral-900/40 cursor-pointer hover:border-neutral-700 transition-all">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="calc-addon-photos" onchange="calculateCustomEstimate()" class="w-4 h-4 accent-emerald-400 rounded">
+                                        <span class="text-xs text-neutral-200">+25 Extra High-Res Photo Edits</span>
+                                    </div>
+                                    <span class="text-xs font-mono text-neutral-400">+$350</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Estimate Calculation Output Box -->
+                        <div class="p-6 rounded-2xl bg-neutral-900 border border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-6">
+                            <div>
+                                <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block">Estimated Total Production Cost</span>
+                                <div class="flex items-baseline gap-2 mt-1">
+                                    <span id="calc-total-price" class="text-3xl sm:text-4xl font-extrabold font-display dark:text-white light:text-black">$2,850.00</span>
+                                    <span class="text-xs font-mono text-neutral-400">CAD + Tax</span>
+                                </div>
+                                <p class="text-[10px] text-neutral-500 mt-1">Includes direct 50% deposit retainer options via PayPal merchant handle <strong>@Timz34</strong>.</p>
+                            </div>
+
+                            <button type="button" onclick="proceedToPayPalFromCalculator()" class="w-full sm:w-auto py-3.5 px-8 rounded-full bg-paypal-gold hover:bg-paypal-goldHover text-black font-extrabold text-xs uppercase tracking-wider shadow-glow-paypal transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap">
+                                <span class="font-display font-black text-sm italic text-[#003087]">PayPal</span>
+                                <span>Proceed to Checkout (@Timz34)</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-24">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <h2 class="font-display font-extrabold text-2xl sm:text-3xl dark:text-white light:text-black uppercase">
+                        TIER FEATURE COMPARISON
+                    </h2>
+                    <p class="text-xs text-neutral-400 mt-2">In-depth technical breakdown of deliverables across production packages.</p>
+                </div>
+
+                <div class="overflow-x-auto glass-panel-dark dark:glass-panel-dark light:glass-panel-light rounded-3xl border border-neutral-800">
+                    <table class="w-full text-left text-xs">
+                        <thead>
+                            <tr class="border-b border-neutral-800 bg-neutral-900/80 font-display">
+                                <th class="p-4 sm:p-6 text-neutral-300">Feature Deliverables</th>
+                                <th class="p-4 sm:p-6 text-center text-neutral-300">Essential Visuals</th>
+                                <th class="p-4 sm:p-6 text-center text-white bg-white/5">Premier Production ★</th>
+                                <th class="p-4 sm:p-6 text-center text-neutral-300">Cinema Masterclass</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-neutral-800/60 font-medium">
+                            <tr>
+                                <td class="p-4 sm:p-6 text-neutral-300">On-Site Coverage Hours</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-400">4 Hours</td>
+                                <td class="p-4 sm:p-6 text-center font-bold text-white bg-white/5">8 Hours (Full Day)</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-300">Multi-Day / Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-6 text-neutral-300">Primary Camera Rig</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-400">4K Sony Cinema FX Line</td>
+                                <td class="p-4 sm:p-6 text-center font-bold text-white bg-white/5">Dual 4K Sony FX6 Rig</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-300">8K RED V-Raptor / ARRI</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-6 text-neutral-300">Retouched High-Res Photos</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-400">15 Edits</td>
+                                <td class="p-4 sm:p-6 text-center font-bold text-white bg-white/5">35 Edits</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-300">75+ Editorial Edits</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-6 text-neutral-300">Video Master Deliverable</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-400">1 Social Reel (1080p)</td>
+                                <td class="p-4 sm:p-6 text-center font-bold text-white bg-white/5">4K Film (Up to 3 mins)</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-300">4K/8K Film + Director Cut</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-6 text-neutral-300">4K Aerial Drone Footage</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-500">—</td>
+                                <td class="p-4 sm:p-6 text-center font-bold text-emerald-400 bg-white/5">Included ✓</td>
+                                <td class="p-4 sm:p-6 text-center text-emerald-400">Included ✓</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-6 text-neutral-300">Color Grading &amp; Sound Mix</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-400">Standard Grade</td>
+                                <td class="p-4 sm:p-6 text-center font-bold text-white bg-white/5">Master Grade &amp; Sound Mix</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-300">Custom LUTs &amp; Foley Sound</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-6 text-neutral-300">Delivery Turnaround</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-400">5 Days</td>
+                                <td class="p-4 sm:p-6 text-center font-bold text-white bg-white/5">3 Days</td>
+                                <td class="p-4 sm:p-6 text-center text-neutral-300">48-Hour Rush Delivery</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-6 text-neutral-300">PayPal Merchant Payment (@Timz34)</td>
+                                <td class="p-4 sm:p-6 text-center text-emerald-400">Verified ✓</td>
+                                <td class="p-4 sm:p-6 text-center text-emerald-400 font-bold bg-white/5">Verified ✓</td>
+                                <td class="p-4 sm:p-6 text-center text-emerald-400">Verified ✓</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="text-center mb-10">
+                    <h2 class="font-display font-extrabold text-2xl sm:text-3xl dark:text-white light:text-black uppercase">
+                        FREQUENTLY ASKED QUESTIONS
+                    </h2>
+                    <p class="text-xs text-neutral-400 mt-2">Everything you need to know regarding retainers, PayPal checkout, and production timelines.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="glass-panel-dark rounded-2xl border border-neutral-800 overflow-hidden">
+                        <button onclick="toggleFaq(1)" class="w-full p-5 text-left flex items-center justify-between font-display font-bold text-sm text-white hover:bg-neutral-900/50 transition-colors">
+                            <span>How do I secure my shoot date using PayPal (@Timz34)?</span>
+                            <i id="faq-icon-1" data-lucide="chevron-down" class="w-4 h-4 text-neutral-400 transition-transform"></i>
+                        </button>
+                        <div id="faq-content-1" class="hidden p-5 pt-0 text-xs text-neutral-400 leading-relaxed border-t border-neutral-800/50">
+                            You can lock your production date by selecting any package and choosing either full payment or a 50% deposit retainer. All direct web checkouts process instantly to verified merchant account <strong class="text-white">@Timz34</strong> with full PayPal Seller Protection.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="glass-panel-dark rounded-2xl border border-neutral-800 overflow-hidden">
+                        <button onclick="toggleFaq(2)" class="w-full p-5 text-left flex items-center justify-between font-display font-bold text-sm text-white hover:bg-neutral-900/50 transition-colors">
+                            <span>What happens if I need to reschedule my shoot?</span>
+                            <i id="faq-icon-2" data-lucide="chevron-down" class="w-4 h-4 text-neutral-400 transition-transform"></i>
+                        </button>
+                        <div id="faq-content-2" class="hidden p-5 pt-0 text-xs text-neutral-400 leading-relaxed border-t border-neutral-800/50">
+                            We understand weather or campaign schedules change. Retainers paid to @Timz34 are 100% transferable to any date within 90 days provided notice is given at least 72 hours prior to the scheduled shoot time.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="glass-panel-dark rounded-2xl border border-neutral-800 overflow-hidden">
+                        <button onclick="toggleFaq(3)" class="w-full p-5 text-left flex items-center justify-between font-display font-bold text-sm text-white hover:bg-neutral-900/50 transition-colors">
+                            <span>Are travel and studio location fees included?</span>
+                            <i id="faq-icon-3" data-lucide="chevron-down" class="w-4 h-4 text-neutral-400 transition-transform"></i>
+                        </button>
+                        <div id="faq-content-3" class="hidden p-5 pt-0 text-xs text-neutral-400 leading-relaxed border-t border-neutral-800/50">
+                            Travel within the Greater Toronto Area (GTA) and major Ontario hubs is included free of charge. External studio rental spaces or international travel expenses are billed separately after initial scope agreement.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="glass-panel-dark rounded-2xl border border-neutral-800 overflow-hidden">
+                        <button onclick="toggleFaq(4)" class="w-full p-5 text-left flex items-center justify-between font-display font-bold text-sm text-white hover:bg-neutral-900/50 transition-colors">
+                            <span>How are finished digital assets delivered?</span>
+                            <i id="faq-icon-4" data-lucide="chevron-down" class="w-4 h-4 text-neutral-400 transition-transform"></i>
+                        </button>
+                        <div id="faq-content-4" class="hidden p-5 pt-0 text-xs text-neutral-400 leading-relaxed border-t border-neutral-800/50">
+                            Deliverables are transmitted through a private, password-protected, ultra-fast cloud gallery with full 4K video stream downloads and high-resolution JPEG/PNG archival formats for web and print.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
-    <div id="estimatorModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="glass-card max-w-2xl w-full rounded-2xl p-6 sm:p-8 space-y-6 my-8 relative animate-in fade-in zoom-in duration-300 max-h-[90vh] overflow-y-auto">
-            
-            <!-- Close Modal Button -->
-            <button id="closeEstimatorModal" class="absolute top-6 right-6 text-custom-gray hover:text-custom-light transition-colors text-lg" aria-label="Close modal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <!-- Modal Header -->
-            <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-custom-light">Interactive Quote Builder</span>
-                <h3 class="text-2xl font-black text-custom-light uppercase tracking-tight mt-1">
-                    Calculate Custom Rate
-                </h3>
-                <p class="text-xs text-custom-gray mt-1">Select base services and add-ons to build your customized project package.</p>
-            </div>
-
-            <!-- Modal Form Controls -->
-            <div class="space-y-6 border-t border-custom-glow pt-6 text-xs sm:text-sm">
-                
-                <!-- Base Service Dropdown -->
-                <div>
-                    <label for="calcBaseService" class="block font-semibold text-custom-light uppercase tracking-wider mb-2">Primary Production Base</label>
-                    <select id="calcBaseService" class="w-full rounded-xl px-4 py-3 form-input text-xs sm:text-sm">
-                        <option value="100" data-name="Essential Video ($100)">Essential Video - $100</option>
-                        <option value="220" data-name="Cinematic Narrative ($220)" selected>Cinematic Narrative - $220</option>
-                        <option value="450" data-name="Enterprise Commercial ($450)">Enterprise Commercial - $450</option>
-                        <option value="90" data-name="Portrait Photography ($90)">Portrait Photography - $90</option>
-                        <option value="180" data-name="Brand Lookbook ($180)">Brand Lookbook - $180</option>
-                        <option value="320" data-name="Event & Coverage ($320)">Event & Coverage - $320</option>
-                    </select>
-                </div>
-
-                <!-- Add-ons Selection -->
-                <div>
-                    <label class="block font-semibold text-custom-light uppercase tracking-wider mb-3">Optional Production Add-Ons</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="calcAddonsContainer">
-                        
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-white/40 transition-all">
-                            <input type="checkbox" class="calc-addon rounded bg-transparent border-custom-glow text-white focus:ring-0 accent-white" value="50" data-name="Aerial Drone Coverage">
-                            <div class="flex-grow">
-                                <div class="font-bold text-custom-light text-xs">Drone Aerial Footage</div>
-                                <div class="text-[10px] text-custom-gray">+$50 USD</div>
-                            </div>
-                        </label>
-
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-white/40 transition-all">
-                            <input type="checkbox" class="calc-addon rounded bg-transparent border-custom-glow text-white focus:ring-0 accent-white" value="40" data-name="Express 24-Hour Turnaround">
-                            <div class="flex-grow">
-                                <div class="font-bold text-custom-light text-xs">Express 24H Delivery</div>
-                                <div class="text-[10px] text-custom-gray">+$40 USD</div>
-                            </div>
-                        </label>
-
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-white/40 transition-all">
-                            <input type="checkbox" class="calc-addon rounded bg-transparent border-custom-glow text-white focus:ring-0 accent-white" value="60" data-name="RAW File Archival Access">
-                            <div class="flex-grow">
-                                <div class="font-bold text-custom-light text-xs">RAW Unedited Master Files</div>
-                                <div class="text-[10px] text-custom-gray">+$60 USD</div>
-                            </div>
-                        </label>
-
-                        <label class="flex items-center gap-3 p-3 rounded-xl border border-custom-glow glass-card cursor-pointer hover:border-white/40 transition-all">
-                            <input type="checkbox" class="calc-addon rounded bg-transparent border-custom-glow text-white focus:ring-0 accent-white" value="30" data-name="Additional Social Reels Edit">
-                            <div class="flex-grow">
-                                <div class="font-bold text-custom-light text-xs">Extra Social Vertical Cut</div>
-                                <div class="text-[10px] text-custom-gray">+$30 USD</div>
-                            </div>
-                        </label>
-
-                    </div>
-                </div>
-
-                <!-- Live Summary Breakdown Box -->
-                <div class="p-4 rounded-xl bg-neutral-900/80 border border-custom-glow space-y-3">
-                    <div class="flex justify-between items-center border-b border-custom-glow pb-2 text-xs">
-                        <span class="text-custom-gray">Selected Base:</span>
-                        <span id="calcBaseDisplay" class="font-bold text-custom-light">Cinematic Narrative</span>
-                    </div>
-
-                    <div class="space-y-1 text-[11px] text-custom-gray" id="calcAddonsList">
-                        <div class="italic">No extra add-ons selected</div>
-                    </div>
-
-                    <div class="pt-3 border-t border-custom-glow flex items-center justify-between">
-                        <div>
-                            <div class="text-xs uppercase font-bold text-custom-light">Estimated Total</div>
-                            <div class="text-[10px] text-custom-gray font-semibold">Deposit required: $20.00</div>
-                        </div>
-                        <span id="calcTotalDisplay" class="text-2xl font-black text-custom-light">$220.00</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                <button id="calcProceedBookingBtn" class="flex-1 py-3.5 rounded-xl btn-primary text-xs uppercase font-bold tracking-wider transition-all shadow-lg flex items-center justify-center gap-2">
-                    <span>Reserve Session with $20 Deposit</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <footer class="border-t border-custom-glow py-8 px-4 sm:px-6 lg:px-8 bg-nav-custom mt-12">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-custom-gray">
+    <footer class="border-t border-neutral-800/80 py-10 px-4 sm:px-8 bg-black/40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
-                <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto brand-logo-img" onerror="this.onerror=null; this.src='https://placehold.co/100x30/000000/ffffff?text=TIMZ';">
-                <span class="font-bold text-custom-light uppercase tracking-wider">TIMZ VISUALS</span>
+                <div class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs">
+                    TZ
+                </div>
+                <span class="font-display font-bold text-sm text-white">TIMZ VISUALS</span>
             </div>
-            <p>© 2026 TIMZ VISUALS. All rights reserved.</p>
-            <div class="flex space-x-4 text-sm">
-                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
-                <a href="#" class="hover:text-custom-light transition-colors" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+
+            <p class="text-xs text-neutral-500 text-center md:text-left">
+                &copy; 2026 TIMZ VISUALS. High-End Visual Storytelling &amp; Production. Verified PayPal Merchant: <strong class="text-neutral-300">@Timz34</strong>
+            </p>
+
+            <div class="flex items-center gap-4 text-xs text-neutral-400">
+                <a href="payment.html" class="hover:text-white transition-colors flex items-center gap-1">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> Direct Checkout
+                </a>
+                <span>•</span>
+                <a href="https://www.paypal.com/paypalme/Timz34" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">paypal.me/Timz34</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // --- 1. Persistent Dark / Light Theme & Frosted Glass Mode Switching ---
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const themeIcon = document.getElementById('themeIcon');
-        const glassToggleBtn = document.getElementById('glassToggleBtn');
-        const glassIcon = document.getElementById('glassIcon');
-        const glassLabel = document.getElementById('glassLabel');
-        
-        const savedTheme = localStorage.getItem('timz_theme') || 
-            (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        const savedGlassMode = localStorage.getItem('timz_glass') || 'frosted';
+        // State Management
+        let pricingState = {
+            billingMode: 'standard', // 'standard' or 'retainer'
+            calcService: 'photo',    // 'photo', 'video', 'hybrid'
+            calcHours: 6,
+            calcDrone: true,
+            calcExpress: false,
+            calcRaw: true,
+            calcPhotos: false
+        };
 
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            if (theme === 'light') {
-                themeIcon.className = 'fa-solid fa-moon text-sm';
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            initTheme();
+            calculateCustomEstimate();
+        });
+
+        // Theme Toggle Functionality
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
             } else {
-                themeIcon.className = 'fa-solid fa-sun text-sm';
-            }
-            localStorage.setItem('timz_theme', theme);
-        }
-
-        function applyGlassMode(mode) {
-            document.documentElement.setAttribute('data-glass', mode);
-            if (mode === 'frosted') {
-                glassIcon.className = 'fa-solid fa-wand-magic-sparkles text-custom-light';
-                if (glassLabel) glassLabel.textContent = 'Glass: Max';
-            } else {
-                glassIcon.className = 'fa-solid fa-border-all text-custom-gray';
-                if (glassLabel) glassLabel.textContent = 'Glass: Solid';
-            }
-            localStorage.setItem('timz_glass', mode);
-        }
-
-        applyTheme(savedTheme);
-        applyGlassMode(savedGlassMode);
-
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        });
-
-        glassToggleBtn.addEventListener('click', () => {
-            const currentGlass = document.documentElement.getAttribute('data-glass') || 'solid';
-            const newGlass = currentGlass === 'frosted' ? 'solid' : 'frosted';
-            applyGlassMode(newGlass);
-        });
-
-        // --- 2. Mobile Drawer Navigation Toggle ---
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
-
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                const isOpen = !mobileMenu.classList.contains('hidden');
-                mobileMenu.classList.toggle('hidden');
-                mobileMenuIcon.className = isOpen ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
-            });
-        }
-
-        // --- 3. Videography vs Photography Grid Tab Switcher ---
-        const tabVideography = document.getElementById('tabVideography');
-        const tabPhotography = document.getElementById('tabPhotography');
-        const videographyGrid = document.getElementById('videographyGrid');
-        const photographyGrid = document.getElementById('photographyGrid');
-
-        tabVideography.addEventListener('click', () => {
-            tabVideography.classList.add('active');
-            tabVideography.classList.remove('text-custom-gray');
-            tabPhotography.classList.remove('active');
-            tabPhotography.classList.add('text-custom-gray');
-
-            videographyGrid.classList.remove('hidden');
-            photographyGrid.classList.add('hidden');
-        });
-
-        tabPhotography.addEventListener('click', () => {
-            tabPhotography.classList.add('active');
-            tabPhotography.classList.remove('text-custom-gray');
-            tabVideography.classList.remove('active');
-            tabVideography.classList.add('text-custom-gray');
-
-            photographyGrid.classList.remove('hidden');
-            videographyGrid.classList.add('hidden');
-        });
-
-        // --- 4. Interactive Custom Rate Estimator Modal Calculation ---
-        const estimatorModal = document.getElementById('estimatorModal');
-        const openEstimatorBtnHeader = document.getElementById('openEstimatorBtnHeader');
-        const openEstimatorBtnMobile = document.getElementById('openEstimatorBtnMobile');
-        const openEstimatorBtnBanner = document.getElementById('openEstimatorBtnBanner');
-        const closeEstimatorModal = document.getElementById('closeEstimatorModal');
-
-        const calcBaseService = document.getElementById('calcBaseService');
-        const calcAddonCheckboxes = document.querySelectorAll('.calc-addon');
-        const calcBaseDisplay = document.getElementById('calcBaseDisplay');
-        const calcAddonsList = document.getElementById('calcAddonsList');
-        const calcTotalDisplay = document.getElementById('calcTotalDisplay');
-        const calcProceedBookingBtn = document.getElementById('calcProceedBookingBtn');
-
-        function toggleEstimatorModal(show) {
-            if (show) {
-                estimatorModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                recalculateEstimate();
-            } else {
-                estimatorModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
             }
         }
 
-        if (openEstimatorBtnHeader) openEstimatorBtnHeader.addEventListener('click', () => toggleEstimatorModal(true));
-        if (openEstimatorBtnMobile) openEstimatorBtnMobile.addEventListener('click', () => toggleEstimatorModal(true));
-        if (openEstimatorBtnBanner) openEstimatorBtnBanner.addEventListener('click', () => toggleEstimatorModal(true));
-        if (closeEstimatorModal) closeEstimatorModal.addEventListener('click', () => toggleEstimatorModal(false));
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                localStorage.setItem('theme', 'dark');
+            }
+            lucide.createIcons();
+        }
 
-        estimatorModal.addEventListener('click', (e) => {
-            if (e.target === estimatorModal) toggleEstimatorModal(false);
-        });
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
 
-        function recalculateEstimate() {
-            const selectedOption = calcBaseService.options[calcBaseService.selectedIndex];
-            const basePrice = parseFloat(selectedOption.value) || 0;
-            const baseName = selectedOption.dataset.name || selectedOption.text;
+        // Toggle Billing Mode (Standard vs Retainer)
+        function setBillingMode(mode) {
+            pricingState.billingMode = mode;
+            const btnStandard = document.getElementById('btn-billing-standard');
+            const btnRetainer = document.getElementById('btn-billing-retainer');
 
-            let total = basePrice;
-            const activeAddons = [];
+            if (mode === 'retainer') {
+                btnRetainer.className = "px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-black dark:bg-white dark:text-black shadow-md flex items-center gap-2";
+                btnStandard.className = "px-6 py-2.5 rounded-full text-xs font-bold text-neutral-400 hover:text-white transition-all";
+                
+                // Apply 15% discount pricing to package UI
+                document.getElementById('price-pkg-1').innerText = '$1,060';
+                document.getElementById('unit-pkg-1').innerText = '/ month';
+                document.getElementById('strike-pkg-1').innerText = 'Save $190/mo with Retainer';
 
-            calcAddonCheckboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    const price = parseFloat(checkbox.value) || 0;
-                    const name = checkbox.dataset.name;
-                    total += price;
-                    activeAddons.push({ name, price });
-                }
+                document.getElementById('price-pkg-2').innerText = '$2,420';
+                document.getElementById('unit-pkg-2').innerText = '/ month';
+                document.getElementById('strike-pkg-2').innerText = 'Save $430/mo with Retainer';
+
+                document.getElementById('price-pkg-3').innerText = '$4,590';
+                document.getElementById('unit-pkg-3').innerText = '/ month';
+                document.getElementById('strike-pkg-3').innerText = 'Save $810/mo with Retainer';
+            } else {
+                btnStandard.className = "px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-black dark:bg-white dark:text-black shadow-md";
+                btnRetainer.className = "px-6 py-2.5 rounded-full text-xs font-bold text-neutral-400 hover:text-white transition-all flex items-center gap-2";
+
+                document.getElementById('price-pkg-1').innerText = '$1,250';
+                document.getElementById('unit-pkg-1').innerText = '/ shoot';
+                document.getElementById('strike-pkg-1').innerText = 'No monthly lock-in';
+
+                document.getElementById('price-pkg-2').innerText = '$2,850';
+                document.getElementById('unit-pkg-2').innerText = '/ shoot';
+                document.getElementById('strike-pkg-2').innerText = 'Includes Drone Aerials & Sound Mix';
+
+                document.getElementById('price-pkg-3').innerText = '$5,400';
+                document.getElementById('unit-pkg-3').innerText = '/ shoot';
+                document.getElementById('strike-pkg-3').innerText = 'Full Studio Crew Included';
+            }
+        }
+
+        // Package Selection -> Redirect to payment.html with localStorage pre-fill
+        function selectPackage(pkgKey, basePrice, title) {
+            localStorage.setItem('selected_package', pkgKey);
+            localStorage.setItem('selected_package_title', title);
+            window.location.href = 'payment.html';
+        }
+
+        // Custom Calculator logic
+        function setCalcService(service) {
+            pricingState.calcService = service;
+            const buttons = document.querySelectorAll('.calc-service-btn');
+            buttons.forEach(btn => {
+                btn.className = "calc-service-btn p-4 rounded-2xl border border-neutral-800 bg-neutral-900/60 text-neutral-400 text-xs font-bold transition-all flex flex-col items-center gap-2 hover:border-neutral-700";
             });
 
-            calcBaseDisplay.textContent = baseName;
-            calcTotalDisplay.textContent = `$${total.toFixed(2)}`;
-
-            if (activeAddons.length === 0) {
-                calcAddonsList.innerHTML = '<div class="italic">No extra add-ons selected</div>';
-            } else {
-                calcAddonsList.innerHTML = activeAddons.map(addon => `
-                    <div class="flex justify-between items-center">
-                        <span>+ ${addon.name}</span>
-                        <span class="font-semibold text-custom-light">+$${addon.price}.00</span>
-                    </div>
-                `).join('');
+            const activeBtn = document.getElementById(`calc-service-${service}`);
+            if (activeBtn) {
+                activeBtn.className = "calc-service-btn p-4 rounded-2xl border border-white bg-white/10 text-white text-xs font-bold transition-all flex flex-col items-center gap-2";
             }
+            calculateCustomEstimate();
         }
 
-        calcBaseService.addEventListener('change', recalculateEstimate);
-        calcAddonCheckboxes.forEach(chk => chk.addEventListener('change', recalculateEstimate));
+        function calculateCustomEstimate() {
+            const hours = parseInt(document.getElementById('calc-hours-range').value);
+            document.getElementById('calc-hours-display').innerText = `${hours} Hours`;
 
-        calcProceedBookingBtn.addEventListener('click', () => {
-            toggleEstimatorModal(false);
-            window.location.href = 'booking.html';
-        });
+            let hourlyRate = 250;
+            if (pricingState.calcService === 'video') hourlyRate = 350;
+            if (pricingState.calcService === 'hybrid') hourlyRate = 480;
+
+            let baseCost = hours * hourlyRate;
+
+            // Add-ons
+            let addonsCost = 0;
+            if (document.getElementById('calc-addon-drone').checked) addonsCost += 450;
+            if (document.getElementById('calc-addon-express').checked) addonsCost += 500;
+            if (document.getElementById('calc-addon-raw').checked) addonsCost += 300;
+            if (document.getElementById('calc-addon-photos').checked) addonsCost += 350;
+
+            let totalCost = baseCost + addonsCost;
+            document.getElementById('calc-total-price').innerText = `$${totalCost.toLocaleString('en-US', {minimumFractionDigits: 2})}`;
+        }
+
+        function proceedToPayPalFromCalculator() {
+            window.location.href = 'payment.html';
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
     </script>
 </body>
 </html>
