@@ -164,4 +164,454 @@
 
                     <div class="space-y-4">
                         <label class="block text-xs uppercase tracking-widest text-mono-400 font-semibold">Select Service Package</label>
-                        <select id="packageSelect" onchange="handlePackageChange()" class="w
+                        <select id="packageSelect" onchange="handlePackageChange()" class="w-full bg-mono-900/90 dark:bg-mono-900/90 border border-mono-700 text-mono-100 rounded-xl p-3.5 text-sm focus:outline-none focus:border-white">
+                            <option value="portrait" data-price="350">Studio & Portrait Shoot - $350</option>
+                            <option value="urban" data-price="650" selected>Urban Apparel Campaign - $650</option>
+                            <option value="commercial" data-price="980">Commercial Cinema Production - $980</option>
+                            <option value="custom" data-price="500">Custom Project Estimate ($1,200 Max Cap)</option>
+                        </select>
+                    </div>
+
+                    <div id="customPriceContainer" class="space-y-2 hidden">
+                        <label class="block text-xs uppercase tracking-widest text-mono-400 font-semibold">Custom Budget Amount ($ Max $1,200)</label>
+                        <input type="number" id="customPriceInput" min="100" max="1200" value="500" oninput="handleCustomPriceInput()" class="w-full bg-mono-900/90 border border-mono-700 rounded-xl px-4 py-3 text-sm text-mono-100 focus:outline-none focus:border-white" placeholder="Enter amount up to 1200">
+                    </div>
+
+                    <div id="depositToggleBox" class="p-4 rounded-xl glass-card border border-mono-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-wallet text-mono-300 text-lg"></i>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-mono-900 dark:text-mono-100">Pay 50% Deposit Now</h4>
+                                    <p class="text-xs text-mono-500 dark:text-mono-400">Lock date, pay remainder on shoot day</p>
+                                </div>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="depositToggle" onchange="calculateTotals()" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-mono-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white/80"></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="promoBox" class="space-y-2">
+                        <label class="block text-xs uppercase tracking-widest text-mono-400 font-semibold">Promo Code</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="promoInput" placeholder="Enter code (e.g. TIMZ10)" class="flex-grow bg-mono-900/90 border border-mono-700 rounded-xl px-3.5 py-2.5 text-sm text-mono-100 focus:outline-none focus:border-white">
+                            <button type="button" onclick="applyPromo()" class="px-4 py-2.5 bg-mono-800 hover:bg-mono-700 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors">Apply</button>
+                        </div>
+                        <p id="promoMsg" class="text-xs hidden"></p>
+                    </div>
+
+                    <div id="pricingSummaryBox" class="border-t border-mono-800 dark:border-mono-800 pt-4 space-y-2.5 text-sm">
+                        <div class="flex justify-between text-mono-400">
+                            <span>Base Package Price</span>
+                            <span id="basePriceText" class="font-medium text-mono-200">$650.00</span>
+                        </div>
+                        <div id="discountRow" class="flex justify-between text-emerald-400 hidden">
+                            <span>Discount Applied</span>
+                            <span id="discountText">-$0.00</span>
+                        </div>
+                        <div id="depositRow" class="flex justify-between text-mono-400">
+                            <span>Payment Structure</span>
+                            <span id="depositText" class="text-white font-semibold">50% Upfront</span>
+                        </div>
+                        <div class="border-t border-mono-800 pt-3 flex justify-between items-baseline">
+                            <span class="font-serif font-bold text-lg text-mono-900 dark:text-mono-50" id="totalLabel">Total Due Today</span>
+                            <span id="finalTotalText" class="font-serif font-bold text-3xl text-mono-900 dark:text-mono-50">$325.00</span>
+                        </div>
+                        <p class="text-[11px] text-mono-500 text-right">Guaranteed strict rate cap under $1,200</p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 border border-mono-800 space-y-2">
+                    <div class="flex items-center gap-2 text-mono-200 font-semibold text-sm">
+                        <i class="fa-solid fa-envelope-circle-check text-base"></i>
+                        <span>Payment Confirmation & Direct Support</span>
+                    </div>
+                    <p class="text-xs text-mono-400 leading-relaxed">
+                        When making PayPal transfers to <strong class="text-white">@Timz34</strong>, please forward your payment receipt or screenshot to:
+                    </p>
+                    <a href="mailto:timzvisuals9@gmail.com" class="inline-block font-mono text-xs font-bold bg-mono-900/80 px-3 py-1.5 rounded-lg border border-mono-700 text-mono-100 hover:text-white transition-colors">
+                        timzvisuals9@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 space-y-6">
+                
+                <div id="checkoutFormCard" class="glass-panel rounded-3xl p-6 sm:p-8">
+                    <form id="bookingForm" action="https://formspree.io/f/xnpqwqlb" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-8">
+                        
+                        <input type="hidden" name="workflow_option" id="hiddenWorkflowOption" value="Pay Deposit Now">
+                        <input type="hidden" name="selected_package" id="hiddenPackage" value="Urban Apparel Campaign">
+                        <input type="hidden" name="base_price" id="hiddenBasePrice" value="$650.00">
+                        <input type="hidden" name="amount_due_today" id="hiddenAmountDue" value="$325.00">
+                        <input type="hidden" name="paypal_handle" value="@Timz34">
+                        <input type="hidden" name="confirmation_email" value="timzvisuals9@gmail.com">
+
+                        <div class="space-y-4">
+                            <h3 class="font-serif text-2xl font-bold text-mono-900 dark:text-mono-50">1. Client Details</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-mono-400 font-semibold mb-1">Full Name *</label>
+                                    <input type="text" name="name" id="custName" required placeholder="John Doe" class="w-full bg-mono-900/90 border border-mono-700 rounded-xl px-4 py-3 text-sm text-mono-100 focus:outline-none focus:border-white">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-mono-400 font-semibold mb-1">Email Address *</label>
+                                    <input type="email" name="email" id="custEmail" required placeholder="john@example.com" class="w-full bg-mono-900/90 border border-mono-700 rounded-xl px-4 py-3 text-sm text-mono-100 focus:outline-none focus:border-white">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-mono-400 font-semibold mb-1">Phone Number</label>
+                                    <input type="tel" name="phone" id="custPhone" placeholder="(555) 000-0000" class="w-full bg-mono-900/90 border border-mono-700 rounded-xl px-4 py-3 text-sm text-mono-100 focus:outline-none focus:border-white">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-mono-400 font-semibold mb-1">Preferred Date</label>
+                                    <input type="date" name="preferred_date" id="custDate" class="w-full bg-mono-900/90 border border-mono-700 rounded-xl px-4 py-3 text-sm text-mono-100 focus:outline-none focus:border-white">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="font-serif text-2xl font-bold text-mono-900 dark:text-mono-50">2. Creative Brief & Notes</h3>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-mono-400 font-semibold mb-1">Project Details / Special Requests</label>
+                                <textarea name="message" id="custNotes" rows="3" placeholder="Describe your vision, locations, mood board ideas, or specific deliverables requested..." class="w-full bg-mono-900/90 border border-mono-700 rounded-xl px-4 py-3 text-sm text-mono-100 focus:outline-none focus:border-white"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="paymentMethodSection" class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-serif text-2xl font-bold text-mono-900 dark:text-mono-50">3. Payment Channel</h3>
+                                <span class="text-xs text-mono-400">PayPal Direct Handle</span>
+                            </div>
+
+                            <div class="p-5 rounded-2xl glass-card border-2 border-white dark:border-white space-y-4 bg-mono-900/60">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fa-brands fa-paypal text-3xl text-mono-100"></i>
+                                        <div>
+                                            <h4 class="font-bold text-base text-white">PayPal</h4>
+                                            <p class="text-xs text-mono-400">Direct transfer to user handle <span class="text-white font-mono font-semibold">@Timz34</span></p>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-circle-check text-white text-xl"></i>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-mono-950/80 border border-mono-800 space-y-2 text-xs text-mono-300">
+                                    <div class="flex justify-between items-center">
+                                        <span>PayPal Handle:</span>
+                                        <span class="font-mono font-bold text-white text-sm select-all">@Timz34</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span>Receipt Confirmation:</span>
+                                        <span class="font-mono text-mono-200">timzvisuals9@gmail.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full py-4 rounded-2xl bg-white text-black font-semibold text-sm uppercase tracking-widest hover:bg-mono-200 transition-all shadow-xl flex items-center justify-center gap-3">
+                            <i id="btnIcon" class="fa-brands fa-paypal text-lg"></i>
+                            <span id="btnActionText">Submit Details & Pay Deposit ($325.00)</span>
+                        </button>
+
+                        <p class="text-center text-xs text-mono-500" id="submitSubtext">
+                            Submitting sends your booking request via Formspree and opens PayPal (@Timz34).
+                        </p>
+                    </form>
+                </div>
+
+                <div id="successCard" class="glass-panel rounded-3xl p-6 sm:p-10 space-y-6 hidden border border-white/30">
+                    <div class="text-center space-y-3">
+                        <div class="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center mx-auto text-2xl shadow-lg">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <h2 class="font-serif text-3xl font-bold text-mono-900 dark:text-mono-50" id="successTitle">Booking Sent Successfully!</h2>
+                        <p class="text-sm text-mono-400 max-w-md mx-auto">
+                            Thank you, <span id="confirmName" class="font-semibold text-white"></span>. Your request has been transmitted via Formspree to TIMZ VISUALS.
+                        </p>
+                    </div>
+
+                    <div id="payInstructionBox" class="glass-card rounded-2xl p-6 space-y-4 border border-mono-700 bg-mono-900/80">
+                        <h4 class="font-serif text-lg font-bold text-white border-b border-mono-800 pb-2">Final Payment Instructions</h4>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between items-center text-mono-300">
+                                <span>1. Open PayPal Direct link:</span>
+                                <a href="https://paypal.me/Timz34" target="_blank" class="px-3 py-1 bg-white text-black rounded-lg font-bold text-xs hover:bg-mono-200 transition-colors">
+                                    Open PayPal (@Timz34)
+                                </a>
+                            </div>
+
+                            <div class="flex justify-between items-center text-mono-300 border-t border-mono-800/60 pt-2">
+                                <span>2. Amount Due Today:</span>
+                                <strong id="confirmAmount" class="font-mono text-base text-white"></strong>
+                            </div>
+
+                            <div class="flex justify-between items-center text-mono-300 border-t border-mono-800/60 pt-2">
+                                <span>3. Send To Handle:</span>
+                                <strong class="font-mono text-white">@Timz34</strong>
+                            </div>
+
+                            <div class="border-t border-mono-800/60 pt-3 space-y-2">
+                                <span class="block font-semibold text-white">4. Forward Payment Receipt:</span>
+                                <p class="text-xs text-mono-400">
+                                    Send a copy or screenshot of your PayPal receipt to <strong class="text-white">timzvisuals9@gmail.com</strong> to confirm your slot.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="discussInstructionBox" class="glass-card rounded-2xl p-6 space-y-3 border border-mono-700 bg-mono-900/80 hidden">
+                        <h4 class="font-serif text-lg font-bold text-white border-b border-mono-800 pb-2">Next Steps</h4>
+                        <p class="text-sm text-mono-300 leading-relaxed">
+                            TIMZ VISUALS has received your project inquiry. We will review your requests and reach out directly to <strong id="confirmEmail" class="text-white"></strong> within 24 hours to finalize details and scope.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a id="paypalRedirectBtn" href="https://paypal.me/Timz34" target="_blank" class="flex-1 py-3.5 rounded-xl bg-white text-black text-center font-semibold text-xs uppercase tracking-widest hover:bg-mono-200 transition-all">
+                            Proceed to PayPal (@Timz34)
+                        </a>
+                        <button type="button" onclick="resetForm()" class="py-3.5 px-6 rounded-xl border border-mono-700 text-mono-300 text-center font-semibold text-xs uppercase tracking-widest hover:bg-mono-800 transition-all">
+                            New Submission
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="glass-panel border-t border-mono-800 dark:border-mono-800 py-10 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto filter invert dark:invert-0" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-serif font-bold text-lg text-mono-900 dark:text-mono-50\'>TIMZ VISUALS</span>';">
+                <span class="text-xs text-mono-500">© 2026 TIMZ VISUALS. PayPal: @Timz34</span>
+            </div>
+
+            <div class="flex items-center gap-6 text-xs text-mono-400 uppercase tracking-widest">
+                <span>Direct Contact: <strong class="text-white">timzvisuals9@gmail.com</strong></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentMode = 'pay';
+        let currentDiscountPercent = 0;
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function switchWorkflow(mode) {
+            currentMode = mode;
+            const btnPay = document.getElementById('btnModePay');
+            const btnDiscuss = document.getElementById('btnModeDiscuss');
+            const workflowBadge = document.getElementById('workflowBadge');
+            const depositToggleBox = document.getElementById('depositToggleBox');
+            const paymentMethodSection = document.getElementById('paymentMethodSection');
+            const totalLabel = document.getElementById('totalLabel');
+            const btnIcon = document.getElementById('btnIcon');
+            const btnActionText = document.getElementById('btnActionText');
+            const submitSubtext = document.getElementById('submitSubtext');
+            const hiddenWorkflowOption = document.getElementById('hiddenWorkflowOption');
+
+            if (mode === 'pay') {
+                btnPay.classList.add('option-tab-active');
+                btnDiscuss.classList.remove('option-tab-active');
+                workflowBadge.innerText = 'PayPal Deposit Flow';
+                depositToggleBox.classList.remove('hidden');
+                paymentMethodSection.classList.remove('hidden');
+                totalLabel.innerText = 'Total Due Today';
+                btnIcon.className = 'fa-brands fa-paypal text-lg';
+                submitSubtext.innerText = 'Submitting sends your booking request via Formspree and opens PayPal (@Timz34).';
+                hiddenWorkflowOption.value = 'Pay Deposit Now';
+            } else {
+                btnDiscuss.classList.add('option-tab-active');
+                btnPay.classList.remove('option-tab-active');
+                workflowBadge.innerText = 'Custom Inquiry Flow';
+                depositToggleBox.classList.add('hidden');
+                paymentMethodSection.classList.add('hidden');
+                totalLabel.innerText = 'Estimated Budget Total';
+                btnIcon.className = 'fa-solid fa-paper-plane text-lg';
+                btnActionText.innerText = 'Send Custom Inquiry Details';
+                submitSubtext.innerText = 'Submitting transmits your project scope to TIMZ VISUALS via Formspree.';
+                hiddenWorkflowOption.value = 'Request Custom Quote / Discussion';
+            }
+
+            calculateTotals();
+        }
+
+        function handlePackageChange() {
+            const select = document.getElementById('packageSelect');
+            const customContainer = document.getElementById('customPriceContainer');
+
+            if (select.value === 'custom') {
+                customContainer.classList.remove('hidden');
+            } else {
+                customContainer.classList.add('hidden');
+            }
+
+            calculateTotals();
+        }
+
+        function handleCustomPriceInput() {
+            const input = document.getElementById('customPriceInput');
+            let val = parseFloat(input.value) || 0;
+            if (val > 1200) {
+                input.value = 1200;
+            }
+            calculateTotals();
+        }
+
+        function applyPromo() {
+            const code = document.getElementById('promoInput').value.trim().toUpperCase();
+            const promoMsg = document.getElementById('promoMsg');
+            
+            if (code === 'TIMZ10') {
+                currentDiscountPercent = 0.10;
+                promoMsg.innerText = '10% discount applied!';
+                promoMsg.className = 'text-xs text-emerald-400 font-medium block';
+            } else if (code === 'TIMZ20') {
+                currentDiscountPercent = 0.20;
+                promoMsg.innerText = '20% discount applied!';
+                promoMsg.className = 'text-xs text-emerald-400 font-medium block';
+            } else if (code === '') {
+                currentDiscountPercent = 0;
+                promoMsg.className = 'text-xs hidden';
+            } else {
+                currentDiscountPercent = 0;
+                promoMsg.innerText = 'Invalid promo code';
+                promoMsg.className = 'text-xs text-rose-400 font-medium block';
+            }
+            
+            calculateTotals();
+        }
+
+        function calculateTotals() {
+            const select = document.getElementById('packageSelect');
+            const selectedOption = select.options[select.selectedIndex];
+            let basePrice = 650;
+
+            if (select.value === 'custom') {
+                basePrice = parseFloat(document.getElementById('customPriceInput').value) || 500;
+            } else {
+                basePrice = parseFloat(selectedOption.dataset.price) || 650;
+            }
+
+            if (basePrice > 1200) basePrice = 1200;
+
+            const discountAmount = basePrice * currentDiscountPercent;
+            const discountedPrice = basePrice - discountAmount;
+
+            const isDepositChecked = document.getElementById('depositToggle').checked;
+            let finalAmount = discountedPrice;
+
+            if (currentMode === 'pay' && isDepositChecked) {
+                finalAmount = discountedPrice * 0.5;
+                document.getElementById('depositText').innerText = '50% Upfront Deposit';
+            } else if (currentMode === 'pay') {
+                document.getElementById('depositText').innerText = '100% Full Payment';
+            } else {
+                document.getElementById('depositText').innerText = 'Discussion Stage';
+            }
+
+            document.getElementById('basePriceText').innerText = `$${basePrice.toFixed(2)}`;
+            
+            const discountRow = document.getElementById('discountRow');
+            if (currentDiscountPercent > 0) {
+                discountRow.classList.remove('hidden');
+                document.getElementById('discountText').innerText = `-$${discountAmount.toFixed(2)}`;
+            } else {
+                discountRow.classList.add('hidden');
+            }
+
+            const formattedFinal = `$${finalAmount.toFixed(2)}`;
+            document.getElementById('finalTotalText').innerText = formattedFinal;
+
+            if (currentMode === 'pay') {
+                document.getElementById('btnActionText').innerText = `Submit Details & Pay Deposit (${formattedFinal})`;
+            } else {
+                document.getElementById('btnActionText').innerText = 'Send Custom Inquiry Details';
+            }
+
+            document.getElementById('hiddenPackage').value = selectedOption.text;
+            document.getElementById('hiddenBasePrice').value = `$${basePrice.toFixed(2)}`;
+            document.getElementById('hiddenAmountDue').value = formattedFinal;
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnHtml = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-lg"></i> Transmitting...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const nameVal = document.getElementById('custName').value;
+                    const emailVal = document.getElementById('custEmail').value;
+                    const amountVal = document.getElementById('hiddenAmountDue').value;
+
+                    document.getElementById('confirmName').innerText = nameVal;
+                    document.getElementById('confirmEmail').innerText = emailVal;
+                    document.getElementById('confirmAmount').innerText = amountVal;
+
+                    document.getElementById('checkoutFormCard').classList.add('hidden');
+                    document.getElementById('successCard').classList.remove('hidden');
+
+                    const payBox = document.getElementById('payInstructionBox');
+                    const discussBox = document.getElementById('discussInstructionBox');
+                    const paypalBtn = document.getElementById('paypalRedirectBtn');
+
+                    if (currentMode === 'pay') {
+                        payBox.classList.remove('hidden');
+                        discussBox.classList.add('hidden');
+                        paypalBtn.classList.remove('hidden');
+                        window.open('https://paypal.me/Timz34', '_blank');
+                    } else {
+                        payBox.classList.add('hidden');
+                        discussBox.classList.remove('hidden');
+                        paypalBtn.classList.add('hidden');
+                    }
+                } else {
+                    alert('There was an error submitting your booking. Please try again or reach out to timzvisuals9@gmail.com.');
+                }
+            } catch (err) {
+                alert('Connection error. Please check your internet connection and try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('bookingForm').reset();
+            document.getElementById('checkoutFormCard').classList.remove('hidden');
+            document.getElementById('successCard').classList.add('hidden');
+            switchWorkflow('pay');
+        }
+
+        calculateTotals();
+    </script>
+</body>
+</html>
