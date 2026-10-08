@@ -68,3 +68,100 @@
         }
 
         .glass-card {
+            background: rgba(38, 38, 38, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        html:not(.dark) .glass-card {
+            background: rgba(245, 245, 245, 0.75);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .option-tab-active {
+            border-color: #ffffff !important;
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        html:not(.dark) .option-tab-active {
+            border-color: #171717 !important;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-mono-950 text-mono-100 dark:bg-mono-950 dark:text-mono-100 min-h-screen flex flex-col bg-photo-overlay antialiased">
+
+    <header class="sticky top-0 z-50 glass-panel border-b border-mono-800 dark:border-mono-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-9 w-auto filter invert dark:invert-0 transition-opacity group-hover:opacity-80" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-serif text-2xl font-bold tracking-wider text-mono-900 dark:text-mono-50\'>TIMZ <span class=\'font-light italic\'>VISUALS</span></span>';">
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest font-medium">
+                <a href="index.html" class="text-mono-400 hover:text-white dark:hover:text-white transition-colors">Home</a>
+                <a href="pricing.html" class="text-mono-400 hover:text-white dark:hover:text-white transition-colors">Pricing</a>
+                <a href="payment.html" class="text-white dark:text-white border-b border-white dark:border-white pb-1">Booking & Payment</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-full glass-card hover:bg-mono-800 dark:hover:bg-mono-800 text-mono-200 transition-colors" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-3 mb-10">
+            <span class="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full border border-mono-700 dark:border-mono-700 bg-mono-900/50 dark:bg-mono-900/50 text-mono-300">
+                Official Booking Portal
+            </span>
+            <h1 class="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-mono-900 dark:text-mono-50">
+                Reserve Your <span class="italic font-normal">Visual Session</span>
+            </h1>
+            <p class="text-mono-600 dark:text-mono-400 text-sm sm:text-base">
+                Pay deposit via PayPal <strong class="text-mono-900 dark:text-mono-100 font-bold">@Timz34</strong> or request a direct custom quote.
+            </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button type="button" id="btnModePay" onclick="switchWorkflow('pay')" class="option-tab-active p-4 rounded-2xl border-2 border-mono-700 glass-panel text-left transition-all flex items-start gap-3">
+                    <div class="p-2 rounded-xl bg-white text-black dark:bg-white dark:text-black mt-0.5">
+                        <i class="fa-brands fa-paypal text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="font-serif font-bold text-base text-mono-900 dark:text-mono-50">Option A: Pay Deposit Now</div>
+                        <div class="text-xs text-mono-400 mt-1">Book date with 50% PayPal deposit & submit details</div>
+                    </div>
+                </button>
+
+                <button type="button" id="btnModeDiscuss" onclick="switchWorkflow('discuss')" class="p-4 rounded-2xl border-2 border-mono-800 glass-panel text-left transition-all flex items-start gap-3 hover:border-mono-600">
+                    <div class="p-2 rounded-xl bg-mono-800 text-mono-200 mt-0.5">
+                        <i class="fa-solid fa-comments text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="font-serif font-bold text-base text-mono-900 dark:text-mono-50">Option B: Request Custom Quote</div>
+                        <div class="text-xs text-mono-400 mt-1">Send inquiry details to discuss vision & pricing first</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <div class="lg:col-span-5 space-y-6">
+                <div class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <div class="flex items-center justify-between border-b border-mono-800 dark:border-mono-800 pb-4">
+                        <h2 class="font-serif text-xl font-bold text-mono-900 dark:text-mono-50">Summary Overview</h2>
+                        <span id="workflowBadge" class="text-xs uppercase tracking-widest font-semibold px-2.5 py-1 rounded bg-mono-800 text-mono-300">
+                            PayPal Deposit Flow
+                        </span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <label class="block text-xs uppercase tracking-widest text-mono-400 font-semibold">Select Service Package</label>
+                        <select id="packageSelect" onchange="handlePackageChange()" class="w
