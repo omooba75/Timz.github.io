@@ -1,4 +1,3 @@
-<web_code_canvas title="TIMZ VISUALS - Standalone Pricing Page ($1,300 Cap)">
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
@@ -99,24 +98,24 @@
 <body class="bg-mono-950 text-mono-100 dark:bg-mono-950 dark:text-mono-100 min-h-screen flex flex-col bg-photo-overlay antialiased">
 
     <!-- Header Navigation -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-mono-800 dark:border-mono-800">
+    <header class="sticky top-0 z-50 glass-panel border-b border-mono-200 dark:border-mono-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3 group">
                 <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-9 w-auto filter invert dark:invert-0 transition-opacity group-hover:opacity-80" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-serif text-2xl font-bold tracking-wider text-mono-900 dark:text-mono-50\'>TIMZ <span class=\'font-light italic\'>VISUALS</span></span>';">
             </a>
 
             <nav class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest font-medium">
-                <a href="index.html" class="text-mono-400 hover:text-white dark:hover:text-white transition-colors">Home</a>
-                <a href="pricing.html" class="text-white dark:text-white border-b border-white dark:border-white pb-1">Pricing</a>
-                <a href="payment.html" class="text-mono-400 hover:text-white dark:hover:text-white transition-colors">Checkout</a>
+                <a href="index.html" class="text-mono-600 dark:text-mono-400 hover:text-mono-900 dark:hover:text-white transition-colors">Home</a>
+                <a href="pricing.html" class="text-mono-900 dark:text-white border-b border-mono-900 dark:border-white pb-1">Pricing</a>
+                <a href="payment.html" class="text-mono-600 dark:text-mono-400 hover:text-mono-900 dark:hover:text-white transition-colors">Checkout</a>
             </nav>
 
             <div class="flex items-center gap-4">
-                <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-full glass-card hover:bg-mono-800 dark:hover:bg-mono-800 text-mono-200 transition-colors" aria-label="Toggle Theme">
+                <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-full glass-card hover:bg-mono-200 dark:hover:bg-mono-800 text-mono-800 dark:text-mono-200 transition-colors" aria-label="Toggle Theme">
                     <i class="fa-solid fa-moon dark:hidden text-lg"></i>
                     <i class="fa-solid fa-sun hidden dark:block text-lg"></i>
                 </button>
-                <a href="payment.html" class="px-5 py-2.5 rounded-full bg-white text-black dark:bg-white dark:text-black font-semibold text-xs uppercase tracking-widest hover:bg-mono-200 transition-all shadow-lg hover:shadow-white/10">
+                <a href="payment.html" class="px-5 py-2.5 rounded-full bg-mono-900 text-white dark:bg-white dark:text-black font-semibold text-xs uppercase tracking-widest hover:bg-mono-800 dark:hover:bg-mono-200 transition-all shadow-lg hover:shadow-mono-900/10 dark:hover:shadow-white/10">
                     Book Now
                 </a>
             </div>
@@ -128,7 +127,7 @@
 
         <!-- Page Hero Header -->
         <div class="text-center max-w-3xl mx-auto space-y-4">
-            <span class="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full border border-mono-700 dark:border-mono-700 bg-mono-900/50 dark:bg-mono-900/50 text-mono-300">
+            <span class="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full border border-mono-300 dark:border-mono-700 bg-mono-100/80 dark:bg-mono-900/50 text-mono-700 dark:text-mono-300">
                 Transparent Rates & Packages
             </span>
             <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-mono-900 dark:text-mono-50">
@@ -143,90 +142,90 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             
             <!-- Tier 1: Portrait / Lookbook -->
-            <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border-mono-800 dark:border-mono-800">
+            <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border-mono-200 dark:border-mono-800">
                 <div class="space-y-6">
                     <div class="space-y-2">
-                        <span class="text-xs uppercase tracking-widest text-mono-400 font-semibold">Essential Visuals</span>
+                        <span class="text-xs uppercase tracking-widest text-mono-500 dark:text-mono-400 font-semibold">Essential Visuals</span>
                         <h3 class="font-serif text-2xl font-bold text-mono-900 dark:text-mono-50">Studio & Portrait</h3>
                         <p class="text-sm text-mono-600 dark:text-mono-400">Perfect for lookbooks, editorial headshots, and social branding campaigns.</p>
                     </div>
-                    <div class="py-4 border-y border-mono-800 dark:border-mono-800">
+                    <div class="py-4 border-y border-mono-200 dark:border-mono-800">
                         <div class="flex items-baseline gap-1">
                             <span class="text-4xl font-bold font-serif text-mono-900 dark:text-mono-50">$350</span>
-                            <span class="text-xs text-mono-400 uppercase tracking-wider">/ flat rate</span>
+                            <span class="text-xs text-mono-500 dark:text-mono-400 uppercase tracking-wider">/ flat rate</span>
                         </div>
-                        <p class="text-xs text-mono-500 mt-1">50% Deposit ($175) to lock date</p>
+                        <p class="text-xs text-mono-500 dark:text-mono-500 mt-1">50% Deposit ($175) to lock date</p>
                     </div>
-                    <ul class="space-y-3 text-sm text-mono-300 dark:text-mono-300">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> 2 Hours Dedicated Session</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> 15 High-Res Color Retouched Photos</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> Online Digital Gallery Delivery</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> Commercial Usage Rights</li>
+                    <ul class="space-y-3 text-sm text-mono-700 dark:text-mono-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> 2 Hours Dedicated Session</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> 15 High-Res Color Retouched Photos</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> Online Digital Gallery Delivery</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> Commercial Usage Rights</li>
                     </ul>
                 </div>
                 <div class="mt-8 pt-4">
-                    <a href="payment.html?service=portrait&price=350" class="block w-full text-center py-3 px-4 rounded-xl border border-white/20 dark:border-white/20 hover:bg-white hover:text-black dark:hover:bg-white dark:hover:text-black font-semibold text-xs uppercase tracking-widest transition-all">
+                    <a href="payment.html?service=portrait&price=350" class="block w-full text-center py-3 px-4 rounded-xl border border-mono-900/20 dark:border-white/20 hover:bg-mono-900 hover:text-white dark:hover:bg-white dark:hover:text-black text-mono-900 dark:text-white font-semibold text-xs uppercase tracking-widest transition-all">
                         Select Package
                     </a>
                 </div>
             </div>
 
             <!-- Tier 2: Urban Apparel / Fashion Lookbook (Featured) -->
-            <div class="glass-card rounded-2xl p-8 flex flex-col justify-between relative border-2 border-white dark:border-white shadow-2xl bg-mono-900/80 dark:bg-mono-900/80">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-black dark:bg-white dark:text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+            <div class="glass-card rounded-2xl p-8 flex flex-col justify-between relative border-2 border-mono-900 dark:border-white shadow-2xl bg-white/90 dark:bg-mono-900/80">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-mono-900 text-white dark:bg-white dark:text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
                     Most Popular
                 </div>
                 <div class="space-y-6">
                     <div class="space-y-2">
-                        <span class="text-xs uppercase tracking-widest text-mono-300 font-semibold">Streetwear & Editorial</span>
-                        <h3 class="font-serif text-2xl font-bold text-white">Urban Fashion Campaign</h3>
-                        <p class="text-sm text-mono-300">Tailored for lookbooks like Eclipse Apparel, music releases, and streetwear brand launches.</p>
+                        <span class="text-xs uppercase tracking-widest text-mono-600 dark:text-mono-300 font-semibold">Streetwear & Editorial</span>
+                        <h3 class="font-serif text-2xl font-bold text-mono-900 dark:text-white">Urban Fashion Campaign</h3>
+                        <p class="text-sm text-mono-600 dark:text-mono-300">Tailored for lookbooks like Eclipse Apparel, music releases, and streetwear brand launches.</p>
                     </div>
-                    <div class="py-4 border-y border-mono-700">
+                    <div class="py-4 border-y border-mono-200 dark:border-mono-700">
                         <div class="flex items-baseline gap-1">
-                            <span class="text-4xl font-bold font-serif text-white">$650</span>
-                            <span class="text-xs text-mono-400 uppercase tracking-wider">/ half day</span>
+                            <span class="text-4xl font-bold font-serif text-mono-900 dark:text-white">$650</span>
+                            <span class="text-xs text-mono-500 dark:text-mono-400 uppercase tracking-wider">/ half day</span>
                         </div>
-                        <p class="text-xs text-mono-400 mt-1">50% Deposit ($325) to lock date</p>
+                        <p class="text-xs text-mono-500 dark:text-mono-400 mt-1">50% Deposit ($325) to lock date</p>
                     </div>
-                    <ul class="space-y-3 text-sm text-mono-200">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> 4 Hours Location Shooting</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> 30 Retouched Edits + RAW Stills</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> 15-30s 4K Video Reel / Teaser</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> Moodboard & Creative Direction</li>
+                    <ul class="space-y-3 text-sm text-mono-700 dark:text-mono-200">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> 4 Hours Location Shooting</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> 30 Retouched Edits + RAW Stills</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> 15-30s 4K Video Reel / Teaser</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> Moodboard & Creative Direction</li>
                     </ul>
                 </div>
                 <div class="mt-8 pt-4">
-                    <a href="payment.html?service=urban&price=650" class="block w-full text-center py-3.5 px-4 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-mono-200 transition-all shadow-lg">
+                    <a href="payment.html?service=urban&price=650" class="block w-full text-center py-3.5 px-4 rounded-xl bg-mono-900 text-white dark:bg-white dark:text-black font-semibold text-xs uppercase tracking-widest hover:bg-mono-800 dark:hover:bg-mono-200 transition-all shadow-lg">
                         Book Campaign
                     </a>
                 </div>
             </div>
 
             <!-- Tier 3: Full Production / Commercial Reel -->
-            <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border-mono-800 dark:border-mono-800">
+            <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border-mono-200 dark:border-mono-800">
                 <div class="space-y-6">
                     <div class="space-y-2">
-                        <span class="text-xs uppercase tracking-widest text-mono-400 font-semibold">Full Video Production</span>
+                        <span class="text-xs uppercase tracking-widest text-mono-500 dark:text-mono-400 font-semibold">Full Video Production</span>
                         <h3 class="font-serif text-2xl font-bold text-mono-900 dark:text-mono-50">Commercial Cinema</h3>
                         <p class="text-sm text-mono-600 dark:text-mono-400">High-end video production, drone coverage, color grading, and custom sound design.</p>
                     </div>
-                    <div class="py-4 border-y border-mono-800 dark:border-mono-800">
+                    <div class="py-4 border-y border-mono-200 dark:border-mono-800">
                         <div class="flex items-baseline gap-1">
                             <span class="text-4xl font-bold font-serif text-mono-900 dark:text-mono-50">$980</span>
-                            <span class="text-xs text-mono-400 uppercase tracking-wider">/ full production</span>
+                            <span class="text-xs text-mono-500 dark:text-mono-400 uppercase tracking-wider">/ full production</span>
                         </div>
-                        <p class="text-xs text-mono-500 mt-1">50% Deposit ($490) capped safely under $1,300</p>
+                        <p class="text-xs text-mono-500 dark:text-mono-500 mt-1">50% Deposit ($490) capped safely under $1,300</p>
                     </div>
-                    <ul class="space-y-3 text-sm text-mono-300 dark:text-mono-300">
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> Full Day Coverage (Up to 8 Hrs)</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> 4K Video Edit (60s Commercial)</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> 4K Aerial Drone Cinematography</li>
-                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-white"></i> Full Color Grading & Licensed Audio</li>
+                    <ul class="space-y-3 text-sm text-mono-700 dark:text-mono-300">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> Full Day Coverage (Up to 8 Hrs)</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> 4K Video Edit (60s Commercial)</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> 4K Aerial Drone Cinematography</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-xs text-mono-900 dark:text-white"></i> Full Color Grading & Licensed Audio</li>
                     </ul>
                 </div>
                 <div class="mt-8 pt-4">
-                    <a href="payment.html?service=commercial&price=980" class="block w-full text-center py-3 px-4 rounded-xl border border-white/20 dark:border-white/20 hover:bg-white hover:text-black dark:hover:bg-white dark:hover:text-black font-semibold text-xs uppercase tracking-widest transition-all">
+                    <a href="payment.html?service=commercial&price=980" class="block w-full text-center py-3 px-4 rounded-xl border border-mono-900/20 dark:border-white/20 hover:bg-mono-900 hover:text-white dark:hover:bg-white dark:hover:text-black text-mono-900 dark:text-white font-semibold text-xs uppercase tracking-widest transition-all">
                         Select Production
                     </a>
                 </div>
@@ -235,9 +234,9 @@
         </div>
 
         <!-- Custom Estimate Calculator Section -->
-        <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-mono-800 dark:border-mono-800 space-y-8">
+        <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-mono-200 dark:border-mono-800 space-y-8">
             <div class="text-center max-w-2xl mx-auto space-y-2">
-                <span class="text-xs uppercase tracking-widest text-mono-400 font-semibold">Custom Project Builder</span>
+                <span class="text-xs uppercase tracking-widest text-mono-500 dark:text-mono-400 font-semibold">Custom Project Builder</span>
                 <h2 class="font-serif text-3xl font-bold text-mono-900 dark:text-mono-50">Calculate Your Custom Project</h2>
                 <p class="text-sm text-mono-600 dark:text-mono-400">Tailor hours, add-ons, and deliverables. Guaranteed cap under $1,300.</p>
             </div>
@@ -249,10 +248,10 @@
                     <!-- Hours Slider -->
                     <div class="space-y-2">
                         <div class="flex justify-between text-sm">
-                            <label class="font-medium text-mono-300">Coverage Hours</label>
-                            <span id="hoursVal" class="font-bold text-white">3 Hours ($300)</span>
+                            <label class="font-medium text-mono-800 dark:text-mono-300">Coverage Hours</label>
+                            <span id="hoursVal" class="font-bold text-mono-900 dark:text-white">3 Hours ($300)</span>
                         </div>
-                        <input type="range" id="hoursInput" min="1" max="8" value="3" step="1" oninput="updateCalculator()" class="w-full h-2 bg-mono-800 rounded-lg appearance-none cursor-pointer">
+                        <input type="range" id="hoursInput" min="1" max="8" value="3" step="1" oninput="updateCalculator()" class="w-full h-2 bg-mono-200 dark:bg-mono-800 rounded-lg appearance-none cursor-pointer">
                         <div class="flex justify-between text-[10px] text-mono-500 uppercase tracking-widest">
                             <span>1 Hr ($100)</span>
                             <span>4 Hrs ($400)</span>
@@ -262,62 +261,62 @@
 
                     <!-- Add-on Toggles -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                        <label class="flex items-center gap-3 p-3.5 rounded-xl glass-card cursor-pointer hover:border-white/30 transition-colors">
-                            <input type="checkbox" id="droneAddon" onchange="updateCalculator()" class="rounded border-mono-700 bg-mono-900 text-white focus:ring-0">
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl glass-card cursor-pointer hover:border-mono-400 dark:hover:border-white/30 transition-colors">
+                            <input type="checkbox" id="droneAddon" onchange="updateCalculator()" class="rounded border-mono-300 dark:border-mono-700 bg-white dark:bg-mono-900 text-mono-900 dark:text-white focus:ring-0">
                             <div>
-                                <span class="block text-sm font-medium text-mono-200">Drone Cinema</span>
-                                <span class="block text-xs text-mono-400">+$200</span>
+                                <span class="block text-sm font-medium text-mono-800 dark:text-mono-200">Drone Cinema</span>
+                                <span class="block text-xs text-mono-500 dark:text-mono-400">+$200</span>
                             </div>
                         </label>
 
-                        <label class="flex items-center gap-3 p-3.5 rounded-xl glass-card cursor-pointer hover:border-white/30 transition-colors">
-                            <input type="checkbox" id="retouchAddon" onchange="updateCalculator()" class="rounded border-mono-700 bg-mono-900 text-white focus:ring-0">
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl glass-card cursor-pointer hover:border-mono-400 dark:hover:border-white/30 transition-colors">
+                            <input type="checkbox" id="retouchAddon" onchange="updateCalculator()" class="rounded border-mono-300 dark:border-mono-700 bg-white dark:bg-mono-900 text-mono-900 dark:text-white focus:ring-0">
                             <div>
-                                <span class="block text-sm font-medium text-mono-200">High-End Retouching</span>
-                                <span class="block text-xs text-mono-400">+$150</span>
+                                <span class="block text-sm font-medium text-mono-800 dark:text-mono-200">High-End Retouching</span>
+                                <span class="block text-xs text-mono-500 dark:text-mono-400">+$150</span>
                             </div>
                         </label>
 
-                        <label class="flex items-center gap-3 p-3.5 rounded-xl glass-card cursor-pointer hover:border-white/30 transition-colors">
-                            <input type="checkbox" id="reelAddon" onchange="updateCalculator()" class="rounded border-mono-700 bg-mono-900 text-white focus:ring-0">
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl glass-card cursor-pointer hover:border-mono-400 dark:hover:border-white/30 transition-colors">
+                            <input type="checkbox" id="reelAddon" onchange="updateCalculator()" class="rounded border-mono-300 dark:border-mono-700 bg-white dark:bg-mono-900 text-mono-900 dark:text-white focus:ring-0">
                             <div>
-                                <span class="block text-sm font-medium text-mono-200">Vertical Video Reel</span>
-                                <span class="block text-xs text-mono-400">+$120</span>
+                                <span class="block text-sm font-medium text-mono-800 dark:text-mono-200">Vertical Video Reel</span>
+                                <span class="block text-xs text-mono-500 dark:text-mono-400">+$120</span>
                             </div>
                         </label>
 
-                        <label class="flex items-center gap-3 p-3.5 rounded-xl glass-card cursor-pointer hover:border-white/30 transition-colors">
-                            <input type="checkbox" id="expressAddon" onchange="updateCalculator()" class="rounded border-mono-700 bg-mono-900 text-white focus:ring-0">
+                        <label class="flex items-center gap-3 p-3.5 rounded-xl glass-card cursor-pointer hover:border-mono-400 dark:hover:border-white/30 transition-colors">
+                            <input type="checkbox" id="expressAddon" onchange="updateCalculator()" class="rounded border-mono-300 dark:border-mono-700 bg-white dark:bg-mono-900 text-mono-900 dark:text-white focus:ring-0">
                             <div>
-                                <span class="block text-sm font-medium text-mono-200">24-Hour Express Delivery</span>
-                                <span class="block text-xs text-mono-400">+$100</span>
+                                <span class="block text-sm font-medium text-mono-800 dark:text-mono-200">24-Hour Express Delivery</span>
+                                <span class="block text-xs text-mono-500 dark:text-mono-400">+$100</span>
                             </div>
                         </label>
                     </div>
                 </div>
 
                 <!-- Display Box -->
-                <div class="lg:col-span-5 glass-card rounded-2xl p-6 sm:p-8 border border-mono-700 text-center space-y-6">
-                    <span class="text-xs uppercase tracking-widest text-mono-400 font-semibold">Estimated Total</span>
+                <div class="lg:col-span-5 glass-card rounded-2xl p-6 sm:p-8 border border-mono-300 dark:border-mono-700 text-center space-y-6">
+                    <span class="text-xs uppercase tracking-widest text-mono-500 dark:text-mono-400 font-semibold">Estimated Total</span>
                     
                     <div>
-                        <div class="text-5xl font-bold font-serif text-white tracking-tight" id="totalCalcPrice">$620</div>
-                        <p class="text-xs text-mono-400 mt-2">Maximum cap configured at <span class="text-white font-semibold">$1,300</span></p>
+                        <div class="text-5xl font-bold font-serif text-mono-900 dark:text-white tracking-tight" id="totalCalcPrice">$620</div>
+                        <p class="text-xs text-mono-500 dark:text-mono-400 mt-2">Maximum cap configured at <span class="text-mono-900 dark:text-white font-semibold">$1,300</span></p>
                     </div>
 
-                    <div class="p-3 rounded-lg bg-mono-900/60 text-xs text-mono-300 flex justify-around border border-mono-800">
+                    <div class="p-3 rounded-lg bg-mono-200/60 dark:bg-mono-900/60 text-xs text-mono-700 dark:text-mono-300 flex justify-around border border-mono-300 dark:border-mono-800">
                         <div>
                             <span class="block text-mono-500 uppercase text-[10px]">50% Deposit</span>
-                            <span id="calcDeposit" class="font-bold text-white">$310</span>
+                            <span id="calcDeposit" class="font-bold text-mono-900 dark:text-white">$310</span>
                         </div>
-                        <div class="border-r border-mono-800"></div>
+                        <div class="border-r border-mono-300 dark:border-mono-800"></div>
                         <div>
                             <span class="block text-mono-500 uppercase text-[10px]">Payee Account</span>
-                            <span class="font-bold text-white">@Timz34</span>
+                            <span class="font-bold text-mono-900 dark:text-white">@Timz34</span>
                         </div>
                     </div>
 
-                    <button onclick="proceedToPayment()" class="w-full py-3.5 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-mono-200 transition-all shadow-lg">
+                    <button onclick="proceedToPayment()" class="w-full py-3.5 rounded-xl bg-mono-900 text-white dark:bg-white dark:text-black font-semibold text-xs uppercase tracking-widest hover:bg-mono-800 dark:hover:bg-mono-200 transition-all shadow-lg">
                         Proceed to Checkout
                     </button>
                 </div>
@@ -328,37 +327,37 @@
         <!-- FAQ Accordion -->
         <div class="max-w-3xl mx-auto space-y-8">
             <div class="text-center space-y-2">
-                <span class="text-xs uppercase tracking-widest text-mono-400 font-semibold">Got Questions?</span>
+                <span class="text-xs uppercase tracking-widest text-mono-500 dark:text-mono-400 font-semibold">Got Questions?</span>
                 <h2 class="font-serif text-3xl font-bold text-mono-900 dark:text-mono-50">Frequently Asked Questions</h2>
             </div>
 
             <div class="space-y-4">
-                <details class="glass-card rounded-xl p-5 border border-mono-800 cursor-pointer group">
-                    <summary class="font-medium text-mono-100 flex justify-between items-center list-none">
+                <details class="glass-card rounded-xl p-5 border border-mono-200 dark:border-mono-800 cursor-pointer group">
+                    <summary class="font-medium text-mono-900 dark:text-mono-100 flex justify-between items-center list-none">
                         <span>How does the 50% retainer deposit work?</span>
-                        <i class="fa-solid fa-chevron-down text-xs text-mono-400 group-open:rotate-180 transition-transform"></i>
+                        <i class="fa-solid fa-chevron-down text-xs text-mono-500 dark:text-mono-400 group-open:rotate-180 transition-transform"></i>
                     </summary>
-                    <p class="text-sm text-mono-400 mt-3 leading-relaxed">
+                    <p class="text-sm text-mono-600 dark:text-mono-400 mt-3 leading-relaxed">
                         To lock in your date, a 50% deposit is paid upfront via PayPal (@Timz34). The remaining 50% balance is due on the day of production before final gallery delivery.
                     </p>
                 </details>
 
-                <details class="glass-card rounded-xl p-5 border border-mono-800 cursor-pointer group">
-                    <summary class="font-medium text-mono-100 flex justify-between items-center list-none">
+                <details class="glass-card rounded-xl p-5 border border-mono-200 dark:border-mono-800 cursor-pointer group">
+                    <summary class="font-medium text-mono-900 dark:text-mono-100 flex justify-between items-center list-none">
                         <span>Are there any hidden travel or equipment fees?</span>
-                        <i class="fa-solid fa-chevron-down text-xs text-mono-400 group-open:rotate-180 transition-transform"></i>
+                        <i class="fa-solid fa-chevron-down text-xs text-mono-500 dark:text-mono-400 group-open:rotate-180 transition-transform"></i>
                     </summary>
-                    <p class="text-sm text-mono-400 mt-3 leading-relaxed">
+                    <p class="text-sm text-mono-600 dark:text-mono-400 mt-3 leading-relaxed">
                         No. All rates listed are transparent flat rates capped safely under $1,300. Travel within the metro area is included.
                     </p>
                 </details>
 
-                <details class="glass-card rounded-xl p-5 border border-mono-800 cursor-pointer group">
-                    <summary class="font-medium text-mono-100 flex justify-between items-center list-none">
+                <details class="glass-card rounded-xl p-5 border border-mono-200 dark:border-mono-800 cursor-pointer group">
+                    <summary class="font-medium text-mono-900 dark:text-mono-100 flex justify-between items-center list-none">
                         <span>What is the turnaround time for deliverables?</span>
-                        <i class="fa-solid fa-chevron-down text-xs text-mono-400 group-open:rotate-180 transition-transform"></i>
+                        <i class="fa-solid fa-chevron-down text-xs text-mono-500 dark:text-mono-400 group-open:rotate-180 transition-transform"></i>
                     </summary>
-                    <p class="text-sm text-mono-400 mt-3 leading-relaxed">
+                    <p class="text-sm text-mono-600 dark:text-mono-400 mt-3 leading-relaxed">
                         Standard photo delivery is 3 to 5 business days. Video projects are delivered within 5 to 7 business days. Express 24-hour turnarounds are available as an add-on.
                     </p>
                 </details>
@@ -368,16 +367,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="glass-panel border-t border-mono-800 dark:border-mono-800 py-12 mt-16">
+    <footer class="glass-panel border-t border-mono-200 dark:border-mono-800 py-12 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
                 <img src="timz vi.svg" alt="TIMZ VISUALS" class="h-6 w-auto filter invert dark:invert-0" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-serif font-bold text-lg text-mono-900 dark:text-mono-50\'>TIMZ VISUALS</span>';">
                 <span class="text-xs text-mono-500">© 2026 TIMZ VISUALS. All rights reserved.</span>
             </div>
 
-            <div class="flex items-center gap-6 text-xs text-mono-400 uppercase tracking-widest">
-                <span>PayPal Account: <strong class="text-white">@Timz34</strong></span>
-                <a href="payment.html" class="hover:text-white transition-colors">Pay Deposit</a>
+            <div class="flex items-center gap-6 text-xs text-mono-600 dark:text-mono-400 uppercase tracking-widest">
+                <span>PayPal Account: <strong class="text-mono-900 dark:text-white">@Timz34</strong></span>
+                <a href="payment.html" class="hover:text-mono-900 dark:hover:text-white transition-colors">Pay Deposit</a>
             </div>
         </div>
     </footer>
