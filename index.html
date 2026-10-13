@@ -13,10 +13,19 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#050505',
-                        charcoal: '#0c0c0c',
-                        darkcard: 'rgba(18, 18, 18, 0.75)',
-                        lightcard: 'rgba(255, 255, 255, 0.85)',
+                        mono: {
+                            50: '#fafafa',
+                            100: '#f5f5f5',
+                            200: '#e5e5e5',
+                            300: '#d4d4d4',
+                            400: '#a3a3a3',
+                            500: '#737373',
+                            600: '#525252',
+                            700: '#404040',
+                            800: '#262626',
+                            900: '#171717',
+                            950: '#0a0a0a',
+                        },
                         paypal: {
                             gold: '#FFC439',
                             goldHover: '#F2BA36',
@@ -32,8 +41,6 @@
                     boxShadow: {
                         'glow-white': '0 0 35px -5px rgba(255, 255, 255, 0.15)',
                         'glow-paypal': '0 0 25px -3px rgba(255, 196, 57, 0.25)',
-                        'glass-dark': '0 8px 32px 0 rgba(0, 0, 0, 0.6)',
-                        'glass-light': '0 8px 32px 0 rgba(0, 0, 0, 0.08)',
                     }
                 }
             }
@@ -51,7 +58,7 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background-color 0.4s ease, color 0.4s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .font-display {
@@ -76,37 +83,37 @@
             filter: grayscale(100%) contrast(120%) brightness(0.8);
         }
 
-        .light .photo-bg-overlay {
+        html:not(.dark) .photo-bg-overlay {
             opacity: 0.06;
             filter: grayscale(100%) contrast(110%) brightness(1.2);
         }
 
         /* Geometric Grid Background Patterns */
-        .bg-grid-pattern-dark {
+        .dark .bg-grid-pattern {
             background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
             background-size: 40px 40px;
         }
 
-        .bg-grid-pattern-light {
+        html:not(.dark) .bg-grid-pattern {
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
             background-size: 40px 40px;
         }
 
         /* Glassmorphism Styles */
-        .glass-panel-dark {
-            background: rgba(15, 15, 15, 0.75);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .glass-panel-light {
+        .glass-panel {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .glass-panel {
+            background: rgba(15, 15, 15, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Custom Scrollbar */
@@ -125,127 +132,127 @@
         }
     </style>
 </head>
-<body class="bg-obsidian text-neutral-100 antialiased selection:bg-white selection:text-black dark:bg-obsidian dark:text-neutral-100 light:bg-slate-50 light:text-neutral-900 transition-colors duration-300 min-h-screen flex flex-col justify-between relative overflow-x-hidden">
+<body class="bg-mono-50 text-mono-900 dark:bg-mono-950 dark:text-mono-100 antialiased selection:bg-mono-900 selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-300 min-h-screen flex flex-col justify-between relative overflow-x-hidden">
 
     <!-- Fixed Light Photography Background Layer -->
     <div class="photo-bg-overlay" aria-hidden="true"></div>
 
     <!-- Top Announcement Bar -->
-    <div class="relative z-50 bg-neutral-900/90 dark:bg-neutral-900/90 light:bg-neutral-200 border-b border-neutral-800 dark:border-neutral-800 light:border-neutral-300 text-[11px] font-mono py-2 px-4 text-center tracking-widest uppercase flex items-center justify-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="dark:text-neutral-300 light:text-neutral-700">Official Production Studio • Direct Merchant Checkout via PayPal (@Timz34)</span>
+    <div class="relative z-50 bg-mono-200 text-mono-800 dark:bg-mono-900/90 dark:text-mono-300 border-b border-mono-300 dark:border-mono-800 text-[11px] font-mono py-2 px-4 text-center tracking-widest uppercase flex items-center justify-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
+        <span>Official Production Studio • Direct Merchant Checkout via PayPal (@Timz34)</span>
     </div>
 
     <!-- Navigation Header -->
     <header class="sticky top-0 z-40 transition-all duration-300 py-4 px-4 sm:px-8">
         <div class="max-w-7xl mx-auto">
-            <nav id="main-nav" class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light rounded-full px-5 py-3 flex items-center justify-between transition-all duration-300 shadow-glass-dark relative z-10">
+            <nav id="main-nav" class="glass-panel rounded-full px-5 py-3 flex items-center justify-between transition-all duration-300 shadow-lg relative z-10">
                 
                 <!-- Logo with fallback -->
                 <a href="index.html" class="flex items-center gap-3 group">
-                    <div class="relative w-10 h-10 rounded-full bg-white text-black dark:bg-white dark:text-black light:bg-black light:text-white flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105 border border-neutral-700/30">
-                        <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-10 w-auto object-contain" onError="this.style.display='none'; document.getElementById('header-logo-fallback').classList.remove('hidden');">
+                    <div class="relative w-10 h-10 rounded-full bg-mono-900 text-white dark:bg-white dark:text-black flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105 border border-mono-300 dark:border-mono-700/30">
+                        <img src="timz vi.svg" alt="TIMZ VISUALS Logo" class="h-10 w-auto object-contain filter invert dark:invert-0" onError="this.style.display='none'; document.getElementById('header-logo-fallback').classList.remove('hidden');">
                         <span id="header-logo-fallback" class="hidden font-display font-black text-sm tracking-tighter">TZ</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-display font-bold text-base tracking-wider dark:text-white light:text-black leading-none">
-                            TIMZ <span class="font-light text-neutral-400">VISUALS</span>
+                        <span class="font-display font-bold text-base tracking-wider text-mono-900 dark:text-white leading-none">
+                            TIMZ <span class="font-light text-mono-500 dark:text-mono-400">VISUALS</span>
                         </span>
-                        <span class="text-[9px] font-mono tracking-widest text-neutral-500 uppercase mt-0.5">Studio &amp; Production</span>
+                        <span class="text-[9px] font-mono tracking-widest text-mono-500 uppercase mt-0.5">Studio &amp; Production</span>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation Links -->
                 <div class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider uppercase">
-                    <a href="index.html" class="transition-colors text-white font-bold border-b-2 border-white pb-0.5 dark:text-white light:text-black">Home</a>
-                    <a href="work.html" class="transition-colors dark:text-neutral-300 light:text-neutral-700 hover:text-black dark:hover:text-white">Portfolio &amp; Work</a>
-                    <a href="pricing.html" class="transition-colors dark:text-neutral-300 light:text-neutral-700 hover:text-black dark:hover:text-white">Pricing &amp; Packages</a>
-                    <a href="payment.html" class="transition-colors dark:text-neutral-300 light:text-neutral-700 hover:text-black dark:hover:text-white flex items-center gap-1.5">
-                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <a href="index.html" class="transition-colors text-mono-900 dark:text-white font-bold border-b-2 border-mono-900 dark:border-white pb-0.5">Home</a>
+                    <a href="work.html" class="transition-colors text-mono-600 dark:text-mono-300 hover:text-mono-900 dark:hover:text-white">Portfolio &amp; Work</a>
+                    <a href="pricing.html" class="transition-colors text-mono-600 dark:text-mono-300 hover:text-mono-900 dark:hover:text-white">Pricing &amp; Packages</a>
+                    <a href="payment.html" class="transition-colors text-mono-600 dark:text-mono-300 hover:text-mono-900 dark:hover:text-white flex items-center gap-1.5">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
                         <span>Pay via PayPal</span>
                     </a>
                 </div>
 
                 <!-- Theme Toggle & Action Buttons -->
                 <div class="flex items-center gap-3">
-                    <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-900/80 border border-neutral-800 text-[10px] font-mono text-neutral-300">
-                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
-                        <span>Merchant: <strong class="text-white">@Timz34</strong></span>
+                    <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-mono-200/80 dark:bg-mono-900/80 border border-mono-300 dark:border-mono-800 text-[10px] font-mono text-mono-800 dark:text-mono-300">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
+                        <span>Merchant: <strong class="text-mono-900 dark:text-white">@Timz34</strong></span>
                     </div>
 
                     <!-- Theme Toggle Button -->
-                    <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme" class="p-2.5 rounded-full dark:bg-neutral-900/80 light:bg-neutral-200 border border-neutral-700/40 dark:border-neutral-700/60 dark:text-neutral-200 light:text-neutral-800 hover:scale-105 transition-all">
+                    <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme" class="p-2.5 rounded-full bg-mono-200 dark:bg-mono-900/80 border border-mono-300 dark:border-mono-700/60 text-mono-800 dark:text-mono-200 hover:scale-105 transition-all">
                         <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
                         <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
                     </button>
 
                     <!-- Mobile Menu Button -->
-                    <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden p-2.5 rounded-full dark:bg-neutral-900 light:bg-neutral-200 border border-neutral-700/40">
+                    <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden p-2.5 rounded-full bg-mono-200 dark:bg-mono-900 border border-mono-300 dark:border-mono-700/40 text-mono-900 dark:text-white">
                         <i data-lucide="menu" class="w-4 h-4"></i>
                     </button>
                 </div>
             </nav>
 
             <!-- Mobile Drawer Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-3 p-6 glass-panel-dark rounded-3xl border border-neutral-800 space-y-4 text-center font-mono text-xs uppercase tracking-widest relative z-20">
-                <a href="index.html" class="block py-2 text-white font-bold underline">Home</a>
-                <a href="work.html" class="block py-2 text-neutral-300 hover:text-white">Portfolio &amp; Work</a>
-                <a href="pricing.html" class="block py-2 text-neutral-300 hover:text-white">Pricing &amp; Packages</a>
-                <a href="payment.html" class="block py-2 text-emerald-400 font-bold">Pay via PayPal (@Timz34)</a>
+            <div id="mobile-menu" class="hidden md:hidden mt-3 p-6 glass-panel rounded-3xl border border-mono-300 dark:border-mono-800 space-y-4 text-center font-mono text-xs uppercase tracking-widest relative z-20">
+                <a href="index.html" class="block py-2 text-mono-900 dark:text-white font-bold underline">Home</a>
+                <a href="work.html" class="block py-2 text-mono-600 dark:text-mono-300 hover:text-mono-900 dark:hover:text-white">Portfolio &amp; Work</a>
+                <a href="pricing.html" class="block py-2 text-mono-600 dark:text-mono-300 hover:text-mono-900 dark:hover:text-white">Pricing &amp; Packages</a>
+                <a href="payment.html" class="block py-2 text-emerald-600 dark:text-emerald-400 font-bold">Pay via PayPal (@Timz34)</a>
             </div>
         </div>
     </header>
 
     <main class="flex-grow py-12 px-4 sm:px-8 relative z-10">
         <!-- Ambient Grid Background Overlay -->
-        <div class="absolute inset-0 bg-grid-pattern-dark dark:bg-grid-pattern-dark light:bg-grid-pattern-light opacity-30 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
             
             <!-- Hero Section -->
             <section class="text-center max-w-4xl mx-auto pt-8 pb-20 sm:pt-16 sm:pb-28">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono uppercase tracking-widest border border-neutral-700/60 bg-neutral-900/80 text-neutral-300 mb-6 backdrop-blur-md shadow-lg">
-                    <i data-lucide="camera" class="w-4 h-4 text-emerald-400"></i>
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono uppercase tracking-widest border border-mono-300 dark:border-mono-700/60 bg-mono-100 dark:bg-mono-900/80 text-mono-700 dark:text-mono-300 mb-6 backdrop-blur-md shadow-lg">
+                    <i data-lucide="camera" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
                     <span>Premier Visual &amp; Film Production Studio</span>
                 </div>
 
-                <h1 class="font-display font-black text-5xl sm:text-7xl lg:text-8xl tracking-tight mb-6 dark:text-white light:text-black uppercase leading-none">
-                    CRAFTING LUXURY <span class="text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 via-white to-neutral-500">VISUALS</span>
+                <h1 class="font-display font-black text-5xl sm:text-7xl lg:text-8xl tracking-tight mb-6 text-mono-900 dark:text-white uppercase leading-none">
+                    CRAFTING LUXURY <span class="text-transparent bg-clip-text bg-gradient-to-r from-mono-900 via-mono-700 to-mono-500 dark:from-mono-200 dark:via-white dark:to-mono-500">VISUALS</span>
                 </h1>
 
-                <p class="dark:text-neutral-300 light:text-neutral-700 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal mb-10">
+                <p class="text-mono-600 dark:text-mono-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal mb-10">
                     High-end editorial photography, 4K cinematic production, and brand campaigns across Canada. Lock your dates directly through verified PayPal checkout.
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="pricing.html" class="w-full sm:w-auto py-4 px-8 rounded-full bg-white text-black hover:bg-neutral-200 font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-glow-white flex items-center justify-center gap-2">
+                    <a href="pricing.html" class="w-full sm:w-auto py-4 px-8 rounded-full bg-mono-900 text-white hover:bg-mono-800 dark:bg-white dark:text-black dark:hover:bg-mono-200 font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-glow-white flex items-center justify-center gap-2">
                         <span>Reserve Your Shoot</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
 
-                    <button type="button" onclick="openShowreelModal()" class="w-full sm:w-auto py-4 px-8 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-white border border-neutral-700 font-bold text-xs uppercase tracking-wider transition-all duration-300 backdrop-blur-md flex items-center justify-center gap-2">
-                        <i data-lucide="play" class="w-4 h-4 fill-white text-white"></i>
+                    <button type="button" onclick="openShowreelModal()" class="w-full sm:w-auto py-4 px-8 rounded-full bg-mono-100 hover:bg-mono-200 dark:bg-mono-900/80 dark:hover:bg-mono-800 text-mono-900 dark:text-white border border-mono-300 dark:border-mono-700 font-bold text-xs uppercase tracking-wider transition-all duration-300 backdrop-blur-md flex items-center justify-center gap-2">
+                        <i data-lucide="play" class="w-4 h-4 fill-mono-900 dark:fill-white text-mono-900 dark:text-white"></i>
                         <span>Watch 2026 Showreel</span>
                     </button>
                 </div>
 
                 <!-- Stats Bar -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 p-6 glass-panel-dark dark:glass-panel-dark light:glass-panel-light rounded-3xl border border-neutral-800/80 text-center">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 p-6 glass-panel rounded-3xl border border-mono-300 dark:border-mono-800/80 text-center">
                     <div>
-                        <span class="font-display font-bold text-2xl sm:text-3xl dark:text-white light:text-black block">150+</span>
-                        <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">Commercial Campaigns</span>
+                        <span class="font-display font-bold text-2xl sm:text-3xl text-mono-900 dark:text-white block">150+</span>
+                        <span class="text-[10px] font-mono text-mono-500 dark:text-mono-400 uppercase tracking-widest">Commercial Campaigns</span>
                     </div>
                     <div>
-                        <span class="font-display font-bold text-2xl sm:text-3xl dark:text-white light:text-black block">8K RED</span>
-                        <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">Cinema Cameras</span>
+                        <span class="font-display font-bold text-2xl sm:text-3xl text-mono-900 dark:text-white block">8K RED</span>
+                        <span class="text-[10px] font-mono text-mono-500 dark:text-mono-400 uppercase tracking-widest">Cinema Cameras</span>
                     </div>
                     <div>
-                        <span class="font-display font-bold text-2xl sm:text-3xl dark:text-white light:text-black block">48h</span>
-                        <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">Rush Express Edits</span>
+                        <span class="font-display font-bold text-2xl sm:text-3xl text-mono-900 dark:text-white block">48h</span>
+                        <span class="text-[10px] font-mono text-mono-500 dark:text-mono-400 uppercase tracking-widest">Rush Express Edits</span>
                     </div>
                     <div>
-                        <span class="font-display font-bold text-2xl sm:text-3xl dark:text-white light:text-black block">100%</span>
-                        <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">Client Satisfaction</span>
+                        <span class="font-display font-bold text-2xl sm:text-3xl text-mono-900 dark:text-white block">100%</span>
+                        <span class="text-[10px] font-mono text-mono-500 dark:text-mono-400 uppercase tracking-widest">Client Satisfaction</span>
                     </div>
                 </div>
             </section>
@@ -254,15 +261,15 @@
             <section class="mb-28">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest border border-neutral-700/60 bg-neutral-900/60 text-neutral-300 mb-3">
-                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-neutral-200"></i>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest border border-mono-300 dark:border-mono-700/60 bg-mono-100 dark:bg-mono-900/60 text-mono-700 dark:text-mono-300 mb-3">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-mono-800 dark:text-mono-200"></i>
                             <span>Selected Works</span>
                         </div>
-                        <h2 class="font-display font-extrabold text-3xl sm:text-5xl dark:text-white light:text-black uppercase">
+                        <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-mono-900 dark:text-white uppercase">
                             FEATURED HIGHLIGHTS
                         </h2>
                     </div>
-                    <a href="work.html" class="inline-flex items-center gap-2 text-xs font-mono uppercase text-neutral-300 hover:text-white transition-colors">
+                    <a href="work.html" class="inline-flex items-center gap-2 text-xs font-mono uppercase text-mono-700 dark:text-mono-300 hover:text-mono-900 dark:hover:text-white transition-colors">
                         <span>View Full Gallery</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
@@ -270,7 +277,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Project 1: ECLIPSE URBAN APPAREL using dig.jpeg background -->
-                    <div class="group relative rounded-3xl overflow-hidden border border-neutral-800 glass-panel-dark h-[420px] flex flex-col justify-end p-8 transition-transform duration-500 hover:-translate-y-2">
+                    <div class="group relative rounded-3xl overflow-hidden border border-mono-300 dark:border-mono-800 glass-panel h-[420px] flex flex-col justify-end p-8 transition-transform duration-500 hover:-translate-y-2">
                         <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
                              style="background-image: url('dig.jpeg');"
                              onerror="this.style.backgroundImage='url(\'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1000\')';">
@@ -287,7 +294,7 @@
                     </div>
 
                     <!-- Project 2: Alpine Horizon Campaign -->
-                    <div class="group relative rounded-3xl overflow-hidden border border-neutral-800 glass-panel-dark h-[420px] flex flex-col justify-end p-8 transition-transform duration-500 hover:-translate-y-2">
+                    <div class="group relative rounded-3xl overflow-hidden border border-mono-300 dark:border-mono-800 glass-panel h-[420px] flex flex-col justify-end p-8 transition-transform duration-500 hover:-translate-y-2">
                         <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
                              style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1000');">
                         </div>
@@ -303,7 +310,7 @@
                     </div>
 
                     <!-- Project 3: Luxury Private Gala -->
-                    <div class="group relative rounded-3xl overflow-hidden border border-neutral-800 glass-panel-dark h-[420px] flex flex-col justify-end p-8 transition-transform duration-500 hover:-translate-y-2">
+                    <div class="group relative rounded-3xl overflow-hidden border border-mono-300 dark:border-mono-800 glass-panel h-[420px] flex flex-col justify-end p-8 transition-transform duration-500 hover:-translate-y-2">
                         <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
                              style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1000');">
                         </div>
@@ -323,62 +330,62 @@
             <!-- Production Services Section -->
             <section class="mb-28">
                 <div class="text-center max-w-3xl mx-auto mb-16">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-widest border border-neutral-700/60 bg-neutral-900/60 text-neutral-300 mb-4 backdrop-blur-md">
-                        <i data-lucide="layers" class="w-3.5 h-3.5 text-neutral-200"></i>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-widest border border-mono-300 dark:border-mono-700/60 bg-mono-100 dark:bg-mono-900/60 text-mono-700 dark:text-mono-300 mb-4 backdrop-blur-md">
+                        <i data-lucide="layers" class="w-3.5 h-3.5 text-mono-800 dark:text-mono-200"></i>
                         <span>Core Disciplines</span>
                     </div>
-                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl dark:text-white light:text-black uppercase">
+                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-mono-900 dark:text-white uppercase">
                         OUR PRODUCTION SERVICES
                     </h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Service 1: Cinematography -->
-                    <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800/80 shadow-2xl flex flex-col justify-between hover:border-neutral-500 transition-all group">
+                    <div class="glass-panel p-8 rounded-3xl border border-mono-300 dark:border-mono-800/80 shadow-2xl flex flex-col justify-between hover:border-mono-500 transition-all group">
                         <div>
-                            <div class="w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white mb-6 group-hover:bg-white group-hover:text-black transition-colors">
+                            <div class="w-12 h-12 rounded-2xl bg-mono-900 text-white dark:bg-mono-800 dark:text-white border border-mono-700 flex items-center justify-center mb-6 group-hover:bg-mono-700 transition-colors">
                                 <i data-lucide="film" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="font-display font-bold text-2xl dark:text-white light:text-black mb-3">4K Cinema Production</h3>
-                            <p class="text-xs text-neutral-400 leading-relaxed mb-6">
+                            <h3 class="font-display font-bold text-2xl text-mono-900 dark:text-white mb-3">4K Cinema Production</h3>
+                            <p class="text-xs text-mono-600 dark:text-mono-400 leading-relaxed mb-6">
                                 Commercial films, music videos, and brand narrative documentaries captured on RED digital cinema rigs with professional sound staging.
                             </p>
                         </div>
-                        <a href="pricing.html" class="inline-flex items-center gap-2 text-xs font-mono uppercase text-white hover:text-emerald-400 transition-colors">
+                        <a href="pricing.html" class="inline-flex items-center gap-2 text-xs font-mono uppercase text-mono-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
                             <span>Explore Cinema Rates</span>
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
                     </div>
 
                     <!-- Service 2: Commercial Photography -->
-                    <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800/80 shadow-2xl flex flex-col justify-between hover:border-neutral-500 transition-all group">
+                    <div class="glass-panel p-8 rounded-3xl border border-mono-300 dark:border-mono-800/80 shadow-2xl flex flex-col justify-between hover:border-mono-500 transition-all group">
                         <div>
-                            <div class="w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white mb-6 group-hover:bg-white group-hover:text-black transition-colors">
+                            <div class="w-12 h-12 rounded-2xl bg-mono-900 text-white dark:bg-mono-800 dark:text-white border border-mono-700 flex items-center justify-center mb-6 group-hover:bg-mono-700 transition-colors">
                                 <i data-lucide="camera" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="font-display font-bold text-2xl dark:text-white light:text-black mb-3">Studio Photography</h3>
-                            <p class="text-xs text-neutral-400 leading-relaxed mb-6">
+                            <h3 class="font-display font-bold text-2xl text-mono-900 dark:text-white mb-3">Studio Photography</h3>
+                            <p class="text-xs text-mono-600 dark:text-mono-400 leading-relaxed mb-6">
                                 High-resolution fashion portraits, editorial lookbooks, commercial product setups, and creative studio lighting configurations.
                             </p>
                         </div>
-                        <a href="pricing.html" class="inline-flex items-center gap-2 text-xs font-mono uppercase text-white hover:text-emerald-400 transition-colors">
+                        <a href="pricing.html" class="inline-flex items-center gap-2 text-xs font-mono uppercase text-mono-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
                             <span>Explore Photo Rates</span>
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
                     </div>
 
                     <!-- Service 3: Hybrid Live Coverage -->
-                    <div class="glass-panel-dark dark:glass-panel-dark light:glass-panel-light p-8 rounded-3xl border border-neutral-800/80 shadow-2xl flex flex-col justify-between hover:border-neutral-500 transition-all group">
+                    <div class="glass-panel p-8 rounded-3xl border border-mono-300 dark:border-mono-800/80 shadow-2xl flex flex-col justify-between hover:border-mono-500 transition-all group">
                         <div>
-                            <div class="w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white mb-6 group-hover:bg-white group-hover:text-black transition-colors">
+                            <div class="w-12 h-12 rounded-2xl bg-mono-900 text-white dark:bg-mono-800 dark:text-white border border-mono-700 flex items-center justify-center mb-6 group-hover:bg-mono-700 transition-colors">
                                 <i data-lucide="clapperboard" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="font-display font-bold text-2xl dark:text-white light:text-black mb-3">Hybrid Event Coverage</h3>
-                            <p class="text-xs text-neutral-400 leading-relaxed mb-6">
+                            <h3 class="font-display font-bold text-2xl text-mono-900 dark:text-white mb-3">Hybrid Event Coverage</h3>
+                            <p class="text-xs text-mono-600 dark:text-mono-400 leading-relaxed mb-6">
                                 Full dual-discipline photo and video coverage for high-profile galas, corporate summits, and luxury private events.
                             </p>
                         </div>
-                        <a href="pricing.html" class="inline-flex items-center gap-2 text-xs font-mono uppercase text-white hover:text-emerald-400 transition-colors">
+                        <a href="pricing.html" class="inline-flex items-center gap-2 text-xs font-mono uppercase text-mono-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
                             <span>Explore Hybrid Packages</span>
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
@@ -387,19 +394,19 @@
             </section>
 
             <!-- Direct Checkout Callout -->
-            <section class="p-8 sm:p-12 rounded-3xl bg-neutral-900/90 border border-neutral-800 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 mb-16 relative overflow-hidden">
+            <section class="p-8 sm:p-12 rounded-3xl bg-mono-100 dark:bg-mono-900/90 border border-mono-300 dark:border-mono-800 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 mb-16 relative overflow-hidden">
                 <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 
                 <div class="max-w-2xl relative z-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest border border-amber-500/30 bg-amber-500/10 text-amber-400 mb-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 mb-4">
                         <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
                         <span>Instant Merchant Checkout</span>
                     </div>
-                    <h3 class="font-display font-extrabold text-2xl sm:text-4xl text-white uppercase mb-3">
+                    <h3 class="font-display font-extrabold text-2xl sm:text-4xl text-mono-900 dark:text-white uppercase mb-3">
                         READY TO BOOK YOUR PRODUCTION DATE?
                     </h3>
-                    <p class="text-xs text-neutral-300 leading-relaxed">
-                        Lock your production slot directly using PayPal Seller Protection targeting official merchant handle <strong class="text-white">@Timz34</strong>.
+                    <p class="text-xs text-mono-600 dark:text-mono-300 leading-relaxed">
+                        Lock your production slot directly using PayPal Seller Protection targeting official merchant handle <strong class="text-mono-900 dark:text-white">@Timz34</strong>.
                     </p>
                 </div>
 
@@ -416,10 +423,10 @@
 
     <!-- Interactive Showreel Video Modal -->
     <div id="showreel-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
-        <div class="relative w-full max-w-4xl bg-neutral-900 rounded-3xl border border-neutral-800 overflow-hidden shadow-2xl">
-            <div class="p-4 border-b border-neutral-800 flex items-center justify-between">
-                <span class="text-xs font-mono uppercase tracking-widest text-neutral-300">TIMZ VISUALS • 2026 Production Reel</span>
-                <button onclick="closeShowreelModal()" class="p-2 text-neutral-400 hover:text-white">
+        <div class="relative w-full max-w-4xl bg-mono-900 rounded-3xl border border-mono-800 overflow-hidden shadow-2xl">
+            <div class="p-4 border-b border-mono-800 flex items-center justify-between">
+                <span class="text-xs font-mono uppercase tracking-widest text-mono-300">TIMZ VISUALS • 2026 Production Reel</span>
+                <button onclick="closeShowreelModal()" class="p-2 text-mono-400 hover:text-white">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -430,25 +437,25 @@
     </div>
 
     <!-- Footer -->
-    <footer class="border-t border-neutral-800/80 py-10 px-4 sm:px-8 bg-black/60 backdrop-blur-md relative z-10">
+    <footer class="border-t border-mono-300 dark:border-mono-800/80 py-10 px-4 sm:px-8 bg-mono-100/80 dark:bg-black/60 backdrop-blur-md relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-bold text-xs">
+                <div class="w-8 h-8 rounded-full bg-mono-900 text-white dark:bg-white dark:text-black flex items-center justify-center font-bold text-xs">
                     TZ
                 </div>
-                <span class="font-display font-bold text-sm text-white">TIMZ VISUALS</span>
+                <span class="font-display font-bold text-sm text-mono-900 dark:text-white">TIMZ VISUALS</span>
             </div>
 
-            <p class="text-xs text-neutral-500 text-center md:text-left">
-                &copy; 2026 TIMZ VISUALS. High-End Visual Storytelling &amp; Production. Verified PayPal Merchant: <strong class="text-neutral-300">@Timz34</strong>
+            <p class="text-xs text-mono-500 text-center md:text-left">
+                &copy; 2026 TIMZ VISUALS. High-End Visual Storytelling &amp; Production. Verified PayPal Merchant: <strong class="text-mono-800 dark:text-mono-300">@Timz34</strong>
             </p>
 
-            <div class="flex items-center gap-4 text-xs text-neutral-400">
-                <a href="payment.html" class="hover:text-white transition-colors flex items-center gap-1">
-                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> Direct Checkout
+            <div class="flex items-center gap-4 text-xs text-mono-600 dark:text-mono-400">
+                <a href="payment.html" class="hover:text-mono-900 dark:hover:text-white transition-colors flex items-center gap-1">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i> Direct Checkout
                 </a>
                 <span>•</span>
-                <a href="https://www.paypal.com/paypalme/Timz34" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">paypal.me/Timz34</a>
+                <a href="https://www.paypal.com/paypalme/Timz34" target="_blank" rel="noopener noreferrer" class="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">paypal.me/Timz34</a>
             </div>
         </div>
     </footer>
@@ -460,28 +467,19 @@
             initTheme();
         });
 
-        // Theme Toggle Functionality
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 document.documentElement.classList.remove('dark');
-                document.documentElement.classList.add('light');
             } else {
                 document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
             }
         }
 
         function toggleTheme() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                document.documentElement.classList.add('light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                localStorage.setItem('theme', 'dark');
-            }
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
             lucide.createIcons();
         }
 
@@ -490,11 +488,10 @@
             menu.classList.toggle('hidden');
         }
 
-        // Showreel Modal Controls
         function openShowreelModal() {
             const modal = document.getElementById('showreel-modal');
             const iframe = document.getElementById('showreel-iframe');
-            iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"; // Sample promo placeholder
+            iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
             modal.classList.remove('hidden');
         }
 
