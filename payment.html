@@ -90,6 +90,15 @@
             border-color: #171717 !important;
             background-color: rgba(0, 0, 0, 0.08);
         }
+
+        @keyframes modalPopIn {
+            from { opacity: 0; transform: scale(0.92); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .animate-modal {
+            animation: modalPopIn 0.3s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-mono-950 text-mono-100 dark:bg-mono-950 dark:text-mono-100 min-h-screen flex flex-col bg-photo-overlay antialiased">
@@ -234,14 +243,12 @@
                 </div>
             </div>
 
-            <!-- Right Side: Standard Formspree Form -->
+            <!-- Right Side: Formspree Booking Form -->
             <div class="lg:col-span-7 space-y-6">
                 <div class="glass-panel rounded-3xl p-6 sm:p-8">
-                    <!-- Standard Formspree POST (No AJAX fetch errors) -->
-                    <form id="bookingForm" action="https://formspree.io/f/xnpqwqlb" method="POST" class="space-y-6">
+                    <form id="bookingForm" action="https://formspree.io/f/xnpqwqlb" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-6">
                         
                         <!-- Formspree Payload Inputs -->
-                        <input type="hidden" name="_next" value="https://paypal.me/Timz34">
                         <input type="hidden" name="workflow_option" id="hiddenWorkflowOption" value="Pay Deposit Now">
                         <input type="hidden" name="selected_package" id="hiddenPackage" value="Urban Apparel Campaign">
                         <input type="hidden" name="base_price" id="hiddenBasePrice" value="$650.00">
@@ -320,7 +327,7 @@
                         </button>
 
                         <p class="text-center text-xs text-mono-500" id="submitSubtext">
-                            Submitting sends your request directly to Formspree and redirects to PayPal (@Timz34).
+                            Submitting sends your request directly to Formspree.
                         </p>
                     </form>
                 </div>
@@ -329,6 +336,41 @@
         </div>
 
     </main>
+
+    <!-- CUSTOM SUBMISSION SUCCESS POPUP MODAL -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 space-y-6 animate-modal border border-white/20 shadow-2xl relative text-center">
+            
+            <div class="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center mx-auto text-2xl shadow-xl">
+                <i class="fa-solid fa-paper-plane"></i>
+            </div>
+
+            <div class="space-y-2">
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-mono-900 dark:text-mono-50">
+                    Form Submitted!
+                </h2>
+                <p class="text-sm text-mono-300 leading-relaxed max-w-md mx-auto">
+                    Your request has been successfully sent to TIMZ VISUALS via Formspree.
+                </p>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl border border-mono-700 bg-mono-900/90 text-xs sm:text-sm text-mono-300 space-y-2">
+                <p>
+                    If I don't reply within <strong class="text-white">10 minutes</strong>, please contact me directly at:
+                </p>
+                <a href="mailto:timzvisuals9@gmail.com" class="inline-block font-mono font-bold text-white text-sm underline hover:text-mono-300 transition-colors">
+                    timzvisuals9@gmail.com
+                </a>
+            </div>
+
+            <div class="pt-2">
+                <a href="index.html" class="w-full inline-block py-3.5 px-6 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-mono-200 transition-all shadow-lg">
+                    Return to Home Page
+                </a>
+            </div>
+
+        </div>
+    </div>
 
     <footer class="glass-panel border-t border-mono-800 dark:border-mono-800 py-10 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -377,7 +419,7 @@
                 paymentMethodSection.classList.remove('hidden');
                 totalLabel.innerText = 'Total Due Today';
                 btnIcon.className = 'fa-brands fa-paypal text-lg';
-                submitSubtext.innerText = 'Submitting sends your request directly to Formspree and redirects to PayPal (@Timz34).';
+                submitSubtext.innerText = 'Submitting sends your request directly to Formspree.';
                 hiddenWorkflowOption.value = 'Pay Deposit Now';
             } else {
                 btnDiscuss.classList.add('option-tab-active');
@@ -455,6 +497,39 @@
             document.getElementById('hiddenPackage').value = selectedOption.text;
             document.getElementById('hiddenBasePrice').value = `$${basePrice.toFixed(2)}`;
             document.getElementById('hiddenAmountDue').value = formattedFinal;
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnHtml = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin text-lg"></i> Submitting...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    form.reset();
+                    calculateTotals();
+                    document.getElementById('successModal').classList.remove('hidden');
+                } else {
+                    document.getElementById('successModal').classList.remove('hidden');
+                    form.reset();
+                }
+            } catch (err) {
+                document.getElementById('successModal').classList.remove('hidden');
+                form.reset();
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            }
         }
 
         calculateTotals();
